@@ -7,8 +7,8 @@ export default function Navbar() {
     <nav className="flex px-24 justify-between p-5">
         Navbar
         {NavList.map((nav) => (
-            <li>
-                <Link href={nav.link}><ul key={nav.id}>{nav.name}</ul></Link>
+            <li key={nav.id}>
+                <Link href={nav.link}><ul>{nav.name}</ul></Link>
             </li>
         ))}
     </nav>
