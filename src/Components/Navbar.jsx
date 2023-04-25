@@ -8,7 +8,7 @@ export default function Navbar() {
             <span>Navbar</span>
             <li>
                 {NavList.map((nav) => (
-                    <Link href={nav.link}><ul key={nav.id}>{nav.name}</ul></Link>
+                    <Link key={nav.id} href={nav.link}><ul>{nav.name}</ul></Link>
                 ))}
             </li>
         </nav>
