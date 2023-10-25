@@ -2,7 +2,7 @@ import Navbar from "@/Components/Navbar";
 import "./globals.css";
 import Footer from "@/Components/Footer";
 
-const title = "Designs By Eyad ─ %s";
+const title = "%s ─ Designs By Eyad";
 const desc =
   "A studio located in Aswan make graphic design, motion graphics, Web design, UI design and more in an Egyptian style.";
   const siteUrl = process.env.PUBLIC_DOMAIN_URL;
