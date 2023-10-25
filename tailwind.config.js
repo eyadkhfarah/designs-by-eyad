@@ -7,7 +7,19 @@ module.exports = {
   ],
   theme: {
     extend: {
-      
+      fontFamily: {
+        regular: 'regular',
+        bold: 'bold',
+      },
+      keyframes: {
+        carosale: {
+          '0%': { transform: "translateX(0)" },
+          '100%': { transform: "translateX(-100%)" },
+        },
+      },
+      animation: {
+        'carosale': 'carosale 5s ease-in-out infinite',
+      },
     },
   },
   plugins: [],

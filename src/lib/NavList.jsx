@@ -1,22 +1,17 @@
 export const NavList = [
     {
+        name: "Portfolio",
+        link: "/portfolio",
+        id: 1
+    },
+    {
         name: "Service",
-        link: "/service",
-        id: 1
+        link: "#service",
+        id: 2
     },
     {
-        name: "Works",
-        link: "/works",
-        id: 1
-    },
-    {
-        name: "Who I Am?",
-        link: "/about",
-        id: 1
-    },
-    {
-        name: "Contact Me",
-        link: "/contact",
-        id: 1
+        name: "Contact",
+        link: "#contact",
+        id: 3
     },
 ]

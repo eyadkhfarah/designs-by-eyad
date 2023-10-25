@@ -2,26 +2,53 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "regular";
+  scroll-behavior: smooth;
+}
+
+
+@layer base {
+  @font-face {
+    font-family: "bold";
+    src: url("../../public/Fonts/Bold.woff2") format("woff2");
+    font-weight: 600;
+    font-display: swap;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "regular";
+    src: url("../../public/Fonts/Regular.woff2") format("woff2");
+    font-weight: 600;
+    font-display: swap;
+    font-style: normal;
+  }
+
+  body {
+    @apply bg-black text-white
+  }
+
+  h1 {
+    @apply font-bold
+  }
+  
+  h2 {
+    @apply font-bold
+  }
+
+  h3 {
+    @apply font-bold
+  }
+
+  .logos {
+    @apply overflow-hidden p-16 whitespace-nowrap
+  }
+
+  .logo-slider {
+    @apply inline-block animate-carosale
+  }
 }
