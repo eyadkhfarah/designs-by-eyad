@@ -27,19 +27,18 @@ export const metadata = {
       url: "/main-og.png",
       width: 1800,
       height: 1600,
-      alt: "الصحوة القومية",
+      alt: "Designs By Eyad",
     },
-    locale: "ar_EG",
     type: "website",
   },
 
   twitter: {
-    handle: "@sahwaeg",
-    site: "@sahwaeg",
+    handle: "@designs.by.eyad",
+    site: "@designs.by.eyad",
     cardType: "summary_large_image",
   },
 
-  language: "ar",
+  language: "en",
   "geo.country": "EG",
   "geo.region": "EG",
   distribution: "global",
