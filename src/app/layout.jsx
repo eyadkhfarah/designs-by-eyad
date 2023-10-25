@@ -1,6 +1,6 @@
 import Navbar from "@/Components/Navbar";
 import "./globals.css";
-import Footer from "@/Components/Footer";
+// import Footer from "@/Components/Footer";
 
 const title = "%s ─ Designs By Eyad";
 const desc = "A studio located in Aswan make graphic design, motion graphics, Web design, UI design and more in an Egyptian style.";
@@ -55,7 +55,7 @@ export default function RootLayout({ children }) {
       <body>
         <Navbar />
         <main>{children}</main>
-        <Footer />
+        {/* <Footer /> */}
       </body>
     </html>
   );
