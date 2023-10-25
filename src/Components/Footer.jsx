@@ -8,11 +8,13 @@ export default function Footer() {
     <>
       <div className="grid place-items-center mx-10 mt-40 gap-5 text-center">
         <h2 className="text-5xl">Let's Orbit</h2>
-        <p>
-          Ready to blast off into the design stratosphere together?
-          <br /> Contact me and let's start orbiting around your creative
-          vision!
-        </p>
+        <div className="">
+          <p>Ready to blast off into the design stratosphere together?</p>
+          <br />
+          <p>
+            Contact me and let's start orbiting around your creative vision!
+          </p>
+        </div>
         <PrimaryBtn link={"mailto:eyadkhfarah@gmail.com"} text={"Contact Me"} />
       </div>
       <footer className="pb-10 text-center" id="contact">
