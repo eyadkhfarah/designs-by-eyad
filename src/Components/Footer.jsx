@@ -12,7 +12,7 @@ export default function Footer() {
           <p>Ready to blast off into the design stratosphere together?</p>
           <br />
           <p>
-            Contact me and let's start orbiting around your creative vision!
+            Contact me and let&apos;s start orbiting around your creative vision!
           </p>
         </div>
         <PrimaryBtn link={"mailto:eyadkhfarah@gmail.com"} text={"Contact Me"} />
