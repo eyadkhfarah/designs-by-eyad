@@ -7,12 +7,12 @@ export default function Footer() {
   return (
     <>
       <div className="grid place-items-center mx-10 mt-40 gap-5 text-center">
-        <h2 className="text-5xl">Let's Orbit</h2>
+        <h2 className="text-5xl">Let&apos;s Orbit</h2>
         <div className="">
           <p>Ready to blast off into the design stratosphere together?</p>
           <br />
           <p>
-            Contact me and let's start orbiting around your creative vision!
+            Contact me and let&apos;s start orbiting around your creative vision!
           </p>
         </div>
         <PrimaryBtn link={"mailto:eyadkhfarah@gmail.com"} text={"Contact Me"} />
