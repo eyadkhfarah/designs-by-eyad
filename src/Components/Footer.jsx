@@ -10,7 +10,6 @@ export default function Footer() {
         <h2 className="text-5xl">Let&apos;s Orbit</h2>
         <div className="">
           <p>Ready to blast off into the design stratosphere together?</p>
-          <br />
           <p>
             Contact me and let&apos;s start orbiting around your creative vision!
           </p>
