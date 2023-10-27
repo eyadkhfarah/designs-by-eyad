@@ -64,7 +64,7 @@ export default function Home() {
 
         <div className="grid md:grid-cols-2 gap-9 mt-14">
           <div className="grid gap-5 bg-gray-900 p-5 rounded-3xl hover:scale-110 transition-all ease-in-out duration-300">
-            <TbWorldCode className="text-4xl" />
+            <TbWorldCode className="text-4xl text-yellow-500 " />
             <div className="grid gap-3">
               <h3 className="text-xl">Web Development</h3>
               <p>
@@ -74,7 +74,7 @@ export default function Home() {
             </div>
           </div>
           <div className="grid gap-5 bg-gray-900 p-5 rounded-3xl hover:scale-110 transition-all ease-in-out duration-300">
-            <TbMessage2Heart className="text-4xl" />
+            <TbMessage2Heart className="text-4xl text-yellow-500" />
             <div className="grid gap-3">
               <h3 className="text-xl">Social Media Design</h3>
               <p>
@@ -85,7 +85,7 @@ export default function Home() {
             </div>
           </div>
           <div className="grid gap-5 bg-gray-900 p-5 rounded-3xl hover:scale-110 transition-all ease-in-out duration-300">
-            <TbVectorBezier className="text-4xl" />
+            <TbVectorBezier className="text-4xl text-yellow-500" />
             <div className="grid gap-3">
               <h3 className="text-xl">Graphic Design</h3>
               <p>
@@ -95,7 +95,7 @@ export default function Home() {
             </div>
           </div>
           <div className="grid gap-5 bg-gray-900 p-5 rounded-3xl hover:scale-110 transition-all ease-in-out duration-300">
-            <TbDeviceMobileCheck className="text-4xl" />
+            <TbDeviceMobileCheck className="text-4xl text-yellow-500" />
             <div className="grid gap-3">
               <h3 className="text-xl">UI/UX Design</h3>
               <p>
