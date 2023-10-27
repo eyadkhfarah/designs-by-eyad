@@ -6,7 +6,7 @@ import PrimaryBtn from "./Buttons/PrimaryBtn";
 export default function Footer() {
   return (
     <>
-      <div className="grid place-items-center mx-10 mt-40 gap-5 text-center">
+      <div className="grid place-items-center mx-6 mt-40 gap-5 text-center">
         <h2 className="text-5xl">Let&apos;s Orbit</h2>
         <div className="">
           <p>Ready to blast off into the design stratosphere together?</p>

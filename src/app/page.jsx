@@ -33,7 +33,7 @@ export default function Home() {
 
       <ProtImages />
 
-      <section className="lg:px-60 md:px-30 px-8 my-60">
+      <section className="lg:px-60 md:px-30 px-5 my-60">
         <h2 className="text-yellow-500 text-4xl text-center">Our Clients</h2>
         <div className="">
           <div className="flex md:flex-row flex-wrap flex-col mx-auto justify-between items-center overflow-hidden py-20 gap-12">
@@ -59,7 +59,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="lg:px-60 md:px-30 px-8 my-10">
+      <section className="lg:px-60 md:px-30 px-5 my-10">
         <h2 className="text-yellow-500 text-4xl text-center">What I Offer</h2>
 
         <div className="grid md:grid-cols-2 gap-9 mt-14">
