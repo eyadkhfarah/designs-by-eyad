@@ -12,7 +12,7 @@ export default function Home() {
     <>
       <section className="lg:px-28 px-8">
         <div className="md:flex grid lg:gap-16 gap-9 items-center">
-          <h1 className="p-0 lg:text-[10rem] md:text-[8rem] text-[5rem] text-center">
+          <h1 title="Hieroglyphic word means WOW!" aria-label="Hieroglyphic word means WOW!" className="p-0 lg:text-[10rem] md:text-[8rem] text-[5rem] whitespace-nowrap uppercase text-center">
             Bi aty!
           </h1>
           <p className="md:text-xl md:text-left text-center md:m-0 mb-12">
@@ -63,7 +63,7 @@ export default function Home() {
         <h2 className="text-yellow-500 text-4xl text-center">What I Offer</h2>
 
         <div className="grid md:grid-cols-2 gap-9 mt-14">
-          <div className="grid gap-5 bg-gray-900 p-5 rounded-3xl hover:scale-110 transition-all ease-in-out duration-300">
+          <div className="services-card">
             <TbWorldCode className="text-4xl text-yellow-500 " />
             <div className="grid gap-3">
               <h3 className="text-xl">Web Development</h3>
@@ -73,7 +73,7 @@ export default function Home() {
               </p>
             </div>
           </div>
-          <div className="grid gap-5 bg-gray-900 p-5 rounded-3xl hover:scale-110 transition-all ease-in-out duration-300">
+          <div className="services-card">
             <TbMessage2Heart className="text-4xl text-yellow-500" />
             <div className="grid gap-3">
               <h3 className="text-xl">Social Media Design</h3>
@@ -84,7 +84,7 @@ export default function Home() {
               </p>
             </div>
           </div>
-          <div className="grid gap-5 bg-gray-900 p-5 rounded-3xl hover:scale-110 transition-all ease-in-out duration-300">
+          <div className="services-card">
             <TbVectorBezier className="text-4xl text-yellow-500" />
             <div className="grid gap-3">
               <h3 className="text-xl">Graphic Design</h3>
@@ -94,7 +94,7 @@ export default function Home() {
               </p>
             </div>
           </div>
-          <div className="grid gap-5 bg-gray-900 p-5 rounded-3xl hover:scale-110 transition-all ease-in-out duration-300">
+          <div className="services-card">
             <TbDeviceMobileCheck className="text-4xl text-yellow-500" />
             <div className="grid gap-3">
               <h3 className="text-xl">UI/UX Design</h3>

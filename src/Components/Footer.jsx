@@ -22,12 +22,14 @@ export default function Footer() {
             <Link
               href={"https://www.facebook.com/designs.by.eyad"}
               target="_blank"
+              title="Follow Me On Facebook"
             >
               <RiFacebookCircleFill className="text-4xl text-yellow-500" />
             </Link>
             <Link
               href={"https://www.instagram.com/designs.by.eyad"}
               target="_blank"
+              title="Follow Me On Instagram"
             >
               <RiInstagramLine className="text-4xl text-yellow-500" />
             </Link>
