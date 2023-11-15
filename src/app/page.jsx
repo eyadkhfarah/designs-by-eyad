@@ -13,7 +13,7 @@ export default function Home() {
       <section className="lg:px-28 px-8">
         <div className="md:flex grid lg:gap-16 gap-9 items-center">
           <h1 className="p-0 lg:text-[10rem] md:text-[8rem] text-[5rem] text-center">
-            WOW!
+            Bi aty!
           </h1>
           <p className="md:text-xl md:text-left text-center md:m-0 mb-12">
             Welcome to Designs by Eyad, where we bring the cosmos of graphic
