@@ -1,13 +1,14 @@
 import Navbar from "@/Components/Navbar";
 import "./globals.css";
 import Footer from "@/Components/Footer";
+import { Metadata } from "next";
 
 const title = "%s ─ Designs By Eyad";
 const desc = "A studio located in Aswan make graphic design, motion graphics, Web design, UI design and more in an Egyptian style.";
 
-const siteUrl = process.env.PUBLIC_DOMAIN_URL;
+const siteUrl = process.env.PUBLIC_DOMAIN_URL || "https://localhost:3000";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: {
     default: "Designs By Eyad",
     template: title,
@@ -33,23 +34,12 @@ export const metadata = {
   },
 
   twitter: {
-    handle: "@designs.by.eyad",
     site: "@designs.by.eyad",
-    cardType: "summary_large_image",
+    card: "summary_large_image",
   },
-
-  language: "en",
-  "geo.country": "EG",
-  "geo.region": "EG",
-  distribution: "global",
-  "revisit-after": "1 days",
-  "geo.placename": "Egypt",
-
-  HandheldFriendly: "True",
-  MobileOptimized: "1100",
 };
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ children } : {children :React.ReactNode}) {
   return (
     <html lang="en">
       <body>

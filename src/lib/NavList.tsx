@@ -1,4 +1,6 @@
-export const NavList = [
+import { NavLink } from "@/types/navLink";
+
+export const NavList: NavLink[] = [
     {
         name: "Portfolio",
         link: "/portfolio",

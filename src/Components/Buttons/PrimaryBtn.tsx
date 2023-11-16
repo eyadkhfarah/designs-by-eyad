@@ -1,7 +1,12 @@
 import Link from "next/link";
 import React from "react";
 
-export default function PrimaryBtn({link, text}) {
+type Button = {
+  link: String,
+  text: String
+}
+
+export default function PrimaryBtn({link, text}: Button) {
   return (
     <Link
       href={link}

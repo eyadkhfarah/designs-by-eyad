@@ -12,7 +12,11 @@ export default function Home() {
     <>
       <section className="lg:px-28 px-8">
         <div className="md:flex grid lg:gap-16 gap-9 items-center">
-          <h1 title="Hieroglyphic word means WOW!" aria-label="Hieroglyphic word means WOW!" className="p-0 lg:text-[10rem] md:text-[8rem] text-[5rem] whitespace-nowrap uppercase text-center">
+          <h1
+            title="Hieroglyphic word means WOW!"
+            aria-label="Hieroglyphic word means WOW!"
+            className="p-0 lg:text-[10rem] md:text-[8rem] text-[5rem] whitespace-nowrap uppercase text-center"
+          >
             Bi aty!
           </h1>
           <p className="md:text-xl md:text-left text-center md:m-0 mb-12">
@@ -24,6 +28,7 @@ export default function Home() {
       </section>
 
       <Image
+        alt="Astro"
         src={"/astro.jpg"}
         priority={true}
         width={1500}
@@ -38,18 +43,21 @@ export default function Home() {
         <div className="">
           <div className="flex md:flex-row flex-wrap flex-col mx-auto justify-between items-center overflow-hidden py-20 gap-12">
             <Image
+              alt="منصة قومي"
               src={"/Clients/QWMY.svg"}
               className="opacity-30 saturate-0 hover:opacity-100 hover:saturate-100 transition-all ease-in-out duration-300"
               width={200}
               height={200}
             />
             <Image
+              alt="وعي مصر"
               src={"/Clients/Wai-masr.svg"}
               className="opacity-30 saturate-0 hover:opacity-100 hover:saturate-100 transition-all ease-in-out duration-300"
               width={200}
               height={200}
             />
             <Image
+              alt="لوكوجي"
               src={"/Clients/Lokoji.svg"}
               className="opacity-30 saturate-0 hover:opacity-100 hover:saturate-100 transition-all ease-in-out duration-300"
               width={200}
