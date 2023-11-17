@@ -13,10 +13,10 @@ export default function NavMenu() {
     <li className="lg:flex hidden gap-7">
       {NavList.map((nav) => (
         <Link
-          aria-label={nav.name}
+          aria-label={`${nav.name}`}
           className={`hover:text-yellow-500 ${router === nav.link.toLowerCase() ? "text-yellow-500" : "text-white"} transition-all ease-in-out duration-300`}
-          key={nav.id}
-          href={nav.link}
+          key={`${nav.id}`}
+          href={`${nav.link}`}
         >
           <ul>{nav.name}</ul>
         </Link>
