@@ -9,6 +9,7 @@ export default function ProtImages() {
         <div className="grid gap-6 group">
           <div className="rounded-[3rem] overflow-hidden mb-10">
             <Image
+              alt="coding"
               src={"/coding.webp"}
               width={720}
               height={720}
@@ -21,11 +22,12 @@ export default function ProtImages() {
             Stunning websites that pack a punch with vibrant colors and modern
             typography.
           </p>
-          <PrimaryBtn link={"/portfolio/web"} text={"Check My Websites"}/>
+          <PrimaryBtn link={"/portfolio/web"} text={"Check My Websites"} />
         </div>
         <div className="grid gap-6 group">
           <div className="rounded-[3rem] overflow-hidden mb-10">
             <Image
+              alt="desgins"
               src={"/desgin.webp"}
               width={720}
               height={820}
@@ -36,7 +38,7 @@ export default function ProtImages() {
           <p className="md:w-80">
             Minimalist design shines bright in our sublime branding packages.
           </p>
-          <PrimaryBtn link={"/portfolio/designs"} text={"Check My Designs"}/>
+          <PrimaryBtn link={"/portfolio/designs"} text={"Check My Designs"} />
         </div>
       </div>
     </section>

@@ -1,21 +1,27 @@
+import { Doc } from "contentlayer/generated";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-export default function ProCard({data}) {
+type Props = {
+  data: {
+    slug: string,
+    title: string,
+    description: string,
+    thumnail: string
+  }
+}
+
+export default function ProCard(data: Props) {
   return (
-    <Link href={'protfolio/' + data.slug}>
-    <div className="pro-card">
-      <div className="w-40 h-40 bg-gray-800 rounded-2xl"></div>
-      <div className="">
-        <h2 className="text-yellow-500 text-4xl mb-6">{data.meta.content.title}</h2>
-        <p>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deserunt
-          dolor nesciunt atque, itaque vero iusto, ratione repellat aliquam
-          natus fuga eos fugit eaque laborum! Cum aliquid deserunt quas totam
-          eum.
-        </p>
+    <Link href={data.data.slug}>
+      <div className="pro-card">
+        <Image src={data.data.thumnail} width={160} height={160} className="w-40 h-40 rounded-2xl" alt={data.data.title}/>
+        <div className="">
+          <h2 className="text-yellow-500 text-4xl mb-6">{data.data.title}</h2>
+          <p>{data.data.description}</p>
+        </div>
       </div>
-    </div>
     </Link>
   );
 }

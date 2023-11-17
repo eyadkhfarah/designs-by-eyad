@@ -6,15 +6,19 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "contentlayer": "contentlayer build"
   },
   "dependencies": {
+    "@t3-oss/env-nextjs": "^0.7.1",
+    "clsx": "^2.0.0",
     "contentlayer": "^0.3.4",
     "eslint": "8.37.0",
     "eslint-config-next": "13.2.4",
     "framer-motion": "^10.16.4",
     "gray-matter": "^4.0.3",
     "next": "13.2.4",
+    "next-contentlayer": "^0.3.4",
     "next-mdx-remote": "^4.4.1",
     "next-seo": "^6.0.0",
     "react": "18.2.0",
@@ -23,7 +27,10 @@
     "rehype-autolink-headings": "^7.1.0",
     "rehype-pretty-code": "^0.10.2",
     "rehype-slug": "^6.0.0",
-    "remark-gfm": "^4.0.0"
+    "remark-gfm": "^4.0.0",
+    "shiki": "^0.14.5",
+    "tailwind-merge": "^2.0.0",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@swc/cli": "^0.1.62",
