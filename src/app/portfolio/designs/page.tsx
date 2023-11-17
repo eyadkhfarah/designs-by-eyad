@@ -1,4 +1,3 @@
-import ProCard from "@/Components/Portfolio/ProCard";
 import React from "react";
 
 export default function Designs() {
@@ -10,10 +9,7 @@ export default function Designs() {
         </h1>
 
         <div className="grid lg:grid-cols-2 gap-6">
-          <ProCard />
-          <ProCard />
-          <ProCard />
-          <ProCard />
+          
         </div>
       </section>
     </>
