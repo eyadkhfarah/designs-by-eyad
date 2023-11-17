@@ -1,8 +1,3 @@
-import fs from "fs";
-import path from "path";
-import matter from "gray-matter";
-import { MDXRemote } from "next-mdx-remote/rsc";
-import { FC } from "react";
 import { notFound } from "next/navigation";
 import { allProtos } from "contentlayer/generated";
 import Image from "next/image";
@@ -26,7 +21,7 @@ const ProtoDetials = async ({ params }: PageProps) => {
 
   return (
     <article className="lg:px-28 p-10 grid gap-8">
-      <div className="flex gap-4">
+      <div className="lg:flex grid gap-4">
         <Image
           src={props?.thumnail}
           width={250}
