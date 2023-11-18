@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { allProtoDesigns, allProtoWebs } from "contentlayer/generated";
+import { allProtoDesigns } from "contentlayer/generated";
 import Image from "next/image";
 import type { Metadata } from "next";
 import PrimaryBtn from "@/Components/Buttons/PrimaryBtn";
@@ -11,7 +11,7 @@ interface PageProps {
 }
 
 async function getPost(slug: string) {
-  const markdown = allProtoWebs.find((doc) => doc.slugAsParams === slug)
+  const markdown = allProtoDesigns.find((doc) => doc.slugAsParams === slug)
 
   if (!markdown) notFound();
 
@@ -22,7 +22,7 @@ export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
   const slug = params.slug;
-  const markdown = allProtoWebs.find((doc) => doc.slugAsParams === slug)
+  const markdown = allProtoDesigns.find((doc) => doc.slugAsParams === slug)
   
   return {
     title: markdown?.title,

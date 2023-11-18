@@ -13,7 +13,7 @@ type Props = {
 
 export default function ProCard(data: Props) {
   return (
-    <Link href={data.data.slug}>
+    <Link href={`${data.data.slug.split("/web" && "/designs")}`}>
       <div className="pro-card">
         <Image src={data.data.thumnail} width={160} height={160} className="w-40 h-40 rounded-2xl" alt={data.data.title}/>
         <div className="">
