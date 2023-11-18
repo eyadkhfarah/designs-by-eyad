@@ -13,7 +13,7 @@ export const NavList: NavLink[] = [
     },
     {
         name: "Contact",
-        link: "#contact",
+        link: "/contact",
         id: 3
     },
 ]

@@ -18,9 +18,9 @@ const computedFields = {
   },
 };
 
-export const Proto = defineDocumentType(() => ({
-  name: "Proto",
-  filePathPattern: `portfolio/**/*.mdx`,
+export const ProtoDesign = defineDocumentType(() => ({
+  name: "ProtoDesign",
+  filePathPattern: `portfolio/designs/**/*.mdx`,
   contentType: "mdx",
   fields: {
     title: {
@@ -38,6 +38,50 @@ export const Proto = defineDocumentType(() => ({
     Protype: {
       type: "string",
     },
+    Date: {
+      type: "string",
+    },
+    website: {
+      type: "string",
+    },
+    published: {
+      type: "boolean",
+      default: true,
+    },
+  },
+  computedFields,
+}));
+
+export const ProtoWeb = defineDocumentType(() => ({
+  name: "ProtoWeb",
+  filePathPattern: `portfolio/web/**/*.mdx`,
+  contentType: "mdx",
+  fields: {
+    title: {
+      type: "string",
+      required: true,
+    },
+    description: {
+      type: "string",
+      required: true,
+    },
+    thumnail: {
+      type: "string",
+      required: true,
+    },
+    Protype: {
+      type: "string",
+    },
+    Date: {
+      type: "string",
+    },
+    stack: {
+      type: "string",
+      // required: true,
+    },
+    website: {
+      type: "string",
+    },
     published: {
       type: "boolean",
       default: true,
@@ -48,7 +92,7 @@ export const Proto = defineDocumentType(() => ({
 
 export default makeSource({
   contentDirPath: "content",
-  documentTypes: [Proto],
+  documentTypes: [ProtoWeb, ProtoDesign],
   mdx: {
     remarkPlugins: [remarkGfm],
     rehypePlugins: [

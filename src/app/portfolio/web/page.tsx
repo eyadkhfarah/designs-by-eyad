@@ -1,10 +1,15 @@
 import ProCard from "@/Components/Portfolio/ProCard";
 import React from "react";
-import { allProtos } from "contentlayer/generated";
-import Link from "next/link";
+import { allProtoWebs } from "contentlayer/generated";
+import type { Metadata } from "next/types";
+
+export const metadata: Metadata = {
+  title: "Web Development",
+  description: "Checkout to my websites I build it",
+};
 
 const getPro = async () => {
-  const doc = allProtos;
+  const doc = allProtoWebs;
   return doc;
 };
 

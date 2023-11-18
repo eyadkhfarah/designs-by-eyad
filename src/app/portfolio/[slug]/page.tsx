@@ -1,7 +1,8 @@
 import { notFound } from "next/navigation";
-import { allProtos } from "contentlayer/generated";
+import { allProtoDesigns, allProtoWebs } from "contentlayer/generated";
 import Image from "next/image";
 import type { Metadata } from "next";
+import PrimaryBtn from "@/Components/Buttons/PrimaryBtn";
 
 interface PageProps {
   params: {
@@ -10,7 +11,7 @@ interface PageProps {
 }
 
 async function getPost(slug: string) {
-  const markdown = allProtos.find((doc) => doc.slugAsParams === slug);
+  const markdown = allProtoWebs.find((doc) => doc.slugAsParams === slug) || allProtoDesigns.find((doc) => doc.slugAsParams === slug);
 
   if (!markdown) notFound();
 
@@ -21,7 +22,7 @@ export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
   const slug = params.slug;
-  const markdown = allProtos.find((doc) => doc.slugAsParams === slug);
+  const markdown = allProtoWebs.find((doc) => doc.slugAsParams === slug)  || allProtoDesigns.find((doc) => doc.slugAsParams === slug);
 
   return {
     title: markdown?.title,
@@ -49,24 +50,33 @@ const ProtoDetials = async ({ params }: PageProps) => {
 
   return (
     <article className="lg:px-28 p-10 grid gap-8">
-      <div className="lg:flex grid gap-4">
-        <Image
-          src={props?.thumnail}
-          width={250}
-          height={250}
-          className="rounded-2xl"
-          alt={props?.title}
-        />
-        <div className="grid gap-5 w-fit">
-          <h1 className="lg:text-[5rem] md:text-[3rem] text-[3rem] w-fit">
-            {props?.title}
-          </h1>
-          <p>{props.description}</p>
-
-          <span className="p-6 rounded-full uppercase font-bold bg-gray-900 w-fit">
-            {props.Protype}
-          </span>
+      <h1 className="lg:text-[4rem] md:text-[3rem] text-[2rem] w-fit">
+        {props?.title}
+      </h1>
+      <div className="grid lg:grid-cols-2 gap-8">
+        <div className="lg:flex grid gap-4">
+          <Image
+            src={props?.thumnail}
+            width={250}
+            height={250}
+            className="rounded-2xl h-fit lg:w-fit w-full"
+            alt={props?.title}
+          />
+          <div className="flex flex-col justify-end gap-5 w-fit">
+            <p>{props.description}</p>
+            <div className="flex items-center gap-6">
+              <PrimaryBtn
+                link={`${props.website}`}
+                text={"Go to the website"}
+              />
+              <div className="p-5 rounded-full uppercase font-bold bg-gray-900 w-fit">
+                {props.Protype}
+              </div>
+            </div>
+          </div>
         </div>
+
+        <div className="h-full rounded-2xl bg-gray-900"></div>
       </div>
     </article>
   );

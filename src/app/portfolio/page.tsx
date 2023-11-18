@@ -1,9 +1,11 @@
 import ProtImages from "@/Components/Portfolio/ProtImages";
+import { Metadata } from "next";
 import React from "react";
 
-export const metadata = {
-    title: "Protfolio"
-}
+export const metadata: Metadata = {
+  title: "Protfolio",
+  description: "Checkout to my protfolio",
+};
 
 export default function Protfolio() {
   return (
