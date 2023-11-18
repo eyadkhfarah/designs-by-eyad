@@ -11,7 +11,7 @@ interface PageProps {
 }
 
 async function getPost(slug: string) {
-  const markdown = allProtoWebs.find((doc) => doc.slugAsParams === slug) || allProtoDesigns.find((doc) => doc.slugAsParams === slug);
+  const markdown = allProtoWebs.find((doc) => doc.slugAsParams === slug)
 
   if (!markdown) notFound();
 
@@ -22,8 +22,8 @@ export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
   const slug = params.slug;
-  const markdown = allProtoWebs.find((doc) => doc.slugAsParams === slug)  || allProtoDesigns.find((doc) => doc.slugAsParams === slug);
-
+  const markdown = allProtoWebs.find((doc) => doc.slugAsParams === slug)
+  
   return {
     title: markdown?.title,
     description: markdown?.description,
