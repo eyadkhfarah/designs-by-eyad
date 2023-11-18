@@ -1,3 +1,5 @@
+import ProCard from "@/Components/Portfolio/ProCard";
+import { allProtoDesigns } from "contentlayer/generated";
 import type { Metadata } from "next/types";
 import React from "react";
 
@@ -6,7 +8,13 @@ export const metadata: Metadata = {
   description: "Checkout to my design projects either on social media design or brand identity projects",
 };
 
-export default function Designs() {
+const getPro = async () => {
+  const doc = allProtoDesigns;
+  return doc;
+}
+
+export default async function Designs() {
+  const doc = await getPro();
   return (
     <>
       <section className="lg:px-28 p-10 grid gap-8">
@@ -15,7 +23,11 @@ export default function Designs() {
         </h1>
 
         <div className="grid lg:grid-cols-2 gap-6">
-          
+          {doc.map((website) => (
+            <>
+              <ProCard key={website._id} data={website} />
+            </>
+          ))}
         </div>
       </section>
     </>

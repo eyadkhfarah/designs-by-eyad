@@ -47,6 +47,7 @@ export async function generateMetadata({
 
 const ProtoDetials = async ({ params }: PageProps) => {
   const props = await getPost(params.slug);
+  console.log(params)
 
   return (
     <article className="lg:px-28 p-10 grid gap-8">

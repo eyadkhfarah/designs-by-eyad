@@ -64,10 +64,10 @@ const ProtoDetials = async ({ params }: PageProps) => {
           />
           <div className="flex flex-col justify-end gap-5 w-fit">
             <p>{props.description}</p>
-            <div className="flex items-center gap-6">
+            <div className="flex flex-wrap items-center gap-6">
               <PrimaryBtn
                 link={`${props.website}`}
-                text={"Go to the website"}
+                text={"Go to Behance"}
               />
               <div className="p-5 rounded-full uppercase font-bold bg-gray-900 w-fit">
                 {props.Protype}
