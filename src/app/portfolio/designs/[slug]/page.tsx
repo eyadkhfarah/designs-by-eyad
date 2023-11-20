@@ -22,7 +22,7 @@ export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
   const slug = params.slug;
-  const markdown = allProtoDesigns.find((doc) => doc.slugAsParams === slug)
+  const markdown = allProtoDesigns.find((doc) => doc.slugAsParams.replace("designs/", "") === slug)
   
   return {
     title: markdown?.title,

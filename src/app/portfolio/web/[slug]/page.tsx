@@ -22,7 +22,7 @@ export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
   const slug = params.slug;
-  const markdown = allProtoWebs.find((doc) => doc.slugAsParams === slug)
+  const markdown = allProtoWebs.find((doc) => doc.slugAsParams.replace("web/", "") === slug)
   
   return {
     title: markdown?.title,
@@ -47,7 +47,6 @@ export async function generateMetadata({
 
 const ProtoDetials = async ({ params }: PageProps) => {
   const props = await getPost(params.slug);
-  console.log(params)
 
   return (
     <article className="lg:px-28 p-10 grid gap-8">
