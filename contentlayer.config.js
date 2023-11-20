@@ -14,7 +14,11 @@ const computedFields = {
 
   slugAsParams: {
     type: "string",
-    resolve: (doc) => doc._raw.flattenedPath.split("portfolio/web/" && "portfolio/designs/").slice(1).join("/"),
+    resolve: (doc) =>
+      doc._raw.flattenedPath
+        .split("portfolio/")
+        .slice(1)
+        .join("/"),
   },
 };
 

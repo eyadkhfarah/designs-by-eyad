@@ -11,7 +11,7 @@ interface PageProps {
 }
 
 async function getPost(slug: string) {
-  const markdown = allProtoDesigns.find((doc) => doc.slugAsParams === slug)
+  const markdown = allProtoDesigns.find((doc) => doc.slugAsParams.replace("designs/", "") === slug)
 
   if (!markdown) notFound();
 
