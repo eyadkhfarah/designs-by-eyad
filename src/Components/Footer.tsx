@@ -14,7 +14,7 @@ export default function Footer() {
             Contact me and let&apos;s start orbiting around your creative vision!
           </p>
         </div>
-        <PrimaryBtn link={"/contact"} text={"Contact Me"} />
+        <PrimaryBtn target={false} link={"/contact"} text={"Contact Me"} />
       </div>
       <footer className="pb-10 text-center" id="contact">
         <div className="grid gap-10 mt-40 ">

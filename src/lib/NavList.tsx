@@ -12,8 +12,13 @@ export const NavList: NavLink[] = [
         id: 2
     },
     {
+        name: "About",
+        link: "/about",
+        id: 3
+    },
+    {
         name: "Contact",
         link: "/contact",
-        id: 3
+        id: 4
     },
 ]

@@ -11,7 +11,9 @@ interface PageProps {
 }
 
 async function getPost(slug: string) {
-  const markdown = allProtoDesigns.find((doc) => doc.slugAsParams.replace("designs/", "") === slug)
+  const markdown = allProtoDesigns.find(
+    (doc) => doc.slugAsParams.replace("designs/", "") === slug
+  );
 
   if (!markdown) notFound();
 
@@ -22,8 +24,10 @@ export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
   const slug = params.slug;
-  const markdown = allProtoDesigns.find((doc) => doc.slugAsParams.replace("designs/", "") === slug)
-  
+  const markdown = allProtoDesigns.find(
+    (doc) => doc.slugAsParams.replace("designs/", "") === slug
+  );
+
   return {
     title: markdown?.title,
     description: markdown?.description,
@@ -66,6 +70,7 @@ const ProtoDetials = async ({ params }: PageProps) => {
             <p>{props.description}</p>
             <div className="flex flex-wrap items-center gap-6">
               <PrimaryBtn
+                target={true}
                 link={`${props.website}`}
                 text={"Go to Behance"}
               />

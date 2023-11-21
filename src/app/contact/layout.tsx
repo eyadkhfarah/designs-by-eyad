@@ -6,14 +6,14 @@ const desc = "Contact me and let's start orbiting around your creative vision!";
 
 export const metadata: Metadata = {
   title: {
-    default: "Contact ─ Designs By Eyad",
-    template: "%s ─ Designs By Eyad",
+    default: "Contact",
+    template: "%s — Designs By Eyad",
   },
   description: desc,
   openGraph: {
     title: {
       default: "Contact",
-      template: "%s ─ Designs By Eyad",
+      template: "%s — Designs By Eyad",
     },
     description: desc,
   },

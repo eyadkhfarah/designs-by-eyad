@@ -80,8 +80,11 @@ export const ProtoWeb = defineDocumentType(() => ({
       type: "string",
     },
     stack: {
-      type: "string",
-      // required: true,
+      type: "list",
+      of: {
+        type: "string",
+      },
+      required: true,
     },
     website: {
       type: "string",
