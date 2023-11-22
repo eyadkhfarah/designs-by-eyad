@@ -6,6 +6,10 @@ import type { Metadata } from "next/types";
 export const metadata: Metadata = {
   title: "Web Development",
   description: "Checkout to my websites I build it",
+  openGraph: {
+    title: "Web Development",
+    description: "Checkout to my websites I build it",
+  }
 };
 
 const getPro = async () => {

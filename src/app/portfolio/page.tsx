@@ -5,6 +5,10 @@ import React from "react";
 export const metadata: Metadata = {
   title: "Protfolio",
   description: "Checkout to my protfolio",
+  openGraph: {
+    title: "Protfolio",
+    description: "Checkout to my protfolio",
+  }
 };
 
 export default function Protfolio() {
