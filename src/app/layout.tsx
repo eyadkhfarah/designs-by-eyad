@@ -33,6 +33,10 @@ export const metadata: Metadata = {
     type: "website",
   },
 
+  verification: {
+    google: "SAdpay-liv1rI5Wv_WMEhQWbAXRtsm96riCif7zyOzs"
+  },
+
   twitter: {
     site: "@designs.by.eyad",
     card: "summary_large_image",
