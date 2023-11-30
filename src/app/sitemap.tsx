@@ -27,20 +27,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const allWeb =
     web?.map((web) => {
       return {
-        url: `${siteUrl}${web.slug}`,
-        lastModified: new Date(),
-        changeFrequency: "weekly",
-        priority: 0.8,
+        url: `${siteUrl}${web.slug}` || "" || undefined,
+        lastModified: new Date() || undefined,
+        changeFrequency: "weekly" || undefined,
+        priority: 0.8 || undefined,
       };
     }) || [];
 
   const allDesing =
     designs?.map((design) => {
       return {
-        url: `${siteUrl}${design.slug}`,
-        lastModified: new Date(),
-        changeFrequency: "weekly",
-        priority: 0.8,
+        url: `${siteUrl}${design.slug}` || undefined,
+        lastModified: new Date() || undefined,
+        changeFrequency: "weekly" || undefined,
+        priority: 0.8 || undefined,
       };
     }) || [];
 
@@ -53,10 +53,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
       }
     }).map((design) => {
       return {
-        url: `${siteUrl}/contact${design.link}`,
-        lastModified: new Date(),
-        changeFrequency: "weekly",
-        priority: 0.8,
+        url: `${siteUrl}/contact${design.link}` || undefined,
+        lastModified: new Date() || "" || undefined,
+        changeFrequency: "weekly" || undefined,
+        priority: 0.8 || undefined,
       };
     }) || [];
 
@@ -87,6 +87,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     // ...allWeb,
     // ...allDesing,
-    ...contacts,
+    // ...contacts,
   ];
 }
