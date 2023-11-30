@@ -212,7 +212,7 @@ export default function Home() {
           >
             <Image
               alt="mostaql مستقل"
-              src={"/Imgs/freelancer/mostaql.png"}
+              src={"/Imgs/freelancer/mostaql.svg"}
               width={150}
               height={50}
               className="h-auto saturate-0 hover:opacity-100 hover:saturate-100 transition-all ease-in-out duration-300"
