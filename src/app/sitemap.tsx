@@ -36,7 +36,7 @@ export default async function sitemap() {
       return {
         url: `${siteUrl}${design.slug}` || undefined,
         lastModified: new Date() || undefined,
-        // changeFrequency: "weekly" || undefined,
+        changeFrequency: "weekly" || undefined,
         priority: 0.8 || undefined,
       };
     }) || [];
@@ -50,7 +50,7 @@ export default async function sitemap() {
       return {
         url: `${siteUrl}/contact${design.link}` || undefined,
         lastModified: new Date() || "" || undefined,
-        // changeFrequency: "weekly" || undefined,
+        changeFrequency: "weekly" || undefined,
         priority: 0.8 || undefined,
       };
     }) || [];
