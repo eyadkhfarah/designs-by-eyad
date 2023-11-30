@@ -2,12 +2,9 @@ import { allProtoDesigns, allProtoWebs } from "contentlayer/generated";
 import { NavContacts } from "@/lib/NavContact";
 import { MetadataRoute } from "next";
 
-type sitemap = {
-  url: String,
-  lastModified: Date,
-  changefreq: String,
-  priority: Number
-}
+interface sitemap {
+  url: String;
+};
 
 const GetWeb = () => {
   const doc = allProtoWebs;
@@ -19,10 +16,10 @@ const GetDesign = () => {
   return doc;
 };
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const siteUrl = process.env.NEXT_PUBLIC_DOMAIN_URL || 'http://localhost:3000';
-  const web = GetWeb();
-  const designs = GetDesign();
+export default async function sitemap() {
+  const siteUrl = process.env.NEXT_PUBLIC_DOMAIN_URL || "http://localhost:3000";
+  const web = await GetWeb();
+  const designs = await GetDesign();
 
   const allWeb =
     web?.map((web) => {
@@ -39,23 +36,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
       return {
         url: `${siteUrl}${design.slug}` || undefined,
         lastModified: new Date() || undefined,
-        changeFrequency: "weekly" || undefined,
+        // changeFrequency: "weekly" || undefined,
         priority: 0.8 || undefined,
       };
     }) || [];
 
   const contacts =
     NavContacts?.filter((val) => {
-      if (
-        !val.name.includes("Form") 
-      ) {
+      if (!val.name.includes("Form")) {
         return val;
       }
     }).map((design) => {
       return {
         url: `${siteUrl}/contact${design.link}` || undefined,
         lastModified: new Date() || "" || undefined,
-        changeFrequency: "weekly" || undefined,
+        // changeFrequency: "weekly" || undefined,
         priority: 0.8 || undefined,
       };
     }) || [];
@@ -85,8 +80,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.5,
     },
-    // ...allWeb,
-    // ...allDesing,
-    // ...contacts,
+    ...allWeb,
+    ...allDesing,
+    ...contacts,
   ];
 }
