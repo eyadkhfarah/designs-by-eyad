@@ -2,12 +2,18 @@ import ProtImages from "@/Components/Portfolio/ProtImages";
 import { Metadata } from "next";
 import React from "react";
 
+const siteUrl = process.env.PUBLIC_DOMAIN_URL || "https://designs-by-eyad.vercel.app";
+
 export const metadata: Metadata = {
   title: "Protfolio",
   description: "Checkout to my protfolio",
+  alternates: {
+    canonical: "/protfolio",
+  },
   openGraph: {
     title: "Protfolio",
     description: "Checkout to my protfolio",
+    url: "/protfolio",
   },
 };
 

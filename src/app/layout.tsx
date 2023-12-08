@@ -6,7 +6,7 @@ import { Metadata } from "next";
 const title = "%s — Designs By Eyad";
 const desc = "A studio located in Aswan make graphic design, motion graphics, Web design, UI design and more in an Egyptian style.";
 
-const siteUrl = process.env.PUBLIC_DOMAIN_URL || "https://localhost:3000";
+const siteUrl = process.env.PUBLIC_DOMAIN_URL || "https://designs-by-eyad.vercel.app";
 
 export const metadata: Metadata = {
   title: {
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   },
   description: desc,
   alternates: {
-    canonical: siteUrl,
+    canonical: "/",
   },
   metadataBase: new URL(siteUrl),
   openGraph: {
@@ -32,6 +32,8 @@ export const metadata: Metadata = {
     },
     type: "website",
   },
+
+  
 
   verification: {
     google: "SAdpay-liv1rI5Wv_WMEhQWbAXRtsm96riCif7zyOzs"

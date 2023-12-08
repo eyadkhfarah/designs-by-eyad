@@ -5,6 +5,14 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "About",
   description: "Read about me and why I made this projects",
+  alternates: {
+    canonical: "/about",
+  },
+  openGraph: {
+    title: "About",
+    description: "Read about me and why I made this projects",
+    url: "/about",
+  },
 };
 
 export default function About() {

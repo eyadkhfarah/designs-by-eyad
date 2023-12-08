@@ -6,9 +6,13 @@ const desc = "Contact me vai email address";
 export const metadata: Metadata = {
   title: "Email",
   description: desc,
+  alternates: {
+    canonical: "/contact/email"
+  },
   openGraph: {
     title: "Email",
     description: desc,
+    url: "/contact/email",
   },
 };
 

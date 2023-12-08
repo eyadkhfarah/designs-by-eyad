@@ -1,21 +1,26 @@
 import ProCard from "@/Components/Portfolio/ProCard";
 import { allProtoDesigns } from "contentlayer/generated";
 import type { Metadata } from "next/types";
-import React from "react";
 
 export const metadata: Metadata = {
   title: "Graphic Design",
-  description: "Checkout to my design projects either on social media design or brand identity projects",
+  description:
+    "Checkout to my design projects either on social media design or brand identity projects",
+  alternates: {
+    canonical: "/portfolio/designs",
+  },
   openGraph: {
     title: "Graphic Design",
-    description: "Checkout to my design projects either on social media design or brand identity projects",
-  }
+    description:
+      "Checkout to my design projects either on social media design or brand identity projects",
+    url: "/portfolio/designs",
+  },
 };
 
 const getPro = async () => {
   const doc = allProtoDesigns;
   return doc;
-}
+};
 
 export default async function Designs() {
   const doc = await getPro();
@@ -28,9 +33,7 @@ export default async function Designs() {
 
         <div className="grid lg:grid-cols-2 gap-6">
           {doc.map((website) => (
-            <>
-              <ProCard key={website._id} data={website} />
-            </>
+            <ProCard key={website._id} data={website} />
           ))}
         </div>
       </section>

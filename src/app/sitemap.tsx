@@ -16,10 +16,10 @@ const GetDesign = () => {
   return doc;
 };
 
-export default async function sitemap() {
-  const siteUrl = process.env.NEXT_PUBLIC_DOMAIN_URL || "http://localhost:3000";
-  const web = await GetWeb();
-  const designs = await GetDesign();
+export default function sitemap() {
+  const siteUrl = process.env.NEXT_PUBLIC_DOMAIN_URL || "https://designs-by-eyad.vercel.apps";
+  const web = GetWeb();
+  const designs = GetDesign();
 
   const allWeb =
     web?.map((web) => {

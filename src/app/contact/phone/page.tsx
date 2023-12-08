@@ -6,9 +6,13 @@ const desc = "Contact me vai phone number or Whatsapp";
 export const metadata: Metadata = {
   title: "Phone",
   description: desc,
+  alternates: {
+    canonical: "/contact/phone"
+  },
   openGraph: {
     title: "Phone",
     description: desc,
+    url: "/contact/phone",
   },
 };
 

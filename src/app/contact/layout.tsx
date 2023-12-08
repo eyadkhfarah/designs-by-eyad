@@ -10,12 +10,16 @@ export const metadata: Metadata = {
     template: "%s — Designs By Eyad",
   },
   description: desc,
+  alternates: {
+    canonical: "/contact"
+  },
   openGraph: {
     title: {
       default: "Contact",
       template: "%s — Designs By Eyad",
     },
     description: desc,
+    url: "/contact"
   },
 };
 

@@ -6,9 +6,13 @@ import type { Metadata } from "next/types";
 export const metadata: Metadata = {
   title: "Web Development",
   description: "Checkout to my websites I build it",
+  alternates: {
+    canonical: "/portfolio/web"
+  },
   openGraph: {
     title: "Web Development",
     description: "Checkout to my websites I build it",
+    url: "/portfolio/web"
   }
 };
 

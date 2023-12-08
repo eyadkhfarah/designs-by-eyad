@@ -31,15 +31,18 @@ export async function generateMetadata({
   return {
     title: markdown?.title,
     description: markdown?.description,
+    alternates: {
+      canonical: `/${markdown?.slug.slice(1)}`
+    },
     openGraph: {
       title: markdown?.title,
       description: markdown?.description,
       type: "article",
-      url: `${process.env.NEXT_PUBLIC_SITE_URL}/${slug}`,
-      siteName: process.env.NEXT_PUBLIC_SITE_NAME,
+      url: `/${markdown?.slug.slice(1)}`,
+      siteName: "/",
       images: [
         {
-          url: `${process.env.NEXT_PUBLIC_SITE_URL}${markdown?.thumnail}`,
+          url: `/${markdown?.thumnail.slice(1)}`,
           width: 1200,
           height: 630,
           alt: markdown?.title,

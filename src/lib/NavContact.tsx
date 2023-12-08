@@ -3,7 +3,7 @@ import { NavContact } from "@/types/navLink";
 export const NavContacts: NavContact[] = [
     {
         name: "Form",
-        link: "/",
+        link: "",
         id: 1
     },
     {

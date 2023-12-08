@@ -17,7 +17,7 @@ export default function Home() {
           <h1
             title="Hieroglyphic word means WOW!"
             aria-label="Hieroglyphic word means WOW!"
-            className="p-0 lg:text-[7rem] md:text-[5rem] text-[3rem] whitespace-nowrap uppercase text-center"
+            className="p-0 lg:text-[7rem] cursor-help md:text-[5rem] text-[3rem] whitespace-nowrap uppercase text-center"
           >
             Bi aty!
           </h1>
