@@ -16,7 +16,7 @@ const GetDesign = () => {
   return doc;
 };
 
-export default function sitemap() {
+export default async function sitemap() {
   const siteUrl = process.env.NEXT_PUBLIC_DOMAIN_URL || "https://designs-by-eyad.vercel.apps";
   const web = GetWeb();
   const designs = GetDesign();
