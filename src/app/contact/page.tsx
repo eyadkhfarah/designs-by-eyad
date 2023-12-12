@@ -6,7 +6,7 @@ const Contact = () => {
         name="first name"
         id="firstName"
         placeholder="Your first name*"
-        className="w-full p-5 rounded-2xl bg-gray-900 focus:ring-0"
+        className="input"
         required
       />
       <input
@@ -14,7 +14,7 @@ const Contact = () => {
         name="last name"
         id="lastName"
         placeholder="Your last name*"
-        className="w-full p-5 rounded-2xl bg-gray-900 focus:ring-0"
+        className="input"
         required
       />
       <input
@@ -22,7 +22,7 @@ const Contact = () => {
         name="email"
         id="email"
         placeholder="Your email*"
-        className="w-full p-5 rounded-2xl bg-gray-900 focus:ring-0"
+        className="input"
         required
       />
       <input
@@ -30,12 +30,12 @@ const Contact = () => {
         name="number"
         id="number"
         placeholder="Your phone/whatsapp"
-        className="w-full p-5 rounded-2xl bg-gray-900 focus:ring-0"
+        className="input"
       />
       <select
         name="services"
         id="services"
-        className="w-full p-5 rounded-2xl bg-gray-900 focus:ring-0"
+        className="input"
       >
         <option value="Web">Web</option>
         <option value="Design">Design</option>
@@ -45,7 +45,7 @@ const Contact = () => {
         name="address"
         id="address"
         placeholder="Where are you?"
-        className="w-full p-5 rounded-2xl bg-gray-900 focus:ring-0"
+        className="input"
       />
       <textarea
         name="message"
@@ -53,7 +53,7 @@ const Contact = () => {
         cols={30}
         placeholder="Tell me whate you want"
         rows={10}
-        className="lg:col-span-2 w-full p-5 rounded-2xl bg-gray-900 focus:ring-0"
+        className="lg:col-span-2 input"
       />
       <input type="submit" value="Submit" className="p-4 bg-yellow-600 flex justify-center items-center gap-3 w-full cursor-pointer text-black font-bold rounded-2xl hover:scale-90 transition-all ease-in-out duration-300"/>
     </form>

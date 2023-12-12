@@ -10,7 +10,7 @@ export default function NavMenu() {
     const router = usePathname()
 
   return (
-    <li className="lg:flex hidden gap-7">
+    <ul className="lg:flex hidden gap-7">
       {NavList.map((nav) => (
         <Link
           aria-label={`${nav.name}`}
@@ -18,9 +18,9 @@ export default function NavMenu() {
           key={`${nav.id}`}
           href={`${nav.link}`}
         >
-          <ul>{nav.name}</ul>
+          <li>{nav.name}</li>
         </Link>
       ))}
-    </li>
+    </ul>
   );
 }

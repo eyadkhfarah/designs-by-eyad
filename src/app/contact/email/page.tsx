@@ -25,7 +25,7 @@ function Email() {
           href="mail:eyadkhfarah@gmail.com"
           target="_blank"
           rel="noopener noreferrer"
-          className="w-full h-12 gap-5 bg-gray-900 font-bold rounded-full uppercase flex items-center justify-center"
+          className="w-full h-12 gap-5 bg-gray-900 font-bold rounded-full uppercase lg:text-base text-[1.2rem] flex items-center justify-center"
         >
           eyadkhfarah@gmail.com
         </a>
