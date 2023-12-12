@@ -1,8 +1,4 @@
-import { FC } from "react";
-
-interface ContactProps {}
-
-const Contact: FC<ContactProps> = () => {
+const Contact = () => {
   return (
     <form className="grid lg:grid-cols-2 grid-cols-1 gap-4">
       <input
@@ -39,7 +35,6 @@ const Contact: FC<ContactProps> = () => {
       <select
         name="services"
         id="services"
-        placeholder="Select your services"
         className="w-full p-5 rounded-2xl bg-gray-900 focus:ring-0"
       >
         <option value="Web">Web</option>
