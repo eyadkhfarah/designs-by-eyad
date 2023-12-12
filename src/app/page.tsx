@@ -61,7 +61,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="my-10">
+      <section className="lg:px-60 md:px-30 px-5 my-10">
         <h2 className="text-yellow-500 uppercase text-4xl text-center">
           What I Offer
         </h2>
