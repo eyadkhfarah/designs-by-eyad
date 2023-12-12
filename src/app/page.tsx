@@ -1,13 +1,7 @@
 import ProtImages from "@/Components/Portfolio/ProtImages";
+import ServicesCards from "@/Components/Services/ServicesCards";
+import ServicesSlider from "@/Components/Services/ServicesSlider";
 import Image from "next/image";
-import {
-  TbDeviceMobileCheck,
-  TbVectorBezier,
-  TbWorldCode,
-  TbMessage2Heart,
-  TbBrandAdobe,
-  TbPencilBolt,
-} from "react-icons/tb";
 
 export default function Home() {
   return (
@@ -67,75 +61,13 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="lg:px-60 md:px-30 px-5 my-10">
+      <section className="my-10">
         <h2 className="text-yellow-500 uppercase text-4xl text-center">
           What I Offer
         </h2>
 
-        <div className="grid md:grid-cols-2 gap-9 mt-14">
-          <div className="services-card">
-            <TbWorldCode className="text-4xl text-yellow-500 " />
-            <div className="grid gap-3">
-              <h3 className="text-xl">Web Development</h3>
-              <p>
-                Design, build, and maintain web applications and websites that
-                are secure, user-friendly, and meet business goals.
-              </p>
-            </div>
-          </div>
-          <div className="services-card">
-            <TbMessage2Heart className="text-4xl text-yellow-500" />
-            <div className="grid gap-3">
-              <h3 className="text-xl">Social Media Design</h3>
-              <p>
-                Design social media content that is tailored to each platform
-                and audience, helping businesses grow their following and
-                engagement.
-              </p>
-            </div>
-          </div>
-          <div className="services-card">
-            <TbVectorBezier className="text-4xl text-yellow-500" />
-            <div className="grid gap-3">
-              <h3 className="text-xl">Graphic Design</h3>
-              <p>
-                Visually communicate your message through creative and effective
-                designs for print, digital, and social media.
-              </p>
-            </div>
-          </div>
-          <div className="services-card">
-            <TbDeviceMobileCheck className="text-4xl text-yellow-500" />
-            <div className="grid gap-3">
-              <h3 className="text-xl">UI/UX Design</h3>
-              <p>
-                Design user-centered interfaces that are both visually appealing
-                and easy to use, helping businesses achieve their goals.
-              </p>
-            </div>
-          </div>
-          <div className="services-card">
-            <TbBrandAdobe className="text-4xl text-yellow-500" />
-            <div className="grid gap-3">
-              <h3 className="text-xl">Photoshop</h3>
-              <p>
-                Transform your photos with expert touch-ups, enhancements, and
-                creative edits. Elevate your visuals with precision and style.
-              </p>
-            </div>
-          </div>
-          <div className="services-card">
-            <TbPencilBolt className="text-4xl text-yellow-500" />
-            <div className="grid gap-3">
-              <h3 className="text-xl">Logo Design</h3>
-              <p>
-                My logo design service creates unique, memorable logos that
-                visually represent your brand essence, fostering recognition and
-                credibility.
-              </p>
-            </div>
-          </div>
-        </div>
+        {/* <ServicesSlider /> */}
+        <ServicesCards />
       </section>
 
       <section className="bg-white rounded-3xl lg:p-30 p-5 lg:m-24 m-7">
@@ -220,7 +152,6 @@ export default function Home() {
           </a>
         </div>
       </section>
-
     </>
   );
 }

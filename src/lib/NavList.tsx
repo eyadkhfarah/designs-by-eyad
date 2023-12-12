@@ -7,8 +7,8 @@ export const NavList: NavLink[] = [
         id: 1
     },
     {
-        name: "Service",
-        link: "#service",
+        name: "Services",
+        link: "/services",
         id: 2
     },
     {
