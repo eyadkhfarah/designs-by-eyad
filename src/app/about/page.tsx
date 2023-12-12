@@ -25,7 +25,7 @@ export default function About() {
         <div className="relative w-fit">
           <Image
             alt="Eyad Farah"
-            title="Thats me 🙂"
+            title="Thats me in Alex but I'm in Aswan 🙂"
             src={"/me.png"}
             width={400}
             height={400}
