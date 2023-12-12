@@ -60,7 +60,7 @@ export default async function sitemap() {
       url: `${siteUrl}`,
       lastModified: new Date(),
       changeFrequency: "yearly",
-      priority: 1.0,
+      priority: 0.8,
     },
     {
       url: siteUrl + "/portfolio",
