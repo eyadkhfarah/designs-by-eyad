@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
 import { RiCloseLine } from "react-icons/ri";
+import PrimaryBtn from "../Buttons/PrimaryBtn";
 
 type Mobile = {
   open: Boolean;
@@ -15,13 +16,21 @@ export default function NavMobile({ open, setOpen }: Mobile) {
   const router = usePathname();
 
   return (
-    <div className={`lg:hidden ${open === true ? "" : "w-full"} w-0 origin-left ease-in-out transition-all duration-700 fixed top-0 mt-10 overflow-hidden bg-black z-40 h-screen`}>
+    <div
+      className={`lg:hidden ${
+        open === true ? "" : "w-full"
+      } w-0 origin-left ease-in-out transition-all duration-700 fixed top-0 mt-10 overflow-hidden bg-black z-40 h-screen`}
+    >
       <div className="my-7 flex justify-end">
         <button className="p-4" onClick={() => setOpen(!open)}>
           <RiCloseLine className="text-4xl text-white" />
         </button>
       </div>
-      <ul className={`${open === true ? "-ml-20" : ""} grid gap-9 ease-in-out transition-all duration-700 list-none mx-10 w-full`}>
+      <ul
+        className={`${
+          open === true ? "-ml-20" : ""
+        } grid gap-9 ease-in-out transition-all duration-700 list-none mx-10 w-full`}
+      >
         {NavList.map((nav) => (
           <Link
             aria-label={`${nav.name}`}
@@ -37,6 +46,9 @@ export default function NavMobile({ open, setOpen }: Mobile) {
             <li>{nav.name}</li>
           </Link>
         ))}
+        <li>
+          <PrimaryBtn target={false} link={"/contact"} text={"Contact Me"} />
+        </li>
       </ul>
     </div>
   );

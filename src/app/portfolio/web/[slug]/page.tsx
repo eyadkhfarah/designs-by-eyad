@@ -61,7 +61,7 @@ const ProtoDetials = async ({ params }: PageProps) => {
         {props?.title}
       </h1>
       <div className="grid lg:grid-cols-2 gap-8">
-        <div className="lg:flex grid gap-4">
+        <div className="lg:flex h-fit sticky top-24 grid gap-8">
           <Image
             src={props?.thumnail}
             width={250}

@@ -6,14 +6,15 @@ type Button = {
   link: String;
   text: String;
   target: Boolean;
+  className?: String;
 };
 
-export default function PrimaryBtn({ link, text, target }: Button) {
+export default function PrimaryBtn({ link, text, target, className }: Button) {
   return (
     <Link
       href={`${link}`}
       target={target === true ? "_blank" : "_self"}
-      className="p-4 bg-yellow-600 flex justify-center items-center gap-3 w-fit text-black font-bold rounded-2xl hover:scale-90 transition-all ease-in-out duration-300"
+      className={"py-4 px-8 bg-yellow-600 flex justify-center items-center gap-3 w-fit text-black font-bold rounded-2xl hover:scale-90 transition-all ease-in-out duration-300" + className}
     >
       {text === "Go to Behance" ? <RiBehanceFill className="text-2xl"/>: null}
       {text}

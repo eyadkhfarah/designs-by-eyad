@@ -2,12 +2,13 @@ import ProtImages from "@/Components/Portfolio/ProtImages";
 import ServicesCards from "@/Components/Services/ServicesCards";
 import ServicesSlider from "@/Components/Services/ServicesSlider";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
     <>
-      <section className="lg:px-28 px-8">
-        <div className="md:flex grid lg:gap-16 gap-9 items-center">
+      <section className="lg:px-28 lg:py-8 px-8">
+        <div className="md:flex grid lg:gap-16 gap-6 items-center">
           <h1
             title="Hieroglyphic word means WOW!"
             aria-label="Hieroglyphic word means WOW!"
@@ -37,32 +38,47 @@ export default function Home() {
       <section className="lg:px-60 md:px-30 px-5 my-60">
         <h2 className="text-yellow-500 text-4xl text-center">Our Clients</h2>
         <div className="flex md:flex-row flex-wrap flex-col mx-auto justify-between items-center overflow-hidden py-20 gap-12">
-          <Image
-            alt="منصة قومي"
-            src={"/Clients/QWMY.svg"}
-            className="opacity-30 saturate-0 hover:opacity-100 hover:saturate-100 transition-all ease-in-out duration-300"
-            width={200}
-            height={200}
-          />
-          <Image
-            alt="وعي مصر"
-            src={"/Clients/Wai-masr.svg"}
-            className="opacity-30 saturate-0 hover:opacity-100 hover:saturate-100 transition-all ease-in-out duration-300"
-            width={200}
-            height={200}
-          />
-          <Image
-            alt="لوكوجي"
-            src={"/Clients/Lokoji.svg"}
-            className="opacity-30 saturate-0 hover:opacity-100 hover:saturate-100 transition-all ease-in-out duration-300"
-            width={200}
-            height={200}
-          />
+          <Link href={"/portfolio/web/qwmy"} aria-label="QWMY" title="QWMY">
+            <Image
+              alt="منصة قومي"
+              src={"/Clients/QWMY.svg"}
+              className="opacity-30 saturate-0 hover:opacity-100 hover:saturate-100 transition-all ease-in-out duration-300"
+              width={200}
+              height={200}
+            />
+          </Link>
+          <Link
+            href={"/portfolio/web/wai-masr"}
+            aria-label="Wai Masr"
+            title="Wai Masr"
+          >
+            <Image
+              alt="وعي مصر"
+              src={"/Clients/Wai-masr.svg"}
+              className="opacity-30 saturate-0 hover:opacity-100 hover:saturate-100 transition-all ease-in-out duration-300"
+              width={200}
+              height={200}
+            />
+          </Link>
+
+          <Link
+            href={"/portfolio/web/lokoji"}
+            aria-label="Lokoji"
+            title="Lokoji"
+          >
+            <Image
+              alt="لوكوجي"
+              src={"/Clients/Lokoji.svg"}
+              className="opacity-30 saturate-0 hover:opacity-100 hover:saturate-100 transition-all ease-in-out duration-300"
+              width={200}
+              height={200}
+            />
+          </Link>
         </div>
       </section>
 
       <section className="lg:px-60 md:px-30 px-5 my-10">
-        <h2 className="text-yellow-500 uppercase text-4xl text-center">
+        <h2 className="text-yellow-500 uppercase text-4xl text-center my-12">
           What I Offer
         </h2>
 
@@ -70,8 +86,8 @@ export default function Home() {
         <ServicesCards />
       </section>
 
-      <section className="bg-white rounded-3xl lg:p-30 p-5 lg:m-24 m-7">
-        <h2 className="text-yellow-500 uppercase lg:text-4xl my-6 text-2xl text-center">
+      <section className="bg-white rounded-3xl lg:p-30 p-5 lg:m-28 m-7">
+        <h2 className="text-yellow-500 uppercase lg:text-4xl my-8 text-2xl text-center">
           MY FREELANCE ACCOUNTS
         </h2>
         <div className="flex md:flex-row flex-wrap flex-col mx-auto justify-evenly items-center p-10 gap-20">

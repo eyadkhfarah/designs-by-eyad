@@ -1,3 +1,6 @@
+"use client"
+import { useForm, SubmitHandler } from "react-hook-form";
+
 const Contact = () => {
   return (
     <form className="grid lg:grid-cols-2 grid-cols-1 gap-4">
