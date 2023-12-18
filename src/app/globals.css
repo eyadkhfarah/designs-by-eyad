@@ -61,6 +61,10 @@ body {
   }
 
   .input {
-    @apply w-full p-5 rounded-2xl bg-gray-900 focus:ring-0 border-none
+    @apply w-full p-5 rounded-2xl bg-gray-900 focus:ring-yellow-500 border-none mt-4
+  }
+
+  label {
+    @apply font-bold
   }
 }

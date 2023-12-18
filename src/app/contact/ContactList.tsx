@@ -12,8 +12,6 @@ import { TbForms, TbMessage2, TbPhone } from "react-icons/tb";
 export default function ContactList() {
   const router = usePathname();
 
-  console.log(router)
-
   return (
     <ul className="lg:col-span-1 h-fit w-full p-6 rounded-2xl bg-gray-900">
       {NavContacts.map((list) => (
