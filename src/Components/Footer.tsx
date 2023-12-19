@@ -7,7 +7,7 @@ export default function Footer() {
   return (
     <>
       <div className="grid place-items-center mx-6 mt-40 gap-8 text-center">
-        <h2 className="text-5xl">Let&apos;s Orbit</h2>
+        <h3 className="text-5xl">Let&apos;s Orbit</h3>
         <div className="">
           <p>Ready to blast off into the design stratosphere together?</p>
           <p>

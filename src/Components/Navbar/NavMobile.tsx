@@ -46,10 +46,19 @@ export default function NavMobile({ open, setOpen }: Mobile) {
             <li>{nav.name}</li>
           </Link>
         ))}
-        <li>
-          <PrimaryBtn target={false} link={"/contact"} text={"Contact Me"} />
-        </li>
       </ul>
+      <div className={`${
+          open === true ? "-ml-20" : ""
+        } p-8 transition-all ease-in-out duration-300`}>
+        <Link
+          target="_self"
+          href={"/contact"}
+          onClick={() => setOpen(!open)}
+          className={`py-4 px-8 bg-yellow-600 flex justify-center items-center gap-3 cursor-pointer text-black font-bold whitespace-nowrap rounded-2xl hover:scale-90 transition-all ease-in-out duration-300`}
+        >
+          contact Me
+        </Link>
+      </div>
     </div>
   );
 }

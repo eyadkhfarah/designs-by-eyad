@@ -1,6 +1,9 @@
+"use client";
+
 import Image from "next/image";
 import React from "react";
 import PrimaryBtn from "../Buttons/PrimaryBtn";
+import { motion } from "framer-motion";
 
 export default function ProtImages() {
   return (
@@ -17,7 +20,13 @@ export default function ProtImages() {
             />
           </div>
 
-          <div className="">
+          <motion.div
+            initial={{ opacity: 0, translateY: 50 }}
+            whileInView={{ opacity: 1, translateY: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+            className=""
+          >
             <h2 className="text-yellow-500 text-4xl mb-6">Colorful Web</h2>
             <p className="md:w-80 mb-8">
               Stunning websites that pack a punch with vibrant colors and modern
@@ -28,7 +37,7 @@ export default function ProtImages() {
               link={"/portfolio/web"}
               text={"Check My Websites"}
             />
-          </div>
+          </motion.div>
         </div>
 
         <div className="lg:flex grid justify-between w-full items-center group">
@@ -41,7 +50,12 @@ export default function ProtImages() {
               className="group-hover:scale-110 transition-all ease-in-out duration-300 aspect-square object-cover"
             />
           </div>
-          <div className="">
+          <motion.div
+            initial={{ opacity: 0, translateY: 50 }}
+            whileInView={{ opacity: 1, translateY: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+          >
             <h2 className="text-yellow-500 text-4xl mb-6">
               Branding Brilliance
             </h2>
@@ -53,7 +67,7 @@ export default function ProtImages() {
               link={"/portfolio/designs"}
               text={"Check My Designs"}
             />
-          </div>
+          </motion.div>
           <div className="rounded-[3rem] overflow-hidden mb-12">
             <Image
               alt="desgins"

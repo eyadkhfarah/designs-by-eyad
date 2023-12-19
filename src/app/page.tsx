@@ -9,13 +9,15 @@ export default function Home() {
     <>
       <section className="lg:px-28 lg:py-8 px-8">
         <div className="md:flex grid lg:gap-16 gap-6 items-center">
-          <h1
-            title="Hieroglyphic word means WOW!"
-            aria-label="Hieroglyphic word means WOW!"
-            className="p-0 lg:text-[7rem] cursor-help md:text-[5rem] text-[3rem] whitespace-nowrap uppercase text-center"
-          >
-            Bi aty!
-          </h1>
+          <div className="relative cursor-help" title="Hieroglyphic word means WOW!"
+              aria-label="Hieroglyphic word means WOW!">
+            <h1
+              className="p-0 lg:text-[7rem] md:text-[5rem] text-[3.7rem] whitespace-nowrap uppercase text-center"
+            >
+              Bi aty!
+            </h1>
+            <Image className="absolute opacity-25 lg:bottom-6" src={"/bi-aty.svg"} alt="Bi Aty" width={550} height={50} />
+          </div>
           <p className="md:text-xl md:text-left text-center md:m-0 mb-12">
             Welcome to Designs by Eyad, where we bring the cosmos of graphic
             design and web development to life! Dive into our galaxy of visual
