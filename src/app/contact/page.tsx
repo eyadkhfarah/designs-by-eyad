@@ -11,8 +11,9 @@ const Contact = () => {
     formState: { isSubmitSuccessful, errors },
   } = useForm<FormValues>();
 
-  const onSubmit = (data: FormValues) => {
+  const onSubmit = async (data: FormValues) => {
     console.log(data);
+    await addToNotionDatabase(data);
   };
 
   const onError = (errors: FieldErrors<FormValues>) => {

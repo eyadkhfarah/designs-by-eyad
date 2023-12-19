@@ -5,7 +5,7 @@ const NOTION_API_KEY = process.env.YOUR_NOTION_API_KEY;
 const NOTION_DATABASE_ID = process.env.YOUR_NOTION_DATABASE_ID;
 
 const notion = new Client({
-  auth: NOTION_API_KEY,
+  auth: "secret_spOAmyFhAo2q6dKVlWmAJWRSoBPweGWqlJhek8o48rJ",
 });
 
 (async () => {
@@ -24,7 +24,7 @@ export const addToNotionDatabase = async ({
   subscription,
 }: FormValues) => {
   const response = await notion.request({
-    path: `databases/${NOTION_DATABASE_ID}/pages`,
+    path: `databases/3d0b4a37735f445f903f00bf163bf3cc/pages`,
     method: "post",
     body: {
       properties: {
