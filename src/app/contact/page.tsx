@@ -140,7 +140,7 @@ const Contact = () => {
         />
         {errors.companyName && errors.companyName.type === "required" && (
           <p className="my-2 text-red-600">
-            Don't be shy 🥹, write what you want on your project
+            Don't be shy 🥹	&#44; write what you want on your project
           </p>
         )}
       </div>
