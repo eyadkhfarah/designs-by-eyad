@@ -1,3 +1,4 @@
+import H1Hero from "@/Components/Client/h1Hero";
 import ProtImages from "@/Components/Portfolio/ProtImages";
 import ServicesCards from "@/Components/Services/ServicesCards";
 import ServicesSlider from "@/Components/Services/ServicesSlider";
@@ -8,16 +9,8 @@ export default function Home() {
   return (
     <>
       <section className="lg:px-28 lg:py-8 px-8">
-        <div className="md:flex grid lg:gap-16 gap-6 items-center">
-          <div className="relative cursor-help" title="Hieroglyphic word means WOW!"
-              aria-label="Hieroglyphic word means WOW!">
-            <h1
-              className="p-0 lg:text-[7rem] md:text-[5rem] text-[3.7rem] whitespace-nowrap uppercase text-center"
-            >
-              Bi aty!
-            </h1>
-            <Image className="absolute opacity-25 lg:bottom-6" src={"/bi-aty.svg"} alt="Bi Aty" width={550} height={50} />
-          </div>
+        <div className="grid lg:grid-cols-2 lg:gap-16 gap-6 place-items-center">
+          <H1Hero />
           <p className="md:text-xl md:text-left text-center md:m-0 mb-12">
             Welcome to Designs by Eyad, where we bring the cosmos of graphic
             design and web development to life! Dive into our galaxy of visual
@@ -32,7 +25,7 @@ export default function Home() {
         priority={true}
         width={1500}
         height={500}
-        className="rounded-b-[3rem] overflow-hidden aspect-video h-full object-cover object-center mb-32 saturate-0"
+        className="rounded-b-[3rem] overflow-hidden aspect-video w-full h-full object-cover object-center mb-32 saturate-0"
       />
 
       <ProtImages />
@@ -89,9 +82,12 @@ export default function Home() {
       </section>
 
       <section className="bg-white rounded-3xl lg:p-30 p-5 lg:m-28 m-7">
-        <h2 className="text-yellow-500 uppercase lg:text-4xl my-8 text-2xl text-center">
-          MY FREELANCE ACCOUNTS
-        </h2>
+        <div className="grid place-items-center gap-4 my-8">
+          <h2 className="text-neutral-950 uppercase lg:text-4xl text-2xl text-center">
+            MY FREELANCE ACCOUNTS
+          </h2>
+          <div className="bg-yellow-500 h-2 w-12"></div>
+        </div>
         <div className="flex md:flex-row flex-wrap flex-col mx-auto justify-evenly items-center p-10 gap-20">
           <a
             href="https://www.fiverr.com/eyadfarah"

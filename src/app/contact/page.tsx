@@ -2,6 +2,8 @@
 import { FormValues } from "@/types/inputs";
 import { useForm, SubmitHandler, FieldErrors } from "react-hook-form";
 
+import { motion } from "framer-motion";
+
 import { addToNotionDatabase } from "@/lib/utils/notion";
 
 const Contact = () => {
@@ -24,6 +26,8 @@ const Contact = () => {
     <form
       onSubmit={handleSubmit(onSubmit, onError)}
       className="grid lg:grid-cols-2 grid-cols-1 gap-4"
+      name="contact"
+      method="POST"
     >
       <div className="">
         <label htmlFor="fullName">Full Name*</label>
@@ -54,7 +58,7 @@ const Contact = () => {
           id="email"
           disabled={isSubmitSuccessful}
           placeholder="Your email*"
-          className={errors.email?.types ? "ring-2 ring-red-500 input" : "input"}
+          className={errors.email ? "ring-2 ring-red-500 input" : "input"}
         />
         {errors.email && errors.email.type === "required" && (
           <p className="my-2 text-red-600">You must enter your email</p>
@@ -140,16 +144,15 @@ const Contact = () => {
         />
         {errors.companyName && errors.companyName.type === "required" && (
           <p className="my-2 text-red-600">
-            Don't be shy 🥹	&#44; write what you want on your project
+            Don't be shy 🥹 &#44; write what you want on your project
           </p>
         )}
       </div>
       <div className="lg:col-span-2 flex lg:items-center items-start mb-8">
         <input
-          {...register("subscription", { required: true })}
+          {...register("subscription")}
           type="checkbox"
           id="subscription"
-          defaultChecked
           disabled={isSubmitSuccessful}
           className="mr-6 cursor-pointer bg-gray-900 border-none focus:ring-yellow-500 rounded-2xl p-4 checked:bg-yellow-500 transition ease-in-out duration-300"
         />
@@ -160,13 +163,19 @@ const Contact = () => {
       <input
         type="submit"
         value="Submit"
-        className="py-4 px-8 bg-yellow-600 flex justify-center items-center gap-3 w-full cursor-pointer text-black font-bold rounded-2xl hover:scale-90 transition-all ease-in-out duration-300"
+        disabled={isSubmitSuccessful}
+        className="disabled:scale-90 disabled:bg-gray-600 disabled:cursor-not-allowed py-4 px-8 bg-yellow-600 flex justify-center items-center gap-3 w-full cursor-pointer text-black font-bold rounded-2xl hover:scale-90 transition-all ease-in-out duration-300"
       />
       <div className="flex justify-end items-center">
         {isSubmitSuccessful === true ? (
-          <p className="text-green-500 text-center">
+          <motion.p
+            initial={{ opacity: 0, translateY: 20 }}
+            animate={{ opacity: 1, translateY: 0 }}
+            transition={{ duration: 0.2 }}
+            className="text-green-500 text-center"
+          >
             Thank you for sending me wait for respond ❤️
-          </p>
+          </motion.p>
         ) : null}
       </div>
     </form>

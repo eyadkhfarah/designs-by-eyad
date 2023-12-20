@@ -8,11 +8,6 @@ const notion = new Client({
   auth: "secret_spOAmyFhAo2q6dKVlWmAJWRSoBPweGWqlJhek8o48rJ",
 });
 
-(async () => {
-  const listUsersResponse = await notion.users.list({});
-  console.log(listUsersResponse);
-})();
-
 export const addToNotionDatabase = async ({
   email,
   fullName,
@@ -23,47 +18,71 @@ export const addToNotionDatabase = async ({
   services,
   subscription,
 }: FormValues) => {
-  const response = await notion.request({
-    path: `databases/3d0b4a37735f445f903f00bf163bf3cc/pages`,
-    method: "post",
-    body: {
-      properties: {
-        Email: {
-          title: [
-            {
-              text: {
-                content: email,
-              },
+  const databaseId = "3d0b4a37735f445f903f00bf163bf3cc";
+  const response = await notion.pages.create({
+    parent: {
+      database_id: databaseId,
+      type: "database_id"
+    },
+    properties: {
+      "Full Name": {
+        type: "title",
+        title: [
+          {
+            type: "text",
+            text: {
+              content: fullName,
             },
-          ],
+          },
+        ],
+      },
+      Email: {
+        type: "email",
+        email: email,
+      },
+      Phone: {
+        type: "number",
+        number: number,
+      },
+      Services: {
+        type: "select",
+        select: {
+          name: services,
         },
+      },
+      "Company Name": {
+        type: "title",
+        title: [
+          {
+            type: "text",
+            text: {
+              content: companyName,
+            },
+          },
+        ],
+      },
+      "Company Size": {
+        type: "select",
+        select: {
+          name: companySize,
+        },
+      },
+      "Project Description": {
+        type: "title",
+        title: [
+          {
+            type: "text",
+            text: {
+              content: message,
+            },
+          },
+        ],
+      },
+      Subscribed: {
+        type: "checkbox",
+        checkbox: subscription,
       },
     },
   });
-
-  console.log("Notion response:", response);
+  console.log(response);
 };
-//   try {
-//     const response = await notion.request({
-//       path: `databases/${NOTION_DATABASE_ID}/pages`,
-//       method: "POST",
-//       body: {
-//         properties: {
-//           Email: {
-//             title: [
-//               {
-//                 text: {
-//                   content: email,
-//                 },
-//               },
-//             ],
-//           },
-//         },
-//       },
-//     });
-
-//     console.log("Notion response:", response);
-//   } catch (error) {
-//     console.error("Error adding to Notion:", error);
-//   }
-// };

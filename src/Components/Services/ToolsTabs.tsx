@@ -51,6 +51,7 @@ export default function ToolsTabs() {
         <li className="skills">
           <TbBrandFramer className="text-2xl" /> Framer
         </li>
+        <li className="skills">Canva</li>
         <li className="skills">Adobe Photoshop</li>
         <li className="skills">Adobe Illustrator</li>
       </ul>

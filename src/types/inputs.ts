@@ -1,7 +1,7 @@
 export type FormValues = {
   fullName: string;
   email: string;
-  number: string;
+  number: number;
   services: string;
   companyName: string;
   companySize: string;

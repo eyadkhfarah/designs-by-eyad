@@ -1,10 +1,5 @@
-import { NextRequest, NextResponse } from "next/server";
-
-export async function GET(request: NextRequest) {
-  const greeting = "Hello World!!";
-  const json = {
-    greeting,
-  };
-
-  return NextResponse.json(json);
+function requestHandler(_request: Request): Response {
+  return Response.json({ message: "Hello from Next.js!" });
 }
+
+export { requestHandler as GET };
