@@ -4,13 +4,15 @@ import Footer from "@/Components/Footer";
 import { Metadata, Viewport } from "next";
 
 const title = "%s — Designs By Eyad";
-const desc = "A studio located in Aswan make graphic design, motion graphics, Web design, UI design and more in an Egyptian style.";
+const desc =
+  "A studio located in Aswan make graphic design, motion graphics, Web design, UI design and more in an Egyptian style.";
 
-const siteUrl = process.env.PUBLIC_DOMAIN_URL || "https://designs-by-eyad.vercel.app";
+const siteUrl =
+  process.env.PUBLIC_DOMAIN_URL || "https://designs-by-eyad.vercel.app";
 
 export const viewport: Viewport = {
   themeColor: "black",
-}
+};
 
 export const metadata: Metadata = {
   title: {
@@ -37,10 +39,8 @@ export const metadata: Metadata = {
     type: "website",
   },
 
-  
-
   verification: {
-    google: "SAdpay-liv1rI5Wv_WMEhQWbAXRtsm96riCif7zyOzs"
+    google: "SAdpay-liv1rI5Wv_WMEhQWbAXRtsm96riCif7zyOzs",
   },
 
   twitter: {
@@ -49,7 +49,11 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children } : {children :React.ReactNode}) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en">
       <body>

@@ -5,7 +5,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
 import { RiCloseLine } from "react-icons/ri";
-import PrimaryBtn from "../Buttons/PrimaryBtn";
 
 type Mobile = {
   open: Boolean;
