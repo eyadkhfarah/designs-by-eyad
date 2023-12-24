@@ -2,6 +2,14 @@ const { withContentlayer } = require("next-contentlayer");
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  async rewrites() {
+    return [
+      {
+        source: '/api/notion',
+        destination: 'https://api.notion.com/v1',
+      },
+    ];
+  },
   async headers() {
     return [
       {

@@ -18,7 +18,7 @@ export default function Footer() {
         <PrimaryBtn target={false} link={"/contact"} text={"Contact Me"} />
       </div>
       <footer
-        className="py-12 lg:mx-28 mx-12 text-center border-t-2 lg:flex grid gap-8 justify-between items-center border-t-gray-500 mt-28"
+        className="py-12 lg:mx-28 mx-12 text-center border-t-2 lg:flex grid place-items-center gap-8 justify-between items-center border-t-gray-500 mt-28"
         id="contact"
       >
         <p className="lg:text-base text-sm lg:block hidden">
@@ -40,7 +40,7 @@ export default function Footer() {
             <RiInstagramLine className="text-4xl text-yellow-500" />
           </Link>
         </div>
-        <p className="lg:text-base text-sm lg:hidden">
+        <p className="lg:text-base text-xs text-center w-full lg:hidden">
           © {new Date().getFullYear()} <span className="text-yellow-500">Designs by Eyad</span>. All rights reserved.
         </p>
       </footer>

@@ -23,7 +23,7 @@ export default function NavMobile({ open, setOpen }: Mobile) {
     >
       <div className="gird gap-6">
         <div className="my-7 flex justify-end">
-          <button className="p-4" onClick={() => setOpen(!open)}>
+          <button aria-label="close menu" className="p-4" onClick={() => setOpen(!open)}>
             <RiCloseLine className="text-4xl text-white" />
           </button>
         </div>
@@ -58,7 +58,7 @@ export default function NavMobile({ open, setOpen }: Mobile) {
           target="_self"
           href={"/contact"}
           onClick={() => setOpen(!open)}
-          className={`py-4 px-8 bg-yellow-600 flex justify-center items-center gap-3 cursor-pointer text-black font-bold whitespace-nowrap rounded-2xl hover:scale-90 transition-all ease-in-out duration-300`}
+          className={`py-4 px-8 bg-yellow-600 flex justify-center items-center gap-3 cursor-pointer text-black font-bold whitespace-nowrap rounded-2xl hover:scale-90 transition-all ease-in-out duration-300 mb-8`}
         >
           contact Me
         </Link>

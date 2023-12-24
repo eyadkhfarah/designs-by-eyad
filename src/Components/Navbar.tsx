@@ -27,7 +27,7 @@ export default function Navbar() {
 
           <NavMenu />
         </div>
-        <button onClick={() => setOepn(!open)}>
+        <button aria-label="open menu" onClick={() => setOepn(!open)}>
           <RiMenu3Line className="text-white text-3xl lg:hidden block" />
         </button>
         <div className="lg:block hidden">

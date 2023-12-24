@@ -90,21 +90,6 @@ export default function Home() {
         </div>
         <div className="flex md:flex-row flex-wrap flex-col mx-auto justify-evenly items-center p-10 gap-20">
           <a
-            href="https://www.fiverr.com/eyadfarah"
-            aria-label="fiverr"
-            target="_blank"
-            rel="noopener noreferrer"
-            title="fiverr"
-          >
-            <Image
-              alt="fiverr"
-              src={"/Imgs/freelancer/fiverr.svg"}
-              width={150}
-              height={50}
-              className="h-auto saturate-0 hover:opacity-100 hover:saturate-100 transition-all ease-in-out duration-300"
-            />
-          </a>
-          <a
             href="https://www.upwork.com/freelancers/~0121088ad77b5fc2ac"
             aria-label="upwork"
             target="_blank"

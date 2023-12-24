@@ -4,8 +4,6 @@ import { useForm, SubmitHandler, FieldErrors } from "react-hook-form";
 
 import { motion } from "framer-motion";
 
-import { addToNotionDatabase } from "@/lib/utils/notion";
-
 const Contact = () => {
   const {
     register,
@@ -14,8 +12,19 @@ const Contact = () => {
   } = useForm<FormValues>();
 
   const onSubmit = async (data: FormValues) => {
-    console.log(data);
-    await addToNotionDatabase(data);
+    try {
+      await fetch('/api/notion', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+  
+      // Handle the response as needed
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const onError = (errors: FieldErrors<FormValues>) => {
@@ -88,7 +97,7 @@ const Contact = () => {
         <select
           {...register("services", { required: true })}
           id="services"
-          className="input"
+          className={errors.message ? "ring-2 ring-red-500 input" : "input"}
           disabled={isSubmitSuccessful}
         >
           <option value="Web Development">Web Development</option>
@@ -98,6 +107,11 @@ const Contact = () => {
           <option value="Photoshop">Photoshop</option>
           <option value="Logo Design & Branding">Logo Design & Branding</option>
         </select>
+        {errors.services && errors.services.type === "required" && (
+          <p className="my-2 text-red-600">
+            Select what you want to help you easliy
+          </p>
+        )}
       </div>
       <div className="">
         <label htmlFor="company">Your Compnay Name?*</label>
@@ -119,7 +133,7 @@ const Contact = () => {
           {...register("companySize", { required: true })}
           id="size"
           disabled={isSubmitSuccessful}
-          className="input"
+          className={errors.message ? "ring-2 ring-red-500 input" : "input"}
         >
           <option value="Just Starting">Just Starting</option>
           <option value="5 employees">5 employees</option>
@@ -128,6 +142,12 @@ const Contact = () => {
           </option>
           <option value="Up-to 100 employees">Up-to 100 employees</option>
         </select>
+
+        {errors.companySize && errors.companySize.type === "required" && (
+          <p className="my-2 text-red-600">
+            Tell me you caompany size
+          </p>
+        )}
       </div>
 
       <div className="lg:col-span-2">
