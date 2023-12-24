@@ -57,7 +57,7 @@ export default function NavMobile({ open, setOpen }: Mobile) {
           target="_self"
           href={"/contact"}
           onClick={() => setOpen(!open)}
-          className={`py-4 px-8 bg-yellow-600 flex justify-center items-center gap-3 cursor-pointer text-black font-bold whitespace-nowrap rounded-2xl hover:scale-90 transition-all ease-in-out duration-300 mb-8`}
+          className={`py-4 px-8 bg-yellow-600 flex justify-center items-center gap-3 cursor-pointer text-black font-bold whitespace-nowrap rounded-2xl hover:scale-90 transition-all ease-in-out duration-300 mb-12`}
         >
           contact Me
         </Link>
