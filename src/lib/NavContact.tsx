@@ -21,5 +21,10 @@ export const NavContacts: NavContact[] = [
         link: "/phone",
         id: 4
     },
+    {
+        name: "Purchasing",
+        link: "/purchasing",
+        id: 5
+    },
     
 ]

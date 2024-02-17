@@ -8,23 +8,6 @@ const NOTION_DATABASE_ID = process.env.YOUR_NOTION_DATABASE_ID;
 const notion = new Client({
   auth: NOTION_API_KEY,
 });
-//
-//         Services: {
-//           select: {
-//             name: services,
-//           },
-//         },
-//         "Company Name": {
-//           title: [
-//             {
-//               text: {
-//                 content: companyName,
-//               },
-//             },
-//           ],
-//         },
-//
-//
 
 export async function POST(request: NextRequest) {
   if (request.method !== "POST") {

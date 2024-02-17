@@ -18,33 +18,27 @@ export const metadata: Metadata = {
 
 function Phone() {
   return (
-    <div className="grid lg:grid-cols-2 gap-6">
-      <div className="">
-        <h2 className="uppercase text-xl">My Phone Number</h2>
-        <div className="grid gap-6 my-10">
-          <a
-            href="tel:+201555715783"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full h-12 gap-5 bg-gray-900 font-bold rounded-full uppercase flex items-center justify-center"
-          >
-            01555715783
-          </a>
-          <a
-            href="tel:+201158804189"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full h-12 gap-5 bg-gray-900 font-bold rounded-full uppercase flex items-center justify-center"
-          >
-            01158804189
-          </a>
-        </div>
+    <>
+      <h2 className="uppercase text-xl">My Phone Number</h2>
+      <div className="grid lg:grid-cols-2 lg:gap-6 gap-3 my-10">
+        <a
+          href="tel:+201555715783"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-full h-12 gap-5 bg-gray-900 font-bold rounded-full uppercase flex items-center justify-center"
+        >
+          01555715783
+        </a>
+        <a
+          href="tel:+201158804189"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-full h-12 gap-5 bg-gray-900 font-bold rounded-full uppercase flex items-center justify-center"
+        >
+          01158804189
+        </a>
       </div>
-      <div className="">
-        <h2 className="uppercase text-xl">Scan My Phone Cash Number</h2>
-      
-      </div>
-    </div>
+    </>
   );
 }
 

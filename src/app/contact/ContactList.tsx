@@ -7,7 +7,7 @@ import React from "react";
 import {
   RiFacebookCircleFill,
 } from "react-icons/ri";
-import { TbForms, TbMessage2, TbPhone } from "react-icons/tb";
+import { TbForms, TbMessage2, TbMoneybag, TbPhone, TbUserDollar } from "react-icons/tb";
 
 export default function ContactList() {
   const router = usePathname();
@@ -34,6 +34,8 @@ export default function ContactList() {
               <TbMessage2 className="text-xl" />
             ) : null || list.name === "Phone" ? (
               <TbPhone className="text-xl" />
+            ) : null || list.name === "Purchasing" ? (
+              <TbUserDollar className="text-xl" />
             ) : null}
             {list.name}
           </Link>
