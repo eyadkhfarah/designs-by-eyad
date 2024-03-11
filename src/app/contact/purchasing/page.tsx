@@ -22,7 +22,7 @@ export default function page() {
     <>
       <h2 className="uppercase text-xl">Purchasing Methods</h2>
       <div className="grid lg:grid-cols-2 lg:gap-6 gap-3 my-10">
-        <a
+        {/* <a
           href="tel:+201555715783"
           target="_blank"
           rel="noopener noreferrer"
@@ -31,7 +31,7 @@ export default function page() {
           <div>
             <h3>Phone Cash</h3>
           </div>
-        </a>
+        </a> */}
         <div className="w-full p-8 bg-gray-900 font-bold rounded-3xl uppercase grid gap-6">
           <h3>InstaPAy</h3>
           <Image
