@@ -5,6 +5,8 @@ import {
   RiGithubFill,
   RiInstagramLine,
   RiLinkedinBoxFill,
+  RiPinterestFill,
+  RiPinterestLine,
   RiTiktokFill,
   RiTiktokLine,
   RiTwitterXLine,
@@ -56,6 +58,15 @@ function Soical() {
         >
           <RiLinkedinBoxFill className="text-2xl" />
           LinkedIn
+        </a>
+        <a
+          href="https://www.pinterest.com/eyadkhfarah/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-full lg:h-12 h-16 gap-5 bg-gray-900 font-bold rounded-full uppercase flex items-center justify-center"
+        >
+          <RiPinterestFill className="text-2xl" />
+          Pinterest
         </a>
         <a
           href="https://twitter.com/eyadkhfarah"

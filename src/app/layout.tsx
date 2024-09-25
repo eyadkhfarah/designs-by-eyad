@@ -42,6 +42,9 @@ export const metadata: Metadata = {
   verification: {
     google: "SAdpay-liv1rI5Wv_WMEhQWbAXRtsm96riCif7zyOzs",
   },
+  other: {
+   "p:domain_verify": '0ce530fb8b315b5b57336f9008379e96',
+  },
 
   twitter: {
     site: "@designs.by.eyad",
