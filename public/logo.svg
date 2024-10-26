@@ -1,36 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Generator: Adobe Illustrator 25.4.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 202 397" style="enable-background:new 0 0 202 397;" xml:space="preserve">
+	 viewBox="0 0 1017.6 2000" style="enable-background:new 0 0 1017.6 2000;" xml:space="preserve">
 <style type="text/css">
 	.st0{fill:#FFFFFF;}
 </style>
 <g>
-	<g id="يا_1_">
-		<polygon id="يا" class="st0" points="166.4,361.2 35.6,361.2 35.6,0 62.6,0 62.6,334.2 139.4,334.2 139.4,251.7 166.4,251.7 		
-			"/>
+	<g id="يا_2_">
+		<g id="يا_1_">
+			<polygon id="يا" class="st0" points="838.4,1819.6 180,1819.6 180,1.4 315.9,1.4 315.9,1683.7 702.5,1683.7 702.5,1268.4 
+				838.4,1268.4 			"/>
+		</g>
 	</g>
-	<g id="ا_1_">
-		<rect id="ا" x="88.2" class="st0" width="27" height="243.2"/>
+	<g id="ء_2_">
+		<g id="ء_1_">
+			<polygon id="ء" class="st0" points="659.7,1403.8 659.7,1268.4 359,1268.4 359,1503 359.2,1503 359.2,1638.9 659.7,1638.9 
+				659.7,1503 495.4,1503 495.4,1403.8 			"/>
+		</g>
 	</g>
-	<g id="ء_1_">
-		<polygon id="ء" class="st0" points="130.9,278.6 130.9,251.7 88.2,251.7 88.2,298.3 71.2,298.3 71.2,325.3 130.9,325.3 
-			130.9,298.3 115.3,298.3 115.3,278.6 		"/>
+	<g id="ا_2_">
+		<g id="ا_00000173881658611001882920000018241491663781933756_">
+			<rect id="ا_00000025401661237561585740000016811480753929950347_" x="359" y="1.4" class="st0" width="135.9" height="1224.2"/>
+		</g>
 	</g>
-	<g id="left_of_د_1_">
-		<polygon id="left_of_د" class="st0" points="26.9,369.7 26.9,310 -0.2,310 -0.2,396.7 54.1,396.7 54.1,369.7 		"/>
+	<g id="left_of_د_2_">
+		<g id="left_of_د_1_">
+			<polygon id="left_of_د" class="st0" points="136.2,1862.4 136.2,1503 -0.2,1503 -0.2,1998.3 273.1,1998.3 273.1,1862.4 			"/>
+		</g>
 	</g>
-	<g id="left_square_1_">
-		<rect id="left_square" x="59.8" y="369.7" class="st0" width="27" height="27"/>
+	<g id="left_square_2_">
+		<g id="left_square_1_">
+			<rect id="left_square" x="301.8" y="1862.4" class="st0" width="135.9" height="135.9"/>
+		</g>
 	</g>
-	<g id="center_of_د_1_">
-		<rect id="center_of_د" x="92.5" y="369.7" class="st0" width="17.1" height="27"/>
+	<g id="center_of_د_2_">
+		<g id="center_of_د_1_">
+			<rect id="center_of_د" x="466.4" y="1862.4" class="st0" width="86.1" height="135.9"/>
+		</g>
 	</g>
-	<g id="right_square_1_">
-		<rect id="right_square" x="115.3" y="369.7" class="st0" width="27" height="27"/>
+	<g id="right_square_2_">
+		<rect id="right_square" x="581.2" y="1862.4" class="st0" width="135.9" height="135.9"/>
 	</g>
-	<g id="right_of_د">
-		<polygon class="st0" points="175,310 175,369.7 148,369.7 148,396.7 202,396.7 202,310 		"/>
+	<g id="right_of_daal">
+		<polygon class="st0" points="881.7,1503 881.7,1862.4 745.8,1862.4 745.8,1998.3 1017.6,1998.3 1017.6,1503 		"/>
 	</g>
 </g>
 </svg>
