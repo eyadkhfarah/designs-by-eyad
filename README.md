@@ -1,36 +1,64 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Open-Source Graphic Design Portfolio Application  
 
-## Getting Started
+Welcome to **Desings By Eyad**, an open-source graphic design portfolio application built with **Next.js**, **Tailwind CSS**, and **TypeScript**. This project combines cutting-edge web technologies to provide a seamless and modern design platform.  
 
-First, run the development server:
+## 🚀 Features  
 
-```bash
+- **Real-time Design Editor**: Powered by dynamic rendering with Next.js.  
+- **Customizable Themes**: Styled with Tailwind CSS for flexibility.  
+- **TypeScript Integration**: Ensures code reliability and scalability.  
+- **Fast and Lightweight**: Optimized for speed and performance.  
+- **Cross-Browser Support**: Works flawlessly across major browsers.  
+
+## 📦 Installation  
+
+Clone the repository and start building:  
+
+```bash  
+git clone [repo-url]  
+cd [project-name]  
+npm install  
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 📝 Add Protfolio Content
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+- Add the projects you create in the `content` folder:
 
-[http://localhost:3000/api/hello](http://localhost:3000/api/hello) is an endpoint that uses [Route Handlers](https://beta.nextjs.org/docs/routing/route-handlers). This endpoint can be edited in `app/api/hello/route.js`.
+```plaintext
+content/
+├── portfolio/
+│   ├── designs/
+│   ├── web/
+```
+- Add an `.mdx` file and follow these instructions
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```markdown
+---
+title: Green Locks
+description: Brand for mainfactoring and selling hair care products
+thumnail: /Imgs/green-locks.png
+website: https://www.behance.net/gallery/191450493/Rebranding-Green-Locks-and-package-designs
+Protype: Logo Design
+---
+![logo](https://mir-s3-cdn-cf.behance.net/project_modules/1400/f134d0191450493.65d126c37653f.png)
+![package mockup](https://mir-s3-cdn-cf.behance.net/project_modules/max_3840/218e67191450493.65cbbfa3d2fee.png)
+![cosmetics mockup](https://mir-s3-cdn-cf.behance.net/project_modules/max_3840/c703fb191450493.65d126c37b886.png)
+```
 
-## Learn More
+Once you save the file, it will automatically add or update the content.
 
-To learn more about Next.js, take a look at the following resources:
+> If you want to add a new content type, such as a blog, refer to the [Contentlayer Documentation](https://contentlayer.dev/docs/getting-started-cddd76b7) for detailed instructions.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+  
+## 🖊️ Customization:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- Edit or add pages in the `src` and `app` directories.
+- Add or edit components in the `Components` folder.
+- To add links, edit the following files:
+  - `NavList.tsx` for menu links
+  - `ServicesList.tsx` for the services list
+  - `NavContact.tsx` for contact links
+- To customize contact form types, modify the `inputs.ts` file in the `types` folder.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Have fun, and good luck with your business! 💕
