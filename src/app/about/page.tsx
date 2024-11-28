@@ -2,6 +2,8 @@ import React from "react";
 import Image from "next/image";
 import { Metadata } from "next";
 import ToolsTabs from "@/Components/Services/ToolsTabs";
+import { RiGithubFill } from "react-icons/ri";
+import PrimaryBtn from "@/Components/Buttons/PrimaryBtn";
 
 export const metadata: Metadata = {
   title: "About",
@@ -79,6 +81,20 @@ export default function About() {
         </h2>
 
         <ToolsTabs />
+      </section>
+
+      <section className="lg:px-28 p-10 flex gap-8 justify-center">
+        <RiGithubFill size={170} />
+        <div className="grid gap-6">
+          <h2 className="uppercase text-4xl">
+            Did my site inspire you?
+          </h2>
+          <p className="mb-6">Feel free to dive deeper into the code and customize it to your liking. <br /> Clone the GitHub repository to start your own project or contribute to the community.</p>
+
+          <PrimaryBtn link={"https://github.com/eyadkhfarah/designs-by-eyad"} target={true} text={"Clone the GitHub repository"} />
+
+        </div>
+
       </section>
     </>
   );
