@@ -21,11 +21,11 @@ export default function Home() {
 
       <Image
         alt="Astro"
-        src={"/astro.jpg"}
+        src={"/main.png"}
         priority={true}
         width={1500}
         height={500}
-        className="rounded-b-[3rem] overflow-hidden aspect-video w-full h-full object-cover object-center mb-32 saturate-0"
+        className="rounded-b-[3rem] overflow-hidden aspect-video w-full h-full object-cover object-center mb-32"
       />
 
       <ProtImages />
