@@ -83,13 +83,13 @@ export default function About() {
         <ToolsTabs />
       </section>
 
-      <section className="lg:px-28 p-10 flex gap-8 justify-center">
+      <section className="lg:px-28 p-10 lg:flex grid place-items-center gap-8 lg:justify-center">
         <RiGithubFill size={170} />
-        <div className="grid gap-6">
-          <h2 className="uppercase text-4xl">
+        <div className="grid lg:place-items-start place-items-center gap-6">
+          <h2 className="uppercase lg:text-left text-center text-4xl">
             Did my site inspire you?
           </h2>
-          <p className="mb-6">Feel free to dive deeper into the code and customize it to your liking. <br /> Clone the GitHub repository to start your own project or contribute to the community.</p>
+          <p className="mb-6 lg:text-left text-center">Feel free to dive deeper into the code and customize it to your liking. <br /> Clone the GitHub repository to start your own project or contribute to the community.</p>
 
           <PrimaryBtn link={"https://github.com/eyadkhfarah/designs-by-eyad"} target={true} text={"Clone the GitHub repository"} />
 
