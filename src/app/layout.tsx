@@ -1,7 +1,9 @@
 import Navbar from "@/Components/Navbar";
 import "./globals.css";
+import { GoogleAnalytics } from '@next/third-parties/google'
 import Footer from "@/Components/Footer";
 import { Metadata, Viewport } from "next";
+import Script from "next/script";
 
 const title = "%s — Designs By Eyad";
 const desc =
@@ -43,7 +45,7 @@ export const metadata: Metadata = {
     google: "SAdpay-liv1rI5Wv_WMEhQWbAXRtsm96riCif7zyOzs",
   },
   other: {
-   "p:domain_verify": '0ce530fb8b315b5b57336f9008379e96',
+    "p:domain_verify": '0ce530fb8b315b5b57336f9008379e96',
   },
 
   twitter: {
@@ -59,11 +61,22 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      {/* <head>
+        <Script async src="https://www.googletagmanager.com/gtag/js?id=G-B5QZVD5E94"></Script>
+        <Script>
+          {`window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-B5QZVD5E94');`}
+        </Script>
+      </head> */}
       <body>
         <Navbar />
         <main>{children}</main>
         <Footer />
       </body>
+      <GoogleAnalytics gaId="G-B5QZVD5E94" />
     </html>
   );
 }
