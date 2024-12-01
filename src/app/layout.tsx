@@ -6,7 +6,7 @@ import { Metadata, Viewport } from "next";
 
 const title = "%s — Designs By Eyad";
 const desc =
-  "A studio located in Aswan make graphic design, motion graphics, Web design, UI design and more in an Egyptian style.";
+  "Discover Designs By Eyad, a creative studio specializing in brand identity, social media designs, and web development with an Egyptian touch. Explore innovative and unique designs!";
 
 const siteUrl =
   process.env.PUBLIC_DOMAIN_URL || "https://designs-by-eyad.vercel.app";
@@ -17,7 +17,7 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: {
-    default: "Designs By Eyad",
+    default: "Designs By Eyad — Creative Branding & Web Design Portfolio",
     template: title,
   },
   description: desc,

@@ -25,6 +25,7 @@ export default function Home() {
         priority={true}
         width={1500}
         height={500}
+        sizes="(max-width: 600px) 480px, (max-width: 1200px) 1024px, 1920px"
         className="rounded-b-[3rem] overflow-hidden aspect-video w-full h-full object-cover object-center mb-32"
       />
 
