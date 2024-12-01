@@ -1,9 +1,8 @@
 import Navbar from "@/Components/Navbar";
 import "./globals.css";
-import { GoogleAnalytics } from '@next/third-parties/google'
+import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google'
 import Footer from "@/Components/Footer";
 import { Metadata, Viewport } from "next";
-import Script from "next/script";
 
 const title = "%s — Designs By Eyad";
 const desc =
@@ -61,22 +60,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      {/* <head>
-        <Script async src="https://www.googletagmanager.com/gtag/js?id=G-B5QZVD5E94"></Script>
-        <Script>
-          {`window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', 'G-B5QZVD5E94');`}
-        </Script>
-      </head> */}
       <body>
         <Navbar />
         <main>{children}</main>
         <Footer />
       </body>
       <GoogleAnalytics gaId="G-B5QZVD5E94" />
+      <GoogleTagManager gtmId="GTM-5MWXJS6P" />
     </html>
   );
 }
