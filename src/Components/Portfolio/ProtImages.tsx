@@ -16,6 +16,7 @@ export default function ProtImages() {
               src={"/coding.webp"}
               width={544}
               height={544}
+              sizes="(max-width: 600px) 480px, (max-width: 1200px) 1024px, 1920px"
               className="group-hover:scale-110 transition-all ease-in-out duration-300 aspect-square object-cover saturate-0"
             />
           </div>
@@ -47,6 +48,7 @@ export default function ProtImages() {
               src={"/desgin.webp"}
               width={544}
               height={544}
+              sizes="(max-width: 600px) 480px, (max-width: 1200px) 1024px, 1920px"
               className="group-hover:scale-110 transition-all ease-in-out duration-300 aspect-square object-cover"
             />
           </div>

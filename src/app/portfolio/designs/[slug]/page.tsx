@@ -70,6 +70,7 @@ const ProtoDetials = async ({ params }: PageProps) => {
               src={props?.thumnail}
               width={250}
               height={250}
+              sizes="(max-width: 600px) 480px, (max-width: 1200px) 1024px, 1920px"
               className="rounded-2xl h-fit lg:w-fit w-full"
               alt={props?.title}
             />

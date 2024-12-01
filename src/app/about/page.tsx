@@ -33,6 +33,7 @@ export default function About() {
               src={"/me.png"}
               width={400}
               height={400}
+              sizes="(max-width: 600px) 480px, (max-width: 1200px) 1024px, 1920px"
               className="rounded-full"
             />
 
