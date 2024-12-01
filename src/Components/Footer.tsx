@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import { RiFacebookCircleFill, RiInstagramLine, RiYoutubeFill } from "react-icons/ri";
+import { RiFacebookCircleFill, RiInstagramLine, RiLinkedinFill, RiYoutubeFill } from "react-icons/ri";
 import PrimaryBtn from "./Buttons/PrimaryBtn";
 
 export default function Footer() {
@@ -40,9 +40,16 @@ export default function Footer() {
             <RiInstagramLine className="text-4xl text-yellow-500" />
           </Link>
           <Link
+            href={"https://www.linkedin.com/company/designsbyeyad"}
+            target="_blank"
+            title="Follow Me On LinkedIn"
+          >
+            <RiLinkedinFill className="text-4xl text-yellow-500" />
+          </Link>
+          <Link
             href={"https://www.youtube.com/@designsbyeyad"}
             target="_blank"
-            title="Subscribe MY Channel On Instagram"
+            title="Subscribe MY Channel On YouTube"
           >
             <RiYoutubeFill className="text-4xl text-yellow-500" />
           </Link>
