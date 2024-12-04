@@ -29,7 +29,7 @@ export default async function sitemap() {
         url: `${siteUrl}${web.slug}` || "" || undefined,
         lastModified: new Date() || undefined,
         changeFrequency: "weekly" || undefined,
-        priority: 0.8 || undefined,
+        priority: 0.6 || undefined,
       };
     }) || [];
 
@@ -39,7 +39,7 @@ export default async function sitemap() {
         url: `${siteUrl}${design.slug}` || undefined,
         lastModified: new Date() || undefined,
         changeFrequency: "weekly" || undefined,
-        priority: 0.8 || undefined,
+        priority: 0.6 || undefined,
       };
     }) || [];
 
@@ -53,7 +53,7 @@ export default async function sitemap() {
         url: `${siteUrl}/contact${contact.link}` || undefined,
         lastModified: new Date() || "" || undefined,
         changeFrequency: "weekly" || undefined,
-        priority: 0.8 || undefined,
+        priority: 0.6 || undefined,
       };
     }) || [];
 
@@ -63,7 +63,7 @@ export default async function sitemap() {
         url: `${siteUrl}/blog/${post.properties.Slug.rich_text[0].plain_text}` || undefined,
         lastModified: new Date() || "" || undefined,
         changeFrequency: "weekly" || undefined,
-        priority: 0.8 || undefined,
+        priority: 0.6 || undefined,
       };
     }) || [];
 
@@ -73,19 +73,19 @@ export default async function sitemap() {
       url: siteUrl,
       lastModified: new Date(),
       changeFrequency: "weekly",
-      priority: 0.5,
+      priority: 1,
     },
     {
       url: siteUrl + "/portfolio",
       lastModified: new Date(),
       changeFrequency: "weekly",
-      priority: 0.5,
+      priority: 0.8,
     },
     {
       url: siteUrl + "/about",
       lastModified: new Date(),
       changeFrequency: "weekly",
-      priority: 0.5,
+      priority: 0.8,
     },
     ...allWeb,
     ...allDesing,
