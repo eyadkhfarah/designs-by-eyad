@@ -1,5 +1,4 @@
 export type NotionProps = {
-  id: string;
   post: {
     id: string;
     properties: {

@@ -31,7 +31,7 @@ export default async function BlogsPage() {
 
                 <div className="grid lg:grid-cols-3 gap-8">
                     {post.results.map((post: any) => (
-                        <BlogSqr key={post.id} post={post} id={post.id} />
+                        <BlogSqr key={post.id} post={post} />
                     ))}
                 </div>
             </section>

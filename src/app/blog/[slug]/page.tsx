@@ -92,7 +92,7 @@ export default async function PostPage({
           dangerouslySetInnerHTML={{ __html: html }}
         ></div>
       </article>
-      <Share id={post.id} post={post} />
+      <Share post={post} />
     </>
   );
 }
