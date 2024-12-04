@@ -64,15 +64,6 @@ export default async function PostPage({ params }: { params: { slug: string } })
     render.use(hljsPlugin({}))
     render.use(bookmarkPlugin(undefined))
 
-    //    <h1 className="lg:text-[4rem] text-[2rem] w-fit">
-    //        {post.properties.Name.title[0].plain_text}
-    //    </h1>
-    //    <Image className='rounded-2xl' alt={post.properties.Name.title[0].plain_text} src={`${post.properties.Thumbnail.files[0].name}`} width={1200} height={850} />
-
-    //    <p className='prose prose-lg prose-invert'>{post.properties.Subtitle.rich_text[0].plain_text}</p>
-    //    <div className='prose prose-lg prose-invert' dangerouslySetInnerHTML={{ __html: html }}></div>
-
-    // <Share id={post.id} post={post}/>
     return (
         <>
             <article className="lg:px-28 p-10 grid gap-8">
@@ -82,6 +73,15 @@ export default async function PostPage({ params }: { params: { slug: string } })
                     <p>{post.properties.Category.select.name}</p>
                 </div>
 
+                <h1 className="lg:text-[4rem] text-[2rem] w-fit">
+                    {post.properties.Name.title[0].plain_text}
+                </h1>
+                <Image className='rounded-2xl' alt={post.properties.Name.title[0].plain_text} src={`${post.properties.Thumbnail.files[0].name}`} width={1200} height={850} />
+
+                <p className='prose prose-lg prose-invert'>{post.properties.Subtitle.rich_text[0].plain_text}</p>
+                <div className='prose prose-lg prose-invert' dangerouslySetInnerHTML={{ __html: html }}></div>
+
+                <Share id={post.id} post={post} />
             </article>
         </>
     )
