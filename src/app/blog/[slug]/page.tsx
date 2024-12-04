@@ -55,14 +55,14 @@ export default async function PostPage({ params }: { params: { slug: string } })
 
 //     // console.log(post.properties)
 
-//     const render = new NotionRenderer({
-//         client: notionBlog
-//     });
+    const render = new NotionRenderer({
+        client: notionBlog
+    });
 
-//     const html = await render.render(...content)
+    const html = await render.render(...content)
 
-//     render.use(hljsPlugin({}))
-//     render.use(bookmarkPlugin(undefined))
+    render.use(hljsPlugin({}))
+    render.use(bookmarkPlugin(undefined))
 
 // <article className="lg:px-28 p-10 grid gap-8">
 //    <div className="flex items-center gap-12">
