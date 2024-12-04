@@ -15,15 +15,15 @@ interface PageProps {
     };
 }
 
-// export async function generateMetadata({
-//     params,
-// }: PageProps): Promise<Metadata> {
-//     const slug = params.slug;
-//     const post = (await fetchPostSlug(params.slug)) as unknown as NotionPage;
+export async function generateMetadata({
+    params,
+}: PageProps): Promise<Metadata> {
+    const slug = params.slug;
+    const post = (await fetchPostSlug(params.slug)) as unknown as NotionPage;
 
-//     return {
-//         title: post.properties.Name.title[0].plain_text,
-//         description: post.properties.Subtitle.rich_text[0].plain_text,
+    return {
+        title: post.properties.Name.title[0].plain_text,
+        description: post.properties.Subtitle.rich_text[0].plain_text,
 //         alternates: {
 //             canonical: `/blog/${post.properties.Slug.rich_text[0].plain_text}0}`,
 //         },
@@ -42,8 +42,8 @@ interface PageProps {
 //                 },
 //             ],
 //         },
-//     };
-// }
+    };
+}
 
 export default async function PostPage({ params }: { params: { slug: string } }) {
 
