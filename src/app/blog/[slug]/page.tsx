@@ -67,9 +67,8 @@ export default async function PostPage({
   render.use(hljsPlugin({}));
   render.use(bookmarkPlugin(undefined));
 
-  // <Share id={post.id} post={post} />
   return (
-    <>
+      <>
       <article className="lg:px-28 p-10 grid gap-8">
         <div className="flex items-center gap-12">
           <p>{post.properties.Publication.date.start}</p>•
@@ -93,6 +92,7 @@ export default async function PostPage({
           dangerouslySetInnerHTML={{ __html: html }}
         ></div>
       </article>
+      <Share id={post.id} post={post} />
     </>
   );
 }
