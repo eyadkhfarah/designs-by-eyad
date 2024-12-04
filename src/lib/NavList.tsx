@@ -16,4 +16,9 @@ export const NavList: NavLink[] = [
         link: "/about",
         id: 3
     },
+    {
+        name: "Blog",
+        link: "/blog",
+        id: 4
+    },
 ]

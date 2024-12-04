@@ -1,13 +1,7 @@
-import { FormValues } from "@/types/inputs";
-import { Client } from "@notionhq/client";
+import { notionForm } from "@/lib/notion";
 import { NextRequest, NextResponse } from "next/server";
 
-const NOTION_API_KEY = process.env.YOUR_NOTION_API_KEY;
 const NOTION_DATABASE_ID = process.env.YOUR_NOTION_DATABASE_ID;
-
-const notion = new Client({
-  auth: NOTION_API_KEY,
-});
 
 export async function POST(request: NextRequest) {
   if (request.method !== "POST") {
@@ -17,7 +11,7 @@ export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
 
-    await notion.pages.create({
+    await notionForm.pages.create({
       parent: {
         database_id: NOTION_DATABASE_ID,
       },
