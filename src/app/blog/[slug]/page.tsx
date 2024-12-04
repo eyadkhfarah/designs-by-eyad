@@ -49,9 +49,9 @@ export default async function PostPage({ params }: { params: { slug: string } })
 
     const post = (await fetchPostSlug(params.slug)) as unknown as NotionPage;
 
-//     if (!post) return notFound
+    if (!post) return notFound
 
-//     const content = await fetchPostBlocks(post.id)
+    const content = await fetchPostBlocks(post.id)
 
 //     // console.log(post.properties)
 
