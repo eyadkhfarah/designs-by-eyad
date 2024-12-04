@@ -11,9 +11,9 @@ import React from 'react'
 
 interface PageProps {
     params: {
-      slug: string;
+        slug: string;
     };
-  }
+}
 
 // export async function generateMetadata({
 //     params,
@@ -53,7 +53,7 @@ export default async function PostPage({ params }: { params: { slug: string } })
 
     const content = await fetchPostBlocks(post.id)
 
-//     // console.log(post.properties)
+    //     // console.log(post.properties)
 
     const render = new NotionRenderer({
         client: notionBlog
@@ -64,25 +64,25 @@ export default async function PostPage({ params }: { params: { slug: string } })
     render.use(hljsPlugin({}))
     render.use(bookmarkPlugin(undefined))
 
-// <article className="lg:px-28 p-10 grid gap-8">
-//    <div className="flex items-center gap-12">
-//        <p>{post.properties.Publication.date.start}</p>
-//        •
-//        <p>{post.properties.Category.select.name}</p>
-//    </div>
-//    <h1 className="lg:text-[4rem] text-[2rem] w-fit">
-//        {post.properties.Name.title[0].plain_text}
-//    </h1>
-//    <Image className='rounded-2xl' alt={post.properties.Name.title[0].plain_text} src={`${post.properties.Thumbnail.files[0].name}`} width={1200} height={850} />
+    //    <h1 className="lg:text-[4rem] text-[2rem] w-fit">
+    //        {post.properties.Name.title[0].plain_text}
+    //    </h1>
+    //    <Image className='rounded-2xl' alt={post.properties.Name.title[0].plain_text} src={`${post.properties.Thumbnail.files[0].name}`} width={1200} height={850} />
 
-//    <p className='prose prose-lg prose-invert'>{post.properties.Subtitle.rich_text[0].plain_text}</p>
-//    <div className='prose prose-lg prose-invert' dangerouslySetInnerHTML={{ __html: html }}></div>
-// </article>
+    //    <p className='prose prose-lg prose-invert'>{post.properties.Subtitle.rich_text[0].plain_text}</p>
+    //    <div className='prose prose-lg prose-invert' dangerouslySetInnerHTML={{ __html: html }}></div>
 
-// <Share id={post.id} post={post}/>
+    // <Share id={post.id} post={post}/>
     return (
         <>
+            <article className="lg:px-28 p-10 grid gap-8">
+                <div className="flex items-center gap-12">
+                    <p>{post.properties.Publication.date.start}</p>
+                    •
+                    <p>{post.properties.Category.select.name}</p>
+                </div>
 
+            </article>
         </>
     )
 }
