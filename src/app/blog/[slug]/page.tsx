@@ -47,7 +47,7 @@ interface PageProps {
 
 export default async function PostPage({ params }: { params: { slug: string } }) {
 
-//     const post = (await fetchPostSlug(params.slug)) as unknown as NotionPage;
+    const post = (await fetchPostSlug(params.slug)) as unknown as NotionPage;
 
 //     if (!post) return notFound
 
