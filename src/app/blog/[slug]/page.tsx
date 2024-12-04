@@ -56,7 +56,7 @@ export default async function PostPage({
 
   const content = await fetchPostBlocks(post.id);
 
-  //     // console.log(post.properties)
+  console.log(post.properties.Tags);
 
   const render = new NotionRenderer({
     client: notionBlog,
@@ -68,31 +68,48 @@ export default async function PostPage({
   render.use(bookmarkPlugin(undefined));
 
   return (
-      <>
-      <article className="lg:px-28 p-10 grid gap-8">
-        <div className="flex items-center gap-12">
-          <p>{post.properties.Publication.date.start}</p>•
-          <p>{post.properties.Category.select.name}</p>
-        </div>
-        <h1 className="lg:text-[4rem] text-[2rem] w-fit">
-          {post.properties.Name.title[0].plain_text}
-        </h1>
-        <Image
-          className="rounded-2xl"
-          alt={post.properties.Name.title[0].plain_text}
-          src={`${post.properties.Thumbnail.files[0].name}`}
-          width={1200}
-          height={850}
-        />
-        <p className="prose prose-lg prose-invert">
-          {post.properties.Subtitle.rich_text[0].plain_text}
-        </p>
-        <div
-          className="prose prose-lg prose-invert"
-          dangerouslySetInnerHTML={{ __html: html }}
-        ></div>
-      </article>
-      <Share post={post} />
+    <>
+      <div className="lg:px-28 p-10 grid lg:grid-cols-3 gap-8">
+        <article className="grid gap-8 col-span-2">
+          <div className="flex items-center gap-12">
+            <p>{post.properties.Publication.date.start}</p>•
+            <p>{post.properties.Category.select.name}</p>
+          </div>
+          <h1 className="lg:text-[4rem] text-[2rem] w-fit">
+            {post.properties.Name.title[0].plain_text}
+          </h1>
+          <Image
+            className="rounded-2xl"
+            alt={post.properties.Name.title[0].plain_text}
+            src={`${post.properties.Thumbnail.files[0].name}`}
+            width={1200}
+            height={850}
+          />
+          <p className="prose prose-lg prose-invert">
+            {post.properties.Subtitle.rich_text[0].plain_text}
+          </p>
+          <div
+            className="prose prose-lg prose-invert"
+            dangerouslySetInnerHTML={{ __html: html }}
+          ></div>
+
+          <div className="bg-gray-900 p-5 rounded-3xl grid gap-6">
+            <h2>Share this article if you like it ❤️</h2>
+            <Share post={post} />
+          </div>
+        </article>
+
+        <aside className="bg-gray-900 p-5 rounded-3xl grid gap-6 h-fit">
+          <h2>Tags</h2>
+          <div className="flex items-center gap-4 flex-wrap">
+            {post.properties.Tags.multi_select.map((tag) => (
+              <span className="bg-gray-950 px-6 p-3 rounded-full whitespace-nowrap">
+                {tag.name}
+              </span>
+            ))}
+          </div>
+        </aside>
+      </div>
     </>
   );
 }

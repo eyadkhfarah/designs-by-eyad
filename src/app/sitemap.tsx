@@ -1,6 +1,7 @@
 import { allProtoDesigns, allProtoWebs } from "contentlayer/generated";
 import { NavContacts } from "@/lib/NavContact";
 import { MetadataRoute } from "next";
+import { fetchPosts } from "@/lib/notion";
 
 interface sitemap {
   url: String;
@@ -20,6 +21,7 @@ export default async function sitemap() {
   const siteUrl = process.env.NEXT_PUBLIC_DOMAIN_URL || "https://designs-by-eyad.vercel.apps";
   const web = GetWeb();
   const designs = GetDesign();
+  const post = await fetchPosts()
 
   const allWeb =
     web?.map((web) => {
@@ -46,9 +48,19 @@ export default async function sitemap() {
       if (!val.name.includes("Form")) {
         return val;
       }
-    }).map((design) => {
+    }).map((contact) => {
       return {
-        url: `${siteUrl}/contact${design.link}` || undefined,
+        url: `${siteUrl}/contact${contact.link}` || undefined,
+        lastModified: new Date() || "" || undefined,
+        changeFrequency: "weekly" || undefined,
+        priority: 0.8 || undefined,
+      };
+    }) || [];
+
+  const bolgs =
+  post.results?.map((post:any) => {
+      return {
+        url: `${siteUrl}/blog/${post.properties.Slug.rich_text[0].plain_text}` || undefined,
         lastModified: new Date() || "" || undefined,
         changeFrequency: "weekly" || undefined,
         priority: 0.8 || undefined,
@@ -56,17 +68,18 @@ export default async function sitemap() {
     }) || [];
 
   return [
+    
     {
-      url: `${siteUrl}`,
+      url: siteUrl,
       lastModified: new Date(),
-      changeFrequency: "yearly",
-      priority: 0.8,
+      changeFrequency: "weekly",
+      priority: 0.5,
     },
     {
       url: siteUrl + "/portfolio",
       lastModified: new Date(),
       changeFrequency: "weekly",
-      priority: 0.8,
+      priority: 0.5,
     },
     {
       url: siteUrl + "/about",
@@ -74,14 +87,9 @@ export default async function sitemap() {
       changeFrequency: "weekly",
       priority: 0.5,
     },
-    {
-      url: siteUrl + "/contact",
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.5,
-    },
     ...allWeb,
     ...allDesing,
     ...contacts,
+    ...bolgs
   ];
 }

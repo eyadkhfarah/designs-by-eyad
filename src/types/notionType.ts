@@ -61,5 +61,10 @@ export type NotionPage = {
         name: string;
       }>;
     };
+    Tags: {
+      multi_select: Array<{
+        name: Array<string>;
+      }>;
+    }
   };
 };
