@@ -69,24 +69,24 @@ export default async function sitemap() {
 
   return [
     
-    {
-      url: siteUrl,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.5,
-    },
-    {
-      url: siteUrl + "/portfolio",
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.5,
-    },
-    {
-      url: siteUrl + "/about",
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.5,
-    },
+    // {
+    //   url: siteUrl,
+    //   lastModified: new Date(),
+    //   changeFrequency: "weekly",
+    //   priority: 0.5,
+    // },
+    // {
+    //   url: siteUrl + "/portfolio",
+    //   lastModified: new Date(),
+    //   changeFrequency: "weekly",
+    //   priority: 0.5,
+    // },
+    // {
+    //   url: siteUrl + "/about",
+    //   lastModified: new Date(),
+    //   changeFrequency: "weekly",
+    //   priority: 0.5,
+    // },
     ...allWeb,
     ...allDesing,
     ...contacts,
