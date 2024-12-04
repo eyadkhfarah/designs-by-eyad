@@ -19,7 +19,7 @@ export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
   const slug = params.slug;
-  const post = (await fetchPostSlug(params.slug)) as unknown as NotionPage;
+  const post = (await fetchPostSlug(slug)) as unknown as NotionPage;
 
   return {
     title: post.properties.Name.title[0].plain_text,
