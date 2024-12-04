@@ -103,7 +103,7 @@ export default async function PostPage({
           <h2>Tags</h2>
           <div className="flex items-center gap-4 flex-wrap">
             {post.properties.Tags.multi_select.map((tag) => (
-              <span className="bg-gray-950 px-6 p-3 rounded-full whitespace-nowrap">
+              <span key={tag.name[0]} className="bg-gray-950 px-6 p-3 rounded-full whitespace-nowrap">
                 {tag.name}
               </span>
             ))}
