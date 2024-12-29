@@ -9,16 +9,10 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import React from "react";
 
-interface PageProps {
-  params: {
-    slug: string;
-  };
-}
+type Params = Promise<{ slug: string }>
 
-export async function generateMetadata({
-  params,
-}: PageProps): Promise<Metadata> {
-  const slug = params.slug;
+export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
+  const { slug } = await params
   const post = (await fetchPostSlug(slug)) as unknown as NotionPage;
 
   return {
@@ -45,18 +39,12 @@ export async function generateMetadata({
   };
 }
 
-export default async function PostPage({
-  params,
-}: {
-  params: { slug: string };
-}) {
-  const post = (await fetchPostSlug(params.slug)) as unknown as NotionPage;
+export default async function PostPage({ params }: { params: Params }) {
+  const post = (await fetchPostSlug((await params).slug)) as unknown as NotionPage;
 
   if (!post) return notFound;
 
   const content = await fetchPostBlocks(post.id);
-
-  console.log(post.properties.Tags);
 
   const render = new NotionRenderer({
     client: notionBlog,
@@ -103,7 +91,7 @@ export default async function PostPage({
           <h2>Tags</h2>
           <div className="flex items-center gap-4 flex-wrap">
             {post.properties.Tags.multi_select.map((tag) => (
-              <span key={tag.name[0]} className="bg-gray-950 px-6 p-3 rounded-full whitespace-nowrap">
+              <span key={Math.floor(Math.random() * 70) + 1} className="bg-gray-950 px-6 p-3 rounded-full whitespace-nowrap">
                 {tag.name}
               </span>
             ))}
