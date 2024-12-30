@@ -36,7 +36,7 @@ export default function NavMobile({ open, setOpen }: Mobile) {
           } grid gap-9 ease-in-out transition-all duration-700 list-none mx-10 w-full`}
         >
           {NavList.map((nav) => (
-            <li>
+            <li key={`${nav.id}`}>
               <Link
                 aria-label={`${nav.name}`}
                 className={`hover:text-yellow-500 ${
@@ -44,7 +44,6 @@ export default function NavMobile({ open, setOpen }: Mobile) {
                     ? "text-yellow-500"
                     : "text-white"
                 } transition-all ease-in-out font-bold text-2xl duration-300`}
-                key={`${nav.id}`}
                 href={`${nav.link}`}
                 onClick={() => setOpen(!open)}
               >

@@ -2,10 +2,7 @@ import { allProtoDesigns, allProtoWebs } from "contentlayer/generated";
 import { NavContacts } from "@/lib/NavContact";
 import { MetadataRoute } from "next";
 import { fetchPosts } from "@/lib/notion";
-
-interface sitemap {
-  url: String;
-};
+import { link } from "fs";
 
 const GetWeb = () => {
   const doc = allProtoWebs;
@@ -17,58 +14,15 @@ const GetDesign = () => {
   return doc;
 };
 
-export default async function sitemap() {
-  const siteUrl = process.env.NEXT_PUBLIC_DOMAIN_URL || "https://designs-by-eyad.vercel.apps";
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const siteUrl =
+    process.env.NEXT_PUBLIC_DOMAIN_URL || "https://designs-by-eyad.vercel.apps";
+
   const web = GetWeb();
   const designs = GetDesign();
-  const post = await fetchPosts()
+  const post = await fetchPosts();
 
-  const allWeb =
-    web?.map((web) => {
-      return {
-        url: `${siteUrl}${web.slug}` || "" || undefined,
-        lastModified: new Date() || undefined,
-        changeFrequency: "weekly" || undefined,
-        priority: 0.6 || undefined,
-      };
-    }) || [];
-
-  const allDesing =
-    designs?.map((design) => {
-      return {
-        url: `${siteUrl}${design.slug}` || undefined,
-        lastModified: new Date() || undefined,
-        changeFrequency: "weekly" || undefined,
-        priority: 0.6 || undefined,
-      };
-    }) || [];
-
-  const contacts =
-    NavContacts?.filter((val) => {
-      if (!val.name.includes("Form")) {
-        return val;
-      }
-    }).map((contact) => {
-      return {
-        url: `${siteUrl}/contact${contact.link}` || undefined,
-        lastModified: new Date() || "" || undefined,
-        changeFrequency: "weekly" || undefined,
-        priority: 0.6 || undefined,
-      };
-    }) || [];
-
-  const bolgs =
-  post.results?.map((post:any) => {
-      return {
-        url: `${siteUrl}/blog/${post.properties.Slug.rich_text[0].plain_text}` || undefined,
-        lastModified: new Date() || "" || undefined,
-        changeFrequency: "weekly" || undefined,
-        priority: 0.6 || undefined,
-      };
-    }) || [];
-
-  return [
-    
+  const links: MetadataRoute.Sitemap = [
     {
       url: siteUrl,
       lastModified: new Date(),
@@ -76,7 +30,20 @@ export default async function sitemap() {
       priority: 1,
     },
     {
+      url: siteUrl,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 1,
+    },
+
+    {
       url: siteUrl + "/portfolio",
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    {
+      url: siteUrl + "/blog",
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.8,
@@ -87,9 +54,43 @@ export default async function sitemap() {
       changeFrequency: "weekly",
       priority: 0.8,
     },
-    ...allWeb,
-    ...allDesing,
-    ...contacts,
-    ...bolgs
   ];
+
+    NavContacts.filter((val) => !val.name.includes("Form")).forEach((contact) => {
+      links.push({
+        url: `${siteUrl}/contact${contact.link}`,
+        lastModified: new Date(),
+        changeFrequency: "monthly",
+        priority: 0.6,
+      });
+    });
+
+    web.forEach((web) => {
+      links.push({
+        url: `${siteUrl}${web.slug}`,
+        lastModified: new Date(),
+        changeFrequency: "hourly",
+        priority: 0.6,
+      });
+    });
+
+    designs.forEach((web) => {
+      links.push({
+        url: `${siteUrl}${web.slug}`,
+        lastModified: new Date(),
+        changeFrequency: "hourly",
+        priority: 0.6,
+      });
+    });
+
+    post.results.forEach((post: any) => {
+      links.push({
+        url: `${siteUrl}/blog/${post.properties.Slug.rich_text[0].plain_text}`,
+        lastModified: new Date(),
+        changeFrequency: "hourly",
+        priority: 0.6,
+      });
+    });
+
+  return links;
 }

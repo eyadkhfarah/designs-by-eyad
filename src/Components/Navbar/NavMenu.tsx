@@ -11,7 +11,7 @@ export default function NavMenu() {
   return (
     <ul className="lg:flex hidden gap-7">
       {NavList.map((nav) => (
-        <li>
+        <li key={`${nav.id}`}>
           <Link
             aria-label={`${nav.name}`}
             className={`hover:text-yellow-500 ${
@@ -19,7 +19,6 @@ export default function NavMenu() {
                 ? "text-yellow-500"
                 : "text-white"
             } transition-all ease-in-out duration-300`}
-            key={`${nav.id}`}
             href={`${nav.link}`}
           >
             {nav.name}
