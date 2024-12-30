@@ -22,7 +22,11 @@ export default function NavMobile({ open, setOpen }: Mobile) {
     >
       <div className="gird gap-6">
         <div className="my-7 flex justify-end">
-          <button aria-label="close menu" className="p-4" onClick={() => setOpen(!open)}>
+          <button
+            aria-label="close menu"
+            className="p-4"
+            onClick={() => setOpen(!open)}
+          >
             <RiCloseLine className="text-4xl text-white" />
           </button>
         </div>
@@ -32,19 +36,21 @@ export default function NavMobile({ open, setOpen }: Mobile) {
           } grid gap-9 ease-in-out transition-all duration-700 list-none mx-10 w-full`}
         >
           {NavList.map((nav) => (
-            <Link
-              aria-label={`${nav.name}`}
-              className={`hover:text-yellow-500 ${
-                router === nav.link.toLowerCase()
-                  ? "text-yellow-500"
-                  : "text-white"
-              } transition-all ease-in-out font-bold text-2xl duration-300`}
-              key={`${nav.id}`}
-              href={`${nav.link}`}
-              onClick={() => setOpen(!open)}
-            >
-              <li>{nav.name}</li>
-            </Link>
+            <li>
+              <Link
+                aria-label={`${nav.name}`}
+                className={`hover:text-yellow-500 ${
+                  router === nav.link.toLowerCase()
+                    ? "text-yellow-500"
+                    : "text-white"
+                } transition-all ease-in-out font-bold text-2xl duration-300`}
+                key={`${nav.id}`}
+                href={`${nav.link}`}
+                onClick={() => setOpen(!open)}
+              >
+                {nav.name}
+              </Link>
+            </li>
           ))}
         </ul>
       </div>
