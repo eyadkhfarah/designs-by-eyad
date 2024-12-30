@@ -4,11 +4,7 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import PrimaryBtn from "@/Components/Buttons/PrimaryBtn";
 
-interface PageProps {
-  params: {
-    slug: string;
-  };
-}
+type Params = Promise<{ slug: string }>
 
 async function getPost(slug: string) {
   const markdown = allProtoWebs.find(
@@ -20,10 +16,8 @@ async function getPost(slug: string) {
   return markdown;
 }
 
-export async function generateMetadata({
-  params,
-}: PageProps): Promise<Metadata> {
-  const slug = params.slug;
+export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
+  const slug = (await params).slug;
   const markdown = allProtoWebs.find(
     (doc) => doc.slugAsParams.replace("web/", "") === slug
   );
@@ -52,8 +46,8 @@ export async function generateMetadata({
   };
 }
 
-const ProtoDetials = async ({ params }: PageProps) => {
-  const props = await getPost(params.slug);
+const ProtoDetials = async ({ params }: { params: Params }) => {
+  const props = await getPost((await params).slug);
 
   return (
     <article className="lg:px-28 p-10 grid gap-8">
