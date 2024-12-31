@@ -69,7 +69,7 @@ function Soical() {
           Pinterest
         </a>
         <a
-          href="https://twitter.com/eyadkhfarah"
+          href="https://x.com/eyadkhfarahh"
           target="_blank"
           rel="noopener noreferrer"
           className="w-full lg:h-12 h-16 gap-5 bg-gray-900 font-bold rounded-full uppercase flex items-center justify-center"
