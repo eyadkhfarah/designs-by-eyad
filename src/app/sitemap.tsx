@@ -2,7 +2,6 @@ import { allProtoDesigns, allProtoWebs } from "contentlayer/generated";
 import { NavContacts } from "@/lib/NavContact";
 import { MetadataRoute } from "next";
 import { fetchPosts } from "@/lib/notion";
-import { link } from "fs";
 
 const GetWeb = () => {
   const doc = allProtoWebs;

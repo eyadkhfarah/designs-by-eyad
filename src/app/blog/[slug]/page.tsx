@@ -59,11 +59,11 @@ export default async function PostPage({ params }: { params: Params }) {
     <>
       <div className="lg:px-28 p-10 grid lg:grid-cols-3 gap-8">
         <article className="grid gap-8 col-span-2">
-          <div className="flex items-center gap-12">
+          <div className="flex items-center md:gap-12 gap-8">
             <p>{post.properties.Publication.date.start}</p>•
             <p>{post.properties.Category.select.name}</p>
           </div>
-          <h1 className="lg:text-[4rem] text-[2rem] w-fit">
+          <h1 className="lg:text-[4rem] text-[1.7rem] w-fit">
             {post.properties.Name.title[0].plain_text}
           </h1>
           <Image

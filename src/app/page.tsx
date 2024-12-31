@@ -1,7 +1,6 @@
 import H1Hero from "@/Components/Client/h1Hero";
 import ProtImages from "@/Components/Portfolio/ProtImages";
 import ServicesCards from "@/Components/Services/ServicesCards";
-import ServicesSlider from "@/Components/Services/ServicesSlider";
 import Image from "next/image";
 import Link from "next/link";
 

@@ -18,10 +18,10 @@ export default function Footer() {
         <PrimaryBtn target={false} link={"/contact"} text={"Contact Me"} />
       </div>
       <footer
-        className="py-12 lg:mx-28 mx-12 text-center border-t-2 lg:flex grid place-items-center gap-8 justify-between items-center border-t-gray-500 mt-28"
+        className="py-12 lg:mx-28 mx-12 text-center border-t-2 md:flex gap-8 md:flex-row flex-col justify-between items-center border-t-gray-500 mt-28"
         id="contact"
       >
-        <p className="lg:text-base text-sm lg:block hidden">
+        <p className="md:text-base text-sm md:block hidden">
           © {new Date().getFullYear()} <span className="text-yellow-500">Designs by Eyad</span>. All rights reserved.
         </p>
         <div className="flex gap-6 justify-center items-center">
@@ -54,7 +54,7 @@ export default function Footer() {
             <RiYoutubeFill className="text-4xl text-yellow-500" />
           </Link>
         </div>
-        <p className="lg:text-base text-xs text-center w-full lg:hidden">
+        <p className="md:text-base mt-8 text-xs text-center w-full md:hidden">
           © {new Date().getFullYear()} <span className="text-yellow-500">Designs by Eyad</span>. All rights reserved.
         </p>
       </footer>

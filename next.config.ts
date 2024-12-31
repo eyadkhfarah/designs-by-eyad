@@ -3,7 +3,7 @@ const { withContentlayer } = require("next-contentlayer");
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    remotePatterns: [{ protocol: "https", hostname: "i.imgur.com" }, { protocol: "https", hostname: "images.pexels.com"}],
+    remotePatterns: [{ protocol: "https", hostname: "i.imgur.com" }, { protocol: "https", hostname: "images.pexels.com"}, { protocol : "https", hostname: "media.licdn.com"}],
   },
   async rewrites() {
     return [
