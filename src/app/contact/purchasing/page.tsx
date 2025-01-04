@@ -25,7 +25,7 @@ export default function page() {
         <a
           href="tel:+201555715783"
           target="_blank"
-          rel="noopener noreferrer" className="w-full lg:grid hidden p-8 bg-gray-900 font-bold rounded-3xl uppercase gap-6">
+          rel="noopener noreferrer" className="w-full grid p-8 bg-gray-900 font-bold rounded-3xl uppercase gap-6">
 
           <h3>NBE Phone Cash</h3>
           <Image
