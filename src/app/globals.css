@@ -1,6 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 body {
   margin: 0;
@@ -10,7 +8,11 @@ body {
   scroll-behavior: smooth;
 }
 
+@base {
+  
+}
 
+/* 
 @layer base {
   @font-face {
     font-family: "bold";
@@ -82,4 +84,4 @@ body {
   label {
     @apply font-bold
   }
-}
+} */
