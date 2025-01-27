@@ -15,7 +15,7 @@ export default function PrimaryBtn({ link, text, target, className }: Button) {
       href={`${link}`}
       target={target === true ? "_blank" : "_self"}
       rel="noreferrer"
-      className={"py-4 px-8 bg-yellow-600 flex justify-center items-center gap-3 w-fit text-black font-bold rounded-2xl hover:scale-90 transition-all ease-in-out duration-300" + className}
+      className={"p-5 bg-primary flex justify-center uppercase items-center gap-3 w-fit leading-0 h-fit text-black font-bold rounded-xl hover:scale-90 transition-all ease-in-out duration-300" + className}
     >
       {text === "Go to Behance" ? <RiBehanceFill className="text-2xl"/>: null}
       {text}

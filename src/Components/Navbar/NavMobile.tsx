@@ -39,11 +39,11 @@ export default function NavMobile({ open, setOpen }: Mobile) {
             <li key={`${nav.id}`}>
               <Link
                 aria-label={`${nav.name}`}
-                className={`hover:text-yellow-500 ${
+                className={`hover:text-primary ${
                   router === nav.link.toLowerCase()
-                    ? "text-yellow-500"
+                    ? "text-primary"
                     : "text-white"
-                } transition-all ease-in-out font-bold text-2xl duration-300`}
+                } transition-all ease-in-out uppercase font-bold text-2xl duration-300`}
                 href={`${nav.link}`}
                 onClick={() => setOpen(!open)}
               >
@@ -62,7 +62,7 @@ export default function NavMobile({ open, setOpen }: Mobile) {
           target="_self"
           href={"/contact"}
           onClick={() => setOpen(!open)}
-          className={`py-4 px-8 bg-yellow-600 flex justify-center items-center gap-3 cursor-pointer text-black font-bold whitespace-nowrap rounded-2xl hover:scale-90 transition-all ease-in-out duration-300 mb-12`}
+          className={`py-4 px-8 bg-primary flex justify-center items-center gap-3 cursor-pointer uppercase text-black font-bold whitespace-nowrap rounded-2xl hover:scale-90 transition-all ease-in-out duration-300 mb-12`}
         >
           contact Me
         </Link>

@@ -76,7 +76,7 @@ const ProtoDetials = async ({ params }: { params: Params }) => {
                   link={`${props.website}`}
                   text={"Go to Behance"}
                 />
-                <div className="p-5 rounded-full uppercase font-bold bg-gray-900 w-fit">
+                <div className="p-5 rounded-full uppercase font-bold bg-dark w-fit">
                   {props.Protype}
                 </div>
               </div>
@@ -84,7 +84,7 @@ const ProtoDetials = async ({ params }: { params: Params }) => {
           </div>
         </div>
 
-        <div className="h-full overflow-hidden rounded-2xl bg-gray-900">
+        <div className="h-full overflow-hidden rounded-2xl bg-dark">
           {/* <MDX /> */}
         </div>
       </div>

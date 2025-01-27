@@ -27,17 +27,17 @@ export default function ServicesCards() {
         >
           <div className="grid gap-6">
             {category.name === "Web Development" ? (
-              <TbWorldCode className="text-4xl text-yellow-500 " />
+              <TbWorldCode className="text-4xl text-primary " />
             ) : null || category.name === "Social Media Design" ? (
-              <TbMessage2Heart className="text-4xl text-yellow-500" />
+              <TbMessage2Heart className="text-4xl text-primary" />
             ) : null || category.name === "Graphic Design" ? (
-              <TbVectorBezier className="text-4xl text-yellow-500" />
+              <TbVectorBezier className="text-4xl text-primary" />
             ) : null || category.name === "UI/UX Design" ? (
-              <TbDeviceMobileCheck className="text-4xl text-yellow-500" />
+              <TbDeviceMobileCheck className="text-4xl text-primary" />
             ) : null || category.name === "Photoshop" ? (
-              <TbBrandAdobe className="text-4xl text-yellow-500" />
+              <TbBrandAdobe className="text-4xl text-primary" />
             ) : null || category.name === "Logo Design" ? (
-              <TbPencilBolt className="text-4xl text-yellow-500" />
+              <TbPencilBolt className="text-4xl text-primary" />
             ) : null}
             <h3 className="text-xl">{category.name}</h3>
           </div>

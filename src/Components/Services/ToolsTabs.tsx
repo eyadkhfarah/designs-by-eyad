@@ -23,17 +23,17 @@ export default function ToolsTabs() {
 
   return (
     <div className="w-full grid place-items-center">
-      <div className="bg-gray-900 flex lg:w-fit w-full justify-center items-center p-1 rounded-full">
+      <div className="bg-dark flex lg:w-fit w-full justify-center items-center p-1 rounded-full">
         <button
           onClick={() => updateToggle(1)}
-          className={toggle === 1 ? "bg-yellow-500 text-black tabs" : "tabs"}
+          className={toggle === 1 ? "bg-primary text-black tabs" : "tabs"}
         >
           <TbVectorBezier className="text-2xl" />
           <span className="lg:block hidden">Design</span>
         </button>
         <button
           onClick={() => updateToggle(2)}
-          className={toggle === 2 ? "bg-yellow-500 text-black tabs" : "tabs"}
+          className={toggle === 2 ? "bg-primary text-black tabs" : "tabs"}
         >
           <RiCodeLine className="text-2xl" />
           <span className="lg:block hidden">Development</span>

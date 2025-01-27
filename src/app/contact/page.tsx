@@ -174,7 +174,7 @@ const Contact = () => {
           type="checkbox"
           id="subscription"
           disabled={isSubmitSuccessful}
-          className="mr-6 cursor-pointer bg-gray-900 border-none focus:ring-yellow-500 rounded-2xl p-4 checked:bg-yellow-500 transition ease-in-out duration-300"
+          className="mr-6 cursor-pointer bg-dark border-none focus:ring-primary rounded-2xl p-4 checked:bg-primary transition ease-in-out duration-300"
         />
         <label htmlFor="subscription">
           Would you like to send updates and discount promos?
@@ -184,7 +184,7 @@ const Contact = () => {
         type="submit"
         value="Submit"
         disabled={isSubmitSuccessful}
-        className="disabled:scale-90 disabled:bg-gray-600 disabled:cursor-not-allowed py-4 px-8 bg-yellow-600 flex justify-center items-center gap-3 w-full cursor-pointer text-black font-bold rounded-2xl hover:scale-90 transition-all ease-in-out duration-300"
+        className="disabled:scale-90 disabled:bg-gray-600 disabled:cursor-not-allowed py-4 px-8 bg-primary flex justify-center items-center gap-3 w-full cursor-pointer text-black font-bold rounded-2xl hover:scale-90 transition-all ease-in-out duration-300"
       />
       <div className="flex justify-end items-center">
         {isSubmitSuccessful === true ? (

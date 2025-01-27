@@ -18,11 +18,11 @@ export default function Footer() {
         <PrimaryBtn target={false} link={"/contact"} text={"Contact Me"} />
       </div>
       <footer
-        className="py-12 lg:mx-28 mx-12 text-center border-t-2 md:flex gap-8 md:flex-row flex-col justify-between items-center border-t-gray-500 mt-28"
+        className="my-12 mx-auto lg:max-w-7xl rounded-3xl md:max-w-2xl bg-dark max-w-xs text-center md:flex gap-8 md:flex-row flex-col justify-between items-center mt-28 p-8"
         id="contact"
       >
         <p className="md:text-base text-sm md:block hidden">
-          © {new Date().getFullYear()} <span className="text-yellow-500">Designs by Eyad</span>. All rights reserved.
+          © {new Date().getFullYear()} <span className="text-primary">Designs by Eyad</span>. All rights reserved.
         </p>
         <div className="flex gap-6 justify-center items-center">
           <Link
@@ -30,32 +30,32 @@ export default function Footer() {
             target="_blank"
             title="Follow Me On Facebook"
           >
-            <RiFacebookCircleFill className="text-4xl text-yellow-500" />
+            <RiFacebookCircleFill className="text-4xl text-primary" />
           </Link>
           <Link
             href={"https://www.instagram.com/designs.by.eyad"}
             target="_blank"
             title="Follow Me On Instagram"
           >
-            <RiInstagramLine className="text-4xl text-yellow-500" />
+            <RiInstagramLine className="text-4xl text-primary" />
           </Link>
           <Link
             href={"https://www.linkedin.com/company/designsbyeyad"}
             target="_blank"
             title="Follow Me On LinkedIn"
           >
-            <RiLinkedinFill className="text-4xl text-yellow-500" />
+            <RiLinkedinFill className="text-4xl text-primary" />
           </Link>
           <Link
             href={"https://www.youtube.com/@designsbyeyad"}
             target="_blank"
             title="Subscribe MY Channel On YouTube"
           >
-            <RiYoutubeFill className="text-4xl text-yellow-500" />
+            <RiYoutubeFill className="text-4xl text-primary" />
           </Link>
         </div>
         <p className="md:text-base mt-8 text-xs text-center w-full md:hidden">
-          © {new Date().getFullYear()} <span className="text-yellow-500">Designs by Eyad</span>. All rights reserved.
+          © {new Date().getFullYear()} <span className="text-primary">Designs by Eyad</span>. All rights reserved.
         </p>
       </footer>
     </>

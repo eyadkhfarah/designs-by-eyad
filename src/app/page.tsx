@@ -31,7 +31,7 @@ export default function Home() {
       <ProtImages />
 
       <section className="lg:px-60 md:px-30 px-5 my-60">
-        <h2 className="text-yellow-500 text-4xl text-center">Our Clients</h2>
+        <h2 className="text-primary text-4xl text-center">Our Clients</h2>
         <div className="flex md:flex-row flex-wrap flex-col mx-auto justify-between items-center overflow-hidden py-20 gap-12">
           <Link href={"/portfolio/web/qwmy"} aria-label="QWMY" title="QWMY">
             <Image
@@ -73,7 +73,7 @@ export default function Home() {
       </section>
 
       <section className="lg:px-60 md:px-30 px-5 my-10">
-        <h2 className="text-yellow-500 uppercase text-4xl text-center my-12">
+        <h2 className="text-primary uppercase text-4xl text-center my-12">
           What I Offer
         </h2>
 
@@ -86,7 +86,7 @@ export default function Home() {
           <h2 className="text-neutral-950 uppercase lg:text-4xl text-2xl text-center">
             MY FREELANCE ACCOUNTS
           </h2>
-          <div className="bg-yellow-500 h-2 w-12"></div>
+          <div className="bg-primary h-2 w-12"></div>
         </div>
         <div className="flex md:flex-row flex-wrap flex-col mx-auto justify-evenly items-center p-10 gap-20">
           <a

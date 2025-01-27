@@ -27,7 +27,7 @@ function Email() {
           href="mail:eyadkhfarah@gmail.com"
           target="_blank"
           rel="noopener noreferrer"
-          className="w-full h-12 gap-5 bg-gray-900 font-bold rounded-full uppercase flex items-center justify-center"
+          className="w-full h-12 gap-5 bg-dark font-bold rounded-full uppercase flex items-center justify-center"
         >
           <TbBrandGmail className="text-2xl" />
           Gmail
@@ -36,7 +36,7 @@ function Email() {
           href="mail:eyadkhfarah@outlook.com"
           target="_blank"
           rel="noopener noreferrer"
-          className="w-full h-12 gap-5 bg-gray-900 font-bold rounded-full uppercase flex items-center justify-center"
+          className="w-full h-12 gap-5 bg-dark font-bold rounded-full uppercase flex items-center justify-center"
         >
           <RiMicrosoftFill className="text-2xl" />
           Outlook

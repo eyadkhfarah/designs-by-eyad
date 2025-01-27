@@ -28,7 +28,7 @@ export default function ProtImages() {
             transition={{ duration: 0.5, delay: 0.5 }}
             className=""
           >
-            <h2 className="text-yellow-500 text-4xl mb-6">Colorful Web</h2>
+            <h2 className="text-primary text-4xl mb-6">Colorful Web</h2>
             <p className="md:w-80 mb-8">
               Stunning websites that pack a punch with vibrant colors and modern
               typography.
@@ -58,7 +58,7 @@ export default function ProtImages() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.5 }}
           >
-            <h2 className="text-yellow-500 text-4xl mb-6">
+            <h2 className="text-primary text-4xl mb-6">
               Branding Brilliance
             </h2>
             <p className="md:w-80 mb-14">

@@ -72,7 +72,7 @@ const ProtoDetials = async ({ params }: { params: Params }) => {
                 link={`${props.website}`}
                 text={"Go to the website"}
               />
-              <div className="p-5 rounded-full uppercase font-bold bg-gray-900 w-fit">
+              <div className="p-5 rounded-full uppercase font-bold bg-dark w-fit">
                 {props.Protype}
               </div>
             </div>
@@ -82,7 +82,7 @@ const ProtoDetials = async ({ params }: { params: Params }) => {
                 {props.stack?.map((skill) => (
                   <li
                     key={skill}
-                    className="p-5 rounded-full text-sm uppercase font-bold bg-gray-900 w-fit"
+                    className="p-5 rounded-full text-sm uppercase font-bold bg-dark w-fit"
                   >
                     {skill}
                   </li>
@@ -92,7 +92,7 @@ const ProtoDetials = async ({ params }: { params: Params }) => {
           </div>
         </div>
 
-        <div className="h-full rounded-2xl bg-gray-900"></div>
+        <div className="h-full rounded-2xl bg-dark"></div>
       </div>
     </article>
   );

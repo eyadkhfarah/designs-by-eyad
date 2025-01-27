@@ -36,7 +36,7 @@ function Soical() {
           href="https://www.facebook.com/eyad.kh.farah"
           target="_blank"
           rel="noopener noreferrer"
-          className="w-full lg:h-12 h-16 gap-5 bg-gray-900 font-bold rounded-full uppercase flex items-center justify-center"
+          className="w-full lg:h-12 h-16 gap-5 bg-dark font-bold rounded-full uppercase flex items-center justify-center"
         >
           <RiFacebookCircleFill className="text-2xl" />
           Facebook
@@ -45,7 +45,7 @@ function Soical() {
           href="https://www.instagram.com/eyad.kh.farah/"
           target="_blank"
           rel="noopener noreferrer"
-          className="w-full lg:h-12 h-16 gap-5 bg-gray-900 font-bold rounded-full uppercase flex items-center justify-center"
+          className="w-full lg:h-12 h-16 gap-5 bg-dark font-bold rounded-full uppercase flex items-center justify-center"
         >
           <RiInstagramLine className="text-2xl" />
           Instagram
@@ -54,7 +54,7 @@ function Soical() {
           href="https://www.linkedin.com/in/eyadkhfarah/"
           target="_blank"
           rel="noopener noreferrer"
-          className="w-full lg:h-12 h-16 gap-5 bg-gray-900 font-bold rounded-full uppercase flex items-center justify-center"
+          className="w-full lg:h-12 h-16 gap-5 bg-dark font-bold rounded-full uppercase flex items-center justify-center"
         >
           <RiLinkedinBoxFill className="text-2xl" />
           LinkedIn
@@ -63,7 +63,7 @@ function Soical() {
           href="https://www.pinterest.com/eyadkhfarah/"
           target="_blank"
           rel="noopener noreferrer"
-          className="w-full lg:h-12 h-16 gap-5 bg-gray-900 font-bold rounded-full uppercase flex items-center justify-center"
+          className="w-full lg:h-12 h-16 gap-5 bg-dark font-bold rounded-full uppercase flex items-center justify-center"
         >
           <RiPinterestFill className="text-2xl" />
           Pinterest
@@ -72,7 +72,7 @@ function Soical() {
           href="https://x.com/eyadkhfarahh"
           target="_blank"
           rel="noopener noreferrer"
-          className="w-full lg:h-12 h-16 gap-5 bg-gray-900 font-bold rounded-full uppercase flex items-center justify-center"
+          className="w-full lg:h-12 h-16 gap-5 bg-dark font-bold rounded-full uppercase flex items-center justify-center"
         >
           <RiTwitterXLine className="text-2xl" />
           Twitter
@@ -81,13 +81,13 @@ function Soical() {
           href="https://github.com/eyadkhfarah/"
           target="_blank"
           rel="noopener noreferrer"
-          className="w-full lg:h-12 h-16 gap-5 bg-gray-900 font-bold rounded-full uppercase flex items-center justify-center">
+          className="w-full lg:h-12 h-16 gap-5 bg-dark font-bold rounded-full uppercase flex items-center justify-center">
             <RiGithubFill className="text-2xl" />
             GitHub
           </a>
           <a href="https://www.tiktok.com/@eyadkhfarah" target="_blank"
           rel="noopener noreferrer"
-          className="w-full lg:h-12 h-16 gap-5 bg-gray-900 font-bold rounded-full uppercase flex items-center justify-center">
+          className="w-full lg:h-12 h-16 gap-5 bg-dark font-bold rounded-full uppercase flex items-center justify-center">
             <RiTiktokFill className="text-2xl" />
             TikTok
           </a>

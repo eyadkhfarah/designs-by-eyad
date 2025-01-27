@@ -81,13 +81,13 @@ export default async function PostPage({ params }: { params: Params }) {
             dangerouslySetInnerHTML={{ __html: html }}
           ></div>
 
-          <div className="bg-gray-900 p-5 rounded-3xl grid gap-6">
+          <div className="bg-dark p-5 rounded-3xl grid gap-6">
             <h2>Share this article if you like it ❤️</h2>
             <Share post={post} />
           </div>
         </article>
 
-        <aside className="bg-gray-900 p-5 rounded-3xl grid gap-6 h-fit">
+        <aside className="bg-dark p-5 rounded-3xl grid gap-6 h-fit">
           <h2>Tags</h2>
           <div className="flex items-center gap-4 flex-wrap">
             {post.properties.Tags.multi_select.map((tag) => (

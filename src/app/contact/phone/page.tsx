@@ -25,7 +25,7 @@ function Phone() {
           href="tel:+201555715783"
           target="_blank"
           rel="noopener noreferrer"
-          className="w-full h-12 gap-5 bg-gray-900 font-bold rounded-full uppercase flex items-center justify-center"
+          className="w-full h-12 gap-5 bg-dark font-bold rounded-full uppercase flex items-center justify-center"
         >
           01555715783
         </a>
@@ -33,7 +33,7 @@ function Phone() {
           href="tel:+201158804189"
           target="_blank"
           rel="noopener noreferrer"
-          className="w-full h-12 gap-5 bg-gray-900 font-bold rounded-full uppercase flex items-center justify-center"
+          className="w-full h-12 gap-5 bg-dark font-bold rounded-full uppercase flex items-center justify-center"
         >
           01158804189
         </a>

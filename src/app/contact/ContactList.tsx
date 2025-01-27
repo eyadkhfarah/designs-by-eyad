@@ -13,13 +13,13 @@ export default function ContactList() {
   const router = usePathname();
 
   return (
-    <ul className="lg:col-span-1 h-fit w-full p-6 rounded-2xl bg-gray-900">
+    <ul className="lg:col-span-1 h-fit w-full p-6 rounded-2xl bg-dark">
       {NavContacts.map((list) => (
         <li
           key={`${list.id}`}
           className={`${
-            router === `/contact${list.link}` ? "bg-yellow-600 text-black" : ""
-          } w-full hover:bg-yellow-600 my-3 hover:text-black transition-all ease-in-out duration-300 font-bold rounded-2xl p-3`}
+            router === `/contact${list.link}` ? "bg-primary text-black" : ""
+          } w-full hover:bg-primary my-3 hover:text-black transition-all ease-in-out duration-300 font-bold rounded-2xl p-3`}
         >
           <Link
             className="flex items-center gap-4"
