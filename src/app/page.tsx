@@ -26,50 +26,6 @@ export default function Home() {
         <MissionVision />
       </section>
 
-
-      {/* <section className="lg:px-60 md:px-30 px-5 my-60">
-        <h2 className="text-primary text-4xl text-center">Our Clients</h2>
-        <div className="flex md:flex-row flex-wrap flex-col mx-auto justify-between items-center overflow-hidden py-20 gap-12">
-          <Link href={"/portfolio/web/qwmy"} aria-label="QWMY" title="QWMY">
-            <Image
-              alt="منصة قومي"
-              src={"/Clients/QWMY.svg"}
-              className="opacity-30 saturate-0 hover:opacity-100 hover:saturate-100 transition-all ease-in-out duration-300"
-              width={200}
-              height={200}
-            />
-          </Link>
-          <Link
-            href={"/portfolio/web/wai-masr"}
-            aria-label="Wai Masr"
-            title="Wai Masr"
-          >
-            <Image
-              alt="وعي مصر"
-              src={"/Clients/Wai-masr.svg"}
-              className="opacity-30 saturate-0 hover:opacity-100 hover:saturate-100 transition-all ease-in-out duration-300"
-              width={200}
-              height={200}
-            />
-          </Link>
-
-          <Link
-            href={"/portfolio/web/lokoji"}
-            aria-label="Lokoji"
-            title="Lokoji"
-          >
-            <Image
-              alt="لوكوجي"
-              src={"/Clients/Lokoji.svg"}
-              className="opacity-30 saturate-0 hover:opacity-100 hover:saturate-100 transition-all ease-in-out duration-300"
-              width={200}
-              height={200}
-            />
-          </Link>
-        </div>
-      </section> */}
-
-
       <section className="my-28">
         <h2 className="text-primary lg:text-5xl text-2xl text-center my-12">What My Clients Say About Me</h2>
         <TestimonialSlider />
