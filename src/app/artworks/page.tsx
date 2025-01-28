@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import Image from "next/image";
 import { Metadata } from "next";
 import { fetchArtworks } from "@/lib/notion";
@@ -24,19 +24,20 @@ export const metadata: Metadata = {
 const Artwork: React.FC = async () => {
     const artworks = await fetchArtworks()
 
-    console.log(artworks.results.map((artwork: any) => artwork.properties.Name.title[0].plain_text))
+    // console.log(artworks.results.map((artwork: any) => artwork.properties.Image.files[0]))
 
     return (
         <section>
             <h1 className="lg:text-[8rem] md:text-[5rem] text-[2rem] w-fit">
                 Artworks
             </h1>
-            <div className="grid lg:grid-cols-3">
-                {/* {artworks.results.map((artwork: any) => (
-                    <></>
-                ))} */}
+            <div className="grid lg:grid-cols-3 grid-cols-1 gap-8">
+                <Suspense>
+                    {artworks.results.map((artwork: any, index) => (
+                        <Image key={index} className="rounded-3xl" alt={artwork.properties.Name.title[0].plain_text} src={artwork.properties.Image.files[0].external.url} width={500} height={250} />
+                    ))}
+                </Suspense>
             </div>
-            <p>This is the Artwork component.</p>
         </section>
     );
 };

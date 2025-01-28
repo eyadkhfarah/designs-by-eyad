@@ -18,7 +18,7 @@ export default function NavMobile({ open, setOpen }: Mobile) {
     <div
       className={`lg:hidden ${
         open === true ? "" : "w-full"
-      } w-0 origin-left ease-in-out transition-all duration-700 fixed flex flex-col justify-between top-0 pt-10 overflow-hidden bg-black z-40 h-screen`}
+      } w-0 origin-left ease-in-out transition-all duration-700 fixed flex flex-col justify-between top-0 overflow-hidden bg-black z-40 h-dvh`}
     >
       <div className="gird gap-6">
         <div className="my-7 flex justify-end">

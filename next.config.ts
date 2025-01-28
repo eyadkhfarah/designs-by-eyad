@@ -2,8 +2,21 @@ const { withContentlayer } = require("next-contentlayer");
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  experimental: {
+    turbo: {
+      resolveExtensions: [
+        '.mdx',
+        '.tsx',
+        '.ts',
+        '.jsx',
+        '.js',
+        '.mjs',
+        '.json',
+      ],
+    },
+  },
   images: {
-    remotePatterns: [{ protocol: "https", hostname: "i.imgur.com" }, { protocol: "https", hostname: "images.pexels.com"}, { protocol : "https", hostname: "media.licdn.com"}],
+    remotePatterns: [{ protocol: "https", hostname: "i.imgur.com" }, {protocol: "https", hostname: "i.postimg.cc"},{ protocol: "https", hostname: "images.pexels.com"}, { protocol : "https", hostname: "media.licdn.com"}],
   },
   async rewrites() {
     return [

@@ -1,55 +1,91 @@
 "use client";
 
 import { useState } from "react";
-import faqData from '@/lib/faqData';
 import { motion, AnimatePresence } from "framer-motion";
+import faqData from '@/lib/faqData';
 import { RiArrowDownLine, RiArrowUpLine } from "react-icons/ri";
 import { marked } from "marked";
 import { cn } from "@/lib/utils";
 
-const FAQCard: React.FC = ({}) => {
+const faqItemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 },
+  exit: { opacity: 0, y: -20 }
+};
+
+const chevronVariants = {
+  open: { rotate: 180 },
+  closed: { rotate: 0 }
+};
+
+const FAQSection: React.FC = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const toggleAnswer = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index);
+    setOpenIndex(prev => prev === index ? null : index);
   };
 
   return (
-      <>
+    <>
+      
+      <div className="space-y-4">
         {faqData.map((item, index) => (
-          <div
+          <motion.div
             key={index}
-            className="bg-dark group w-full hover:text-dark hover:bg-primary rounded-3xl transition-all ease-in-out duration-300"
+            layout
+            variants={faqItemVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            transition={{ duration: 0.3, delay: index * 0.1 }}
+            className="rounded-3xl shadow-sm overflow-hidden bg-dark"
           >
-            {/* Question Button */}
-            <button
+            <motion.button
+              layout
               onClick={() => toggleAnswer(index)}
-              className={cn("w-full flex justify-between text-white hover:text-dark rounded-3xl md:max-w-4xl transition-all ease-in-out duration-300 cursor-pointer items-center px-6 py-4 text-left text-lg font-bold focus:outline-none", openIndex === index && "bg-primary text-dark")}
+              className={cn("md:w-4xl w-full flex justify-between text-white hover:text-dark rounded-3xl md:max-w-4xl transition-all ease-in-out duration-300 cursor-pointer items-center hover:bg-primary group px-6 py-4 text-left text-lg font-bold focus:outline-none", openIndex === index && "bg-primary text-dark")}
+              aria-expanded={openIndex === index}
+              aria-controls={`answer-${index}`}
+              whileTap={{ scale: 0.98 }}
             >
-              {item.question}
+              <span className="pr-4">{item.question}</span>
+              <motion.span
+                variants={chevronVariants}
+                animate={openIndex === index ? "open" : "closed"}
+                transition={{ duration: 0.2 }}
+              >
+                <RiArrowDownLine className={cn("w-5 h-5 text-primary group-hover:text-dark transition-all ease-in-out duration-300", openIndex === index && "text-dark")} />
+              </motion.span>
+            </motion.button>
 
-              <RiArrowDownLine className={cn("w-5 h-5 text-primary group-hover:text-dark transition-all ease-in-out duration-300", openIndex === index && "rotate-180 text-dark")} />
-            </button>
-
-            {/* Answer with Animation */}
             <AnimatePresence initial={false}>
               {openIndex === index && (
                 <motion.div
-                  key="answer"
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: "auto", opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: 0.3, ease: "easeInOut" }}
-                  className="overflow-hidden md:max-w-4xl w-full rounded-b-3xl px-6 py-4 text-white bg-dark"
+                  layout
+                  id={`answer-${index}`}
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{
+                    opacity: 1,
+                    height: "auto",
+                    transition: { type: "spring", mass: 0.3, stiffness: 50 }
+                  }}
+                  exit={{
+                    opacity: 0,
+                    height: 0,
+                    transition: { duration: 0.2 }
+                  }}
+                  className="px-6 py-4 text-white bg-dark"
                 >
-                  <p className="w-full" dangerouslySetInnerHTML={{ __html: marked(item.answer) }}></p>
+                  <p  dangerouslySetInnerHTML={{ __html: marked(item.answer) }} className="leading-relaxed"></p>
                 </motion.div>
               )}
             </AnimatePresence>
-          </div>
+          </motion.div>
         ))}
-      </>
+      </div>
+    </>
   );
 };
 
-export default FAQCard;
+export default FAQSection;
+

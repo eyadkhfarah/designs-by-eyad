@@ -39,7 +39,7 @@ export default function RootLayout({
 
   return (
     <>
-      <section className="lg:px-28 p-10 grid gap-8">
+      <section>
         <h1 className="lg:text-[8rem] md:text-[5rem] leading-none text-[2.7rem] w-fit">
           Contact
         </h1>

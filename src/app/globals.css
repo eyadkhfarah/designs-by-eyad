@@ -18,10 +18,10 @@ body {
   --color-dark: #1a1a1a;
   --color-primary: #E5FE00;
   --color-border: "hsl(var(--border))",
-  --color-input: "hsl(var(--input))",
-  --color-ring: "hsl(var(--ring))",
-  --color-background: "hsl(var(--background))",
-  --color-foreground: "hsl(var(--foreground))",
+    --color-input: "hsl(var(--input))",
+    --color-ring: "hsl(var(--ring))",
+    --color-background: "hsl(var(--background))",
+    --color-foreground: "hsl(var(--foreground))",
 }
 
 @font-face {
@@ -41,16 +41,41 @@ body {
 }
 
 @layer utilities {
+
   .prose ul {
-    @apply list-disc; /* or list-decimal */
+    @apply list-disc;
+    /* or list-decimal */
   }
+
   .prose ul li::marker {
-    color: #E5FE00; /* Customize bullet color */
+    color: #E5FE00;
+    /* Customize bullet color */
   }
 }
 
 
 @layer base {
+
+  /* width */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: var(--color-dark);
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-primary);
+    border-radius: 10px;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-primary);
+  }
 
   body {
     @apply bg-neutral-950 text-white
@@ -59,7 +84,7 @@ body {
   h1 {
     @apply font-bold uppercase
   }
-  
+
   h2 {
     @apply font-bold uppercase text-4xl
   }
@@ -73,7 +98,7 @@ body {
   }
 
   article {
-    @apply mx-auto lg:max-w-7xl md:max-w-2xl max-w-xs grid gap-8
+    @apply mx-auto lg:max-w-7xl md:max-w-2xl max-w-xs py-8 grid gap-8
   }
 
   .logos {
@@ -109,7 +134,7 @@ body {
   }
 
   .pro-card {
-    @apply bg-dark rounded-2xl lg:flex grid items-center gap-10 w-full p-5 hover:scale-105 cursor-pointer transition-all ease-in-out duration-300
+    @apply bg-dark rounded-2xl lg:flex grid items-center gap-10 w-full p-5 hover:scale-105 cursor-pointer transition-all ease-in-out duration-300 h-full
   }
 }
 

@@ -4,6 +4,7 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import PrimaryBtn from "@/Components/Buttons/PrimaryBtn";
 import { getMDXComponent } from "next-contentlayer/hooks";
+import { marked } from "marked";
 
 type Params = Promise<{ slug: string }>
 
@@ -16,6 +17,8 @@ async function getPost(slug: string) {
 
   return markdown;
 }
+
+
 
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   const { slug } = await params
@@ -50,24 +53,24 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
 const ProtoDetials = async ({ params }: { params: Params }) => {
   const props = await getPost((await params).slug);
 
-  // const MDX = getMDXComponent(props.body.code);
+  const Bg = props.BGColor
 
   return (
     <article>
       <h1 className="lg:text-[4rem] md:text-[3rem] text-[2rem] w-fit">
         {props?.title}
       </h1>
-      <div className="grid gap-8">
+      <div className="grid gap-8 w-full">
         <div className="">
-          <div className="lg:flex h-fit sticky top-24 grid gap-8">
+          <div className="lg:flex items-start h-fit grid gap-8">
             <Image
               src={props?.thumnail}
               width={250}
               height={250}
-              sizes="(max-width: 600px) 480px, (max-width: 1200px) 1024px, 1920px"
               className="rounded-2xl h-fit lg:w-fit w-full"
               alt={props?.title}
             />
+
             <div className="flex flex-col justify-end gap-5 w-fit">
               <p>{props.description}</p>
               <div className="flex flex-wrap items-center gap-6">
@@ -84,9 +87,7 @@ const ProtoDetials = async ({ params }: { params: Params }) => {
           </div>
         </div>
 
-        <div className="h-full overflow-hidden rounded-2xl bg-dark">
-          {/* <MDX /> */}
-        </div>
+        <div className={`overflow-hidden mx-auto md:max-w-7xl rounded-2xl prose prose-lg prose-img:m-0 w-full bg-dark`} dangerouslySetInnerHTML={{ __html: marked(props.body.raw) }}></div>
       </div>
     </article>
   );

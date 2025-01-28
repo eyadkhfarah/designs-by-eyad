@@ -30,7 +30,7 @@ export default async function Designs() {
   const doc = await getPro();
   return (
     <>
-      <section className="lg:px-28 p-10 grid gap-8">
+      <section>
         <h1 className="lg:text-[8rem] md:text-[5rem] text-[3rem] w-fit">
           Designs
         </h1>

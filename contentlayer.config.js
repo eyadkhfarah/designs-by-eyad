@@ -48,6 +48,9 @@ export const ProtoDesign = defineDocumentType(() => ({
     website: {
       type: "string",
     },
+    BGColor: {
+      type: "string",
+    },
     published: {
       type: "boolean",
       default: true,

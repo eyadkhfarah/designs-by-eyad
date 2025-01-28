@@ -7,8 +7,8 @@ import { motion } from "framer-motion";
 
 export default function ProtImages() {
   return (
-    <section className="mx-auto lg:max-w-7xl md:max-w-2xl max-w-xs my-28">
-      <div className="grid place-items-center w-full gap-8">
+    <>
+      <div className="grid place-items-center w-full md:gap-8 gap-28">
         <div className="lg:flex gird gap-28 items-center group">
           <div className="rounded-[3rem] w-fit aspect-square overflow-hidden mb-12">
             <Image
@@ -44,8 +44,8 @@ export default function ProtImages() {
           </motion.div>
         </div>
 
-        <div className="lg:flex grid gap-8 items-center group">
-          <div className="lg:hidden rounded-[3rem] w-fit overflow-hidden mb-12">
+        <div className="lg:flex flex-row-reverse gird gap-28 items-center group">
+          <div className="rounded-[3rem] w-fit aspect-square overflow-hidden mb-12">
             <Image
               alt="desgins"
               src={"/desgin.webp"}
@@ -55,6 +55,7 @@ export default function ProtImages() {
               className="group-hover:scale-110 transition-all ease-in-out duration-300 aspect-square object-cover"
             />
           </div>
+
           <motion.div
             initial={{ opacity: 0, translateY: 50 }}
             whileInView={{ opacity: 1, translateY: 0 }}
@@ -63,7 +64,7 @@ export default function ProtImages() {
             className="grid gap-8"
           >
             <div className="gird">
-              <h2 className="text-primary text-4xl mb-4">
+              <h2 className="text-primary text-4xl mb-4 w-7">
                 Branding Brilliance
               </h2>
               <p className="md:w-80">
@@ -76,17 +77,8 @@ export default function ProtImages() {
               text={"Check My Designs"}
             />
           </motion.div>
-          <div className="rounded-[3rem] overflow-hidden mb-12">
-            <Image
-              alt="desgins"
-              src={"/desgin.webp"}
-              width={544}
-              height={544}
-              className="group-hover:scale-110 lg:block hidden transition-all ease-in-out duration-300 aspect-square object-cover"
-            />
-          </div>
         </div>
       </div>
-    </section>
+    </>
   );
 }

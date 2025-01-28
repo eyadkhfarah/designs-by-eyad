@@ -46,7 +46,7 @@ const Contact = () => {
           id="fullName"
           disabled={isSubmitSuccessful}
           placeholder="Your Full Name*"
-          className={errors.fullName ? "ring-2 ring-red-500 input" : "input"}
+          className={errors.fullName ? "ring-2 ring-red-500 w-full p-5 rounded-2xl bg-dark focus:ring-primary border-none mt-4 invalid:not-focus:ring-red-600" : "input w-full p-5 rounded-2xl bg-dark focus:ring-primary border-none mt-4 invalid:not-focus:ring-red-600"}
         />
         {errors.fullName && errors.fullName.type === "required" && (
           <p className="my-2 text-red-600">You must enter your name</p>
@@ -67,7 +67,7 @@ const Contact = () => {
           id="email"
           disabled={isSubmitSuccessful}
           placeholder="Your email*"
-          className={errors.email ? "ring-2 ring-red-500 input" : "input"}
+          className={errors.email ? "ring-2 ring-red-500 w-full p-5 rounded-2xl bg-dark focus:ring-primary border-none mt-4 invalid:not-focus:ring-red-600" : "w-full p-5 rounded-2xl bg-dark focus:ring-primary border-none mt-4 invalid:not-focus:ring-red-600"}
         />
         {errors.email && errors.email.type === "required" && (
           <p className="my-2 text-red-600">You must enter your email</p>
@@ -85,7 +85,7 @@ const Contact = () => {
           id="number"
           disabled={isSubmitSuccessful}
           placeholder="Your phone/whatsapp"
-          className={errors.number ? "ring-2 ring-red-500 input" : "input"}
+          className={errors.number ? "ring-2 ring-red-500 w-full p-5 rounded-2xl bg-dark focus:ring-primary border-none mt-4 invalid:not-focus:ring-red-600" : "w-full p-5 rounded-2xl bg-dark focus:ring-primary border-none mt-4 invalid:not-focus:ring-red-600"}
         />
         {errors.number && errors.number.type === "minLength" && (
           <p className="my-2 text-red-600">Must be more than 20 number</p>
@@ -97,7 +97,7 @@ const Contact = () => {
         <select
           {...register("services", { required: true })}
           id="services"
-          className={errors.message ? "ring-2 ring-red-500 input" : "input"}
+          className={errors.message ? "ring-2 ring-red-500 w-full p-5 rounded-2xl bg-dark focus:ring-primary border-none mt-4 invalid:not-focus:ring-red-600" : "w-full p-5 rounded-2xl bg-dark focus:ring-primary border-none mt-4 invalid:not-focus:ring-red-600"}
           disabled={isSubmitSuccessful}
         >
           <option value="Web Development">Web Development</option>
@@ -121,7 +121,7 @@ const Contact = () => {
           id="company"
           disabled={isSubmitSuccessful}
           placeholder="Your Company Name"
-          className={errors.fullName ? "ring-2 ring-red-500 input" : "input"}
+          className={errors.fullName ? "ring-2 ring-red-500 w-full p-5 rounded-2xl bg-dark focus:ring-primary border-none mt-4 invalid:not-focus:ring-red-600" : "w-full p-5 rounded-2xl bg-dark focus:ring-primary border-none mt-4 invalid:not-focus:ring-red-600"}
         />
         {errors.companyName && errors.companyName.type === "required" && (
           <p className="my-2 text-red-600">You must enter your company name</p>
@@ -133,7 +133,7 @@ const Contact = () => {
           {...register("companySize", { required: true })}
           id="size"
           disabled={isSubmitSuccessful}
-          className={errors.message ? "ring-2 ring-red-500 input" : "input"}
+          className={errors.message ? "ring-2 ring-red-500 w-full p-5 rounded-2xl bg-dark focus:ring-primary border-none mt-4 invalid:not-focus:ring-red-600" : "w-full p-5 rounded-2xl bg-dark focus:ring-primary border-none mt-4 invalid:not-focus:ring-red-600"}
         >
           <option value="Just Starting">Just Starting</option>
           <option value="5 employees">5 employees</option>
@@ -160,7 +160,7 @@ const Contact = () => {
           disabled={isSubmitSuccessful}
           placeholder="Describe your need"
           rows={10}
-          className={errors.message ? "ring-2 ring-red-500 input" : "input"}
+          className={errors.message ? "ring-2 ring-red-500 w-full p-5 rounded-2xl bg-dark focus:ring-primary border-none mt-4 invalid:not-focus:ring-red-600" : "w-full p-5 rounded-2xl bg-dark focus:ring-primary border-none mt-4 invalid:not-focus:ring-red-600"}
         />
         {errors.companyName && errors.companyName.type === "required" && (
           <p className="my-2 text-red-600">

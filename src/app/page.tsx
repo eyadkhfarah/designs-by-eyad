@@ -18,7 +18,9 @@ export default function Home() {
         <ServicesCards />
       </section>
 
-      <ProtImages />
+      <section>
+        <ProtImages />
+      </section>
 
       <section>
         <h2 className="text-primary text-5xl text-center mt-10">Who I am?</h2>

@@ -1,4 +1,5 @@
 import BentoGrid from "@/Components/Client/BentoGrid";
+// import PinterestPins from "@/Components/Portfolio/PinterestPins";
 import ServicesSlider from "@/Components/Services/ServicesSlider";
 import { TestimonialSlider } from "@/Components/Services/TestimonialSlider";
 
@@ -12,6 +13,7 @@ export default function page() {
         </h1> */}
         <ServicesSlider />
         <TestimonialSlider />
+        {/* <PinterestPins /> */}
       </section>
     </>
   )

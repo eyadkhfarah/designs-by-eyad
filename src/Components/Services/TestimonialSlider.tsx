@@ -23,13 +23,13 @@ export const TestimonialSlider = () => {
             }),
         ]} opts={{
             loop: true,
-        }} className="mx-auto lg:max-w-6xl md:max-w-2xl max-w-3xs">
+        }} className="">
             <CarouselContent className="">
                 {testimonials.map((testimonial, index) => (
                     <CarouselItem key={index} className="basis-1/1">
                         <div className="p-1">
                             <Card className="border-0 h-full p-6 bg-dark">
-                                <CardContent className="flex items-center justify-center">
+                                <CardContent className="flex w-full items-center justify-center">
                                     <div className="lg:flex justify-center gap-8">
                                         {/* <Image
                                             src={testimonial.image}
@@ -38,12 +38,12 @@ export const TestimonialSlider = () => {
                                             height={800}
                                             className="w-32 h-32 md:m-0 mb-8 rounded-full"
                                         /> */}
-                                        <div className="grid h-fit gap-8">
-                                            <p className="md:max-w-3xl max-w-40 md:text-lg text-sm">{testimonial.quote}</p>
+                                        <div className="grid h-fit w-full gap-14">
+                                            <p className="md:max-w-3xl md:text-2xl text-lg">{testimonial.quote}</p>
                                             <div className="grid gap-3">
 
-                                                <h3 className="md:text-xl text-base font-bold leading-0 text-primary">{testimonial.name}</h3>
-                                                <p className="md:text-lg text-xs font-semibold text-gray-600">{testimonial.role}</p>
+                                                <h3 className="md:text-2xl text-lg font-bold leading-0 text-primary">{testimonial.name}</h3>
+                                                <p className="md:text-lg text-xs font-semibold text-neutral-500">{testimonial.role}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -54,8 +54,8 @@ export const TestimonialSlider = () => {
                 ))}
             </CarouselContent>
             <div className="mt-5">
-                <CarouselPrevious className="md:h-16 md:w-16 h-10 w-10 border-0 bg-dark shadow-xl" />
-                <CarouselNext className="md:h-16 md:w-16 h-10 w-10 border-0 bg-dark shadow-xl" />
+                <CarouselPrevious className="md:p-10 border-0 bg-dark shadow-xl" />
+                <CarouselNext className="md:p-10 border-0 bg-dark shadow-xl" />
             </div>
 
         </Carousel>

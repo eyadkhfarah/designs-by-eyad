@@ -28,9 +28,9 @@ export default function Protfolio() {
         <h1 className="lg:text-[8rem] md:text-[5rem] text-[2rem] w-fit">
           Profolio
         </h1>
+        <ProtImages />
       </section>
 
-      <ProtImages />
     </>
   );
 }
