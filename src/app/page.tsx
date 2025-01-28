@@ -1,6 +1,5 @@
 import BentoGrid from "@/Components/Client/BentoGrid";
 import MissionVision from "@/Components/Client/MissionVision";
-import H1Hero from "@/Components/Client/h1Hero";
 import ProtImages from "@/Components/Portfolio/ProtImages";
 import ServicesCards from "@/Components/Services/ServicesCards";
 import { TestimonialSlider } from "@/Components/Services/TestimonialSlider";

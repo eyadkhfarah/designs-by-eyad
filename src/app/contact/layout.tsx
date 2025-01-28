@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import React from "react";
 import ContactList from "./ContactList";
+import Link from "next/link";
 
 const desc =
   "Contact me and let's start orbiting around your creative vision and also contact me through social networks and my emails and phone numbers";
@@ -45,7 +46,7 @@ export default function RootLayout({
         <p className="lg:w-1/2 mb-8">
           Contact me and let&apos;s start orbiting around your creative vision
           and also contact me through social networks and my emails and phone
-          numbers
+          numbers if you have any questions or inquiries check <Link href={"/fqa"} rel="noreferrer" className="text-primary" >FQA Page</Link>.
         </p>
         <div className="grid w-full lg:grid-cols-4 gap-8">
           <ContactList />

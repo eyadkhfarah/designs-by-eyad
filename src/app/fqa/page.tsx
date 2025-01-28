@@ -29,7 +29,7 @@ export default function FqaPage() {
             <h1 className="lg:text-[8rem] md:text-[5rem] my-0 text-[2rem] w-fit">
                 FQA
             </h1>
-            <p>Explore our comprehensive FAQ page to find answers to all your questions about our brand identity and web design services. Learn about our design process, project timelines, payment methods, and more.</p>
+            <p className='lg:w-1/2'>Explore our comprehensive FAQ page to find answers to all your questions about our brand identity and web design services. Learn about our design process, project timelines, payment methods, and more.</p>
             <div className="prose prose-lg prose-invert prose-li: mx-auto md:max-w-3xl space-y-4 prose-a:text-primary prose-a:no-underline prose-strong:font-bold">
                 
                 <FAQCard />
