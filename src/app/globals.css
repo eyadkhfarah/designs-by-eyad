@@ -40,6 +40,16 @@ body {
   font-style: normal;
 }
 
+@layer utilities {
+  .prose ul {
+    @apply list-disc; /* or list-decimal */
+  }
+  .prose ul li::marker {
+    color: #E5FE00; /* Customize bullet color */
+  }
+}
+
+
 @layer base {
 
   body {
@@ -47,15 +57,23 @@ body {
   }
 
   h1 {
-    @apply font-bold uppercase leading-16
+    @apply font-bold uppercase
   }
   
   h2 {
-    @apply font-bold uppercase text-3xl
+    @apply font-bold uppercase text-4xl
   }
 
   h3 {
-    @apply font-bold uppercase
+    @apply font-bold uppercase text-3xl
+  }
+
+  section {
+    @apply mx-auto lg:max-w-7xl md:max-w-2xl max-w-xs py-8 grid gap-8
+  }
+
+  article {
+    @apply mx-auto lg:max-w-7xl md:max-w-2xl max-w-xs grid gap-8
   }
 
   .logos {
@@ -63,11 +81,11 @@ body {
   }
 
   .tabs {
-    @apply py-6 px-8 font-bold rounded-full w-full flex justify-center items-center gap-6 transition ease-in-out duration-300
+    @apply py-6 px-8 font-bold uppercase rounded-full w-full flex justify-center items-center gap-6 transition ease-in-out duration-300
   }
 
   .skills {
-    @apply p-6 w-full bg-dark font-bold rounded-full flex lg:justify-center mb-4 items-center gap-8
+    @apply p-6 w-full bg-dark uppercase font-bold rounded-full flex lg:justify-center mb-4 items-center gap-8
   }
 
   .input {

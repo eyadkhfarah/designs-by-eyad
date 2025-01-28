@@ -1,18 +1,22 @@
 import type { Metadata } from "next";
 import React from "react";
 
-const desc = "Contact me vai phone number or Whatsapp";
+const meta = {
+  title: "Phone",
+  description: "Call me in Aswan to discuss how I can help enhance your brand identity and social media presence. Let’s work together to elevate your business.",
+  url: "/contact/phone",
+}
 
 export const metadata: Metadata = {
-  title: "Phone",
-  description: desc,
+  title: meta.title,
+  description: meta.description,
   alternates: {
-    canonical: "/contact/phone",
+    canonical: meta.url,
   },
   openGraph: {
-    title: "Phone",
-    description: desc,
-    url: "/contact/phone",
+    title: meta.title,
+    description: meta.description,
+    url: meta.url,
   },
 };
 

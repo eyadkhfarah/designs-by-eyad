@@ -12,18 +12,22 @@ import {
   RiTwitterXLine,
 } from "react-icons/ri";
 
-const desc = "Follow me in my social media accounts";
+const meta = {
+  title: "Soical",
+  description: "Follow me on social media to stay updated on my latest graphic design projects, brand identity creations, and social media design tips tailored for the Egyptian market.",
+  url: "/contact/soical",
+}
 
 export const metadata: Metadata = {
-  title: "Soical",
-  description: desc,
+  title: meta.title,
+  description: meta.description,
   alternates: {
-    canonical: "/contact/soical"
+    canonical: meta.url,
   },
   openGraph: {
-    title: "Soical",
-    description: desc,
-    url: "/contact/soical"
+    title: meta.title,
+    description: meta.description,
+    url: meta.url,
   },
 };
 

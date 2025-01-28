@@ -2,31 +2,37 @@ import ServicesCards from "@/Components/Services/ServicesCards";
 import ToolsTabs from "@/Components/Services/ToolsTabs";
 import { Metadata } from "next";
 
-export const metadata: Metadata = {
+const meta = {
   title: "Services",
-  description: "Look in what I offer from various services I do it",
+  description: "Offering graphic design services in Aswan, Egypt, including brand identity and social media design. Let’s work together to transform your brand's visual communication.",
+  url: "/services",
+}
+
+export const metadata: Metadata = {
+  title: meta.title,
+  description: meta.description,
   alternates: {
-    canonical: "/services",
+    canonical: meta.url,
   },
   openGraph: {
-    title: "Services",
-    description: "Look in what I offer from various services I do it",
-    url: "/services",
+    title: meta.title,
+    description: meta.description,
+    url: meta.url,
   },
 };
 
 export default function ServicesPage() {
   return (
     <>
-      <section className="lg:px-28 p-10 grid gap-8">
+      <section>
         <h1 className="lg:text-[8rem] md:text-[5rem] text-[2rem] w-fit">
           Services
         </h1>
 
         <ServicesCards />
       </section>
-      <section className="lg:px-28 p-10">
-        <h2 className="uppercase text-4xl text-center my-12">
+      <section>
+        <h2 className="uppercase text-5xl text-center my-12">
           Tools I Used In
         </h2>
 

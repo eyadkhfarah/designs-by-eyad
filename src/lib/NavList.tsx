@@ -7,18 +7,28 @@ export const NavList: NavLink[] = [
         id: 1
     },
     {
+        name: "Artworks",
+        link: "/artworks",
+        id: 2
+    },
+    {
         name: "Services",
         link: "/services",
-        id: 2
+        id: 3
     },
     {
         name: "Blog",
         link: "/blog",
-        id: 3
+        id: 4
     },
     {
         name: "About",
         link: "/about",
-        id: 4
+        id: 5
+    },
+    {
+        name: "FQA",
+        link: "/fqa",
+        id: 6
     },
 ]

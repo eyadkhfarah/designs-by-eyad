@@ -6,6 +6,8 @@ import { BlockObjectResponse, PageObjectResponse } from "@notionhq/client/build/
 const NOTION_API_KEY = process.env.YOUR_NOTION_API_KEY;
 const NOTION_API_KEY_BLOG = process.env.YOUR_NOTION_BLOG_API_KEY;
 const NOTION_BLOG_DATABASE_ID = process.env.YOUR_NOTION_DATABASE_BLOG_ID;
+const NOTION_API_KEY_ARTWORK = process.env.YOUR_NOTION_ARTWORK_API_KEY;
+const NOTION_ARTWORK_DATABASE_ID = process.env.YOUR_NOTION_DATABASE_ARTWORK_ID;
 
 export const notionForm = new Client({
   auth: NOTION_API_KEY,
@@ -14,6 +16,12 @@ export const notionForm = new Client({
 export const notionBlog = new Client({
   auth: NOTION_API_KEY_BLOG,
 });
+
+export const notionArtowrk = new Client({
+  auth: NOTION_API_KEY_ARTWORK,
+});
+
+// Blog
 
 export const fetchPosts = React.cache(() => {
   return notionBlog.databases.query({
@@ -43,7 +51,20 @@ export const fetchPostSlug = React.cache((slug: string) => {
 export const fetchPostBlocks = React.cache((pageId: string) => {
     return notionBlog.blocks.children.list({
       block_id: pageId,
-
     })
     .then((res) => res.results as BlockObjectResponse[])
 })
+
+// Artworks
+
+export const fetchArtworks = React.cache(() => {
+  return notionArtowrk.databases.query({
+    database_id: NOTION_ARTWORK_DATABASE_ID,
+    // filter: {
+    //   property: "Status",
+    //   select: {
+    //     equals: "Live",
+    //   },
+    // },
+  }); // 10 seconds cache duration
+});

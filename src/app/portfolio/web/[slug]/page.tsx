@@ -50,17 +50,17 @@ const ProtoDetials = async ({ params }: { params: Params }) => {
   const props = await getPost((await params).slug);
 
   return (
-    <article className="lg:px-28 p-10 grid gap-8">
+    <article>
       <h1 className="lg:text-[4rem] md:text-[3rem] text-[2rem] w-fit">
         {props?.title}
       </h1>
-      <div className="grid lg:grid-cols-2 gap-8">
+      <div className="grid gap-8">
         <div className="lg:flex h-fit sticky top-24 grid gap-8">
           <Image
             src={props?.thumnail}
             width={250}
             height={250}
-            sizes="(max-width: 600px) 480px, (max-width: 1200px) 1024px, 1920px"
+            // sizes="(max-width: 600px) 480px, (max-width: 1200px) 1024px, 1920px"
             className="rounded-2xl h-fit lg:w-fit w-full"
             alt={props?.title}
           />
@@ -72,7 +72,7 @@ const ProtoDetials = async ({ params }: { params: Params }) => {
                 link={`${props.website}`}
                 text={"Go to the website"}
               />
-              <div className="p-5 rounded-full uppercase font-bold bg-dark w-fit">
+              <div className="p-5 rounded-full leading-0 uppercase font-bold bg-dark w-fit">
                 {props.Protype}
               </div>
             </div>
@@ -82,7 +82,7 @@ const ProtoDetials = async ({ params }: { params: Params }) => {
                 {props.stack?.map((skill) => (
                   <li
                     key={skill}
-                    className="p-5 rounded-full text-sm uppercase font-bold bg-dark w-fit"
+                    className="p-5 rounded-full text-sm leading-0 uppercase font-bold bg-dark w-fit"
                   >
                     {skill}
                   </li>

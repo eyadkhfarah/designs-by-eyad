@@ -7,9 +7,9 @@ import { motion } from "framer-motion";
 
 export default function ProtImages() {
   return (
-    <section className="lg:px-44 md:px-30 px-10 my-10">
-      <div className="grid w-full gap-16">
-        <div className="lg:flex gird justify-between items-center w-full group">
+    <section className="mx-auto lg:max-w-7xl md:max-w-2xl max-w-xs my-28">
+      <div className="grid place-items-center w-full gap-8">
+        <div className="lg:flex gird gap-28 items-center group">
           <div className="rounded-[3rem] w-fit aspect-square overflow-hidden mb-12">
             <Image
               alt="coding"
@@ -26,13 +26,16 @@ export default function ProtImages() {
             whileInView={{ opacity: 1, translateY: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.5 }}
-            className=""
+            className="grid gap-8"
           >
-            <h2 className="text-primary text-4xl mb-6">Colorful Web</h2>
-            <p className="md:w-80 mb-8">
-              Stunning websites that pack a punch with vibrant colors and modern
-              typography.
-            </p>
+            <div className="gird">
+              <h2 className="text-primary text-4xl mb-4">Colorful Web</h2>
+              <p className="md:w-80">
+                Stunning websites that pack a punch with vibrant colors and modern
+                typography.
+              </p>
+            </div>
+
             <PrimaryBtn
               target={false}
               link={"/portfolio/web"}
@@ -41,7 +44,7 @@ export default function ProtImages() {
           </motion.div>
         </div>
 
-        <div className="lg:flex grid justify-between w-full items-center group">
+        <div className="lg:flex grid gap-8 items-center group">
           <div className="lg:hidden rounded-[3rem] w-fit overflow-hidden mb-12">
             <Image
               alt="desgins"
@@ -57,13 +60,16 @@ export default function ProtImages() {
             whileInView={{ opacity: 1, translateY: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.5 }}
+            className="grid gap-8"
           >
-            <h2 className="text-primary text-4xl mb-6">
-              Branding Brilliance
-            </h2>
-            <p className="md:w-80 mb-14">
-              Minimalist design shines bright in our sublime branding packages.
-            </p>
+            <div className="gird">
+              <h2 className="text-primary text-4xl mb-4">
+                Branding Brilliance
+              </h2>
+              <p className="md:w-80">
+                Minimalist design shines bright in our sublime branding packages.
+              </p>
+            </div>
             <PrimaryBtn
               target={false}
               link={"/portfolio/designs"}

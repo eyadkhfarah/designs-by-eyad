@@ -6,16 +6,22 @@ import React from "react";
 
 const siteUrl = process.env.PUBLIC_DOMAIN_URL || "https://designs-by-eyad.vercel.app";
 
-export const metadata: Metadata = {
+const meta = {
     title: "Blog",
     description: "Discover expert tips, creative insights, and design trends on the Designs By Eyad blog. Explore articles on brand identity, social media strategies, web design, and more to elevate your creative journey.",
+    url: "/blog",
+}
+
+export const metadata: Metadata = {
+    title: meta.title,
+    description: meta.description,
     alternates: {
-        canonical: "/blog",
+        canonical: meta.url,
     },
     openGraph: {
-        title: "Blog",
-        description: "Discover expert tips, creative insights, and design trends on the Designs By Eyad blog. Explore articles on brand identity, social media strategies, web design, and more to elevate your creative journey.",
-        url: "/blog",
+        title: meta.title,
+        description: meta.description,
+        url: meta.url,
     },
 };
 
@@ -24,7 +30,7 @@ export default async function BlogsPage() {
 
     return (
         <>
-            <section className="lg:px-28 p-10 grid gap-8">
+            <section>
                 <h1 className="lg:text-[8rem] md:text-[5rem] text-[2rem] w-fit">
                     Blog
                 </h1>

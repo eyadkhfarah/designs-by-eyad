@@ -1,36 +1,33 @@
+import BentoGrid from "@/Components/Client/BentoGrid";
+import MissionVision from "@/Components/Client/MissionVision";
 import H1Hero from "@/Components/Client/h1Hero";
 import ProtImages from "@/Components/Portfolio/ProtImages";
 import ServicesCards from "@/Components/Services/ServicesCards";
+import { TestimonialSlider } from "@/Components/Services/TestimonialSlider";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function Home() {
   return (
     <>
-      <section className="lg:px-28 lg:py-8 px-8">
-        <div className="grid lg:grid-cols-2 lg:gap-16 gap-6 place-items-center">
-          <H1Hero />
-          <p className="md:text-xl md:text-left text-center md:m-0 mb-12">
-            Welcome to Designs by Eyad, where we bring the cosmos of graphic
-            design and web development to life! Dive into our galaxy of visual
-            splendors and let us help you chart the future of your brand.
-          </p>
-        </div>
-      </section>
+      <BentoGrid />
 
-      <Image
-        alt="Astro"
-        src={"/main.png"}
-        priority={true}
-        width={1500}
-        height={500}
-        sizes="(max-width: 600px) 480px, (max-width: 1200px) 1024px, 1920px"
-        className="rounded-b-[3rem] overflow-hidden aspect-video w-full h-full object-cover object-center mb-32"
-      />
+      <section className="mx-auto lg:max-w-7xl md:max-w-2xl max-w-xs my-28">
+        <h2 className="text-primary text-5xl text-center my-12">
+          Services
+        </h2>
+        <ServicesCards />
+      </section>
 
       <ProtImages />
 
-      <section className="lg:px-60 md:px-30 px-5 my-60">
+      <section>
+        <h2 className="text-primary text-5xl text-center mt-10">Who I am?</h2>
+        <MissionVision />
+      </section>
+
+
+      {/* <section className="lg:px-60 md:px-30 px-5 my-60">
         <h2 className="text-primary text-4xl text-center">Our Clients</h2>
         <div className="flex md:flex-row flex-wrap flex-col mx-auto justify-between items-center overflow-hidden py-20 gap-12">
           <Link href={"/portfolio/web/qwmy"} aria-label="QWMY" title="QWMY">
@@ -70,23 +67,19 @@ export default function Home() {
             />
           </Link>
         </div>
+      </section> */}
+
+
+      <section className="my-28">
+        <h2 className="text-primary lg:text-5xl text-2xl text-center my-12">What My Clients Say About Me</h2>
+        <TestimonialSlider />
       </section>
 
-      <section className="lg:px-60 md:px-30 px-5 my-10">
-        <h2 className="text-primary uppercase text-4xl text-center my-12">
-          What I Offer
-        </h2>
-
-        {/* <ServicesSlider /> */}
-        <ServicesCards />
-      </section>
-
-      <section className="bg-white rounded-3xl lg:p-30 p-5 lg:m-28 m-7">
+      <section className="bg-white rounded-3xl p-5 mx-auto lg:max-w-7xl md:max-w-2xl max-w-xs my-28">
         <div className="grid place-items-center gap-4 my-8">
-          <h2 className="text-neutral-950 uppercase lg:text-4xl text-2xl text-center">
+          <h2 className="text-neutral-950 uppercase lg:text-5xl text-2xl text-center">
             MY FREELANCE ACCOUNTS
           </h2>
-          <div className="bg-primary h-2 w-12"></div>
         </div>
         <div className="flex md:flex-row flex-wrap flex-col mx-auto justify-evenly items-center p-10 gap-20">
           <a
@@ -144,6 +137,21 @@ export default function Home() {
             <Image
               alt="mostaql مستقل"
               src={"/Imgs/freelancer/mostaql.svg"}
+              width={150}
+              height={50}
+              className="h-auto saturate-0 hover:opacity-100 hover:saturate-100 transition-all ease-in-out duration-300"
+            />
+          </a>
+          <a
+            href="https://nafezly.com/u/eyadkhfarah/portfolio"
+            aria-label="mostaql نفذلي"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="mostaql نفذلي"
+          >
+            <Image
+              alt="mostaql نفذلي"
+              src={"/Imgs/freelancer/nafzly.svg"}
               width={150}
               height={50}
               className="h-auto saturate-0 hover:opacity-100 hover:saturate-100 transition-all ease-in-out duration-300"

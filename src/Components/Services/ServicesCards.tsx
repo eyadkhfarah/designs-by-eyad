@@ -36,7 +36,7 @@ export default function ServicesCards() {
               <TbDeviceMobileCheck className="text-4xl text-primary" />
             ) : null || category.name === "Photoshop" ? (
               <TbBrandAdobe className="text-4xl text-primary" />
-            ) : null || category.name === "Logo Design" ? (
+            ) : null || category.name === "Logo Design" || "Brand Identity" ? (
               <TbPencilBolt className="text-4xl text-primary" />
             ) : null}
             <h3 className="text-xl">{category.name}</h3>

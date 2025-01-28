@@ -2,18 +2,22 @@ import ProCard from "@/Components/Portfolio/ProCard";
 import { allProtoDesigns } from "contentlayer/generated";
 import type { Metadata } from "next/types";
 
-export const metadata: Metadata = {
+const meta = {
   title: "Graphic Design",
-  description:
-    "Checkout to my design projects either on social media design or brand identity projects",
+  description: "Discover my portfolio of brand identity and social media design projects. See how I help Egyptian businesses create compelling online presences.",
+  url: "/portfolio/designs",
+}
+
+export const metadata: Metadata = {
+  title: meta.title,
+  description: meta.description,
   alternates: {
-    canonical: "/portfolio/designs",
+    canonical: meta.url,
   },
   openGraph: {
-    title: "Graphic Design",
-    description:
-      "Checkout to my design projects either on social media design or brand identity projects",
-    url: "/portfolio/designs",
+    title: meta.title,
+    description: meta.description,
+    url: meta.url,
   },
 };
 

@@ -5,22 +5,28 @@ import ContactList from "./ContactList";
 const desc =
   "Contact me and let's start orbiting around your creative vision and also contact me through social networks and my emails and phone numbers";
 
+  const meta = {
+    title: "Contact",
+    description: "Get in touch to discuss your brand identity and social media design needs. Reach out via phone or social media for personalized graphic design services in Aswan, Egypt.",
+    url: "/contact",
+  }
+
 export const metadata: Metadata = {
   title: {
-    default: "Contact",
+    default: meta.title,
     template: "%s — Designs By Eyad",
   },
-  description: desc,
+  description: meta.description,
   alternates: {
-    canonical: "/contact",
+    canonical: meta.url,
   },
   openGraph: {
     title: {
-      default: "Contact",
+      default: meta.title,
       template: "%s — Designs By Eyad",
     },
-    description: desc,
-    url: "/contact",
+    description: meta.description,
+    url: meta.url,
   },
 };
 

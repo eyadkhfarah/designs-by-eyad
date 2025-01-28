@@ -57,13 +57,13 @@ export default async function PostPage({ params }: { params: Params }) {
 
   return (
     <>
-      <div className="lg:px-28 p-10 grid lg:grid-cols-3 gap-8">
+      <section className="lg:grid-cols-3">
         <article className="grid gap-8 col-span-2">
           <div className="flex items-center md:gap-12 gap-8">
             <p>{post.properties.Publication.date.start}</p>•
             <p>{post.properties.Category.select.name}</p>
           </div>
-          <h1 className="lg:text-[4rem] text-[1.7rem] w-fit">
+          <h1 className="md:text-[4rem] text-5xl md:leading-16 leading-11 w-fit">
             {post.properties.Name.title[0].plain_text}
           </h1>
           <Image
@@ -97,7 +97,7 @@ export default async function PostPage({ params }: { params: Params }) {
             ))}
           </div>
         </aside>
-      </div>
+      </section>
     </>
   );
 }

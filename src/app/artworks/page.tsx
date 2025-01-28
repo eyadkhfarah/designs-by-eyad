@@ -1,28 +1,43 @@
 import React from "react";
 import Image from "next/image";
 import { Metadata } from "next";
-import ToolsTabs from "@/Components/Services/ToolsTabs";
-import { RiGithubFill } from "react-icons/ri";
-import PrimaryBtn from "@/Components/Buttons/PrimaryBtn";
+import { fetchArtworks } from "@/lib/notion";
 
-export const metadata: Metadata = {
+const meta = {
     title: "Artworks",
     description: "Explore a captivating collection of unique artwork collages blending creativity and storytelling. Discover handmade designs crafted with intricate details, vibrant colors, and inspiring themes that elevate your space. Perfect for art lovers and collectors alike!",
+    url: "/artworks",
+}
+
+export const metadata: Metadata = {
+    title: meta.title,
+    description: meta.description,
     alternates: {
-        canonical: "/artworks",
+        canonical: meta.url,
     },
     openGraph: {
-        title: "Artworks",
-        description: "Explore a captivating collection of unique artwork collages blending creativity and storytelling. Discover handmade designs crafted with intricate details, vibrant colors, and inspiring themes that elevate your space. Perfect for art lovers and collectors alike!",
-        url: "/artworks",
+        title: meta.title,
+        description: meta.description,
+        url: meta.url,
     },
 };
-const Artwork: React.FC = () => {
+const Artwork: React.FC = async () => {
+    const artworks = await fetchArtworks()
+
+    console.log(artworks.results.map((artwork: any) => artwork.properties.Name.title[0].plain_text))
+
     return (
-        <div>
-            <h1>Artwork</h1>
+        <section>
+            <h1 className="lg:text-[8rem] md:text-[5rem] text-[2rem] w-fit">
+                Artworks
+            </h1>
+            <div className="grid lg:grid-cols-3">
+                {/* {artworks.results.map((artwork: any) => (
+                    <></>
+                ))} */}
+            </div>
             <p>This is the Artwork component.</p>
-        </div>
+        </section>
     );
 };
 

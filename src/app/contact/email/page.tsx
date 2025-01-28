@@ -3,18 +3,22 @@ import React from "react";
 import { RiMicrosoftFill, RiMicrosoftLine } from "react-icons/ri";
 import { TbBrandGmail } from "react-icons/tb";
 
-const desc = "Contact me vai email address";
+const meta = {
+  title: "Email",
+  description: "each out via email for inquiries about graphic design services, including brand identity and social media design. Based in Aswan, Egypt, I’m ready to bring your vision to life.",
+  url: "/contact/email",
+}
 
 export const metadata: Metadata = {
-  title: "Email",
-  description: desc,
+  title: meta.title,
+  description: meta.description,
   alternates: {
-    canonical: "/contact/email",
+    canonical: meta.url,
   },
   openGraph: {
-    title: "Email",
-    description: desc,
-    url: "/contact/email",
+    title: meta.title,
+    description: meta.description,
+    url: meta.url,
   },
 };
 

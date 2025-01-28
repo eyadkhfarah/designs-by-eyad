@@ -4,27 +4,34 @@ import { Metadata } from "next";
 import ToolsTabs from "@/Components/Services/ToolsTabs";
 import { RiGithubFill } from "react-icons/ri";
 import PrimaryBtn from "@/Components/Buttons/PrimaryBtn";
+import { TestimonialSlider } from "@/Components/Services/TestimonialSlider";
+import MissionVision from "@/Components/Client/MissionVision";
+
+const meta = {
+  title: "About",
+  description: "Discover my Aswan-based graphic design studio, specializing in brand identity and social media design. Serving businesses across Egypt with creative solutions that captivate and convert.",
+  url: "/about",
+}
+
 
 export const metadata: Metadata = {
-  title: "About",
-  description: "Read about me and why I made this projects",
+  title: meta.title,
+  description: meta.description,
   alternates: {
-    canonical: "/about",
+    canonical: meta.url,
   },
   openGraph: {
-    title: "About",
-    description: "Read about me and why I made this projects",
-    url: "/about",
+    title: meta.title,
+    description: meta.description,
+    url: meta.url,
   },
 };
 
 export default function About() {
   return (
     <>
-      <section className="lg:px-28 p-10 grid gap-8">
-        <h1 className="lg:text-[8rem] md:text-[5rem] text-[3rem] w-fit">
-          WHO I AM?
-        </h1>
+      <section>
+        <h1 className="lg:text-[8rem] md:text-[5rem] text-[3rem] w-fit">WHO I AM?</h1>
         <div className="lg:grid-cols-2 grid gap-8">
           <div className="relative w-fit">
             <Image
@@ -76,21 +83,28 @@ export default function About() {
         </div>
       </section>
 
-      <section className="lg:px-28 p-10">
-        <h2 className="uppercase text-4xl text-center my-12">
-          Tools I Used In
-        </h2>
+      <MissionVision />
 
+      <section>
+        <h2 className="lg:text-5xl text-4xl text-center my-12">Tools I Used In</h2>
         <ToolsTabs />
+      </section>
+
+      <section className="my-28">
+        <h2 className="lg:text-5xl text-4xl text-center my-12">What My Clients Say About Me</h2>
+        <TestimonialSlider />
       </section>
 
       <section className="lg:px-28 p-10 lg:flex grid place-items-center gap-8 lg:justify-center">
         <RiGithubFill size={170} />
         <div className="grid lg:place-items-start place-items-center gap-6">
-          <h2 className="uppercase lg:text-left text-center text-4xl">
-            Did my site inspire you?
-          </h2>
-          <p className="mb-6 lg:text-left text-center">Feel free to dive deeper into the code and customize it to your liking. <br /> Clone the GitHub repository to start your own project or contribute to the community.</p>
+          <div className="grid gap-4">
+
+            <h2 className="uppercase lg:text-left text-center text-4xl">
+              Did my site inspire you?
+            </h2>
+            <p className="mb-6 lg:text-left text-center">Feel free to dive deeper into the code and customize it to your liking. <br /> Clone the GitHub repository to start your own project or contribute to the community.</p>
+          </div>
 
           <PrimaryBtn link={"https://github.com/eyadkhfarah/designs-by-eyad"} target={true} text={"Clone the GitHub repository"} />
 

@@ -53,11 +53,11 @@ const ProtoDetials = async ({ params }: { params: Params }) => {
   // const MDX = getMDXComponent(props.body.code);
 
   return (
-    <article className="lg:px-28 p-10 grid gap-8">
+    <article>
       <h1 className="lg:text-[4rem] md:text-[3rem] text-[2rem] w-fit">
         {props?.title}
       </h1>
-      <div className="grid lg:grid-cols-2 gap-8">
+      <div className="grid gap-8">
         <div className="">
           <div className="lg:flex h-fit sticky top-24 grid gap-8">
             <Image

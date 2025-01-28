@@ -1,6 +1,6 @@
 export const Categories = [
     {
-      name: "Web Development",
+      name: "Brand Identity",
       desc: `Design, build, and maintain web applications and websites that are
       secure, user-friendly, and meet business goals.`,
       id: 1,
@@ -12,27 +12,15 @@ export const Categories = [
       id: 2,
     },
     {
-      name: "Graphic Design",
-      desc: `Visually communicate your message through creative and effective
-    designs for print, digital, and social media.`,
-      id: 3,
-    },
-    {
       name: "UI/UX Design",
       desc: `Design user-centered interfaces that are both visually appealing and
       easy to use, helping businesses achieve their goals.`,
-      id: 4,
-    },
-    {
-      name: "Photoshop",
-      desc: `Transform your photos with expert touch-ups, enhancements, and
-      creative edits. Elevate your visuals with precision and style.`,
-      id: 5,
+      id: 3,
     },
     {
       name: "Logo Design",
       desc: `My logo design service creates unique, memorable logos that visually
       represent your brand essence, fostering recognition and credibility.`,
-      id: 6,
+      id: 4,
     },
   ];

@@ -2,18 +2,22 @@ import type { Metadata } from "next";
 import React from "react";
 import Image from "next/image";
 
-const desc = "Here where you can find out how to pay me to work with you";
+const meta = {
+  title: "Purchasing",
+  description: "Explore my graphic design services and packages tailored to Egyptian businesses. Invest in professional brand identity and social media design to elevate your brand.",
+  url: "/contact/purchasing",
+}
 
 export const metadata: Metadata = {
-  title: "Purchasing",
-  description: desc,
+  title: meta.title,
+  description: meta.description,
   alternates: {
-    canonical: "/contact/purchasing",
+    canonical: meta.url,
   },
   openGraph: {
-    title: "Purchasing",
-    description: desc,
-    url: "/contact/purchasing",
+    title: meta.title,
+    description: meta.description,
+    url: meta.url,
   },
 };
 
