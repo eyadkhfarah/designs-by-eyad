@@ -37,7 +37,7 @@ export default async function Designs() {
 
         <div className="grid lg:grid-cols-2 gap-6">
           {doc.map((website) => (
-            <ProCard key={website._id} data={website} />
+            <ProCard key={website._id} data={{ ...website, Protype: website.Protype ?? '' }} />
           ))}
         </div>
       </section>
