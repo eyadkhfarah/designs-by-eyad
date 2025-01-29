@@ -10,6 +10,7 @@ import {
   RiTiktokFill,
   RiTiktokLine,
   RiTwitterXLine,
+  RiWhatsappLine,
 } from "react-icons/ri";
 
 const meta = {
@@ -53,6 +54,15 @@ function Soical() {
         >
           <RiInstagramLine className="text-2xl" />
           Instagram
+        </a>
+        <a
+          href="https://api.whatsapp.com/send?phone=+201555715783"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-full lg:h-12 h-16 gap-5 bg-dark font-bold rounded-full uppercase flex items-center justify-center"
+        >
+          <RiWhatsappLine className="text-2xl" />
+          Whatsapp
         </a>
         <a
           href="https://www.linkedin.com/comm/mynetwork/discovery-see-all?usecase=PEOPLE_FOLLOWS&followMember=eyadkhfarah"
