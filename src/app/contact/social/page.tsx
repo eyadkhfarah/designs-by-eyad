@@ -34,7 +34,7 @@ export const metadata: Metadata = {
 function Soical() {
   return (
     <>
-      <h2 className="uppercase text-xl">My Soical Media Accounts</h2>
+      <h2 className="uppercase text-xl">My Social Media Accounts</h2>
       <div className="grid lg:grid-cols-2 lg:gap-6 gap-3 my-10">
         <a
           href="https://www.facebook.com/eyad.kh.farah"
@@ -55,7 +55,7 @@ function Soical() {
           Instagram
         </a>
         <a
-          href="https://www.linkedin.com/in/eyadkhfarah/"
+          href="https://www.linkedin.com/comm/mynetwork/discovery-see-all?usecase=PEOPLE_FOLLOWS&followMember=eyadkhfarah"
           target="_blank"
           rel="noopener noreferrer"
           className="w-full lg:h-12 h-16 gap-5 bg-dark font-bold rounded-full uppercase flex items-center justify-center"
