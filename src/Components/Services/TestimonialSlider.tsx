@@ -28,7 +28,7 @@ export const TestimonialSlider = () => {
                 {testimonials.map((testimonial, index) => (
                     <CarouselItem key={index} className="basis-1/1">
                         <div className="p-1">
-                            <Card className="border-0 h-full p-6 bg-dark">
+                            <Card className="border-0 h-full p-6 bg-dark rounded-3xl">
                                 <CardContent className="flex w-full items-center justify-center">
                                     <div className="lg:flex justify-center gap-8">
                                         {/* <Image
