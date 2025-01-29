@@ -26,10 +26,12 @@ export const metadata: Metadata = {
 export default function FqaPage() {
     return (
         <section>
-            <h1 className="lg:text-[8rem] md:text-[5rem] my-0 text-[2rem] w-fit">
-                FQA
-            </h1>
-            <p className='lg:w-1/2'>Explore our comprehensive FAQ page to find answers to all your questions about our brand identity and web design services. Learn about our design process, project timelines, payment methods, and more.</p>
+            <div className="grid mb-8">
+                <h1 className="lg:text-[8rem] md:text-[5rem] m-0 text-[2rem] text-center">
+                    FQA
+                </h1>
+                <p className='mx-auto lg:w-3xl text-center'>Explore our comprehensive FAQ page to find answers to all your questions about our brand identity and web design services. Learn about our design process, project timelines, payment methods, and more.</p>
+            </div>
             <div className="prose prose-lg prose-invert prose-li: mx-auto md:max-w-3xl space-y-4 prose-a:text-primary prose-a:no-underline prose-strong:font-bold">
                 
                 <FAQCard />
@@ -37,14 +39,3 @@ export default function FqaPage() {
         </section>
     )
 }
-
-// export const FAQSection: React.FC () => {
-//     return (
-//       <section>
-//         <h2>Frequently Asked Questions</h2>
-//         <div>
-
-//         </div>
-//       </section>
-//     );
-//   };
