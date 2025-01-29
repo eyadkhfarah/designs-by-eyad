@@ -1,4 +1,5 @@
 import Share from "@/Components/Blog/Share";
+import SecondaryBtn from "@/Components/Buttons/SecondaryBtn";
 import { fetchPostBlocks, fetchPostSlug, notionBlog } from "@/lib/notion";
 import { NotionPage, NotionProps } from "@/types/notionType";
 import bookmarkPlugin from "@notion-render/bookmark-plugin";
@@ -57,7 +58,7 @@ export default async function PostPage({ params }: { params: Params }) {
 
   return (
     <>
-      <section className="lg:grid-cols-3">
+      <section className="md:grid-cols-3 grid-cols-1">
         <article className="grid gap-8 col-span-2">
           <div className="flex items-center md:gap-12 gap-8">
             <p>{post.properties.Publication.date.start}</p>•
@@ -87,14 +88,20 @@ export default async function PostPage({ params }: { params: Params }) {
           </div>
         </article>
 
-        <aside className="bg-dark p-5 rounded-3xl grid gap-6 h-fit">
-          <h2>Tags</h2>
-          <div className="flex items-center gap-4 flex-wrap">
-            {post.properties.Tags.multi_select.map((tag) => (
-              <span key={Math.floor(Math.random() * 70) + 1} className="bg-gray-950 px-6 p-3 rounded-full whitespace-nowrap">
-                {tag.name}
-              </span>
-            ))}
+        <aside className="relative w-full">
+          <div className="bg-dark p-5 rounded-3xl mb-8 grid gap-6 h-fit">
+            <h2>Tags</h2>
+            <div className="flex items-center gap-4 flex-wrap">
+              {post.properties.Tags.multi_select.map((tag) => (
+                <span key={Math.floor(Math.random() * 70) + 1} className="bg-gray-950 px-6 p-3 rounded-full whitespace-nowrap">
+                  {tag.name}
+                </span>
+              ))}
+            </div>
+          </div>
+          <div className="bg-primary p-5 rounded-3xl grid gap-6 h-fit sticky top-8">
+            <h2 className="text-dark md:leading-8 leading-7">Ignite Your Brand. Elevate Your Site. Let’s Make It Happen</h2>
+            <SecondaryBtn link={"/contact"} text={"Contact Me"} target={false} />
           </div>
         </aside>
       </section>

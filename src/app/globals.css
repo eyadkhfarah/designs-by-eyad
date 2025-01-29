@@ -52,8 +52,6 @@ body {
     /* Customize bullet color */
   }
 }
-
-
 @layer base {
 
   /* width */
@@ -81,6 +79,14 @@ body {
     @apply bg-neutral-950 text-white
   }
 
+  nav {
+    @apply flex mx-auto z-40 bg-dark lg:max-w-6xl md:max-w-2xl max-w-xs font-semibold mt-8 rounded-3xl p-6 justify-between items-center py-6
+  }
+
+  footer {
+    @apply my-12 mx-auto lg:max-w-6xl rounded-3xl md:max-w-2xl bg-dark max-w-xs text-center md:flex gap-8 md:flex-row flex-col justify-between items-center mt-28 p-8
+  }
+
   h1 {
     @apply font-bold uppercase
   }
@@ -94,11 +100,11 @@ body {
   }
 
   section {
-    @apply mx-auto lg:max-w-7xl md:max-w-2xl max-w-xs py-8 grid gap-8
+    @apply mx-auto lg:max-w-6xl md:max-w-2xl max-w-xs py-8 grid gap-8
   }
 
   article {
-    @apply mx-auto lg:max-w-7xl md:max-w-2xl max-w-xs py-8 grid gap-8
+    @apply mx-auto lg:max-w-6xl md:max-w-2xl max-w-xs md:mt-8 my-8 grid gap-8
   }
 
   .logos {

@@ -6,7 +6,7 @@ import PrimaryBtn from "./Buttons/PrimaryBtn";
 export default function Footer() {
   return (
     <>
-      <div className="grid place-items-center mx-6 mt-40 gap-8 text-center">
+      <section className="grid place-items-center text-center">
         <h3 className="text-5xl">Let&apos;s Orbit</h3>
         <div className="">
           <p>Ready to blast off into the design stratosphere together?</p>
@@ -16,9 +16,8 @@ export default function Footer() {
           </p>
         </div>
         <PrimaryBtn target={false} link={"/contact"} text={"Contact Me"} />
-      </div>
+      </section>
       <footer
-        className="my-12 mx-auto lg:max-w-7xl rounded-3xl md:max-w-2xl bg-dark max-w-xs text-center md:flex gap-8 md:flex-row flex-col justify-between items-center mt-28 p-8"
         id="contact"
       >
         <p className="md:text-base text-sm md:block hidden">

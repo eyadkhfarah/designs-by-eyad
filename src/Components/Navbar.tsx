@@ -13,7 +13,7 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="flex mx-auto z-40 bg-dark lg:max-w-7xl md:max-w-2xl max-w-xs font-semibold mt-8 rounded-3xl p-6 justify-between items-center py-6">
+      <nav className="">
         <Link href={"/"} aria-label="Designs By Eyad" className="flex items-end gap-3 group">
           <Image
             alt="Designs By Eyad Logo"

@@ -18,6 +18,12 @@ export const metadata: Metadata = {
     title: meta.title,
     description: meta.description,
     url: meta.url,
+    images: {
+      url: "/main-og.png",
+      width: 1800,
+      height: 1600,
+      alt: "Designs By Eyad",
+    },
   },
 };
 
