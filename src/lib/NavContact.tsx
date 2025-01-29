@@ -7,8 +7,8 @@ export const NavContacts: NavContact[] = [
         id: 1
     },
     {
-        name: "Soical",
-        link: "/soical",
+        name: "Social",
+        link: "/social",
         id: 2
     },
     {

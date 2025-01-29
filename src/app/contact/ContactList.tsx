@@ -28,7 +28,7 @@ export default function ContactList() {
           >
             {list.name === "Form" ? (
               <TbForms className="text-xl" />
-            ) : null || list.name === "Soical" ? (
+            ) : null || list.name === "Social" ? (
               <RiFacebookCircleFill className="text-xl" />
             ) : null || list.name === "Email" ? (
               <TbMessage2 className="text-xl" />

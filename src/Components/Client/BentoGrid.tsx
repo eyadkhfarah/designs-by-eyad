@@ -7,7 +7,6 @@ import AnimatedNum from './AnimatedNum'
 export default function BentoGrid() {
     return (
         <div className='grid md:grid-cols-4 md:grid-rows-2 gap-6 mx-auto lg:max-w-7xl md:max-w-2xl max-w-xs h-full'>
-
             {/* Main Card */}
             <div className="bg-dark rounded-3xl p-8 lg:px-9 col-span-2 row-span-2 grid place-content-center -bg-linear-45 from-primary to-dark to-80% h-full">
                 <div className="grid gap-8 md:my-14 my-10 px-5 h-fit w-fit">
