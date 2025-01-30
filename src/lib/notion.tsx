@@ -61,7 +61,7 @@ export const fetchArtworks = React.cache(() => {
   return notionArtowrk.databases.query({
     database_id: NOTION_ARTWORK_DATABASE_ID,
      filter: {
-       property: "Status",
+       property: "Publish",
        status: {
           equals: "Live",
        },
