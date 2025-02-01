@@ -60,11 +60,11 @@ export const fetchPostBlocks = React.cache((pageId: string) => {
 export const fetchArtworks = React.cache(() => {
   return notionArtowrk.databases.query({
     database_id: NOTION_ARTWORK_DATABASE_ID,
-    // filter: {
-    //   property: "Status",
-    //   select: {
-    //     equals: "Live",
-    //   },
-    // },
+     filter: {
+       property: "Publish",
+       status: {
+          equals: "Live",
+       },
+     },
   }); // 10 seconds cache duration
 });
