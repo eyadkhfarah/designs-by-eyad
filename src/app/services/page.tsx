@@ -25,7 +25,7 @@ export default function ServicesPage() {
   return (
     <>
       <section>
-        <h1 className="lg:text-[8rem] md:text-[5rem] text-[2rem] w-fit">
+        <h1>
           Services
         </h1>
 

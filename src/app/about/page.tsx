@@ -31,8 +31,8 @@ export default function About() {
   return (
     <>
       <section>
-        <h1 className="lg:text-[8rem] md:text-[5rem] text-[3rem] w-fit">WHO I AM?</h1>
-        <div className="lg:grid-cols-2 grid gap-8">
+        <h1>WHO I AM?</h1>
+        <section className="lg:grid-cols-2 grid gap-8">
           <div className="relative w-fit">
             <Image
               alt="Eyad Farah"
@@ -80,10 +80,12 @@ export default function About() {
               photos and drawing in Photoshop.
             </p>
           </div>
-        </div>
+        </section>
       </section>
 
-      <MissionVision />
+      <section>
+        <MissionVision />
+      </section>
 
       <section>
         <h2 className="lg:text-5xl text-4xl text-center my-12">Tools I Used In</h2>

@@ -31,14 +31,14 @@ export default function BentoGrid() {
                 <div className="flex md:flex-row flex-col items-center gap-6 md:h-full h-fit">
                     <div className="bg-dark p-6 rounded-3xl w-full h-full grid place-items-center">
                         <div className="grid place-items-center">
-                            <p className='font-bold uppercase text-7xl text-center'>+<AnimatedNum from={0} to={8} /></p>
+                            <p className='font-bold uppercase text-7xl text-center'>+<AnimatedNum from={0} to={9} /></p>
                             <h3 className='text-sm text-center'>Projects</h3>
                         </div>
                     </div>
                     <div className="bg-dark p-6 rounded-3xl w-full h-full grid place-items-center">
                         <div className="grid place-items-center">
                             <p className='font-bold uppercase text-7xl text-center'>+<AnimatedNum from={0} to={4} /></p>
-                            <h3 className='text-sm text-center'>Years of Experices</h3>
+                            <h3 className='text-sm text-center'>Years of Experiences</h3>
                         </div>
                     </div>
                 </div>

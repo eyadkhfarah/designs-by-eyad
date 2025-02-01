@@ -40,7 +40,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
       siteName: "/",
       images: [
         {
-          url: `/${markdown?.thumnail.slice(1)}`,
+          url: `/${markdown?.thumbnail.slice(1)}`,
           width: 1200,
           height: 630,
           alt: markdown?.title,
@@ -57,14 +57,26 @@ const ProtoDetials = async ({ params }: { params: Params }) => {
 
   return (
     <article>
-      <h1 className="lg:text-[4rem] md:text-[3rem] text-[2rem] w-fit">
-        {props?.title}
-      </h1>
+      <div className="grid gap-8">
+        <div className="p-4 bg-dark rounded-2xl w-fit h-fit text-white">
+          <span>
+            {new Date(props.Date).toLocaleDateString("En-US", {
+              day: "2-digit",
+              year: "numeric",
+              month: "long",
+              formatMatcher: "best fit",
+            })}
+          </span>
+        </div>
+        <h1>
+          {props?.title}
+        </h1>
+      </div>
       <div className="grid gap-8 w-full">
         <div className="">
           <div className="lg:flex items-start h-fit grid gap-8">
             <Image
-              src={props?.thumnail}
+              src={props?.thumbnail}
               width={250}
               height={250}
               className="rounded-2xl h-fit lg:w-fit w-full"

@@ -31,7 +31,7 @@ export default async function BlogsPage() {
     return (
         <>
             <section>
-                <h1 className="lg:text-[8rem] md:text-[5rem] text-[2rem] w-fit">
+                <h1 >
                     Blog
                 </h1>
 

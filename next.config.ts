@@ -16,7 +16,7 @@ const nextConfig = {
     },
   },
   images: {
-    remotePatterns: [{ protocol: "https", hostname: "i.imgur.com" }, {protocol: "https", hostname: "i.postimg.cc"},{ protocol: "https", hostname: "images.pexels.com"}, { protocol : "https", hostname: "media.licdn.com"}],
+    remotePatterns: [{ protocol: "https", hostname: "i.imgur.com" }, {protocol: "https", hostname: "i.postimg.cc"},{ protocol: "https", hostname: "images.pexels.com"},{protocol: "https", hostname: "avatar.iran.liara.run"}, { protocol : "https", hostname: "media.licdn.com"}],
   },
   async rewrites() {
     return [

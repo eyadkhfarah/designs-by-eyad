@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
       siteName: "/",
       images: [
         {
-          url: `/${markdown?.thumnail.slice(1)}`,
+          url: `/${markdown?.thumbnail.slice(1)}`,
           width: 1200,
           height: 630,
           alt: markdown?.title,
@@ -57,7 +57,7 @@ const ProtoDetials = async ({ params }: { params: Params }) => {
       <div className="grid gap-8">
         <div className="lg:flex h-fit grid gap-8">
           <Image
-            src={props?.thumnail}
+            src={props?.thumbnail}
             width={250}
             height={250}
             // sizes="(max-width: 600px) 480px, (max-width: 1200px) 1024px, 1920px"

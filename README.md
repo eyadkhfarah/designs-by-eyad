@@ -37,7 +37,7 @@ content/
 ---
 title: Green Locks
 description: Brand for mainfactoring and selling hair care products
-thumnail: /Imgs/green-locks.png
+thumbnail: /Imgs/green-locks.png
 website: https://www.behance.net/gallery/191450493/Rebranding-Green-Locks-and-package-designs
 Protype: Logo Design
 ---

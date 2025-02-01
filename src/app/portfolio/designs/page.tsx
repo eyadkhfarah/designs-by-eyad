@@ -34,15 +34,18 @@ const getPro = async () => {
 
 export default async function Designs() {
   const doc = await getPro();
+
   return (
     <>
       <section>
-        <h1 className="lg:text-[8rem] md:text-[5rem] text-[3rem] w-fit">
+        <h1>
           Designs
         </h1>
 
         <div className="grid lg:grid-cols-2 gap-6">
-          {doc.map((website) => (
+          {doc.sort((a, b) =>
+            new Date(a.Date).getTime() - new Date(b.Date).getTime()
+          ).map((website) => (
             <ProCard key={website._id} data={{ ...website, Protype: website.Protype ?? '' }} />
           ))}
         </div>

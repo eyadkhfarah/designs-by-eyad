@@ -28,7 +28,7 @@ const Artwork: React.FC = async () => {
 
     return (
         <section>
-            <h1 className="lg:text-[8rem] md:text-[5rem] text-[2rem] w-fit">
+            <h1 >
                 Artworks
             </h1>
             <div className="grid lg:grid-cols-3 grid-cols-1 gap-8">

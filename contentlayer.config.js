@@ -35,7 +35,7 @@ export const ProtoDesign = defineDocumentType(() => ({
       type: "string",
       required: true,
     },
-    thumnail: {
+    thumbnail: {
       type: "string",
       required: true,
     },
@@ -44,6 +44,7 @@ export const ProtoDesign = defineDocumentType(() => ({
     },
     Date: {
       type: "string",
+      required: true,
     },
     website: {
       type: "string",
@@ -72,7 +73,7 @@ export const ProtoWeb = defineDocumentType(() => ({
       type: "string",
       required: true,
     },
-    thumnail: {
+    thumbnail: {
       type: "string",
       required: true,
     },

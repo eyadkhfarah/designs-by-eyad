@@ -27,7 +27,7 @@ export default function FqaPage() {
     return (
         <section>
             <div className="grid mb-8">
-                <h1 className="lg:text-[8rem] md:text-[5rem] m-0 text-[2rem] text-center">
+                <h1 className="text-center text-9xl leading-normal">
                     FQA
                 </h1>
                 <p className='mx-auto lg:w-3xl text-center'>Explore our comprehensive FAQ page to find answers to all your questions about our brand identity and web design services. Learn about our design process, project timelines, payment methods, and more.</p>

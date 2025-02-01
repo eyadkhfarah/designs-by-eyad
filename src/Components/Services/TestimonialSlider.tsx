@@ -24,26 +24,26 @@ export const TestimonialSlider = () => {
         ]} opts={{
             loop: true,
         }} className="">
-            <CarouselContent className="">
+            <CarouselContent className="h-full">
                 {testimonials.map((testimonial, index) => (
-                    <CarouselItem key={index} className="basis-1/1">
-                        <div className="p-1">
+                    <CarouselItem key={index} className="h-full basis-1/1">
+                        <div className="h-full">
                             <Card className="border-0 h-full p-6 bg-dark rounded-3xl">
-                                <CardContent className="flex w-full items-center justify-center">
+                                <CardContent className="flex w-full h-full items-center justify-center">
                                     <div className="lg:flex justify-center gap-8">
-                                        {/* <Image
-                                            src={testimonial.image}
+                                        <Image
+                                            src={testimonial.image === "" ? "https://avatar.iran.liara.run/public/42" : testimonial.image}
                                             alt={testimonial.name}
                                             width={800}
                                             height={800}
                                             className="w-32 h-32 md:m-0 mb-8 rounded-full"
-                                        /> */}
+                                        />
                                         <div className="grid h-fit w-full gap-14">
                                             <p className="md:max-w-3xl md:text-2xl text-lg">{testimonial.quote}</p>
                                             <div className="grid gap-3">
 
                                                 <h3 className="md:text-2xl text-lg font-bold leading-0 text-primary">{testimonial.name}</h3>
-                                                <p className="md:text-lg text-xs font-semibold text-neutral-500">{testimonial.role}</p>
+                                                <p className="md:text-lg font-semibold text-neutral-500">{testimonial.role}</p>
                                             </div>
                                         </div>
                                     </div>
