@@ -17,7 +17,7 @@ export default function ProtImages() {
               width={544}
               height={544}
               sizes="(max-width: 600px) 480px, (max-width: 1200px) 1024px, 1920px"
-              className="group-hover:scale-110 transition-all ease-in-out duration-300 aspect-square object-cover saturate-0"
+              className="group-hover:scale-110 transition-all ease-in-out duration-300 aspect-square object-cover"
             />
           </div>
 
@@ -47,8 +47,8 @@ export default function ProtImages() {
         <div className="lg:flex flex-row-reverse gird gap-28 items-center group">
           <div className="rounded-[3rem] w-fit aspect-square overflow-hidden mb-12">
             <Image
-              alt="desgins"
-              src={"/desgin.webp"}
+              alt="Designs"
+              src={"/design.webp"}
               width={544}
               height={544}
               sizes="(max-width: 600px) 480px, (max-width: 1200px) 1024px, 1920px"
