@@ -44,7 +44,7 @@ export default async function Designs() {
 
         <div className="grid lg:grid-cols-2 gap-6">
           {doc.sort((a, b) =>
-            new Date(a.Date).getTime() - new Date(b.Date).getTime()
+            new Date(b.Date).getTime() - new Date(a.Date).getTime()
           ).map((design) => (
             <ProCard key={design._id} data={{ ...design, Protype: design.Protype ?? '' }} />
           ))}
