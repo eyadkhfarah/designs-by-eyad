@@ -43,7 +43,7 @@ export default async function Web() {
 
         <div className="grid lg:grid-cols-2 gap-6">
           {doc.sort((a, b) =>
-            new Date(b.Date).getTime() - new Date(a.Date).getTime()
+            new Date(b.Date ?? '').getTime() - new Date(a.Date ?? '').getTime()
           ).map((website) => (
             <>
               <ProCard key={website._id} data={{ ...website, Protype: website.Protype ?? '', Date: website.Date ?? '' }} />
