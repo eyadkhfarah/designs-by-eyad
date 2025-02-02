@@ -42,7 +42,9 @@ export default async function Web() {
         <h1 className="lg:text-[8rem] md:text-[5rem] text-[3rem] w-fit">Web</h1>
 
         <div className="grid lg:grid-cols-2 gap-6">
-          {doc.map((website) => (
+          {doc.sort((a, b) =>
+            new Date(b.Date).getTime() - new Date(a.Date).getTime()
+          ).map((website) => (
             <>
               <ProCard key={website._id} data={{ ...website, Protype: website.Protype ?? '', Date: website.Date ?? '' }} />
             </>
