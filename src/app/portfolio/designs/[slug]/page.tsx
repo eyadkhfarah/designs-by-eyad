@@ -50,7 +50,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   };
 }
 
-const ProtoDetials = async ({ params }: { params: Params }) => {
+const ProtoDetails = async ({ params }: { params: Params }) => {
   const props = await getPost((await params).slug);
 
   const Bg = props.BGColor
@@ -81,6 +81,7 @@ const ProtoDetials = async ({ params }: { params: Params }) => {
               height={250}
               className="rounded-2xl h-fit lg:w-fit w-full"
               alt={props?.title}
+              priority
             />
 
             <div className="flex flex-col justify-end gap-5 w-fit">
@@ -99,10 +100,10 @@ const ProtoDetials = async ({ params }: { params: Params }) => {
           </div>
         </div>
 
-        <div className={`overflow-hidden mx-auto md:max-w-7xl rounded-2xl prose prose-lg prose-img:m-0 w-full bg-dark`} dangerouslySetInnerHTML={{ __html: marked(props.body.raw) }}></div>
+        <div className={`overflow-hidden mx-auto md:max-w-7xl prose-li:text-white md:prose-ul:mx-36 prose-ul:mx-10 rounded-2xl prose-headings:text-white prose-headings:mx-8 prose prose-lg md:prose-headings:mx-28 prose-p:text-white md:prose-p:mx-28 prose-p:mx-8 prose-img:m-0 w-full bg-dark`} dangerouslySetInnerHTML={{ __html: marked(props.body.raw) }}></div>
       </div>
     </article>
   );
 };
 
-export default ProtoDetials;
+export default ProtoDetails;

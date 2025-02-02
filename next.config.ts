@@ -2,7 +2,9 @@ const { withContentlayer } = require("next-contentlayer");
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  optimizeThirdPartyScripts: true,
   experimental: {
+    nextScriptWorkers: true,
     turbo: {
       resolveExtensions: [
         '.mdx',

@@ -24,13 +24,10 @@ export const metadata: Metadata = {
 const Artwork: React.FC = async () => {
     const artworks = await fetchArtworks()
 
-    // console.log(artworks.results.map((artwork: any) => artwork.properties.Image.files[0]))
-
     return (
         <section>
-            <h1 >
-                Artworks
-            </h1>
+            <h1>Artworks</h1>
+
             <div className="grid lg:grid-cols-3 grid-cols-1 gap-8">
                 <Suspense>
                     {artworks.results.map((artwork: any, index) => (

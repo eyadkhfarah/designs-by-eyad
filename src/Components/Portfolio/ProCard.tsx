@@ -8,7 +8,8 @@ type Props = {
     title: string,
     description: string,
     Protype: string,
-    thumbnail: string
+    thumbnail: string,
+    Date: string,
   }
 }
 
@@ -24,9 +25,20 @@ export default function ProCard(data: Props) {
             <p className="lg:text-base text-sm line-clamp-2">{data.data.description}</p>
           </div>
 
-            <div className="p-3 mt-8 rounded-full leading-0 text-sm uppercase font-bold bg-primary text-dark w-fit">
+          <div className="md:flex grid gap-5 justify-between items-center mt-8 w-full">
+            <div className="p-3 rounded-full text-xs uppercase font-bold bg-primary text-dark w-fit">
               {data.data.Protype}
             </div>
+
+            <p className="text-sm whitespace-nowrap text-neutral-500">
+              {new Date(data.data.Date).toLocaleDateString("En-US", {
+                day: "2-digit",
+                year: "numeric",
+                month: "long",
+                formatMatcher: "best fit",
+              })}
+              </p>
+          </div>
         </div>
       </div>
     </Link>

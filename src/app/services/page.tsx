@@ -25,9 +25,7 @@ export default function ServicesPage() {
   return (
     <>
       <section>
-        <h1>
-          Services
-        </h1>
+        <h1>Services</h1>
 
         <ServicesCards />
       </section>

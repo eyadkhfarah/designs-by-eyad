@@ -63,6 +63,18 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        {/* <Partytown
+          forward={['dataLayer.push']}
+          debug={process.env.NODE_ENV === 'development'}
+        /> */}
+        <script
+          type="text/partytown"
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer = window.dataLayer || [];`,
+          }}
+        />
+      </head>
       <body>
         <Navbar />
         <main>{children}</main>

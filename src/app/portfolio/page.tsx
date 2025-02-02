@@ -21,13 +21,11 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Protfolio() {
+export default function Portfolio() {
   return (
     <>
       <section>
-        <h1 >
-          Profolio
-        </h1>
+        <h1>Portfolio</h1>
         <ProtImages />
       </section>
 
