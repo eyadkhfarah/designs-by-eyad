@@ -78,7 +78,7 @@ export default async function PostPage({ params }: { params: Params }) {
             {post.properties.Subtitle.rich_text[0].plain_text}
           </p>
           <div
-            className="prose prose-lg prose-invert"
+            className="prose prose-lg prose-invert prose-a:text-primary"
             dangerouslySetInnerHTML={{ __html: html }}
           ></div>
 
