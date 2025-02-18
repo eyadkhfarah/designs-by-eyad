@@ -15,7 +15,7 @@ const GetDesign = () => {
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const siteUrl =
-    process.env.NEXT_PUBLIC_DOMAIN_URL || "https://designs-by-eyad.vercel.apps";
+    process.env.NEXT_PUBLIC_DOMAIN_URL || "https://designs-by-eyad.vercel.app";
 
   const web = GetWeb();
   const designs = GetDesign();
