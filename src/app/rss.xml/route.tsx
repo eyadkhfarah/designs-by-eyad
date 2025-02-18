@@ -2,7 +2,7 @@ import { fetchPosts } from "../../lib/notion";
 import RSS from "rss";
 
 const siteUrl =
-  process.env.NEXT_PUBLIC_DOMAIN_URL || "https://designs-by-eyad.vercel.apps";
+  process.env.NEXT_PUBLIC_DOMAIN_URL || "https://designs-by-eyad.vercel.app";
 
 const feed = new RSS({
   title: "Designs By Eyad — Creative Branding & Web Design Portfolio",
