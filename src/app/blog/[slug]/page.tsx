@@ -64,7 +64,7 @@ export default async function PostPage({ params }: { params: Params }) {
             <p>{post.properties.Publication.date.start}</p>•
             <p>{post.properties.Category.select.name}</p>
           </div>
-          <h1 className="md:text-[4rem] text-5xl md:leading-16 leading-11 w-fit">
+          <h1 className="md:text-[4rem] text-4xl md:leading-16 leading-11 w-fit">
             {post.properties.Name.title[0].plain_text}
           </h1>
           <Image
