@@ -1,7 +1,9 @@
 import "server-only";
 import { Client } from "@notionhq/client";
-import React from "react";
 import { BlockObjectResponse, PageObjectResponse } from "@notionhq/client/build/src/api-endpoints";
+
+// Revalidate data every 1 second in Next.js
+export const revalidate = 1;
 
 const NOTION_API_KEY = process.env.YOUR_NOTION_API_KEY;
 const NOTION_API_KEY_BLOG = process.env.YOUR_NOTION_BLOG_API_KEY;
@@ -17,54 +19,50 @@ export const notionBlog = new Client({
   auth: NOTION_API_KEY_BLOG,
 });
 
-export const notionArtowrk = new Client({
+export const notionArtwork = new Client({
   auth: NOTION_API_KEY_ARTWORK,
 });
 
 // Blog
 
-export const fetchPosts = React.cache(() => {
-  return notionBlog.databases.query({
-    database_id: NOTION_BLOG_DATABASE_ID,
+export async function fetchPosts() {
+  const response = await notionBlog.databases.query({
+    database_id: NOTION_BLOG_DATABASE_ID!,
     filter: {
       property: "Status",
-      status: {
-        equals: "Live",
-      },
+      status: { equals: "Live" },
     },
-  }); // 10 seconds cache duration
-});
+  });
+  return response;
+}
 
-export const fetchPostSlug = React.cache((slug: string) => {
-  return notionBlog.databases.query({
-    database_id: NOTION_BLOG_DATABASE_ID,
+export async function fetchPostSlug(slug: string) {
+  const response = await notionBlog.databases.query({
+    database_id: NOTION_BLOG_DATABASE_ID!,
     filter: {
       property: "Slug",
-      rich_text: {
-        equals: slug,
-      },
+      rich_text: { equals: slug },
     },
-  })
-  .then((res) => res.results[0] as PageObjectResponse | undefined)
-});
+  });
+  return response.results[0] as PageObjectResponse | undefined;
+}
 
-export const fetchPostBlocks = React.cache((pageId: string) => {
-    return notionBlog.blocks.children.list({
-      block_id: pageId,
-    })
-    .then((res) => res.results as BlockObjectResponse[])
-})
+export async function fetchPostBlocks(pageId: string) {
+  const response = await notionBlog.blocks.children.list({
+    block_id: pageId,
+  });
+  return response.results as BlockObjectResponse[];
+}
 
 // Artworks
 
-export const fetchArtworks = React.cache(() => {
-  return notionArtowrk.databases.query({
-    database_id: NOTION_ARTWORK_DATABASE_ID,
-     filter: {
-       property: "Publish",
-       status: {
-          equals: "Live",
-       },
-     },
-  }); // 10 seconds cache duration
-});
+export async function fetchArtworks() {
+  const response = await notionArtwork.databases.query({
+    database_id: NOTION_ARTWORK_DATABASE_ID!,
+    filter: {
+      property: "Publish",
+      status: { equals: "Live" },
+    },
+  });
+  return response;
+}
