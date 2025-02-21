@@ -2,6 +2,8 @@ import Navbar from "@/Components/Navbar";
 import "./globals.css";
 import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google'
 import Footer from "@/Components/Footer";
+
+import Script from 'next/script';
 import { Metadata, Viewport } from "next";
 
 const title = "%s — Designs By Eyad";
@@ -61,9 +63,47 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  
+const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Eyad Farah",
+    "jobTitle": "Graphic Designer",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Designs By Eyad",
+      "url": siteUrl,
+      "sameAs": [
+        "https://www.facebook.com/designs.by.eyad",
+        "https://www.instagram.com/designs.by.eyad",
+        "https://www.linkedin.com/company/designsbyeyad",
+        "https://www.youtube.com/@designsbyeyad"
+      ]
+    },
+    "telephone": "(+20) 155 571 5783",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Aswan",
+      "addressCountry": "EG"
+    },
+    "url": siteUrl,
+    "sameAs": [
+      "https://www.facebook.com/designs.by.eyad",
+      "https://www.instagram.com/designs.by.eyad",
+      "https://www.linkedin.com/company/designsbyeyad",
+      "https://www.youtube.com/@designsbyeyad"
+    ]
+  };
+  
   return (
     <html lang="en">
       <head>
+        <Script
+          id="json-ld-schema"
+          type="application/ld+json"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         {/* <Partytown
           forward={['dataLayer.push']}
           debug={process.env.NODE_ENV === 'development'}
