@@ -1,6 +1,58 @@
 import Image from "next/image";
 import { Metadata } from "next";
 import { fetchArtworks } from "@/lib/notion";
+import { QueryDatabaseResponse, PageObjectResponse } from "@notionhq/client/build/src/api-endpoints";
+
+// Define the expected artwork properties from Notion
+interface ArtworkProperties {
+  Name: {
+    id: string;
+    type: "title";
+    title: Array<{
+      type: "text";
+      text: {
+        content: string;
+        link: string | null;
+      };
+      plain_text: string;
+      href: string | null;
+    }>;
+  };
+  Image: {
+    id: string;
+    type: "files";
+    files: Array<{
+      type: "external" | "file";
+      name: string;
+      external?: {
+        url: string;
+      };
+      file?: {
+        url: string;
+        expiry_time: string;
+      };
+    }>;
+  };
+}
+
+// Combine Notion's PageObjectResponse with our custom properties
+type ArtworkPage = PageObjectResponse & { properties: ArtworkProperties };
+
+// Define a custom response type for our artworks query
+interface ArtworksResponse extends QueryDatabaseResponse {
+  results: (PageObjectResponse)[];
+}
+
+// Type guard to ensure a page is an ArtworkPage
+function isArtworkPage(page: PageObjectResponse): page is ArtworkPage {
+  const props = page.properties;
+  return (
+    "Name" in props &&
+    "Image" in props &&
+    Array.isArray((props as any).Name?.title) &&
+    Array.isArray((props as any).Image?.files)
+  );
+}
 
 const meta = {
   title: "Artworks",
@@ -26,22 +78,35 @@ export const metadata: Metadata = {
 export const revalidate = 1;
 
 export default async function Artwork() {
-  const artworks = await fetchArtworks();
+  // Fetch the raw artworks response
+  const rawResponse: ArtworksResponse = await fetchArtworks();
+
+  // Filter out only the pages that match our ArtworkPage structure
+  const artworks: ArtworkPage[] = rawResponse.results.filter(isArtworkPage);
 
   return (
     <section>
       <h1>Artworks</h1>
-      <div className="grid lg:grid-cols-3 grid-cols-1 gap-8">
-        {artworks.results.map((artwork: any) => (
-          <Image
-            key={artwork.id || artwork.properties.Name.title[0].plain_text}
-            className="rounded-3xl"
-            alt={artwork.properties.Name.title[0].plain_text}
-            src={artwork.properties.Image.files[0].external.url}
-            width={500}
-            height={250}
-          />
-        ))}
+      {/* Mosaic grid layout using CSS columns */}
+      <div className="columns-1 sm:columns-2 lg:columns-3 gap-4">
+        {artworks.map((artwork) => {
+          const name =
+            artwork.properties.Name.title[0]?.plain_text || "Untitled";
+          const imageUrl = artwork.properties.Image.files[0].external?.url;
+          // Skip rendering if no image URL is found
+          if (!imageUrl) return null;
+          return (
+            <div key={artwork.id} className="mb-4 break-inside-avoid">
+              <Image
+                className="rounded-3xl object-cover"
+                alt={name}
+                src={imageUrl}
+                width={500}
+                height={250}
+              />
+            </div>
+          );
+        })}
       </div>
     </section>
   );
