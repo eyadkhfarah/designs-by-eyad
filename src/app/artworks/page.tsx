@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Metadata } from "next";
 import { fetchArtworks } from "@/lib/notion";
+import { QueryDatabaseResponse, PageObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 
 // Define the Notion artwork properties
 interface ArtworkProperties {
