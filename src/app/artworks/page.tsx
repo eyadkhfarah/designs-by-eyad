@@ -2,6 +2,46 @@ import Image from "next/image";
 import { Metadata } from "next";
 import { fetchArtworks } from "@/lib/notion";
 
+// Define the Notion artwork properties
+interface ArtworkProperties {
+  Name: {
+    id: string;
+    type: "title";
+    title: Array<{
+      type: "text";
+      text: {
+        content: string;
+        link: string | null;
+      };
+      plain_text: string;
+      href: string | null;
+    }>;
+  };
+  Image: {
+    id: string;
+    type: "files";
+    files: Array<{
+      type: "external" | "file";
+      name: string;
+      external?: {
+        url: string;
+      };
+      file?: {
+        url: string;
+        expiry_time: string;
+      };
+    }>;
+  };
+}
+
+// Combine Notion's PageObjectResponse with our custom properties
+type ArtworkPage = PageObjectResponse & { properties: ArtworkProperties };
+
+// Define the expected shape of the artworks response
+interface ArtworksResponse extends QueryDatabaseResponse {
+  results: ArtworkPage[];
+}
+
 const meta = {
   title: "Artworks",
   description:
@@ -26,7 +66,7 @@ export const metadata: Metadata = {
 export const revalidate = 1;
 
 export default async function Artwork() {
-  const artworks = await fetchArtworks();
+  const artworks = (await fetchArtworks()) as ArtworksResponse;
 
   return (
     <section>
