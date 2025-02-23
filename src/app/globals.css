@@ -132,7 +132,7 @@ body {
   }
 
   .blog-card {
-    @apply grid gap-5 break-inside-avoid bg-dark p-5 rounded-3xl transition-all ease-in-out duration-300
+    @apply grid gap-5 break-inside-avoid bg-dark mb-4 p-5 rounded-3xl transition-all ease-in-out duration-300
   }
 
   .shareLink {
