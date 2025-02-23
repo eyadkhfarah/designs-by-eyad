@@ -34,7 +34,8 @@ interface PostsResponse extends QueryDatabaseResponse {
 }
 
 export default async function BlogsPage() {
-  const posts: PostsResponse = await fetchPosts();
+
+  const posts = (await fetchPosts()) as PostsResponse;
 
   return (
     <section>
