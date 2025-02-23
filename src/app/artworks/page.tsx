@@ -2,38 +2,7 @@ import Image from "next/image";
 import { Metadata } from "next";
 import { fetchArtworks } from "@/lib/notion";
 import { QueryDatabaseResponse, PageObjectResponse } from "@notionhq/client/build/src/api-endpoints";
-
-// Define the Notion artwork properties
-interface ArtworkProperties {
-  Name: {
-    id: string;
-    type: "title";
-    title: Array<{
-      type: "text";
-      text: {
-        content: string;
-        link: string | null;
-      };
-      plain_text: string;
-      href: string | null;
-    }>;
-  };
-  Image: {
-    id: string;
-    type: "files";
-    files: Array<{
-      type: "external" | "file";
-      name: string;
-      external?: {
-        url: string;
-      };
-      file?: {
-        url: string;
-        expiry_time: string;
-      };
-    }>;
-  };
-}
+import { ArtworkProperties } from "@/types/notionType";
 
 // Combine Notion's PageObjectResponse with our custom properties
 type ArtworkPage = PageObjectResponse & { properties: ArtworkProperties };

@@ -2,6 +2,7 @@ import BentoGrid from "@/Components/Client/BentoGrid";
 // import PinterestPins from "@/Components/Portfolio/PinterestPins";
 import ServicesSlider from "@/Components/Services/ServicesSlider";
 import { TestimonialSlider } from "@/Components/Services/TestimonialSlider";
+import { RiArrowLeftLine, RiArrowLeftSLine, RiArrowRightSLine } from "react-icons/ri";
 
 export default function page() {
   return (
@@ -14,6 +15,27 @@ export default function page() {
         <ServicesSlider />
         <TestimonialSlider />
         {/* <PinterestPins /> */}
+
+        <div className="flex justify-between items-center">
+          <button className="flex items-center gap-4 cursor-pointer">
+            <span className="p-3 rounded-full bg-dark">
+              <RiArrowLeftSLine className="text-4xl text-primary" />
+            </span>
+            <div className="grid">
+              <p className="font-bold uppercase text-lg">Previous</p>
+              <p className="line-clamp-1 text-neutral-500">Article title</p>
+            </div>
+          </button>
+          <button className="flex items-center flex-row-reverse gap-4 cursor-pointer">
+            <span className="p-3 rounded-full bg-dark">
+              <RiArrowRightSLine className="text-4xl text-primary" />
+            </span>
+            <div className="grid place-items-end">
+              <p className="font-bold uppercase text-lg">Next</p>
+              <p className="line-clamp-1 text-neutral-500">Article title</p>
+            </div>
+          </button>
+        </div>
       </section>
     </>
   )

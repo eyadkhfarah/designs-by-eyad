@@ -75,6 +75,10 @@ body {
     background: var(--color-primary);
   }
 
+  .notion-text-bold {
+    @apply font-bold
+  }
+
   body {
     @apply bg-neutral-950 text-white
   }

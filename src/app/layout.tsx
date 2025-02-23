@@ -5,6 +5,7 @@ import Footer from "@/Components/Footer";
 
 import Script from 'next/script';
 import { Metadata, Viewport } from "next";
+import { NavList } from "@/lib/NavList";
 
 const title = "%s — Designs By Eyad";
 const desc =
@@ -63,8 +64,20 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  
-const jsonLd = {
+  const breadcrumbList = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://designs-by-eyad.vercel.app/"
+      },
+    ]
+  };
+
+  const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Eyad Farah",
@@ -94,7 +107,7 @@ const jsonLd = {
       "https://www.youtube.com/@designsbyeyad"
     ]
   };
-  
+
   return (
     <html lang="en">
       <head>
@@ -104,6 +117,38 @@ const jsonLd = {
           strategy="beforeInteractive"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        <Script
+          id="json-ld-schema"
+          type="application/ld+json"
+          strategy="beforeInteractive">
+          {`{
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+              {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Home",
+                  "item": "${siteUrl}"
+                },
+              ${NavList.map((nav) => (
+                `{
+                  "@type": "ListItem",
+                  "position": ${Number(nav.id) + 1},
+                  "name": "${nav.name}",
+                  "item": "${siteUrl + nav.link}"
+                }`
+              ))}
+                {
+                  "@type": "ListItem",
+                  "position": 8,
+                  "name": "Contact",
+                  "item": "${siteUrl + "/contact"}"
+                }
+              ]
+            }`
+          }
+        </Script>
         {/* <Partytown
           forward={['dataLayer.push']}
           debug={process.env.NODE_ENV === 'development'}

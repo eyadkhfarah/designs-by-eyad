@@ -68,3 +68,34 @@ export type NotionPage = {
     }
   };
 };
+
+export interface ArtworkProperties {
+  Name: {
+    id: string;
+    type: "title";
+    title: Array<{
+      type: "text";
+      text: {
+        content: string;
+        link: string | null;
+      };
+      plain_text: string;
+      href: string | null;
+    }>;
+  };
+  Image: {
+    id: string;
+    type: "files";
+    files: Array<{
+      type: "external" | "file";
+      name: string;
+      external?: {
+        url: string;
+      };
+      file?: {
+        url: string;
+        expiry_time: string;
+      };
+    }>;
+  };
+}

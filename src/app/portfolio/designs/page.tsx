@@ -1,5 +1,6 @@
 import ProCard from "@/Components/Portfolio/ProCard";
 import { allProtoDesigns } from "contentlayer/generated";
+import Script from "next/script";
 import type { Metadata } from "next/types";
 
 const meta = {
@@ -35,6 +36,10 @@ const getPro = async () => {
 export default async function Designs() {
   const doc = await getPro();
 
+  const siteUrl =
+    process.env.NEXT_PUBLIC_DOMAIN_URL ||
+    "https://designs-by-eyad.vercel.app";
+
   return (
     <>
       <section>
@@ -50,6 +55,32 @@ export default async function Designs() {
           ))}
         </div>
       </section>
+
+      <Script type="application/ld+json">
+        {`
+          {
+            "@context": "https://schema.org",
+            "@type": "CollectionPage",
+            "name": "Designs",
+            "mainEntity": {
+              "@type": "ItemList",
+              "itemListElement": [
+              ${doc.map((design, index) => (
+          `
+                {
+                  "@type": "ListItem",
+                  "position": ${index + 1},
+                  "url": "${siteUrl + design.slug}",
+                  "name": "${design.title}"
+                },
+                `
+        )).join(','
+        )}
+              ]
+            }
+          }
+        `}
+      </Script>
     </>
   );
 }

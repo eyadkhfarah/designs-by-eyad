@@ -2,6 +2,7 @@ import ProCard from "@/Components/Portfolio/ProCard";
 import React from "react";
 import { allProtoWebs } from "contentlayer/generated";
 import type { Metadata } from "next/types";
+import Script from "next/script";
 
 const meta = {
   title: "Web Designs",
@@ -36,6 +37,10 @@ const getPro = async () => {
 export default async function Web() {
   const doc = await getPro();
 
+  const siteUrl =
+    process.env.NEXT_PUBLIC_DOMAIN_URL ||
+    "https://designs-by-eyad.vercel.app";
+
   return (
     <>
       <section className="mx-auto lg:max-w-7xl md:max-w-2xl max-w-xs p-10 grid gap-8">
@@ -51,6 +56,32 @@ export default async function Web() {
           ))}
         </div>
       </section>
+
+      <Script type="application/ld+json">
+        {`
+          {
+            "@context": "https://schema.org",
+            "@type": "CollectionPage",
+            "name": "Web",
+            "mainEntity": {
+              "@type": "ItemList",
+              "itemListElement": [
+              ${doc.map((web, index) => (
+                `
+                {
+                  "@type": "ListItem",
+                  "position": ${index + 1},
+                  "url": "${siteUrl + web.slug}",
+                  "name": "${web.title}"
+                },
+                `
+              )).join(','
+              )}
+              ]
+            }
+          }
+        `}
+      </Script>
     </>
   );
 }
