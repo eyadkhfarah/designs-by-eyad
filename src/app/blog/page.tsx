@@ -1,6 +1,7 @@
 import BlogSqr from "@/Components/Blog/BlogSqr";
 import { fetchPosts } from "@/lib/notion";
 import { Metadata } from "next";
+import { PageObjectResponse, QueryDatabaseResponse } from "@notionhq/client/build/src/api-endpoints";
 
 const siteUrl = process.env.PUBLIC_DOMAIN_URL || "https://designs-by-eyad.vercel.app";
 
@@ -27,14 +28,19 @@ export const metadata: Metadata = {
 // Revalidate this page every 1 second
 export const revalidate = 1;
 
+// Define a type for the posts response
+interface PostsResponse extends QueryDatabaseResponse {
+  results: PageObjectResponse[];
+}
+
 export default async function BlogsPage() {
-  const posts = await fetchPosts();
+  const posts: PostsResponse = await fetchPosts();
 
   return (
     <section>
       <h1>Blog</h1>
-      <div className="grid lg:grid-cols-3 gap-8">
-        {posts.results.map((post: any) => (
+      <div className="columns-1 md:columns-2 lg:columns-3 gap-8">
+        {posts.results.map((post: PageObjectResponse) => (
           <BlogSqr key={post.id} post={post} />
         ))}
       </div>
