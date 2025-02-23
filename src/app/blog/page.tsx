@@ -34,14 +34,13 @@ interface PostsResponse extends QueryDatabaseResponse {
 }
 
 export default async function BlogsPage() {
-
-  const posts = (await fetchPosts()) as PostsResponse;
+  const posts = await fetchPosts();
 
   return (
     <section>
       <h1>Blog</h1>
       <div className="columns-1 md:columns-2 lg:columns-3 gap-8">
-        {posts.results.map((post: PageObjectResponse) => (
+        {posts.results.map((post: any) => (
           <BlogSqr key={post.id} post={post} />
         ))}
       </div>
