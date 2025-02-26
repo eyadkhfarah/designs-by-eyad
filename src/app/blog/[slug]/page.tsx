@@ -15,7 +15,7 @@ import React from "react";
 type Params = { slug: string };
 
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
-  const slug = (await params).slug;
+  const slug = params.slug;
   const post = (await fetchPostSlug(slug)) as unknown as NotionPage;
 
   if (!post) {
@@ -47,7 +47,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
 }
 
 export default async function PostPage({ params }: { params: Params }) {
-  const slug = (await params).slug;
+  const slug = params.slug;
   const post = (await fetchPostSlug(slug)) as unknown as NotionPage;
 
   if (!post) return notFound();
@@ -55,15 +55,15 @@ export default async function PostPage({ params }: { params: Params }) {
   const content = await fetchPostBlocks(post.id);
   const siteUrl = process.env.PUBLIC_DOMAIN_URL || "https://designs-by-eyad.vercel.app";
 
-  // Fetch all posts to determine navigation links
-  const allPosts = await fetchPosts();
+  // // Fetch all posts to determine navigation links
+  // const allPosts = await fetchPosts();
 
-  // Sort posts by created_time (oldest first)
-  const sortedPosts = allPosts.results
-    .map((post: any) => post)
-    .sort(
-      (a, b) => new Date(a.created_time).getTime() - new Date(b.created_time).getTime()
-    );
+  // // Sort posts by created_time (oldest first)
+  // const sortedPosts = allPosts.results
+  //   .map((post: any) => post)
+  //   .sort(
+  //     (a, b) => new Date(a.created_time).getTime() - new Date(b.created_time).getTime()
+  //   );
 
   // // Use the slug from params or from post properties for comparison
   // const currentIndex = sortedPosts.findIndex((p: any) => p.properties.Slug.rich_text[0].plain_text === slug);
