@@ -47,7 +47,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
 }
 
 export default async function PostPage({ params }: { params: Params }) {
-  const slug = (await params).slug;
+  const slug = params.slug;
   const post = (await fetchPostSlug(slug)) as unknown as NotionPage;
 
   if (!post) return notFound();
