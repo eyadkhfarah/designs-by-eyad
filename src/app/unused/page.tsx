@@ -40,3 +40,30 @@ export default function page() {
     </>
   )
 }
+
+// 1. Mobile App
+// 2. Clinic
+// 3. News and Publication
+// 4. Government
+// 5. Travel
+// 6. Marketing Agencies
+// 7. Tech 
+// 8. Beverages
+// 9. Restaurants
+// 10. Coffee shops
+// 11. Food retailers
+// 12. Furniture
+// 13. Real estate
+// 14. Education
+// 15. Universities
+// 16. Beauty
+// 17. Fashion
+// 18. Magazines
+// 19. E-commerce
+// 20. Influencers
+// 21. Youtubers
+// 22. Podcast
+// 23. Cosmetics
+// 24. Beauty
+// 25. Perfumes
+// 26. Automobile

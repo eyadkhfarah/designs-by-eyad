@@ -15,7 +15,7 @@ import React from "react";
 type Params = { slug: string };
 
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
-  const slug = params.slug;
+  const slug = (await params).slug;
   const post = (await fetchPostSlug(slug)) as unknown as NotionPage;
 
   if (!post) {
@@ -47,7 +47,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
 }
 
 export default async function PostPage({ params }: { params: Params }) {
-  const slug = params.slug;
+  const slug = (await params).slug;
   const post = (await fetchPostSlug(slug)) as unknown as NotionPage;
 
   if (!post) return notFound();
