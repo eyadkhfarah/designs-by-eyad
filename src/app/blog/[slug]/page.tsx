@@ -12,10 +12,10 @@ import { notFound } from "next/navigation";
 import Script from "next/script";
 import React from "react";
 
-type Params = { slug: string };
+type Params = Promise<{ slug: string }>
 
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
-  const slug = params.slug;
+  const { slug } = await params
   const post = (await fetchPostSlug(slug)) as unknown as NotionPage;
 
   if (!post) {
@@ -47,7 +47,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
 }
 
 export default async function PostPage({ params }: { params: Params }) {
-  const slug = params.slug;
+  const slug = (await params).slug;
   const post = (await fetchPostSlug(slug)) as unknown as NotionPage;
 
   if (!post) return notFound();
@@ -55,28 +55,28 @@ export default async function PostPage({ params }: { params: Params }) {
   const content = await fetchPostBlocks(post.id);
   const siteUrl = process.env.PUBLIC_DOMAIN_URL || "https://designs-by-eyad.vercel.app";
 
-  // // Fetch all posts to determine navigation links
-  // const allPosts = await fetchPosts();
+  // Fetch all posts to determine navigation links
+  const allPosts = await fetchPosts();
 
-  // // Sort posts by created_time (oldest first)
-  // const sortedPosts = allPosts.results
-  //   .map((post: any) => post)
-  //   .sort(
-  //     (a, b) => new Date(a.created_time).getTime() - new Date(b.created_time).getTime()
-  //   );
+  // Sort posts by created_time (oldest first)
+  const sortedPosts = allPosts.results
+    .map((post: any) => post)
+    .sort(
+      (a, b) => new Date(a.created_time).getTime() - new Date(b.created_time).getTime()
+    );
 
-  // // Use the slug from params or from post properties for comparison
-  // const currentIndex = sortedPosts.findIndex((p: any) => p.properties.Slug.rich_text[0].plain_text === slug);
-  // if (currentIndex === -1) {
-  //   return notFound();
-  // }
+  // Use the slug from params or from post properties for comparison
+  const currentIndex = sortedPosts.findIndex((p: any) => p.properties.Slug.rich_text[0].plain_text === slug);
+  if (currentIndex === -1) {
+    return notFound();
+  }
 
-  // console.log(currentIndex);
+  console.log(currentIndex);
 
 
-  // const currentPost = sortedPosts[currentIndex];
-  // const prevPost = currentIndex > 0 ? sortedPosts[currentIndex - 1] : null;
-  // const nextPost = currentIndex < sortedPosts.length - 1 ? sortedPosts[currentIndex + 1] : null;
+  const currentPost = sortedPosts[currentIndex];
+  const prevPost = currentIndex > 0 ? sortedPosts[currentIndex - 1] : null;
+  const nextPost = currentIndex < sortedPosts.length - 1 ? sortedPosts[currentIndex + 1] : null;
 
   const render = new NotionRenderer({
     client: notionBlog,
@@ -141,7 +141,7 @@ export default async function PostPage({ params }: { params: Params }) {
       </section>
 
       {/* Pass navigation data as props */}
-      {/* <PostNavigation nextPost={nextPost} prevPost={prevPost} /> */}
+      <PostNavigation nextPost={nextPost} prevPost={prevPost} />
 
       <Script type="application/ld+json">
         {`{
