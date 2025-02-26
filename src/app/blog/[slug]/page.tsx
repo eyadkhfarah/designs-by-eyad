@@ -15,7 +15,7 @@ import React from "react";
 type Params = { slug: string };
 
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
-  const slug = (await params).slug;
+  const slug = params.slug;
   const post = (await fetchPostSlug(slug)) as unknown as NotionPage;
 
   if (!post) {
