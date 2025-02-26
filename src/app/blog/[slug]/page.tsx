@@ -66,17 +66,17 @@ export default async function PostPage({ params }: { params: Params }) {
     );
 
   // // Use the slug from params or from post properties for comparison
-  const currentIndex = sortedPosts.findIndex((p: any) => p.properties.Slug.rich_text[0].plain_text === slug);
-  if (currentIndex === -1) {
-    return notFound();
-  }
+  // const currentIndex = sortedPosts.findIndex((p: any) => p.properties.Slug.rich_text[0].plain_text === slug);
+  // if (currentIndex === -1) {
+  //   return notFound();
+  // }
 
-  console.log(currentIndex);
+  // console.log(currentIndex);
 
 
-  const currentPost = sortedPosts[currentIndex];
-  const prevPost = currentIndex > 0 ? sortedPosts[currentIndex - 1] : null;
-  const nextPost = currentIndex < sortedPosts.length - 1 ? sortedPosts[currentIndex + 1] : null;
+  // const currentPost = sortedPosts[currentIndex];
+  // const prevPost = currentIndex > 0 ? sortedPosts[currentIndex - 1] : null;
+  // const nextPost = currentIndex < sortedPosts.length - 1 ? sortedPosts[currentIndex + 1] : null;
 
   const render = new NotionRenderer({
     client: notionBlog,
@@ -141,7 +141,7 @@ export default async function PostPage({ params }: { params: Params }) {
       </section>
 
       {/* Pass navigation data as props */}
-      <PostNavigation nextPost={nextPost} prevPost={prevPost} />
+      {/* <PostNavigation nextPost={nextPost} prevPost={prevPost} /> */}
 
       <Script type="application/ld+json">
         {`{
