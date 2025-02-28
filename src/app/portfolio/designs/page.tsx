@@ -56,31 +56,25 @@ export default async function Designs() {
         </div>
       </section>
 
-      <Script type="application/ld+json">
-        {`
-          {
+      <Script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "CollectionPage",
-            "name": "Designs",
+            "name": "Web",
             "mainEntity": {
               "@type": "ItemList",
-              "itemListElement": [
-              ${doc.map((design, index) => (
-          `
-                {
-                  "@type": "ListItem",
-                  "position": ${index + 1},
-                  "url": "${siteUrl + design.slug}",
-                  "name": "${design.title}"
-                },
-                `
-        )).join(','
-        )}
-              ]
-            }
-          }
-        `}
-      </Script>
+              "itemListElement": doc.map((design, index) => ({
+                "@type": "ListItem",
+                "position": index + 1,
+                "url": `${siteUrl + design.slug}`,
+                "name": design.title,
+              })),
+            },
+          }),
+        }}
+      />
     </>
   );
 }

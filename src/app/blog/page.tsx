@@ -39,37 +39,37 @@ export default async function BlogsPage() {
 
   return (
     <>
-    <section>
-      <h1>Blog</h1>
-      <div className="columns-1 md:columns-2 lg:columns-3 gap-8">
-        {posts.results.map((post: any) => (
-          <BlogSqr key={post.id} post={post} />
-        ))}
-      </div>
-    </section>
+      <section>
+        <h1>Blog</h1>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {posts.results.map((post: any) => (
+            <BlogSqr key={post.id} post={post} />
+          ))}
+        </div>
+      </section>
 
-    <Script type="application/ld+json">
-      {`{
-          "@context": "https://schema.org",
-          "@type": "CollectionPage",
-          "name": "Blog",
-          "mainEntity": {
-            "@type": "ItemList",
-            "itemListElement": [
-              ${posts.results.map((post: any, index: number) => (
-                `{
-                  "@type": "ListItem",
-                  "position": ${index + 1},
-                  "url": "${siteUrl}/blog/${post.properties.Slug.rich_text[0].plain_text}",
-                  "name": "${post.properties.Name.title[0].plain_text}"
-                },`
-                )).join(','
-              )}
-            ]
-          }
-        }`
-      }
-    </Script>
+
+      <Script
+        type="application/ld+json"
+        id="json-ld-schema"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "CollectionPage",
+            "name": "Blog",
+            "mainEntity": {
+              "@type": "ItemList",
+              "itemListElement": posts.results.map((post: any, index: number) => ({
+                "@type": "ListItem",
+                "position": index + 1,
+                "url": `${siteUrl}/blog/${post.properties.Slug.rich_text[0].plain_text}`,
+                "name": post.properties.Name.title[0].plain_text
+              }))
+            }
+          }),
+        }}
+      />
 
     </>
   );

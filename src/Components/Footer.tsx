@@ -2,6 +2,7 @@ import Link from "next/link";
 import React from "react";
 import { RiFacebookCircleFill, RiInstagramLine, RiLinkedinFill, RiYoutubeFill } from "react-icons/ri";
 import PrimaryBtn from "./Buttons/PrimaryBtn";
+import { nonindesxList } from "@/lib/nonindexList";
 
 export default function Footer() {
   return (
@@ -57,6 +58,18 @@ export default function Footer() {
           © {new Date().getFullYear()} <span className="text-primary">Designs by Eyad</span>. All rights reserved.
         </p>
       </footer>
+      <ul className="mx-auto text-xs lg:max-w-6xl md:max-w-2x max-w-xs text-center md:flex gap-8 md:flex-row flex-col items-center my-8">
+        <>
+          {nonindesxList.map((link, index) => (
+            <React.Fragment key={index}>
+              <Link className="text-primary" href={link.link}>
+                {link.name}
+              </Link>
+              {index < nonindesxList.length - 1 && ' • '}
+            </React.Fragment>
+          ))}
+        </>
+      </ul>
     </>
   );
 }

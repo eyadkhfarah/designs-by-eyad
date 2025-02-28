@@ -45,6 +45,9 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
         },
       ],
     },
+    twitter: {
+      card: "summary"
+    }
   };
 }
 
@@ -113,26 +116,29 @@ const ProtoDetails = async ({ params }: { params: Params }) => {
           <div className={`overflow-hidden mx-auto md:max-w-7xl prose-li:text-white md:prose-ul:mx-36 prose-ul:mx-10 rounded-2xl prose-headings:text-white prose-headings:mx-8 prose prose-lg md:prose-headings:mx-28 prose-p:text-white md:prose-p:mx-28 prose-p:mx-8 prose-img:m-0 w-full bg-dark`} dangerouslySetInnerHTML={{ __html: marked(props.body.raw) }}></div>
         </div>
       </article>
-      
-      <Script type="application/ld+json">
-        {`
-          "@context": "https://schema.org",
-          "@type": "WebPage",
-          "name": "${props.title}",
-          "url": "${siteUrl + props.slug}",
-          "mainEntity": {
-            "@type": "CreativeWork",
-            "name": "${props.title}",
-            "description": "${props.description}",
-            "image": "${siteUrl + props.thumbnail}",
-            "creator": {
-              "@type": "Person",
-            "name": "Eyad Farah"
-            },
-            "dateCreated": "${props.Date}",
-          }
-        `}
-      </Script>
+
+      <Script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": props.title,
+            "url": siteUrl + props.slug,
+            "mainEntity": {
+              "@type": "CreativeWork",
+              "name": props.title,
+              "description": props.description,
+              "image": siteUrl + props.thumbnail,
+              "creator": {
+                "@type": "Person",
+                "name": "Eyad Farah"
+              },
+              "dateCreated": props.Date
+            }
+          }),
+        }}
+      />
     </>
   );
 };

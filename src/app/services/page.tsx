@@ -1,3 +1,4 @@
+import BrandFields from "@/Components/Client/BrandFields";
 import ServicesCards from "@/Components/Services/ServicesCards";
 import ToolsTabs from "@/Components/Services/ToolsTabs";
 import { Metadata } from "next";
@@ -29,6 +30,11 @@ export default function ServicesPage() {
 
         <ServicesCards />
       </section>
+
+      <section>
+        <BrandFields />
+      </section>
+      
       <section>
         <h2 className="uppercase text-5xl text-center my-12">
           Tools I Used In

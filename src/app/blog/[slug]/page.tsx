@@ -71,7 +71,7 @@ export default async function PostPage({ params }: { params: Params }) {
     return notFound();
   }
 
-  console.log(currentIndex);
+  const DateJson = new Date(post.properties.Publication.date.start).toJSON();
 
 
   const currentPost = sortedPosts[currentIndex];
@@ -110,7 +110,7 @@ export default async function PostPage({ params }: { params: Params }) {
             {post.properties.Subtitle.rich_text[0].plain_text}
           </p>
           <div
-            className="prose prose-img:rounded-2xl prose-strong:font-bold prose-invert prose-a:text-primary"
+            className="prose prose-img:rounded-2xl prose-strong:font-bold prose-invert prose-a:text-primary prose-a:no-underline"
             dangerouslySetInnerHTML={{ __html: html }}
           ></div>
 
@@ -143,29 +143,34 @@ export default async function PostPage({ params }: { params: Params }) {
       {/* Pass navigation data as props */}
       <PostNavigation nextPost={nextPost} prevPost={prevPost} />
 
-      <Script type="application/ld+json">
-        {`{
-          "@context": "https://schema.org",
-          "@type": "BlogPosting",
-          "headline": "${post.properties.Name.title[0].plain_text}",
-          "image": "${post.properties.Thumbnail.files[0].name}",
-          "author": {
-            "@type": "Person",
-            "name": "Eyad Farah"
-          },
-          "publisher": {
-            "@type": "Organization",
-            "name": "Designs By Eyad",
-            "logo": {
-              "@type": "ImageObject",
-              "url": "https://designs-by-eyad.vercel.app/path-to-logo.png"
-            }
-          },
-          "datePublished": "${post.properties.Publication.date.start}",
-          "url": "${siteUrl}/blog/${post.properties.Slug.rich_text[0].plain_text}",
-          "description": "${post.properties.Subtitle.rich_text[0].plain_text}"
-        }`}
-      </Script>
+      <Script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": post.properties.Name.title[0].plain_text,
+            "image": post.properties.Thumbnail.files[0].name,
+            "author": {
+              "@type": "Person",
+              "name": "Eyad Farah",
+              "url": siteUrl
+            },
+            "publisher": {
+              "@type": "Organization",
+              "name": "Designs By Eyad",
+              "logo": {
+                "@type": "ImageObject",
+                "url": `${siteUrl}/logo.png`
+              }
+            },
+            "datePublished": DateJson,
+            "url": `${siteUrl}/blog/${post.properties.Slug.rich_text[0].plain_text}`,
+            "description": post.properties.Subtitle.rich_text[0].plain_text
+          }),
+        }}
+      />
+
     </>
   );
 }

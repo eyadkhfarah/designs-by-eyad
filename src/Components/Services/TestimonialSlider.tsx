@@ -54,8 +54,8 @@ export const TestimonialSlider = () => {
                 ))}
             </CarouselContent>
             <div className="mt-5">
-                <CarouselPrevious className="md:p-10 border-0 bg-dark shadow-xl" />
-                <CarouselNext className="md:p-10 border-0 bg-dark shadow-xl" />
+                <CarouselPrevious className="md:p-10 cursor-pointer border-0 bg-dark shadow-xl" />
+                <CarouselNext className="md:p-10 cursor-pointer border-0 bg-dark shadow-xl" />
             </div>
 
         </Carousel>

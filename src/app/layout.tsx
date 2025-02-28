@@ -6,6 +6,7 @@ import Footer from "@/Components/Footer";
 import Script from 'next/script';
 import { Metadata, Viewport } from "next";
 import { NavList } from "@/lib/NavList";
+import CookieBanner from "@/Components/Client/CookieBanner";
 
 const title = "%s — Designs By Eyad";
 const desc =
@@ -120,35 +121,34 @@ export default function RootLayout({
         <Script
           id="json-ld-schema"
           type="application/ld+json"
-          strategy="beforeInteractive">
-          {`{
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "BreadcrumbList",
               "itemListElement": [
-              {
+                {
                   "@type": "ListItem",
                   "position": 1,
                   "name": "Home",
-                  "item": "${siteUrl}"
+                  "item": siteUrl
                 },
-              ${NavList.map((nav) => (
-                `{
+                ...NavList.map((nav) => ({
                   "@type": "ListItem",
-                  "position": ${Number(nav.id) + 1},
-                  "name": "${nav.name}",
-                  "item": "${siteUrl + nav.link}"
-                }`
-              ))}
+                  "position": Number(nav.id) + 1,
+                  "name": nav.name,
+                  "item": siteUrl + nav.link
+                })),
                 {
                   "@type": "ListItem",
                   "position": 8,
                   "name": "Contact",
-                  "item": "${siteUrl + "/contact"}"
+                  "item": siteUrl + "/contact"
                 }
               ]
-            }`
-          }
-        </Script>
+            })
+          }}
+        />
         {/* <Partytown
           forward={['dataLayer.push']}
           debug={process.env.NODE_ENV === 'development'}
@@ -163,6 +163,7 @@ export default function RootLayout({
       <body>
         <Navbar />
         <main>{children}</main>
+        <CookieBanner />
         <Footer />
       </body>
       <GoogleAnalytics gaId="G-B5QZVD5E94" />

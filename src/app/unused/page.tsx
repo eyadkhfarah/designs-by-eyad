@@ -1,8 +1,26 @@
 import BentoGrid from "@/Components/Client/BentoGrid";
+import BrandFields from "@/Components/Client/BrandFields";
 // import PinterestPins from "@/Components/Portfolio/PinterestPins";
 import ServicesSlider from "@/Components/Services/ServicesSlider";
 import { TestimonialSlider } from "@/Components/Services/TestimonialSlider";
 import { RiArrowLeftLine, RiArrowLeftSLine, RiArrowRightSLine } from "react-icons/ri";
+import type { Metadata } from 'next'
+ 
+export const metadata: Metadata = {
+  robots: {
+    index: false,
+    follow: false,
+    nocache: false,
+    googleBot: {
+      index: false,
+      follow: false,
+      noimageindex: false,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+}
 
 export default function page() {
   return (
@@ -37,33 +55,11 @@ export default function page() {
           </button>
         </div>
       </section>
+
+      <section>
+        <BrandFields />
+      </section>
     </>
   )
 }
 
-// 1. Mobile App
-// 2. Clinic
-// 3. News and Publication
-// 4. Government
-// 5. Travel
-// 6. Marketing Agencies
-// 7. Tech 
-// 8. Beverages
-// 9. Restaurants
-// 10. Coffee shops
-// 11. Food retailers
-// 12. Furniture
-// 13. Real estate
-// 14. Education
-// 15. Universities
-// 16. Beauty
-// 17. Fashion
-// 18. Magazines
-// 19. E-commerce
-// 20. Influencers
-// 21. Youtubers
-// 22. Podcast
-// 23. Cosmetics
-// 24. Beauty
-// 25. Perfumes
-// 26. Automobile

@@ -1,4 +1,5 @@
 import BentoGrid from "@/Components/Client/BentoGrid";
+import BrandFields from "@/Components/Client/BrandFields";
 import MissionVision from "@/Components/Client/MissionVision";
 import ProtImages from "@/Components/Portfolio/ProtImages";
 import ServicesCards from "@/Components/Services/ServicesCards";
@@ -27,6 +28,10 @@ export default function Home() {
       <section>
         <h2 className="text-primary text-5xl text-center mt-10">Who I am?</h2>
         <MissionVision />
+      </section>
+
+      <section>
+        <BrandFields />
       </section>
 
       <section className="my-28">

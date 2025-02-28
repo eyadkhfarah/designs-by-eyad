@@ -12,6 +12,7 @@
 /.next/
 /out/
 .vscode
+/public/~partytown
 
 # production
 /build

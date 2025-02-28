@@ -43,7 +43,7 @@ export default async function Web() {
 
   return (
     <>
-      <section className="mx-auto lg:max-w-7xl md:max-w-2xl max-w-xs p-10 grid gap-8">
+      <section>
         <h1 className="lg:text-[8rem] md:text-[5rem] text-[3rem] w-fit">Web</h1>
 
         <div className="grid lg:grid-cols-2 gap-6">
@@ -57,31 +57,25 @@ export default async function Web() {
         </div>
       </section>
 
-      <Script type="application/ld+json">
-        {`
-          {
+      <Script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "CollectionPage",
             "name": "Web",
             "mainEntity": {
               "@type": "ItemList",
-              "itemListElement": [
-              ${doc.map((web, index) => (
-                `
-                {
-                  "@type": "ListItem",
-                  "position": ${index + 1},
-                  "url": "${siteUrl + web.slug}",
-                  "name": "${web.title}"
-                },
-                `
-              )).join(','
-              )}
-              ]
-            }
-          }
-        `}
-      </Script>
+              "itemListElement": doc.map((web, index) => ({
+                "@type": "ListItem",
+                "position": index + 1,
+                "url": `${siteUrl + web.slug}`,
+                "name": web.title,
+              })),
+            },
+          }),
+        }}
+      />
     </>
   );
 }

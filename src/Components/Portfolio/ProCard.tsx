@@ -21,7 +21,7 @@ export default function ProCard(data: Props) {
 
         <div className="grid content-between">
           <div className="grid">
-            <h2 className="text-primary text-4xl">{data.data.title}</h2>
+            <h2 className="text-primary text-4xl line-clamp-1">{data.data.title}</h2>
             <p className="lg:text-base text-sm line-clamp-2">{data.data.description}</p>
           </div>
 
