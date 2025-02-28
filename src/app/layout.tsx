@@ -3,6 +3,9 @@ import "./globals.css";
 import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google'
 import Footer from "@/Components/Footer";
 
+import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Analytics } from "@vercel/analytics/react"
+
 import Script from 'next/script';
 import { Metadata, Viewport } from "next";
 import { NavList } from "@/lib/NavList";
@@ -168,6 +171,8 @@ export default function RootLayout({
       </body>
       <GoogleAnalytics gaId="G-B5QZVD5E94" />
       <GoogleTagManager gtmId="GTM-5MWXJS6P" />
+      <Analytics />
+      <SpeedInsights />
     </html>
   );
 }
