@@ -33,7 +33,7 @@ export default function LanguageSwitcher() {
     return (
         <DropdownMenu onOpenChange={setOpen}>
             <DropdownMenuTrigger asChild>
-                <Button variant="default" className='text-dark cursor-pointer rounded-2xl font-bold focus-visible:ring-0'>
+                <Button variant="default" className='text-dark cursor-pointer rounded-2xl focus-visible:ring-0'>
                     {/* Display flag icon */}
                     <span className="ml-2">
                         {currentLocale === "en" ? (

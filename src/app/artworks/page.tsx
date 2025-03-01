@@ -4,6 +4,7 @@ import { fetchArtworks } from "@/lib/notion";
 import { QueryDatabaseResponse, PageObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 import { ArtworkProperties } from "@/types/notionType";
 import Script from "next/script";
+import H1 from "@/Components/TranslationTags/H1";
 
 // Combine Notion's PageObjectResponse with our custom properties
 type ArtworkPage = PageObjectResponse & { properties: ArtworkProperties };
@@ -46,7 +47,7 @@ export default async function Artwork() {
   return (
     <>
       <section>
-        <h1>Artworks</h1>
+        <H1>ArtworksPage.title</H1>
         <div className="columns-1 sm:columns-2 lg:columns-3 gap-4">
           {artworks.results.map((artwork: ArtworkPage) => {
             const name =

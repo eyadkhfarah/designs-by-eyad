@@ -74,6 +74,7 @@ export default function Footer() {
           </>
         </ul>
         {/* Testing only and not in production until now */}
+        <span>Language Switcher soon!</span>
         {/* <LanguageSwitcher /> */}
       </div>
     </>

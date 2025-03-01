@@ -4,6 +4,7 @@ import MissionVision from "@/Components/Client/MissionVision";
 import ProtImages from "@/Components/Portfolio/ProtImages";
 import ServicesCards from "@/Components/Services/ServicesCards";
 import { TestimonialSlider } from "@/Components/Services/TestimonialSlider";
+import H2 from "@/Components/TranslationTags/H2";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -15,9 +16,9 @@ export default function Home() {
       </section>
 
       <section className="my-28">
-        <h2 className="text-primary text-5xl text-center my-12">
-          Services
-        </h2>
+        <H2 className="text-primary text-5xl text-center my-12">
+          ServicesPage.title
+        </H2>
         <ServicesCards />
       </section>
 
@@ -26,7 +27,7 @@ export default function Home() {
       </section>
 
       <section>
-        <h2 className="text-primary text-5xl text-center mt-10">Who I am?</h2>
+        <H2 className="text-primary text-5xl text-center mt-10">AboutPage.title</H2>
         <MissionVision />
       </section>
 
@@ -35,15 +36,15 @@ export default function Home() {
       </section>
 
       <section className="my-28">
-        <h2 className="text-primary lg:text-5xl text-2xl text-center my-12">What My Clients Say About Me</h2>
+        <H2 className="text-primary lg:text-5xl text-4xl text-center my-12">H2.MyClients</H2>
         <TestimonialSlider />
       </section>
 
       <section className="bg-white rounded-3xl p-5 my-28">
         <div className="grid place-items-center gap-4 my-8">
-          <h2 className="text-neutral-950 uppercase lg:text-5xl text-2xl text-center">
-            MY FREELANCE ACCOUNTS
-          </h2>
+          <H2 className="text-neutral-950 uppercase lg:text-5xl text-2xl text-center">
+            H2.FREELANCE
+          </H2>
         </div>
         <div className="flex md:flex-row flex-wrap flex-col mx-auto justify-evenly items-center p-10 gap-20">
           <a

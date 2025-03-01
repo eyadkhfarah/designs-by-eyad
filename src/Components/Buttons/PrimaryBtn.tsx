@@ -13,12 +13,13 @@ export default function PrimaryBtn({ link, text, target, className }: Button) {
   return (
     <Link
       href={`${link}`}
-      target={target === true ? "_blank" : "_self"}
+      target={target ? "_blank" : "_self"}
       rel="noreferrer"
-      className={"p-5 bg-primary flex justify-center uppercase items-center gap-3 w-fit leading-0 h-fit text-black font-bold rounded-xl hover:scale-90 transition-all ease-in-out duration-300" + className}
+      className={`p-5 bg-primary flex justify-center uppercase items-center gap-3 w-fit leading-0 h-fit text-black font-arabicBold rounded-xl hover:scale-90 transition-all ease-in-out duration-300 ${className}`}
     >
-      {text === "Go to Behance" ? <RiBehanceFill className="text-2xl"/>: null}
+      {text === "Go to Behance" ? <RiBehanceFill className="text-2xl" /> : null}
       {text}
     </Link>
   );
 }
+

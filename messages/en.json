@@ -2,6 +2,92 @@
   "HomePage": {
     "title": "Hello world!"
   },
+  "H2": {
+    "ToolsIUse": "Tools I Use In",
+    "MyName": "My Name is Eyad and nice to meet you 🙂",
+    "MyClients": "What My Clients Say About Me",
+    "FREELANCE": "My Freelance Accounts"
+  },
+  "Span": {
+    "Design": "Design",
+    "Development": "Development"
+  },
+
+  "fields": {
+    "mobileApp": "Mobile App",
+    "clinic": "Clinic",
+    "newsAndPublication": "News and Publication",
+    "government": "Government",
+    "travel": "Travel",
+    "marketingAgencies": "Marketing Agencies",
+    "tech": "Tech",
+    "beverages": "Beverages",
+    "restaurants": "Restaurants",
+    "coffeeShops": "Coffee Shops",
+    "foodRetailers": "Food Retailers",
+    "furniture": "Furniture",
+    "realEstate": "Real Estate",
+    "education": "Education",
+    "universities": "Universities",
+    "beauty": "Beauty",
+    "fashion": "Fashion",
+    "magazines": "Magazines",
+    "eCommerce": "E-commerce",
+    "influencers": "Influencers",
+    "youtubers": "Youtubers",
+    "podcast": "Podcast",
+    "cosmetics": "Cosmetics",
+    "perfumes": "Perfumes",
+    "automobile": "Automobile"
+  },
+
+  "ServicesPage": {
+    "title": "Services",
+    "subtitle": "Offering graphic design services in Aswan, Egypt, including brand identity and social media design. Let’s work together to transform your brand's visual communication.",
+    "BrandIdentity": {
+      "title": "Brand Identity",
+      "subtitle": "Craft a memorable brand identity that reflects your vision. I design logos, color palettes, and guidelines to make your brand stand out."
+    },
+    "SocialMediaDesign": {
+      "title": "Social Media Design",
+      "subtitle": "Design social media content that is tailored to each platform and audience, helping businesses grow their following and engagement."
+    },
+    "UI/UXDesign": {
+      "title": "UI/UX Design",
+      "subtitle": "Design user-centered interfaces that are both visually appealing and easy to use, helping businesses achieve their goals."
+    },
+    "LogoDesign": {
+      "title": "Logo Design",
+      "subtitle": "My logo design service creates unique, memorable logos that visually represent your brand essence, fostering recognition and credibility."
+    }
+  },
+
+  "AboutPage": {
+    "title": "Who am I?",
+    "Paragraph1": "I always thought my dream was to be a artist for a little indie publishing company, chill out in to the club and take a table and draw. I gravitated toward proofreading and quality control positions and even started my own artwork business. But I kind of just felt meh. I yearned to learn more, yearned to learn something different.",
+    "Paragraph2": "I started Photoshop since I want to make a social media design for my business profile and I learned the fundamental of design and I was so enthusiastic about it, it was my lovely moment when I export my first Photoshop design and I was so good not wow because this is my first design and the I had improve my design skills until I learned a lot like logo design, vector art, manipulating photos and drawing in Photoshop.",
+
+    "MissionAndVision": {
+      "Mission": {
+        "title": "Mission",
+        "subtitle": "To empower businesses across Aswan and Upper Egypt by providing affordable, professional, and audience-focused visual identity designs that bring their brands to life and communicate their value effectively."
+      },
+      "Vision": {
+        "title": "Vision",
+        "subtitle": "To be the leading design partner in Upper Egypt, transforming how local businesses present themselves by creating distinctive and impactful branding that competes on a national and international scale."
+      }
+    }
+  },
+
+  "ArtworksPage": {
+    "title": "Artworks",
+    "subtitle": "Explore a captivating collection of unique artwork collages blending creativity and storytelling. Discover handmade designs crafted with intricate details, vibrant colors, and inspiring themes that elevate your space. Perfect for art lovers and collectors alike!"
+  },
+
+  "BlogPage": {
+    "title": "Blog",
+    "subtitle": "Read the latest articles on graphic design, branding, and social media design. Stay up-to-date with the latest trends and insights to help your brand succeed in the digital world."
+  },
   "MenuList": {
     "home": "Home",
     "portfolio": "Portfolio",
@@ -10,28 +96,9 @@
     "blog": "Blog",
     "about": "About",
     "faq": "FAQ",
-    "contact": "Contact"
+    "contact": "Contact Me"
   },
-  "ServicesPage": {
-    "title": "Services",
-    "subtitle": "Offering graphic design services in Aswan, Egypt, including brand identity and social media design. Let’s work together to transform your brand's visual communication.",
-    "BrandIdentity" : {
-      "title": "Brand Identity",
-      "subtitle": "Craft a memorable brand identity that reflects your vision. I design logos, color palettes, and guidelines to make your brand stand out."
-    },
-    "SocialMediaDesign" : {
-      "title": "Social Media Design",
-      "subtitle": "Design social media content that is tailored to each platform and audience, helping businesses grow their following and engagement."
-    },
-    "UI/UXDesign" : {
-      "title": "UI/UX Design",
-      "subtitle": "Design user-centered interfaces that are both visually appealing and easy to use, helping businesses achieve their goals."
-    },
-    "LogoDesign" : {
-      "title": "Logo Design",
-      "subtitle": "My logo design service creates unique, memorable logos that visually represent your brand essence, fostering recognition and credibility."
-    }
-  },
+
   "ContactList": {
     "form": "Form",
     "social": "Social",

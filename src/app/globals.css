@@ -9,12 +9,31 @@ body {
   scroll-behavior: smooth;
 }
 
+html[lang="ar"] body {
+  font-family: "ArabicRegular"; /* or "ArabicBold" if needed */
+}
+
+html[lang="ar"] h1 {
+  font-family: "ArabicBold"; /* Ensure this matches your @font-face declaration */
+}
+
+html[lang="ar"] h2 {
+  font-family: "ArabicBold"; /* Ensure this matches your @font-face declaration */
+}
+
+html[lang="ar"] h3 {
+  font-family: "ArabicBold"; /* Ensure this matches your @font-face declaration */
+}
+
 @plugin "@tailwindcss/forms";
 @plugin "@tailwindcss/typography";
 @plugin"tailwindcss-animate";
 
 @theme {
   --font-bold: "bold";
+  --font-regular: "regular";
+  --font-arabicBold: "ArabicBold";
+  --font-arabicRegular: "ArabicRegular";
   --color-dark: #1a1a1a;
   --color-primary: #E5FE00;
   --color-border: "hsl(var(--border))",
@@ -31,10 +50,25 @@ body {
   font-display: swap;
   font-style: normal;
 }
+@font-face {
+  font-family: "ArabicBold";
+  src: url("../../public/Fonts/AVENIRARABIC-BLACK.woff2") format("woff2");
+  font-weight: 600;
+  font-display: swap;
+  font-style: normal;
+}
 
 @font-face {
   font-family: "regular";
   src: url("../../public/Fonts/Regular.woff2") format("woff2");
+  font-weight: 600;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "ArabicRegular";
+  src: url("../../public/Fonts/AVENIRARABIC-BOOK.woff2") format("woff2");
   font-weight: 600;
   font-display: swap;
   font-style: normal;

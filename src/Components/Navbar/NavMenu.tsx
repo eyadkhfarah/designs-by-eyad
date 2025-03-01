@@ -14,7 +14,7 @@ export default function NavMenu() {
   const filteredNavListLang = NavListLang.filter(nav => nav.link !== "/contact");
 
   return (
-    <ul className="lg:flex items-center hidden gap-11">
+    <ul className="lg:flex font-arabicRegular items-center hidden gap-11">
       {filteredNavListLang.map((nav) => (
         <li key={`${nav.id}`}>
           <Link

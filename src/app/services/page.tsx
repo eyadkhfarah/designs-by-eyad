@@ -1,6 +1,8 @@
 import BrandFields from "@/Components/Client/BrandFields";
 import ServicesCards from "@/Components/Services/ServicesCards";
 import ToolsTabs from "@/Components/Services/ToolsTabs";
+import H1 from "@/Components/TranslationTags/H1";
+import H2 from "@/Components/TranslationTags/H2";
 import { Metadata } from "next";
 
 const meta = {
@@ -26,7 +28,7 @@ export default function ServicesPage() {
   return (
     <>
       <section>
-        <h1>Services</h1>
+        <H1>ServicesPage.title</H1>
 
         <ServicesCards />
       </section>
@@ -34,14 +36,8 @@ export default function ServicesPage() {
       <section>
         <BrandFields />
       </section>
-      
-      <section>
-        <h2 className="uppercase text-5xl text-center my-12">
-          Tools I Used In
-        </h2>
 
-        <ToolsTabs />
-      </section>
+      <ToolsTabs />
     </>
   );
 }

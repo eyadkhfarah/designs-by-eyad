@@ -6,6 +6,9 @@ import { RiGithubFill } from "react-icons/ri";
 import PrimaryBtn from "@/Components/Buttons/PrimaryBtn";
 import { TestimonialSlider } from "@/Components/Services/TestimonialSlider";
 import MissionVision from "@/Components/Client/MissionVision";
+import H2 from "@/Components/TranslationTags/H2";
+import P from "@/Components/TranslationTags/P";
+import H1 from "@/Components/TranslationTags/H1";
 
 const meta = {
   title: "About",
@@ -28,10 +31,11 @@ export const metadata: Metadata = {
 };
 
 export default function About() {
+
   return (
     <>
       <section>
-        <h1>WHO I AM?</h1>
+        <H1>AboutPage.title</H1>
         <section className="lg:grid-cols-2 grid gap-8">
           <div className="relative w-fit">
             <Image
@@ -59,26 +63,9 @@ export default function About() {
           </div>
 
           <div className="grid gap-7">
-            <h2 className="uppercase">
-              My Name is Eyad and nice to meet you 🙂
-            </h2>
-            <p>
-              I always thought my dream was to be a artist for a little indie
-              publishing company, chill out in to the club and take a table and
-              draw. I gravitated toward proofreading and quality control
-              positions and even started my own artwork business. But I kind of
-              just felt meh. I yearned to learn more, yearned to learn something
-              different.
-            </p>
-            <p>
-              I started Photoshop since I want to make a social media design for
-              my business profile and I learned the fundamental of design and I
-              was so enthusiastic about it, it was my lovely moment when I
-              export my first Photoshop design and I was so good not wow because
-              this is my first design and the I had improve my design skills
-              until I learned a lot like logo design, vector art, manipulating
-              photos and drawing in Photoshop.
-            </p>
+            <H2 className="text-3xl text-start">H2.MyName</H2>
+            <P>AboutPage.Paragraph1</P>
+            <P>AboutPage.Paragraph2</P>
           </div>
         </section>
       </section>
@@ -87,17 +74,14 @@ export default function About() {
         <MissionVision />
       </section>
 
-      <section>
-        <h2 className="lg:text-5xl text-4xl text-center my-12">Tools I Used In</h2>
-        <ToolsTabs />
-      </section>
+      <ToolsTabs />
 
       <section className="my-28">
-        <h2 className="lg:text-5xl text-4xl text-center my-12">What My Clients Say About Me</h2>
+        <H2 className="lg:text-5xl text-4xl text-center my-12">H2.MyClients</H2>
         <TestimonialSlider />
       </section>
 
-      <section className="lg:px-28 p-10 lg:flex grid place-items-center gap-8 lg:justify-center">
+      {/* <section className="lg:px-28 p-10 lg:flex grid place-items-center gap-8 lg:justify-center">
         <RiGithubFill size={170} />
         <div className="grid lg:place-items-start place-items-center gap-6">
           <div className="grid gap-4">
@@ -112,7 +96,7 @@ export default function About() {
 
         </div>
 
-      </section>
+      </section> */}
     </>
   );
 }

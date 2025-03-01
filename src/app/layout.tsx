@@ -175,7 +175,7 @@ export default async function RootLayout({
           }}
         />
       </head>
-      <body>
+      <body className={locale === 'ar' ? 'font-arabicRegular' : 'font-regular'}>
         <NextIntlClientProvider messages={messages} locale={locale}>
           <Navbar />
           <main>{children}</main>

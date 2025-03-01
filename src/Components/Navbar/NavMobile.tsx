@@ -12,10 +12,12 @@ type Mobile = {
   setOpen: Function;
 };
 
+
 export default function NavMobile({ open, setOpen }: Mobile) {
   const router = usePathname();
   const t = useTranslations();
-
+  
+  const filteredNavListLang = NavListLang.filter(nav => nav.link !== "/contact");                         
   return (
     <div
       className={`lg:hidden ${
@@ -37,7 +39,7 @@ export default function NavMobile({ open, setOpen }: Mobile) {
             open === true ? "-ml-20" : ""
           } grid gap-9 ease-in-out transition-all duration-700 list-none mx-10 w-full`}
         >
-          {NavListLang.map((nav) => (
+          {filteredNavListLang.map((nav) => (
             <li key={`${nav.id}`}>
               <Link
                 className={`hover:text-primary ${
@@ -65,7 +67,7 @@ export default function NavMobile({ open, setOpen }: Mobile) {
           onClick={() => setOpen(!open)}
           className={`py-4 px-8 bg-primary flex justify-center items-center gap-3 cursor-pointer uppercase text-black font-bold whitespace-nowrap rounded-2xl hover:scale-90 transition-all ease-in-out duration-300 mb-12`}
         >
-          t("MenuList.contact")
+          {t("MenuList.contact")}
         </Link>
       </div>
     </div>
