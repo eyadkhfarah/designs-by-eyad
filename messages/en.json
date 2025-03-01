@@ -1,0 +1,35 @@
+{
+  "HomePage": {
+    "title": "Hello world!"
+  },
+  "MenuList": {
+    "home": "Home",
+    "portfolio": "Portfolio",
+    "artworks": "Artworks",
+    "services": "Services",
+    "blog": "Blog",
+    "about": "About",
+    "faq": "FAQ",
+    "contact": "Contact"
+  },
+  "ContactList": {
+    "form": "Form",
+    "social": "Social",
+    "email": "Email",
+    "phone": "Phone",
+    "purchasing": "Purchasing"
+  },
+  "nonindesxList": {
+    "privacy": "Privacy Policy",
+    "terms": "Terms and Conditions",
+    "howToUseImage": "How to use my images"
+  },
+  "Footer": {
+    "Header": {
+      "title": "Your Brand, Redefined",
+      "subtitle": "Transforming visionary ideas into unforgettable identities that captivate and inspire.",
+      "contact": "Contact me"
+    },
+    "copyright": "All rights reserved"
+  }
+}

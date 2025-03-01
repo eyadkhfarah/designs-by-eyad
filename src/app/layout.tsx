@@ -11,6 +11,12 @@ import { Metadata, Viewport } from "next";
 import { NavList } from "@/lib/NavList";
 import CookieBanner from "@/Components/Client/CookieBanner";
 
+// Localization
+
+import { NextIntlClientProvider } from 'next-intl';
+import { getLocale, getMessages } from 'next-intl/server';
+import { cookies } from "next/headers";
+
 const title = "%s — Designs By Eyad";
 const desc =
   "Discover Designs By Eyad, a creative studio specializing in brand identity, social media designs, and web development with an Egyptian touch. Explore innovative and unique designs!";
@@ -63,7 +69,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
@@ -112,8 +118,14 @@ export default function RootLayout({
     ]
   };
 
+  const locale = (await cookies()).get('locale')?.value || 'en';
+
+  // Dynamically load the messages file based on the locale.
+  const messages = await import(`../../messages/${locale}.json`).then(
+    (module) => module.default
+  );
   return (
-    <html lang="en">
+    <html lang={locale} dir={locale === 'ar' ? 'rtl' : 'ltr'}>
       <head>
         <Script
           id="json-ld-schema"
@@ -164,10 +176,12 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <Navbar />
-        <main>{children}</main>
-        <CookieBanner />
-        <Footer />
+        <NextIntlClientProvider messages={messages} locale={locale}>
+          <Navbar />
+          <main>{children}</main>
+          <CookieBanner />
+          <Footer />
+        </NextIntlClientProvider>
       </body>
       <GoogleAnalytics gaId="G-B5QZVD5E94" />
       <GoogleTagManager gtmId="GTM-5MWXJS6P" />

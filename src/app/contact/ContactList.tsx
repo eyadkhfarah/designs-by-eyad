@@ -1,6 +1,7 @@
 "use client";
 
 import { NavContacts } from "@/lib/NavContact";
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import React from "react";
@@ -11,6 +12,8 @@ import { TbForms, TbMessage2, TbMoneybag, TbPhone, TbUserDollar } from "react-ic
 
 export default function ContactList() {
   const router = usePathname();
+  const t = useTranslations();
+
 
   return (
     <ul className="lg:col-span-1 h-fit w-full p-6 rounded-2xl bg-dark">
@@ -26,17 +29,18 @@ export default function ContactList() {
             aria-label={`${list.name}`}
             href={`/contact${list.link}`}
           >
-            {list.name === "Form" ? (
+            {list.name === "Form" || "نموذج الاتصال" ? (
               <TbForms className="text-xl" />
-            ) : null || list.name === "Social" ? (
+            ) : null || list.name === "Social" || "وسائل التواصل الاجتماعي" ? (
               <RiFacebookCircleFill className="text-xl" />
-            ) : null || list.name === "Email" ? (
+            ) : null || list.name === "Email" || "البريد الإلكتروني" ? (
               <TbMessage2 className="text-xl" />
-            ) : null || list.name === "Phone" ? (
+            ) : null || list.name === "Phone" || "الهاتف" ? (
               <TbPhone className="text-xl" />
-            ) : null || list.name === "Purchasing" ? (
+            ) : null || list.name === "Purchasing" || "أدوات الدقع" ? (
               <TbUserDollar className="text-xl" />
             ) : null}
+            {/* {t(list.name)} */}
             {list.name}
           </Link>
         </li>

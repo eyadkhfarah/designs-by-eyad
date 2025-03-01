@@ -1,4 +1,5 @@
 const { withContentlayer } = require("next-contentlayer");
+import createNextIntlPlugin from 'next-intl/plugin';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -50,5 +51,6 @@ const nextConfig = {
     ];
   },
 };
+const withNextIntl = createNextIntlPlugin();
 
-module.exports = withContentlayer(nextConfig);
+module.exports = withNextIntl(withContentlayer(nextConfig));

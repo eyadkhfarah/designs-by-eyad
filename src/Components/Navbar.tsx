@@ -28,7 +28,6 @@ export default function Navbar() {
 
         <div className="items-center gap-11 lg:flex hidden">
           <NavMenu />
-          <PrimaryBtn target={false} link={"/contact"} text={"Contact Me"} />
         </div>
 
         <button className="text-white text-3xl lg:hidden block" aria-label="open menu" onClick={() => setOepn(!open)}>

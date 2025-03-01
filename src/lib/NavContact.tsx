@@ -1,4 +1,33 @@
-import { NavContact } from "@/types/navLink";
+import { NavContact, NavContactLang } from "@/types/navLink";
+
+export const NavContactsLang: NavContactLang[] = [
+    {
+        translationKey: "ContactList.form",
+        link: "",
+        id: 1
+    },
+    {
+        translationKey: "ContactList.social",
+        link: "/social",
+        id: 2
+    },
+    {
+        translationKey: "ContactList.email",
+        link: "/email",
+        id: 3
+    },
+    {
+        translationKey: "ContactList.phone",
+        link: "/phone",
+        id: 4
+    },
+    {
+        translationKey: "ContactList.purchasing",
+        link: "/purchasing",
+        id: 5
+    },
+    
+]
 
 export const NavContacts: NavContact[] = [
     {

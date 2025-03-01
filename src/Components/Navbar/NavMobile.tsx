@@ -1,6 +1,7 @@
 "use client";
 
-import { NavList } from "@/lib/NavList";
+import { NavList, NavListLang } from "@/lib/NavList";
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
@@ -13,6 +14,7 @@ type Mobile = {
 
 export default function NavMobile({ open, setOpen }: Mobile) {
   const router = usePathname();
+  const t = useTranslations();
 
   return (
     <div
@@ -35,10 +37,9 @@ export default function NavMobile({ open, setOpen }: Mobile) {
             open === true ? "-ml-20" : ""
           } grid gap-9 ease-in-out transition-all duration-700 list-none mx-10 w-full`}
         >
-          {NavList.map((nav) => (
+          {NavListLang.map((nav) => (
             <li key={`${nav.id}`}>
               <Link
-                aria-label={`${nav.name}`}
                 className={`hover:text-primary ${
                   router === nav.link.toLowerCase()
                     ? "text-primary"
@@ -47,7 +48,7 @@ export default function NavMobile({ open, setOpen }: Mobile) {
                 href={`${nav.link}`}
                 onClick={() => setOpen(!open)}
               >
-                {nav.name}
+                {t(nav.translationKey)}
               </Link>
             </li>
           ))}
@@ -64,7 +65,7 @@ export default function NavMobile({ open, setOpen }: Mobile) {
           onClick={() => setOpen(!open)}
           className={`py-4 px-8 bg-primary flex justify-center items-center gap-3 cursor-pointer uppercase text-black font-bold whitespace-nowrap rounded-2xl hover:scale-90 transition-all ease-in-out duration-300 mb-12`}
         >
-          contact Me
+          t("MenuList.contact")
         </Link>
       </div>
     </div>
