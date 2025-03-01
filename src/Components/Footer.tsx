@@ -73,7 +73,8 @@ export default function Footer() {
             ))}
           </>
         </ul>
-        <LanguageSwitcher />
+        {/* Testing only and not in production until now */}
+        {/* <LanguageSwitcher /> */}
       </div>
     </>
   );
