@@ -29,7 +29,7 @@ export default function NavMenu() {
           </Link>
         </li>
       ))}
-      <PrimaryBtn target={false} link={"/contact"} text={"Contact Me"} />
+      <PrimaryBtn target={false} link={"/contact"} text={t("MenuList.contact")} />
     </ul>
   );
 }

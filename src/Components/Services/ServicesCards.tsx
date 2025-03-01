@@ -1,4 +1,5 @@
 "use client";
+import { useTranslations } from 'next-intl';
 
 import { Categories } from "@/lib/ServicesList";
 import React from "react";
@@ -14,6 +15,8 @@ import {
 import { motion } from "framer-motion";
 
 export default function ServicesCards() {
+  const t = useTranslations();
+
   return (
     <div className="grid md:grid-cols-2 gap-9 mt-8">
       {Categories.map((category, i) => (
@@ -26,22 +29,22 @@ export default function ServicesCards() {
           className="services-card hover:scale-110"
         >
           <div className="grid gap-6">
-            {category.name === "Web Development" ? (
+            {t(category.name) === "Web Development" ? (
               <TbWorldCode className="text-4xl text-primary " />
-            ) : null || category.name === "Social Media Design" ? (
+            ) : null || t(category.name) === "Social Media Design" || "تصميم منشورات وسائل التواصل الاجتماعي" ? (
               <TbMessage2Heart className="text-4xl text-primary" />
-            ) : null || category.name === "Graphic Design" ? (
+            ) : null || t(category.name) === "Graphic Design" ? (
               <TbVectorBezier className="text-4xl text-primary" />
-            ) : null || category.name === "UI/UX Design" ? (
+            ) : null || t(category.name) === "UI/UX Design" || "تصميم واجهة المستخدم وتجربة المستخدم" ? (
               <TbDeviceMobileCheck className="text-4xl text-primary" />
-            ) : null || category.name === "Photoshop" ? (
+            ) : null || t(category.name) === "Photoshop" ? (
               <TbBrandAdobe className="text-4xl text-primary" />
-            ) : null || category.name === "Logo Design" || "Brand Identity" ? (
+            ) : null || t(category.name) === "Logo Design" || "Brand Identity" || "تصميم الشعار" || "هوية العلامة التجارية" ? (
               <TbPencilBolt className="text-4xl text-primary" />
             ) : null}
-            <h3 className="text-xl">{category.name}</h3>
+            <h3 className="text-xl">{t(category.name)}</h3>
           </div>
-          <p>{category.desc}</p>
+          <p>{t(category.desc)}</p>
         </motion.div>
       ))}
     </div>

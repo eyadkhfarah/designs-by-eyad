@@ -12,6 +12,26 @@
     "faq": "FAQ",
     "contact": "Contact"
   },
+  "ServicesPage": {
+    "title": "Services",
+    "subtitle": "Offering graphic design services in Aswan, Egypt, including brand identity and social media design. Let’s work together to transform your brand's visual communication.",
+    "BrandIdentity" : {
+      "title": "Brand Identity",
+      "subtitle": "Craft a memorable brand identity that reflects your vision. I design logos, color palettes, and guidelines to make your brand stand out."
+    },
+    "SocialMediaDesign" : {
+      "title": "Social Media Design",
+      "subtitle": "Design social media content that is tailored to each platform and audience, helping businesses grow their following and engagement."
+    },
+    "UI/UXDesign" : {
+      "title": "UI/UX Design",
+      "subtitle": "Design user-centered interfaces that are both visually appealing and easy to use, helping businesses achieve their goals."
+    },
+    "LogoDesign" : {
+      "title": "Logo Design",
+      "subtitle": "My logo design service creates unique, memorable logos that visually represent your brand essence, fostering recognition and credibility."
+    }
+  },
   "ContactList": {
     "form": "Form",
     "social": "Social",
