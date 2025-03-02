@@ -11,7 +11,10 @@ const GetWeb = () => {
 const GetDesign = () => {  
   const doc = allProtoDesigns;  
   return doc;  
-};  
+};
+
+// Revalidate this page every 1 second
+export const revalidate = 1;
   
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {  
   const siteUrl =  
