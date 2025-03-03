@@ -11,7 +11,6 @@ export default function robots(): MetadataRoute.Robots {
       disallow: '/unused/',
     },
     host: siteUrl,
-    sitemap: siteUrl + '/sitemap.xml',
-    sitemap: siteUrl + '/rss.xml',
+    sitemap: [siteUrl + '/sitemap.xml', siteUrl + '/rss.xml'],
   }
 }
