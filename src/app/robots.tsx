@@ -10,7 +10,8 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: '/unused/',
     },
-    sitemap: siteUrl + '/sitemap.xml',
+    Host: siteUrl,
+    Sitemap: siteUrl + '/sitemap.xml',
     Sitemap: siteUrl + '/rss.xml',
   }
 }
