@@ -6,7 +6,7 @@ export const testimonials = [
         role: 'App Manager, Dosoky',
         rating: 5,
         quote: "Your work is amazing, Eyad! The logo is creative, simple, and has a distinctive visual identity. You also deliver the work in a professional manner, including a Drive folder with brand identity guidelines, logo files in all formats and sizes (PNG, JPG, SVG), as well as social media files and templates. Truly top-notch work! What's even more important is that you're cooperative and handle revisions with grace and positivity.",
-        image: ``,
+        image: `https://media.licdn.com/dms/image/v2/D4D03AQE0RCfm9_EE6g/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1720181743788?e=1746662400&v=beta&t=xB9nqOHnRGHwtoSKrXXqtjDbIJErPNuUJ9QrXaTO6Y8`,
         id: 1
     },
     {

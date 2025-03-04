@@ -60,7 +60,7 @@ export default function Footer() {
           © {new Date().getFullYear()} <span className="text-primary">Designs by Eyad</span>. All rights reserved.
         </p>
       </footer>
-      <div className="flex justify-between items-center mx-auto text-xs lg:max-w-6xl md:max-w-2x max-w-xs">
+      <div className="lg:flex justify-between items-center grid gap-8 place-items-center mx-auto text-xs lg:max-w-6xl md:max-w-2x max-w-xs">
         <ul className="text-center md:flex gap-8 md:flex-row flex-col items-center my-8">
           <>
             {nonindesxList.map((link, index) => (
