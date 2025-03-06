@@ -15,10 +15,7 @@ const computedFields = {
   slugAsParams: {
     type: "string",
     resolve: (doc) =>
-      doc._raw.flattenedPath
-        .split("portfolio/")
-        .slice(1)
-        .join("/"),
+      doc._raw.flattenedPath.split("portfolio/").slice(1).join("/"),
   },
 };
 
@@ -41,6 +38,10 @@ export const ProtoDesign = defineDocumentType(() => ({
     },
     Protype: {
       type: "string",
+    },
+    Unofficial: {
+      type: "boolean",
+      required: true,
     },
     Date: {
       type: "string",

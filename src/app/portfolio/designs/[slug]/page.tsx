@@ -66,15 +66,18 @@ const ProtoDetails = async ({ params }: { params: Params }) => {
 
       <article>
         <div className="grid gap-8">
-          <div className="p-4 bg-dark rounded-2xl w-fit h-fit text-white">
-            <span>
+          <div className="lg:flex items-center grid gap-5">
+            <div className="p-4 bg-dark rounded-2xl w-fit h-fit text-white">
               {new Date(props.Date).toLocaleDateString("En-US", {
                 day: "2-digit",
                 year: "numeric",
                 month: "long",
                 formatMatcher: "best fit",
               })}
-            </span>
+            </div>
+            <div className={`p-4 bg-primary rounded-2xl w-fit h-fit uppercase text-dark font-bold ${props.Unofficial === true ? "" : "hidden"}`}>
+              {props.Unofficial === true ? "Unofficial" : ""}
+            </div>
           </div>
           <h1>
             {props?.title}
@@ -87,7 +90,7 @@ const ProtoDetails = async ({ params }: { params: Params }) => {
                 src={props?.thumbnail}
                 width={250}
                 height={250}
-                className="rounded-2xl h-fit lg:w-fit w-full"
+                className="rounded-4xl h-fit lg:w-fit w-full"
                 alt={props?.title}
                 priority
               />
@@ -108,7 +111,7 @@ const ProtoDetails = async ({ params }: { params: Params }) => {
             </div>
           </div>
 
-          <div className={`overflow-hidden mx-auto md:max-w-7xl prose-li:text-white prose-sm md:prose-ul:mx-36 prose-ul:mx-10 rounded-2xl prose-headings:text-white prose-headings:mx-8 prose prose-lg md:prose-headings:mx-28 prose-p:text-white md:prose-p:mx-28 prose-p:mx-8 prose-img:m-0 w-full bg-dark`} dangerouslySetInnerHTML={{ __html: marked(props.body.raw) }}></div>
+          <div className={`overflow-hidden mx-auto md:max-w-7xl prose-li:text-white prose-sm md:prose-ul:mx-36 prose-ul:mx-10 rounded-4xl prose-headings:text-white prose-headings:mx-8 prose prose-lg md:prose-headings:mx-28 prose-p:text-white md:prose-p:mx-28 prose-p:mx-8 prose-img:m-0 w-full bg-dark`} dangerouslySetInnerHTML={{ __html: marked(props.body.raw) }}></div>
         </div>
       </article>
 
