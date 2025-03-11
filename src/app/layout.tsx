@@ -1,20 +1,20 @@
 import Navbar from "@/Components/Navbar";
 import "./globals.css";
-import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google'
+import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 import Footer from "@/Components/Footer";
 
-import { SpeedInsights } from "@vercel/speed-insights/next"
-import { Analytics } from "@vercel/analytics/react"
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/react";
 
-import Script from 'next/script';
+import Script from "next/script";
 import { Metadata, Viewport } from "next";
 import { NavList } from "@/lib/NavList";
 import CookieBanner from "@/Components/Client/CookieBanner";
 
 // Localization
 
-import { NextIntlClientProvider } from 'next-intl';
-import { getLocale, getMessages } from 'next-intl/server';
+import { NextIntlClientProvider } from "next-intl";
+import { getLocale, getMessages } from "next-intl/server";
 import { cookies } from "next/headers";
 
 const title = "%s — Designs By Eyad";
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
     types: {
-      'application/rss+xml': '/rss.xml',
+      "application/rss+xml": "/rss.xml",
     },
   },
   metadataBase: new URL(siteUrl),
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
     google: "SAdpay-liv1rI5Wv_WMEhQWbAXRtsm96riCif7zyOzs",
   },
   other: {
-    "p:domain_verify": '0ce530fb8b315b5b57336f9008379e96',
+    "p:domain_verify": "0ce530fb8b315b5b57336f9008379e96",
   },
 
   twitter: {
@@ -77,55 +77,55 @@ export default async function RootLayout({
   const breadcrumbList = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    "itemListElement": [
+    itemListElement: [
       {
         "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://designs-by-eyad.vercel.app/"
+        position: 1,
+        name: "Home",
+        item: "https://designs-by-eyad.vercel.app/",
       },
-    ]
+    ],
   };
 
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Person",
-    "name": "Eyad Farah",
-    "jobTitle": "Graphic Designer",
-    "worksFor": {
+    name: "Eyad Farah",
+    jobTitle: "Graphic Designer",
+    worksFor: {
       "@type": "Organization",
-      "name": "Designs By Eyad",
-      "url": siteUrl,
-      "sameAs": [
+      name: "Designs By Eyad",
+      url: siteUrl,
+      sameAs: [
         "https://www.facebook.com/designs.by.eyad",
         "https://www.instagram.com/designs.by.eyad",
         "https://www.linkedin.com/company/designsbyeyad",
-        "https://www.youtube.com/@designsbyeyad"
-      ]
+        "https://www.youtube.com/@designsbyeyad",
+      ],
     },
-    "telephone": "(+20) 155 571 5783",
-    "address": {
+    telephone: "(+20) 155 571 5783",
+    address: {
       "@type": "PostalAddress",
-      "addressLocality": "Aswan",
-      "addressCountry": "EG"
+      addressLocality: "Aswan",
+      addressCountry: "EG",
     },
-    "url": siteUrl,
-    "sameAs": [
+    url: siteUrl,
+    sameAs: [
       "https://www.facebook.com/designs.by.eyad",
       "https://www.instagram.com/designs.by.eyad",
       "https://www.linkedin.com/company/designsbyeyad",
-      "https://www.youtube.com/@designsbyeyad"
-    ]
+      "https://www.youtube.com/@designsbyeyad",
+    ],
   };
 
-  const locale = (await cookies()).get('locale')?.value || 'en';
+  const locale = (await cookies()).get("locale")?.value || "en";
 
   // Dynamically load the messages file based on the locale.
   const messages = await import(`../../messages/${locale}.json`).then(
     (module) => module.default
   );
   return (
-    <html lang={locale} dir={locale === 'ar' ? 'rtl' : 'ltr'}>
+    <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"}>
       <head>
         <Script
           id="json-ld-schema"
@@ -142,6 +142,8 @@ export default async function RootLayout({
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('consent', 'default', {
+                'ad_user_data': 'denied',
+                'ad_personalization': 'denied',
                 'ad_storage': 'denied',
                 'analytics_storage': 'denied'
               });
@@ -156,27 +158,27 @@ export default async function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "BreadcrumbList",
-              "itemListElement": [
+              itemListElement: [
                 {
                   "@type": "ListItem",
-                  "position": 1,
-                  "name": "Home",
-                  "item": siteUrl
+                  position: 1,
+                  name: "Home",
+                  item: siteUrl,
                 },
                 ...NavList.map((nav) => ({
                   "@type": "ListItem",
-                  "position": Number(nav.id) + 1,
-                  "name": nav.name,
-                  "item": siteUrl + nav.link
+                  position: Number(nav.id) + 1,
+                  name: nav.name,
+                  item: siteUrl + nav.link,
                 })),
                 {
                   "@type": "ListItem",
-                  "position": 8,
-                  "name": "Contact",
-                  "item": siteUrl + "/contact"
-                }
-              ]
-            })
+                  position: 8,
+                  name: "Contact",
+                  item: siteUrl + "/contact",
+                },
+              ],
+            }),
           }}
         />
         {/* <Partytown
@@ -190,7 +192,7 @@ export default async function RootLayout({
           }}
         />
       </head>
-      <body className={locale === 'ar' ? 'font-arabicRegular' : 'font-regular'}>
+      <body className={locale === "ar" ? "font-arabicRegular" : "font-regular"}>
         <NextIntlClientProvider messages={messages} locale={locale}>
           <Navbar />
           <main>{children}</main>
