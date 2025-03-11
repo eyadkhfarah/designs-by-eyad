@@ -33,8 +33,13 @@ const nextConfig = {
     return [
       {
         // matching all API routes
-        source: "/api/:path*",
+        source: "/",
         headers: [
+          {
+            key: "Content-Security-Policy",
+            value:
+              "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com;",
+          },
           { key: "Access-Control-Allow-Credentials", value: "*" },
           { key: "Access-Control-Allow-Origin", value: "no-cors" }, // replace this your actual origin
           {
