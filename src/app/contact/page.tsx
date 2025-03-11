@@ -215,7 +215,7 @@ const Contact = () => {
       <button
         type="submit"
         disabled={isSubmitSuccessful || isSubmitting}
-        className="disabled:scale-90 disabled:bg-gray-600 disabled:cursor-not-allowed py-4 px-8 bg-primary flex justify-center items-center gap-3 w-full text-black font-bold rounded-2xl hover:scale-90 transition-all ease-in-out duration-300"
+        className="disabled:scale-90 cursor-pointer disabled:bg-gray-600 disabled:cursor-not-allowed py-4 px-8 bg-primary flex justify-center items-center gap-3 w-full text-black font-bold rounded-2xl hover:scale-90 transition-all ease-in-out duration-300"
       >
         {isSubmitting ? (
           <>
