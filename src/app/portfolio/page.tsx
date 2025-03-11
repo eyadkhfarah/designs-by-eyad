@@ -3,9 +3,9 @@ import { Metadata } from "next";
 import React from "react";
 
 const meta = {
-  title: "Protfolio",
+  title: "Portfolio",
   description: "Browse my portfolio to see successful brand identity and social media design projects for businesses across Egypt. See how my designs drive engagement and growth.",
-  url: "/protfolio",
+  url: "/portfolio",
 }
 
 export const metadata: Metadata = {

@@ -27,7 +27,7 @@ const CookieBanner: React.FC = () => {
         <div className="fixed bottom-5 left-0 right-0 bg-dark rounded-3xl text-white p-4 flex flex-col md:flex-row items-center justify-between z-50 mx-auto lg:max-w-6xl md:max-w-2xl max-w-xs">
             <p className="mb-2 md:mb-0">
                 I use cookies to improve your experience. By using my site, you agree to my{' '}
-                <Link href="/privacy" className="text-primary no-underline">
+                <Link href="/privacy-policy" className="text-primary no-underline">
                     Privacy Policy
                 </Link> and <Link href="/terms" className="text-primary no-underline">Terms and Conditions</Link>.
             </p>
