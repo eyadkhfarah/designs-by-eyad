@@ -36,9 +36,9 @@
     "gray-matter": "^4.0.3",
     "js-cookie": "^3.0.5",
     "lucide-react": "^0.474.0",
-    "marked": "^15.0.6",
+    "marked": "^15.0.8",
     "motion": "^11.15.0",
-    "next": "15.1.6",
+    "next": "^15.3.0",
     "next-contentlayer": "^0.3.4",
     "next-intl": "^3.26.5",
     "next-mdx-remote": "^4.4.1",
@@ -55,6 +55,7 @@
     "rehype-pretty-code": "^0.10.2",
     "rehype-slug": "^6.0.0",
     "remark-gfm": "^4.0.0",
+    "remove-markdown": "^0.6.0",
     "rss": "^1.2.2",
     "shiki": "^0.14.5",
     "tailwind-merge": "^2.6.0",
@@ -62,6 +63,7 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
+    "@eslint/js": "^9.24.0",
     "@swc/cli": "^0.5.2",
     "@swc/core": "^1.3.53",
     "@tailwindcss/forms": "^0.5.7",
@@ -73,13 +75,28 @@
     "@types/react-stars": "^2.2.4",
     "@types/rss": "^0.0.32",
     "autoprefixer": "^10.4.16",
-    "eslint": "^8.55.0",
+    "eslint": "^8.57.1",
     "eslint-config-next": "15.1.6",
+    "eslint-plugin-react": "^7.37.5",
+    "globals": "^16.0.0",
     "postcss": "^8.5.1",
     "tailwindcss": "^4.0.0",
-    "typescript": "^5.2.2"
+    "typescript": "^5.2.2",
+    "typescript-eslint": "^8.29.1"
   },
   "overrides": {
     "@types/react": "19.0.8"
-  }
+  },
+  "description": "Welcome to **Desings By Eyad**, an open-source graphic design portfolio application built with **Next.js**, **Tailwind CSS**, and **TypeScript**. This project combines cutting-edge web technologies to provide a seamless and modern design platform.",
+  "main": "contentlayer.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eyadkhfarah/designs-by-eyad.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eyadkhfarah/designs-by-eyad/issues"
+  },
+  "homepage": "https://github.com/eyadkhfarah/designs-by-eyad#readme"
 }

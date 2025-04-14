@@ -124,6 +124,7 @@ export default async function RootLayout({
   const messages = await import(`../../messages/${locale}.json`).then(
     (module) => module.default
   );
+
   return (
     <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"}>
       <head>
