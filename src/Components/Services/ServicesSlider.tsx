@@ -41,19 +41,24 @@ export default function ServicesSlider() {
             key={category.id}
             className="services-card flex flex-col justify-center items-center w-72 h-64 pointer-events-none"
           >
-            {category.name === "Web Development" ? (
-              <TbWorldCode className="text-6xl text-primary" />
-            ) : null || category.name === "Social Media Design" ? (
-              <TbMessage2Heart className="text-6xl text-primary" />
-            ) : null || category.name === "Graphic Design" ? (
-              <TbVectorBezier className="text-6xl text-primary" />
-            ) : null || category.name === "UI/UX Design" ? (
-              <TbDeviceMobileCheck className="text-6xl text-primary" />
-            ) : null || category.name === "Photoshop" ? (
-              <TbBrandAdobe className="text-6xl text-primary" />
-            ) : null || category.name === "Logo Design" ? (
-              <TbPencilBolt className="text-6xl text-primary" />
-            ) : null}
+            {(() => {
+              switch (category.name) {
+                case "Web Development":
+                  return <TbWorldCode className="text-6xl text-primary" />;
+                case "Social Media Design":
+                  return <TbMessage2Heart className="text-6xl text-primary" />;
+                case "Graphic Design":
+                  return <TbVectorBezier className="text-6xl text-primary" />;
+                case "UI/UX Design":
+                  return <TbDeviceMobileCheck className="text-6xl text-primary" />;
+                case "Photoshop":
+                  return <TbBrandAdobe className="text-6xl text-primary" />;
+                case "Logo Design":
+                  return <TbPencilBolt className="text-6xl text-primary" />;
+                default:
+                  return null;
+              }
+            })()}
             <h3 className="text-xl text-center">{category.name}</h3>
           </div>
         ))}
