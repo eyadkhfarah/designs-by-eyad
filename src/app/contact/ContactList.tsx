@@ -29,15 +29,15 @@ export default function ContactList() {
             aria-label={`${list.name}`}
             href={`/contact${list.link}`}
           >
-            {list.name === "Form" || "نموذج الاتصال" ? (
+            {(list.name === "Form" || list.name === "نموذج الاتصال") ? (
               <TbForms className="text-xl" />
-            ) : null || list.name === "Social" || "وسائل التواصل الاجتماعي" ? (
+            ) : (list.name === "Social" || list.name === "وسائل التواصل الاجتماعي") ? (
               <RiFacebookCircleFill className="text-xl" />
-            ) : null || list.name === "Email" || "البريد الإلكتروني" ? (
+            ) : (list.name === "Email" || list.name === "البريد الإلكتروني") ? (
               <TbMessage2 className="text-xl" />
-            ) : null || list.name === "Phone" || "الهاتف" ? (
+            ) : (list.name === "Phone" || list.name === "الهاتف") ? (
               <TbPhone className="text-xl" />
-            ) : null || list.name === "Purchasing" || "أدوات الدقع" ? (
+            ) : (list.name === "Purchasing" || list.name === "أدوات الدقع") ? (
               <TbUserDollar className="text-xl" />
             ) : null}
             {/* {t(list.name)} */}
