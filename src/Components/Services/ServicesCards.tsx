@@ -31,15 +31,15 @@ export default function ServicesCards() {
           <div className="grid gap-6">
             {t(category.name) === "Web Development" ? (
               <TbWorldCode className="text-4xl text-primary " />
-            ) : null || t(category.name) === "Social Media Design" || "تصميم منشورات وسائل التواصل الاجتماعي" ? (
+            ) : t(category.name) === "Social Media Design" || t(category.name) === "تصميم منشورات وسائل التواصل الاجتماعي" ? (
               <TbMessage2Heart className="text-4xl text-primary" />
-            ) : null || t(category.name) === "Graphic Design" ? (
+            ) : t(category.name) === "Graphic Design" ? (
               <TbVectorBezier className="text-4xl text-primary" />
-            ) : null || t(category.name) === "UI/UX Design" || "تصميم واجهة المستخدم وتجربة المستخدم" ? (
+            ) : t(category.name) === "UI/UX Design" || t(category.name) === "تصميم واجهة المستخدم وتجربة المستخدم" ? (
               <TbDeviceMobileCheck className="text-4xl text-primary" />
-            ) : null || t(category.name) === "Photoshop" ? (
+            ) : t(category.name) === "Photoshop" ? (
               <TbBrandAdobe className="text-4xl text-primary" />
-            ) : null || t(category.name) === "Logo Design" || "Brand Identity" || "تصميم الشعار" || "هوية العلامة التجارية" ? (
+            ) : t(category.name) === "Logo Design" || t(category.name) === "Brand Identity" || t(category.name) === "تصميم الشعار" || t(category.name) === "هوية العلامة التجارية" ? (
               <TbPencilBolt className="text-4xl text-primary" />
             ) : null}
             <h3 className="text-xl">{t(category.name)}</h3>
