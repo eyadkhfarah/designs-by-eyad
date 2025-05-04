@@ -9,6 +9,7 @@ import { ArtworkProperties } from "@/types/notionType";
 import Script from "next/script";
 import H1 from "@/Components/TranslationTags/H1";
 import ArtworkPrice from "@/Components/Pricing/ArtworkPrice";
+import { plans } from "@/lib/Prices";
 
 // Combine Notion's PageObjectResponse with our custom properties
 type ArtworkPage = PageObjectResponse & { properties: ArtworkProperties };
@@ -52,7 +53,7 @@ export default async function Artwork() {
       <section className="relative">
         <H1>ArtworksPage.title</H1>
 
-        <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 relative z-10">
+        <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 relative">
           {artworks.results.slice(0, 6).map((artwork: ArtworkPage) => {
             const name =
               artwork.properties.Name.title[0]?.plain_text || "Untitled";
@@ -105,6 +106,31 @@ export default async function Artwork() {
             .filter(Boolean)
         )}
       </Script>
+      {/* <Script
+        type="application/ld+json"
+        id="json-ld-schema"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "OfferCatalog",
+            name: "Artwork Pricing",
+            description:
+              "Bring my designs to life! Order a premium-quality poster or a custom T-shirt in seconds.",
+            mainEntity: {
+              "@type": "ItemList",
+              itemListElement: plans.map(
+                (plan: any, index: number) => ({
+                  "@type": "Offer",
+                  "name": `${t("Basic Plan")}`,
+                  url: `${siteUrl}/blog/${post.properties.Slug.rich_text[0].plain_text}`,
+                  name: post.properties.Name.title[0].plain_text,
+                })
+              ),
+            },
+          }),
+        }}
+      /> */}
     </>
   );
 }
