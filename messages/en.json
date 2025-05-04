@@ -88,6 +88,35 @@
     "title": "Blog",
     "subtitle": "Read the latest articles on graphic design, branding, and social media design. Stay up-to-date with the latest trends and insights to help your brand succeed in the digital world."
   },
+
+  "ArtworkPrice": {
+    "title": "Artwork Pricing",
+    "subtitle": "Bring my designs to life! Order a premium-quality poster or a custom T-shirt in seconds.",
+    "include": "Includes",
+    "CTA": "Choose The Plan",
+    "Note": "No revisions or PSD files included.*",
+    "plans": {
+      "plan1": {
+        "title": "One Design Only",
+        "description": "Get a single design of your choice.",
+        "features": {
+          "1": "Choose one specific design and send it to me",
+          "2": "My logo will remain on the artwork and cannot be removed",
+          "3": "If you want to use it for commercial purposes, contact me"
+        }
+      },
+      "plan2": {
+        "title": "All My Designs",
+        "description": "Access a full collection of my designs via Google Drive.",
+        "features": {
+          "1": "A regularly updated folder with unreleased designs",
+          "2": "Folder prepared in CMYK color mode for high-quality printing",
+          "3": "Does not include my logo on the designs"
+        }
+      }
+    }
+  },
+
   "MenuList": {
     "home": "Home",
     "portfolio": "Portfolio",

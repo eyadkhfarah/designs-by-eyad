@@ -3,6 +3,7 @@ import { fetchPosts } from "@/lib/notion";
 import { Metadata } from "next";
 import { PageObjectResponse, QueryDatabaseResponse } from "@notionhq/client/build/src/api-endpoints";
 import Script from "next/script";
+import H1 from "@/Components/TranslationTags/H1";
 
 const siteUrl = process.env.PUBLIC_DOMAIN_URL || "https://designs-by-eyad.vercel.app";
 
@@ -40,7 +41,7 @@ export default async function BlogsPage() {
   return (
     <>
       <section>
-        <h1>Blog</h1>
+        <H1>BlogPage.title</H1>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {posts.results.map((post: any) => (
             <BlogSqr key={post.id} post={post} />

@@ -74,7 +74,7 @@ export default function Footer() {
         {/* <LanguageSwitcher /> */}
 
         {/* Placeholder لـ Language Switcher */}
-        <span>Language Switcher soon!</span>
+        {/* <span>Language Switcher soon!</span> */}
       </div>
     </>
   );

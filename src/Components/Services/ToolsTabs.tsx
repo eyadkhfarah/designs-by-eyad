@@ -1,90 +1,90 @@
-"use client"
-import { useTranslations } from 'next-intl';
+"use client";
 
-import Image from "next/image";
 import React, { useState } from "react";
-import { RiCodeLine } from "react-icons/ri";
+import { useTranslations } from "next-intl";
 import {
   TbBrandFigma,
-  TbBrandFlutter,
   TbBrandFramer,
+  TbBrandFlutter,
   TbBrandNextjs,
   TbBrandReact,
   TbBrandReactNative,
   TbBrandSvelte,
   TbVectorBezier,
 } from "react-icons/tb";
-import H2 from '../TranslationTags/H2';
+import { RiCodeLine } from "react-icons/ri";
+import H2 from "../TranslationTags/H2";
+
+const designTools = [
+  { icon: <TbBrandFigma className="text-2xl" />, label: "Figma" },
+  { icon: <TbBrandFramer className="text-2xl" />, label: "Framer" },
+  { label: "Canva" },
+  { label: "Adobe Photoshop" },
+  { label: "Adobe Illustrator" },
+];
+
+const devTools = [
+  { icon: <TbBrandNextjs className="text-2xl" />, label: "Next.js" },
+  { icon: <TbBrandReact className="text-2xl" />, label: "React.js" },
+  { icon: <TbBrandSvelte className="text-2xl" />, label: "SvelteKit" },
+  { icon: <TbBrandReactNative className="text-2xl" />, label: "React Native" },
+  { icon: <TbBrandFlutter className="text-2xl" />, label: "Flutter" },
+];
 
 export default function ToolsTabs() {
-  const [toggle, setToggle] = useState(1);
-
-  const updateToggle = (id: React.SetStateAction<number>) => {
-    setToggle(id);
-  };
-
+  const [toggle, setToggle] = useState<1 | 2>(1);
   const t = useTranslations();
+
+  const tabButtonClass = (active: boolean) =>
+    `${active ? "bg-primary text-black" : ""} tabs`;
 
   return (
     <section>
       <H2>H2.ToolsIUse</H2>
 
       <div className="w-full grid place-items-center">
-        <div className="bg-dark flex lg:w-fit w-full justify-center items-center p-1 rounded-full">
+        <div className="bg-dark flex lg:w-fit w-full font-bold justify-center items-center p-1 rounded-full">
           <button
-            onClick={() => updateToggle(1)}
-            className={toggle === 1 ? "bg-primary text-black tabs" : "tabs"}
+            onClick={() => setToggle(1)}
+            className={tabButtonClass(toggle === 1)}
+            aria-pressed={toggle === 1}
           >
             <TbVectorBezier className="text-2xl" />
-            <span className="lg:block hidden">{t("Span.Design")}</span>
+            <span className="lg:block hidden font-bold">
+              {t("Span.Design")}
+            </span>
           </button>
           <button
-            onClick={() => updateToggle(2)}
-            className={toggle === 2 ? "bg-primary text-black tabs" : "tabs"}
+            onClick={() => setToggle(2)}
+            className={tabButtonClass(toggle === 2)}
+            aria-pressed={toggle === 2}
           >
             <RiCodeLine className="text-2xl" />
-            <span className="lg:block hidden">{t("Span.Development")}</span>
+            <span className="lg:block hidden font-bold">
+              {t("Span.Development")}
+            </span>
           </button>
         </div>
 
-        <ul
-          className={
-            toggle === 1 ? "lg:flex justify-center w-full my-12 gap-6" : "hidden"
-          }
-        >
-          <li className="skills">
-            <TbBrandFigma className="text-2xl" /> Figma
-          </li>
-          <li className="skills">
-            <TbBrandFramer className="text-2xl" /> Framer
-          </li>
-          <li className="skills">Canva</li>
-          <li className="skills">Adobe Photoshop</li>
-          <li className="skills">Adobe Illustrator</li>
-        </ul>
+        {toggle === 1 && (
+          <ul className="lg:flex justify-center w-full my-12 gap-6">
+            {designTools.map((tool, index) => (
+              <li key={index} className="skills">
+                {tool.icon} {tool.label}
+              </li>
+            ))}
+          </ul>
+        )}
 
-        <ul
-          className={
-            toggle === 2 ? "lg:flex justify-center w-full my-12 gap-6" : "hidden"
-          }
-        >
-          <li className="skills">
-            <TbBrandNextjs className="text-2xl" />
-            Next.js
-          </li>
-          <li className="skills">
-            <TbBrandReact className="text-2xl" /> React.js
-          </li>
-          <li className="skills">
-            <TbBrandSvelte className="text-2xl" /> SvelteKit
-          </li>
-          <li className="skills">
-            <TbBrandReactNative className="text-2xl" /> React Native
-          </li>
-          <li className="skills">
-            <TbBrandFlutter className="text-2xl" /> Flutter
-          </li>
-        </ul>
+        {toggle === 2 && (
+          <ul className="lg:flex justify-center w-full my-12 gap-6">
+            {devTools.map((tool, index) => (
+              <li key={index} className="skills">
+                {tool.icon} {tool.label}
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
     </section>
   );
