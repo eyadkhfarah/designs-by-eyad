@@ -62,58 +62,61 @@ const ProtoDetails = async ({ params }: { params: Params }) => {
     <>
       <article>
         <div className="grid gap-8">
-          <div className="p-4 bg-dark rounded-2xl w-fit h-fit text-white">
-            <span>
+          <div className="lg:flex items-center grid gap-5">
+            <div className="p-4 bg-dark rounded-2xl w-fit h-fit text-white">
               {new Date(props?.Date ?? "").toLocaleDateString("En-US", {
                 day: "2-digit",
                 year: "numeric",
                 month: "long",
                 formatMatcher: "best fit",
               })}
-            </span>
+            </div>
           </div>
           <h1>
             {props?.title}
           </h1>
         </div>
-        <div className="grid gap-8">
-          <div className="lg:flex h-fit grid gap-8">
-            <Image
-              src={props?.thumbnail}
-              width={250}
-              height={250}
-              className="rounded-2xl h-fit lg:w-fit w-full"
-              alt={props?.title}
-            />
-            <div className="flex flex-col justify-end gap-5 w-fit">
-              <p>{props.description}</p>
-              <div className="flex items-center gap-6">
-                <PrimaryBtn
-                  target={true}
-                  link={`${props.website}`}
-                  text={"Go to the website"}
-                />
-                <div className="p-5 rounded-full leading-0 uppercase font-bold bg-dark w-fit">
-                  {props.Protype}
+        <div className="grid gap-8 w-full">
+          <div className="">
+            <div className="lg:flex items-start h-fit grid gap-8">
+              <Image
+                src={props?.thumbnail}
+                width={250}
+                height={250}
+                className="rounded-4xl h-fit lg:w-fit w-full"
+                alt={props?.title}
+                priority
+              />
+              <div className="flex flex-col justify-end gap-5 w-fit">
+                <p>{props.description}</p>
+                <div className="flex flex-wrap items-center gap-6">
+                  <PrimaryBtn
+                    target={true}
+                    link={`${props.website}`}
+                    text={"Go to the website"}
+                  />
+                  <div className="p-5 rounded-full uppercase font-bold bg-dark w-fit">
+                    {props.Protype}
+                  </div>
                 </div>
-              </div>
-              <div className="grid gap-5">
-                <h2 className="uppercase">Skills</h2>
-                <ul className="flex items-center gap-5">
-                  {props.stack?.map((skill) => (
-                    <li
-                      key={skill}
-                      className="p-5 rounded-full text-sm leading-0 uppercase font-bold bg-dark w-fit"
-                    >
-                      {skill}
-                    </li>
-                  ))}
-                </ul>
+                <div className="grid gap-5">
+                  <h2 className="uppercase">Skills</h2>
+                  <ul className="flex flex-wrap items-center gap-5">
+                    {props.stack?.map((skill) => (
+                      <li
+                        key={skill}
+                        className="p-5 rounded-full text-sm leading-0 uppercase font-bold bg-dark w-fit"
+                      >
+                        {skill}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
 
-          <div className={`overflow-hidden mx-auto md:max-w-7xl prose-li:text-white md:prose-ul:mx-36 prose-ul:mx-10 rounded-2xl prose-headings:text-white prose-headings:mx-8 prose prose-lg md:prose-headings:mx-28 prose-p:text-white md:prose-p:mx-28 prose-p:mx-8 prose-img:m-0 w-full bg-dark`} dangerouslySetInnerHTML={{ __html: marked(props.body.raw) }}></div>
+          <div className={`overflow-hidden mx-auto md:max-w-7xl prose-li:text-white prose-sm md:prose-ul:mx-36 prose-ul:mx-10 rounded-4xl prose-headings:text-white prose-headings:mx-8 prose prose-lg md:prose-headings:mx-28 prose-p:text-white md:prose-p:mx-28 prose-p:mx-8 prose-img:m-0 w-full bg-dark`} dangerouslySetInnerHTML={{ __html: marked(props.body.raw) }}></div>
         </div>
       </article>
 
