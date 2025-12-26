@@ -1,15 +1,12 @@
 import type { Metadata } from 'next'
+import React from 'react'
 
 const meta = {
-  title: "How to Use My Images",
+  title: "Image Usage Guidelines",
   description:
-    "Learn how to use images from Designs By Eyad, including permitted and prohibited uses, ownership, and copyright information.",
-  url: "/privacy-policy",
+    "Learn how to use images from Designs By Eyad, including permitted uses, attribution rules, and licensing for commercial work.",
+  url: "/usage-guidelines", // Updated from /privacy-policy
 };
-
-const siteUrl =
-  process.env.NEXT_PUBLIC_DOMAIN_URL ||
-  "https://designs-by-eyad.vercel.app";
 
 export const metadata: Metadata = {
   title: meta.title,
@@ -25,83 +22,109 @@ export const metadata: Metadata = {
   robots: {
     index: false,
     follow: false,
-    nocache: false,
-    googleBot: {
-      index: false,
-      follow: false,
-      noimageindex: false,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
   },
 }
 
+const sections = [
+  { id: "ownership", title: "Ownership" },
+  { id: "permitted", title: "Permitted Use" },
+  { id: "prohibited", title: "Prohibited Use" },
+  { id: "requests", title: "Permissions" },
+  { id: "disclaimer", title: "Disclaimer" },
+];
+
 const HowToUseImages: React.FC = () => {
   return (
-    <article className='mx-auto lg:max-w-6xl md:max-w-2xl max-w-xs py-8 grid gap-8 prose prose-strong:font-bold prose-a:text-primary prose-a:no-underline lg:prose-lg prose-invert'>
-      <header className="mb-8">
-        <h1 className="text-3xl font-bold text-center mb-4">How to Use Images</h1>
-        <p className="text-center text-primary">Effective Date: 28/2/2025</p>
-      </header>
+    <main className="min-h-screen pt-32 pb-20">
+      <section className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+        
+        {/* --- Left Side: Sticky Navigation --- */}
+        <aside className="hidden lg:block lg:col-span-3 lg:sticky lg:top-40">
+          <nav className="flex flex-col gap-4 border-l border-white/10 pl-6">
+            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-neutral-500 mb-2">
+              Policy Sections
+            </span>
+            {sections.map((sec) => (
+              <a 
+                key={sec.id}
+                href={`#${sec.id}`}
+                className="text-sm font-bold text-neutral-400 hover:text-primary transition-colors uppercase tracking-tight"
+              >
+                {sec.title}
+              </a>
+            ))}
+          </nav>
+        </aside>
 
-      <div className="mb-8">
-        <h2 className="text-2xl">Ownership and Copyright</h2>
-        <p>
-          Unless otherwise stated, all images on this website are the property of Designs By Eyad
-          or are used with permission. Unauthorized use, reproduction, or distribution of these images is prohibited.
-        </p>
-      </div>
+        {/* --- Right Side: Content --- */}
+        <article className="lg:col-span-9 prose prose-invert prose-neutral max-w-none 
+          prose-h1:text-5xl prose-h1:md:text-7xl prose-h1:font-black prose-h1:tracking-tighter prose-h1:uppercase
+          prose-h2:text-2xl prose-h2:uppercase prose-h2:tracking-tight prose-h2:text-white
+          prose-p:text-neutral-400 prose-p:leading-relaxed
+          prose-strong:text-white prose-strong:font-bold
+          prose-a:text-primary prose-a:no-underline hover:prose-a:underline">
+          
+          <header className="mb-16 border-b border-white/5 pb-10">
+            <span className="text-primary font-mono tracking-[0.3em] uppercase text-sm mb-4 block">Assets</span>
+            <h1>Usage<span className="text-primary">.</span></h1>
+            <p className="text-xl">Effective Date: <span className="text-white">February 28, 2025</span></p>
+          </header>
 
-      <div className="mb-8">
-        <h2 className="text-2xl">Permitted Use</h2>
-        <ul className="list-disc ml-6 space-y-2">
-          <li>
-            <strong>Personal Use:</strong> You may view and download images for personal, non-commercial use only.
-          </li>
-          <li>
-            <strong>Attribution:</strong> If you share images on social media or other platforms, please provide appropriate credit to Designs By Eyad when required.
-          </li>
-          <li>
-            <strong>Commercial Use:</strong> For commercial use or reproduction of any images, please contact me to obtain written permission and discuss licensing terms.
-          </li>
-        </ul>
-      </div>
+          <section id="ownership" className="scroll-mt-40">
+            <h2>Ownership and Copyright</h2>
+            <p>
+              Unless otherwise stated, all images, brand marks, and custom graphics on this website are the intellectual property of <strong>Designs By Eyad</strong>. 
+              Visual content is protected under international copyright law. Unauthorized reproduction or "hotlinking" is strictly prohibited.
+            </p>
+          </section>
 
-      <div className="mb-8">
-        <h2 className="text-2xl">Prohibited Use</h2>
-        <ul className="list-disc ml-6 space-y-2">
-          <li>Do not alter, edit, or modify the images without permission.</li>
-          <li>Do not distribute the images on other platforms or websites without explicit consent.</li>
-          <li>Do not use the images in any manner that could be considered defamatory, illegal, or harmful to our reputation.</li>
-        </ul>
-      </div>
+          <section id="permitted" className="scroll-mt-40">
+            <h2>Permitted Use</h2>
+            <ul>
+              <li>
+                <strong>Personal Inspiration:</strong> You may view and download images for personal, non-commercial use (e.g., mood boards or wallpapers).
+              </li>
+              <li>
+                <strong>Attribution:</strong> If sharing my work on social media, credit must be clearly visible as <em>"Design by @DesignsByEyad"</em> (or a link back to this site).
+              </li>
+              <li>
+                <strong>Educational Use:</strong> Students may use images for academic projects provided the source is cited.
+              </li>
+            </ul>
+          </section>
 
-      <div className="mb-8">
-        <h2 className="text-2xl">How to Request Permission</h2>
-        <p>
-          If you wish to use an image beyond the scope of the permitted use outlined above, please send a request to:
-        </p>
-        <div className="mt-2">
-          <p>
-            <strong>Email:</strong> <a href="mail:eyadkhfarah@gmail.com">eyadkhfarah@gmail.com</a>
-          </p>
-          <p>
-            <strong>Details:</strong> Include details of the intended use, how the image will be used, and any other relevant information.
-          </p>
-        </div>
-      </div>
+          <section id="prohibited" className="scroll-mt-40">
+            <h2>Prohibited Use</h2>
+            <p>To protect the integrity of the work, the following actions are banned:</p>
+            <ul>
+              <li><strong>Modification:</strong> Do not crop, filter, or alter the images in a way that misrepresents the original design.</li>
+              <li><strong>Resale:</strong> Do not include these images in any "stock" collection or sell them as part of a template.</li>
+              <li><strong>Impersonation:</strong> Do not use these images to imply that you or another entity created the work.</li>
+            </ul>
+          </section>
 
-      <div>
-        <h2 className="text-2xl">Disclaimer</h2>
-        <p>
-          While I strive to ensure that all images are correctly attributed and up to date, we do not guarantee the accuracy
-          of image usage rights. It is your responsibility to ensure compliance with any third-party rights related to images on my site.
-        </p>
-      </div>
-    </article>
+          <section id="requests" className="scroll-mt-40 border-t border-white/5 pt-10 mt-10">
+            <h2>How to Request Permission</h2>
+            <p>
+              For commercial licensing, high-resolution prints, or publication features, please reach out with details of your project:
+            </p>
+            <div className="bg-neutral-900 p-8 rounded-3xl border border-white/5 not-italic">
+              <p className="mb-2"><strong>Email:</strong> <a href="mailto:eyadkhfarah@gmail.com" className="text-xl font-bold">eyadkhfarah@gmail.com</a></p>
+              <p className="text-sm text-neutral-500 italic">Please include: "Image Request" in the subject line.</p>
+            </div>
+          </section>
+
+          <section id="disclaimer" className="scroll-mt-40">
+            <h2>Disclaimer</h2>
+            <p>
+              While I strive to ensure all visual assets are correctly attributed, some images may include third-party components (like mockups). 
+              Compliance with those specific third-party licenses is the user's responsibility.
+            </p>
+          </section>
+        </article>
+      </section>
+    </main>
   );
 };
 
 export default HowToUseImages;
-
