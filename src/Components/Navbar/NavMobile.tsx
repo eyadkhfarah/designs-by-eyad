@@ -34,7 +34,7 @@ export default function NavMobile({ open, setOpen }: Mobile) {
           <button
             aria-label="close menu"
             className="p-4 bg-white/5 rounded-full border border-white/10"
-            onClick={() => setOpen(false)}
+            onClick={() => setOpen(open!}
           >
             <RiCloseLine className="text-3xl text-white" />
           </button>
