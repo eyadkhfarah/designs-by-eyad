@@ -9,7 +9,7 @@ import { useState } from "react";
 import PrimaryBtn from "./Buttons/PrimaryBtn";
 
 export default function Navbar() {
-  const [open, setOepn] = (false);
+  const [open, setOepn] = useState(false);
 
   return (
     <>
