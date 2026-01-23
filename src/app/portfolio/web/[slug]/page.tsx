@@ -9,118 +9,120 @@ import Script from "next/script";
 type Params = Promise<{ slug: string }>
 
 async function getPost(slug: string) {
-  const markdown = allProtoWebs.find(
+  const doc = allProtoWebs.find(
     (doc) => doc.slugAsParams.replace("web/", "") === slug
   );
-
-  if (!markdown) notFound();
-
-  return markdown;
+  if (!doc) notFound();
+  return doc;
 }
 
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   const slug = (await params).slug;
-  const markdown = allProtoWebs.find(
+  const doc = allProtoWebs.find(
     (doc) => doc.slugAsParams.replace("web/", "") === slug
   );
 
+  if (!doc) return {};
+
   return {
-    title: markdown?.title,
-    description: markdown?.description,
-    alternates: {
-      canonical: `/${markdown?.slug.slice(1)}`
-    },
+    title: `${doc.title} | Web Design`,
+    description: doc.description,
+    alternates: { canonical: `/${doc.slug.replace(/^\//, '')}` },
     openGraph: {
-      title: markdown?.title,
-      description: markdown?.description,
+      title: doc.title,
+      description: doc.description,
       type: "article",
-      url: `/${markdown?.slug.slice(1)}`,
-      siteName: "/",
-      images: [
-        {
-          url: `/${markdown?.thumbnail.slice(1)}`,
-          width: 1200,
-          height: 630,
-          alt: markdown?.title,
-        },
-      ],
+      url: `/${doc.slug.replace(/^\//, '')}`,
+      images: [{ url: doc.thumbnail, width: 1200, height: 630, alt: doc.title }],
     },
-    twitter: {
-      card: "summary"
-    }
   };
 }
 
 const ProtoDetails = async ({ params }: { params: Params }) => {
   const props = await getPost((await params).slug);
-
-  const siteUrl =
-    process.env.NEXT_PUBLIC_DOMAIN_URL ||
-    "https://designs-by-eyad.vercel.app";
+  const siteUrl = process.env.NEXT_PUBLIC_DOMAIN_URL || "https://designs-by-eyad.vercel.app";
 
   return (
-    <>
-      <article>
-        <div className="grid gap-8">
-          <div className="lg:flex items-center grid gap-5">
-            <div className="p-4 bg-dark rounded-2xl w-fit h-fit text-white">
-              {new Date(props?.Date ?? "").toLocaleDateString("En-US", {
-                day: "2-digit",
-                year: "numeric",
+    <main className="min-h-screen pt-32 pb-20">
+      <article className="max-w-7xl mx-auto px-6">
+        {/* --- Header Section --- */}
+        <header className="flex flex-col gap-8 mb-16 border-b border-white/5 pb-12">
+          <div className="flex flex-wrap items-center gap-4">
+            <span className="px-4 py-2 bg-primary text-black text-[10px] font-black uppercase tracking-widest rounded-full">
+              {props.Protype}
+            </span>
+            <span className="text-neutral-500 font-mono text-sm uppercase tracking-tighter">
+              {new Date(props.Date ?? "").toLocaleDateString("en-US", {
                 month: "long",
-                formatMatcher: "best fit",
+                year: "numeric",
               })}
-            </div>
+            </span>
           </div>
-          <h1>
-            {props?.title}
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-black uppercase tracking-tighter leading-[0.9]">
+            {props.title}<span className="text-primary">.</span>
           </h1>
-        </div>
-        <div className="grid gap-8 w-full">
-          <div className="">
-            <div className="lg:flex items-start h-fit grid gap-8">
-              <Image
-                src={props?.thumbnail}
-                width={250}
-                height={250}
-                className="rounded-4xl h-fit lg:w-fit w-full"
-                alt={props?.title}
-                priority
-              />
-              <div className="flex flex-col justify-end gap-5 w-fit">
-                <p>{props.description}</p>
-                <div className="flex flex-wrap items-center gap-6">
-                  <PrimaryBtn
-                    target={true}
-                    link={`${props.website}`}
-                    text={"Go to the website"}
-                  />
-                  <div className="p-5 rounded-full uppercase font-bold bg-dark w-fit">
-                    {props.Protype}
-                  </div>
-                </div>
-                <div className="grid gap-5">
-                  <h2 className="uppercase">Skills</h2>
-                  <ul className="flex flex-wrap items-center gap-5">
-                    {props.stack?.map((skill) => (
-                      <li
-                        key={skill}
-                        className="p-5 rounded-full text-sm leading-0 uppercase font-bold bg-dark w-fit"
-                      >
-                        {skill}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </div>
+        </header>
+
+        {/* --- Hero & Overview Section --- */}
+        <section className="grid lg:grid-cols-12 gap-12 mb-20">
+          <div className="lg:col-span-5 relative aspect-square rounded-[2.5rem] overflow-hidden border border-white/10 bg-neutral-900">
+            <Image
+              src={props.thumbnail}
+              fill
+              className="object-cover"
+              alt={props.title}
+              priority
+            />
           </div>
 
-          <div className={`overflow-hidden mx-auto md:max-w-7xl prose-li:text-white prose-sm md:prose-ul:mx-36 prose-ul:mx-10 rounded-4xl prose-headings:text-white prose-headings:mx-8 prose prose-lg md:prose-headings:mx-28 prose-p:text-white md:prose-p:mx-28 prose-p:mx-8 prose-img:m-0 w-full bg-dark`} dangerouslySetInnerHTML={{ __html: marked(props.body.raw) }}></div>
-        </div>
+          <div className="lg:col-span-7 flex flex-col justify-center gap-10">
+            <div className="space-y-6">
+              <h2 className="text-xs font-black uppercase tracking-[0.3em] text-primary">Overview</h2>
+              <p className="text-xl md:text-2xl text-neutral-400 font-medium leading-relaxed">
+                {props.description}
+              </p>
+            </div>
+
+            <div className="space-y-6">
+              <h2 className="text-xs font-black uppercase tracking-[0.3em] text-neutral-500">Tech Stack</h2>
+              <ul className="flex flex-wrap gap-3">
+                {props.stack?.map((skill) => (
+                  <li
+                    key={skill}
+                    className="px-6 py-3 rounded-full text-xs font-bold uppercase border border-white/10 bg-white/5 hover:border-primary/50 transition-colors"
+                  >
+                    {skill}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="pt-4">
+              <PrimaryBtn
+                target={true}
+                link={`${props.website}`}
+                text={"Launch Live Site"}
+              />
+            </div>
+          </div>
+        </section>
+
+        {/* --- Project Case Study / Content --- */}
+        <section className="relative">
+          <div 
+            className="prose prose-invert prose-lg max-w-none 
+              prose-headings:uppercase prose-headings:tracking-tighter prose-headings:font-black
+              prose-p:text-neutral-400 prose-p:leading-loose
+              prose-strong:text-white prose-a:text-primary prose-a:no-underline hover:prose-a:underline
+              bg-neutral-900/30 overflow-hidden rounded-[3rem] border border-white/5"
+            dangerouslySetInnerHTML={{ __html: marked(props.body.raw) }} 
+          />
+        </section>
       </article>
 
+      {/* --- SEO & Structured Data --- */}
       <Script
+        id="project-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
@@ -133,16 +135,13 @@ const ProtoDetails = async ({ params }: { params: Params }) => {
               "name": props.title,
               "description": props.description,
               "image": siteUrl + props.thumbnail,
-              "creator": {
-                "@type": "Person",
-                "name": "Eyad Farah"
-              },
+              "creator": { "@type": "Person", "name": "Eyad Farah" },
               "dateCreated": props.Date
             }
           }),
         }}
       />
-    </>
+    </main>
   );
 };
 
