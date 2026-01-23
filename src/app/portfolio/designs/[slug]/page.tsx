@@ -103,8 +103,7 @@ const ProtoDetails = async ({ params }: { params: Params }) => {
             className="prose prose-invert prose-lg max-w-none 
               prose-headings:uppercase prose-headings:tracking-tighter prose-headings:font-black
               prose-p:text-neutral-400 prose-p:leading-loose
-              prose-img:m-0 prose-img:w-full prose-img:border-y prose-img:border-white/10
-              p-8 md:p-16"
+              prose-img:m-0 prose-img:w-full"
             dangerouslySetInnerHTML={{ __html: marked(props.body.raw) }} 
           />
         </section>
