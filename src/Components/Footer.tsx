@@ -27,11 +27,7 @@ export default function Footer() {
   ];
 
   return (
-<<<<<<< HEAD
     <div className="my-20 border-t border-white/5">
-=======
-    <div className="mt-20 border-t border-white/5">
->>>>>>> 310484f2ddd5a175a32da59877aa81ca0b370bc4
       {/* --- Pre-Footer CTA Section --- */}
       <section className="relative overflow-hidden py-24 px-6 rounded-[3rem] bg-neutral-900 my-10 max-w-7xl mx-auto text-center border border-white/10">
         {/* Abstract Background Glow */}
