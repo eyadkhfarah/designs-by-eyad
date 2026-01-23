@@ -1,113 +1,73 @@
+"use client";
+
 import type { Metadata } from "next";
 import React from "react";
+import { motion } from "framer-motion";
 import {
   RiFacebookCircleFill,
   RiGithubFill,
   RiInstagramLine,
   RiLinkedinBoxFill,
   RiPinterestFill,
-  RiPinterestLine,
   RiTiktokFill,
-  RiTiktokLine,
   RiTwitterXLine,
   RiWhatsappLine,
 } from "react-icons/ri";
 
-const meta = {
-  title: "Soical",
-  description: "Follow me on social media to stay updated on my latest graphic design projects, brand identity creations, and social media design tips tailored for the Egyptian market.",
-  url: "/contact/soical",
-}
+const SOCIAL_LINKS = [
+  { name: "Facebook", href: "https://www.facebook.com/eyad.kh.farah", icon: RiFacebookCircleFill },
+  { name: "Instagram", href: "https://www.instagram.com/eyad.kh.farah/", icon: RiInstagramLine },
+  { name: "Whatsapp", href: "https://api.whatsapp.com/send?phone=+201555715783", icon: RiWhatsappLine },
+  { name: "LinkedIn", href: "https://www.linkedin.com/in/eyadkhfarah", icon: RiLinkedinBoxFill },
+  { name: "Pinterest", href: "https://www.pinterest.com/eyadkhfarah/", icon: RiPinterestFill },
+  { name: "Twitter", href: "https://x.com/eyadkhfarahh", icon: RiTwitterXLine },
+  { name: "GitHub", href: "https://github.com/eyadkhfarah/", icon: RiGithubFill },
+  { name: "TikTok", href: "https://www.tiktok.com/@eyadkhfarah", icon: RiTiktokFill },
+];
 
-export const metadata: Metadata = {
-  title: meta.title,
-  description: meta.description,
-  alternates: {
-    canonical: meta.url,
-  },
-  openGraph: {
-    title: meta.title,
-    description: meta.description,
-    url: meta.url,
-  },
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.05 }
+  }
 };
 
-function Soical() {
+const itemVariants = {
+  hidden: { opacity: 0, scale: 0.95 },
+  visible: { opacity: 1, scale: 1 }
+};
+
+export default function Social() {
   return (
-    <>
-      <h2 className="uppercase text-xl">My Social Media Accounts</h2>
-      <div className="grid lg:grid-cols-2 lg:gap-6 gap-3 my-10">
-        <a
-          href="https://www.facebook.com/eyad.kh.farah"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="w-full lg:h-12 h-16 gap-5 bg-dark font-bold rounded-full uppercase flex items-center justify-center"
-        >
-          <RiFacebookCircleFill className="text-2xl" />
-          Facebook
-        </a>
-        <a
-          href="https://www.instagram.com/eyad.kh.farah/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="w-full lg:h-12 h-16 gap-5 bg-dark font-bold rounded-full uppercase flex items-center justify-center"
-        >
-          <RiInstagramLine className="text-2xl" />
-          Instagram
-        </a>
-        <a
-          href="https://api.whatsapp.com/send?phone=+201555715783"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="w-full lg:h-12 h-16 gap-5 bg-dark font-bold rounded-full uppercase flex items-center justify-center"
-        >
-          <RiWhatsappLine className="text-2xl" />
-          Whatsapp
-        </a>
-        <a
-          href="https://www.linkedin.com/comm/mynetwork/discovery-see-all?usecase=PEOPLE_FOLLOWS&followMember=eyadkhfarah"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="w-full lg:h-12 h-16 gap-5 bg-dark font-bold rounded-full uppercase flex items-center justify-center"
-        >
-          <RiLinkedinBoxFill className="text-2xl" />
-          LinkedIn
-        </a>
-        <a
-          href="https://www.pinterest.com/eyadkhfarah/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="w-full lg:h-12 h-16 gap-5 bg-dark font-bold rounded-full uppercase flex items-center justify-center"
-        >
-          <RiPinterestFill className="text-2xl" />
-          Pinterest
-        </a>
-        <a
-          href="https://x.com/eyadkhfarahh"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="w-full lg:h-12 h-16 gap-5 bg-dark font-bold rounded-full uppercase flex items-center justify-center"
-        >
-          <RiTwitterXLine className="text-2xl" />
-          Twitter
-        </a>
-        <a
-          href="https://github.com/eyadkhfarah/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="w-full lg:h-12 h-16 gap-5 bg-dark font-bold rounded-full uppercase flex items-center justify-center">
-            <RiGithubFill className="text-2xl" />
-            GitHub
-          </a>
-          <a href="https://www.tiktok.com/@eyadkhfarah" target="_blank"
-          rel="noopener noreferrer"
-          className="w-full lg:h-12 h-16 gap-5 bg-dark font-bold rounded-full uppercase flex items-center justify-center">
-            <RiTiktokFill className="text-2xl" />
-            TikTok
-          </a>
-      </div>
-    </>
+    <div className="flex flex-col gap-6">
+      <header className="flex flex-col gap-2">
+        <h2 className="text-2xl font-black uppercase tracking-tighter">
+          Connect with me<span className="text-primary">.</span>
+        </h2>
+        <p className="text-neutral-500 text-sm">Follow the orbit on social media.</p>
+      </header>
+
+      <motion.div 
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+        className="grid grid-cols-1 md:grid-cols-2 gap-4"
+      >
+        {SOCIAL_LINKS.map((social) => (
+          <motion.a
+            key={social.name}
+            variants={itemVariants}
+            href={social.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative flex items-center justify-center gap-4 w-full h-16 bg-neutral-900 border border-white/5 rounded-full text-sm font-black uppercase tracking-widest transition-all duration-300 hover:bg-primary hover:text-black hover:border-primary hover:shadow-[0_0_30px_-5px_rgba(229,254,0,0.3)]"
+          >
+            <social.icon className="text-2xl transition-transform duration-300 group-hover:scale-110" />
+            {social.name}
+          </motion.a>
+        ))}
+      </motion.div>
+    </div>
   );
 }
-
-export default Soical;

@@ -1,11 +1,14 @@
 "use client";
+
 import { FormValues } from "@/types/inputs";
 import { useForm, SubmitHandler, FieldErrors } from "react-hook-form";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { cn } from "@/lib/utils";
 
 const inputClass =
-  "w-full p-5 rounded-2xl bg-dark focus:ring-primary border-none mt-4 invalid:not-focus:ring-red-600";
-const errorInputClass = "ring-2 ring-red-500 " + inputClass;
+  "w-full p-5 rounded-2xl bg-neutral-900 border border-white/5 text-white placeholder:text-neutral-500 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all duration-300 mt-2";
+const errorInputClass =
+  "ring-2 ring-red-500/50 border-red-500/50 " + inputClass;
 
 const Contact = () => {
   const {
@@ -13,254 +16,225 @@ const Contact = () => {
     handleSubmit,
     formState: { isSubmitSuccessful, errors, isSubmitting },
     reset,
-  } = useForm<FormValues>();
+  } = useForm<FormValues>({
+    mode: "onBlur", // Validates when a user leaves a field
+  });
 
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
     try {
-      await fetch("/api/notion", {
+      const response = await fetch("/api/notion", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
-      // Optionally reset the form after a successful submission
-      reset();
-    } catch (error) {
-      console.error(error);
-    }
-  };
 
-  const onError = (errors: FieldErrors<FormValues>) => {
-    console.log("Please fix these errors:", errors);
+      if (response.ok) {
+        // Keeps the success state visible for a few seconds before potential reset
+        setTimeout(() => reset(), 5000);
+      }
+    } catch (error) {
+      console.error("Submission error:", error);
+    }
   };
 
   return (
     <form
-      onSubmit={handleSubmit(onSubmit, onError)}
-      className="grid lg:grid-cols-2 grid-cols-1 gap-4"
-      name="contact"
-      method="POST"
+      onSubmit={handleSubmit(onSubmit)}
+      className="grid lg:grid-cols-2 grid-cols-1 gap-6 bg-neutral-900/30 p-8 md:p-12 rounded-[3rem] border border-white/5 backdrop-blur-sm"
     >
       {/* Full Name */}
-      <div>
-        <label htmlFor="fullName">Full Name*</label>
+      <div className="flex flex-col">
+        <label
+          htmlFor="fullName"
+          className="text-sm font-bold uppercase tracking-widest text-neutral-400 ml-2"
+        >
+          Full Name*
+        </label>
         <input
-          {...register("fullName", { required: true })}
+          {...register("fullName", { required: "Name is required" })}
           type="text"
           id="fullName"
-          disabled={isSubmitSuccessful}
-          placeholder="Your Full Name*"
+          disabled={isSubmitting || isSubmitSuccessful}
+          placeholder="Eyad Farah"
           className={errors.fullName ? errorInputClass : inputClass}
         />
-        {errors.fullName && errors.fullName.type === "required" && (
-          <p className="my-2 text-red-600">You must enter your name</p>
-        )}
+        <ErrorMessage message={errors.fullName?.message} />
       </div>
 
       {/* Email */}
-      <div>
-        <label htmlFor="email">Email*</label>
+      <div className="flex flex-col">
+        <label
+          htmlFor="email"
+          className="text-sm font-bold uppercase tracking-widest text-neutral-400 ml-2"
+        >
+          Email Address*
+        </label>
         <input
           {...register("email", {
-            required: true,
+            required: "Email is required",
             pattern: {
-              value:
-                /^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]{2,4}$/,
-              message: "Invalid email address",
+              value: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]{2,4}$/,
+              message: "Please enter a valid email",
             },
           })}
           type="email"
           id="email"
-          disabled={isSubmitSuccessful}
-          placeholder="Your email*"
+          disabled={isSubmitting || isSubmitSuccessful}
+          placeholder="hello@example.com"
           className={errors.email ? errorInputClass : inputClass}
         />
-        {errors.email && errors.email.type === "required" && (
-          <p className="my-2 text-red-600">You must enter your email</p>
-        )}
-        {errors.email && errors.email.type === "pattern" && (
-          <p className="my-2 text-red-600">
-            {errors.email.message}
-          </p>
-        )}
+        <ErrorMessage message={errors.email?.message} />
       </div>
 
-      {/* Phone Number */}
-      <div>
-        <label htmlFor="number">Phone number</label>
-        <input
-          {...register("number", { minLength: 11 })}
-          type="tel"
-          id="number"
-          disabled={isSubmitSuccessful}
-          placeholder="Your phone/whatsapp"
-          className={errors.number ? errorInputClass : inputClass}
-        />
-        {errors.number && errors.number.type === "minLength" && (
-          <p className="my-2 text-red-600">
-            Must be at least 11 digits
-          </p>
-        )}
-      </div>
-
-      {/* Services */}
-      <div>
-        <label htmlFor="services">What Do You want?*</label>
-        <select
-          {...register("services", { required: true })}
-          id="services"
-          disabled={isSubmitSuccessful}
-          className={errors.services ? errorInputClass : inputClass}
+      {/* Services Dropdown */}
+      <div className="flex flex-col">
+        <label
+          htmlFor="services"
+          className="text-sm font-bold uppercase tracking-widest text-neutral-400 ml-2"
         >
+          How can I help?*
+        </label>
+        <select
+          {...register("services", { required: "Please select a service" })}
+          id="services"
+          disabled={isSubmitting || isSubmitSuccessful}
+          className={cn(
+            errors.services ? errorInputClass : inputClass,
+            "appearance-none cursor-pointer"
+          )}
+        >
+          <option value="" disabled selected>
+            Select a service
+          </option>
+          <option value="Logo Design & Branding">Logo Design & Branding</option>
           <option value="Web Development">Web Development</option>
-          <option value="Social Media Design">
-            Social Media Design
-          </option>
-          <option value="Graphic Design">Graphic Design</option>
+          <option value="Social Media Design">Social Media Design</option>
           <option value="UI/UX Design">UI/UX Design</option>
-          <option value="Photoshop">Photoshop</option>
-          <option value="Logo Design & Branding">
-            Logo Design & Branding
-          </option>
         </select>
-        {errors.services && errors.services.type === "required" && (
-          <p className="my-2 text-red-600">
-            Please select a service
-          </p>
-        )}
+        <ErrorMessage message={errors.services?.message} />
       </div>
 
       {/* Company Name */}
-      <div>
-        <label htmlFor="company">Your Company Name?*</label>
+      <div className="flex flex-col">
+        <label
+          htmlFor="company"
+          className="text-sm font-bold uppercase tracking-widest text-neutral-400 ml-2"
+        >
+          Company Name*
+        </label>
         <input
-          {...register("companyName", { required: true })}
+          {...register("companyName", { required: "Company name is required" })}
           type="text"
           id="company"
-          disabled={isSubmitSuccessful}
-          placeholder="Your Company Name"
-          className={
-            errors.companyName ? errorInputClass : inputClass
-          }
+          disabled={isSubmitting || isSubmitSuccessful}
+          placeholder="Agency Name"
+          className={errors.companyName ? errorInputClass : inputClass}
         />
-        {errors.companyName && errors.companyName.type === "required" && (
-          <p className="my-2 text-red-600">
-            You must enter your company name
-          </p>
-        )}
+        <ErrorMessage message={errors.companyName?.message} />
       </div>
 
-      {/* Company Size */}
-      <div>
-        <label htmlFor="size">Your company size?*</label>
-        <select
-          {...register("companySize", { required: true })}
-          id="size"
-          disabled={isSubmitSuccessful}
-          className={
-            errors.companySize ? errorInputClass : inputClass
-          }
+      {/* Message Textarea */}
+      <div className="lg:col-span-2 flex flex-col">
+        <label
+          htmlFor="message"
+          className="text-sm font-bold uppercase tracking-widest text-neutral-400 ml-2"
         >
-          <option value="Just Starting">Just Starting</option>
-          <option value="5 employees">5 employees</option>
-          <option value="From 10 to 50 employees">
-            From 10 to 50 employees
-          </option>
-          <option value="Up-to 100 employees">
-            Up-to 100 employees
-          </option>
-        </select>
-        {errors.companySize && errors.companySize.type === "required" && (
-          <p className="my-2 text-red-600">
-            Please select your company size
-          </p>
-        )}
-      </div>
-
-      {/* Message */}
-      <div className="lg:col-span-2">
-        <label htmlFor="message">Describe your need*</label>
+          Project Brief*
+        </label>
         <textarea
-          {...register("message", { required: true })}
+          {...register("message", { required: "Brief is required" })}
           id="message"
-          cols={30}
-          disabled={isSubmitSuccessful}
-          placeholder="Describe your need"
-          rows={10}
-          className={errors.message ? errorInputClass : inputClass}
+          disabled={isSubmitting || isSubmitSuccessful}
+          placeholder="Tell me about your goals and vision..."
+          rows={6}
+          className={cn(
+            errors.message ? errorInputClass : inputClass,
+            "resize-none"
+          )}
         />
-        {errors.message && errors.message.type === "required" && (
-          <p className="my-2 text-red-600">
-            Please describe your project in detail.
-          </p>
-        )}
+        <ErrorMessage message={errors.message?.message} />
       </div>
 
-      {/* Subscription */}
-      <div className="lg:col-span-2 flex lg:items-center items-start mb-8">
-        <input
-          {...register("subscription")}
-          type="checkbox"
-          id="subscription"
-          disabled={isSubmitSuccessful}
-          className="mr-6 cursor-pointer bg-dark border-none focus:ring-primary rounded-2xl p-4 checked:bg-primary transition ease-in-out duration-300"
-        />
-        <label htmlFor="subscription">
-          Would you like to send updates and discount promos?
+      {/* Subscription Toggle */}
+      <div className="lg:col-span-2 flex items-center gap-4 py-4 group">
+        <div className="relative flex items-center">
+          <input
+            {...register("subscription")}
+            type="checkbox"
+            id="subscription"
+            className="peer h-6 w-6 cursor-pointer appearance-none rounded-md border border-white/20 bg-neutral-800 transition-all checked:bg-primary"
+          />
+          <svg
+            className="pointer-events-none absolute left-1 top-1 h-4 w-4 stroke-black opacity-0 peer-checked:opacity-100"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth="4"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M5 13l4 4L19 7"
+            />
+          </svg>
+        </div>
+        <label
+          htmlFor="subscription"
+          className="text-neutral-400 text-sm cursor-pointer group-hover:text-white transition-colors"
+        >
+          Send me design tips and occasional promos.
         </label>
       </div>
 
-      {/* Submit Button with Loading State */}
-      <button
-        type="submit"
-        disabled={isSubmitSuccessful || isSubmitting}
-        className="disabled:scale-90 cursor-pointer disabled:bg-gray-600 disabled:cursor-not-allowed py-4 px-8 bg-primary flex justify-center items-center gap-3 w-full text-black font-bold rounded-2xl hover:scale-90 transition-all ease-in-out duration-300"
-      >
-        {isSubmitting ? (
-          <>
-            <svg
-              className="animate-spin h-5 w-5 text-black"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-            >
-              <circle
-                className="opacity-25"
-                cx="12"
-                cy="12"
-                r="10"
-                stroke="currentColor"
-                strokeWidth="4"
-              />
-              <path
-                className="opacity-75"
-                fill="currentColor"
-                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
-              />
-            </svg>
-            Loading...
-          </>
-        ) : (
-          "Submit"
-        )}
-      </button>
+      {/* Submit Section */}
+      <div className="lg:col-span-2 space-y-4">
+        <button
+          type="submit"
+          disabled={isSubmitting || isSubmitSuccessful}
+          className="w-full py-5 bg-primary text-black font-black uppercase tracking-[0.2em] rounded-2xl hover:scale-[1.02] active:scale-[0.98] disabled:bg-neutral-700 disabled:text-neutral-500 disabled:scale-100 transition-all duration-300 flex justify-center items-center gap-4"
+        >
+          {isSubmitting ? (
+            <>
+              <div className="h-5 w-5 border-2 border-black/30 border-t-black rounded-full animate-spin" />
+              Processing...
+            </>
+          ) : isSubmitSuccessful ? (
+            "Message Received"
+          ) : (
+            "Send Inquiry"
+          )}
+        </button>
 
-      {/* Success Message */}
-      <div className="flex justify-end items-center">
-        {isSubmitSuccessful && (
-          <motion.p
-            initial={{ opacity: 0, translateY: 20 }}
-            animate={{ opacity: 1, translateY: 0 }}
-            transition={{ duration: 0.2 }}
-            className="text-green-500 text-center"
-          >
-            Thank you for sending your message. I will respond soon ❤️
-          </motion.p>
-        )}
+        <AnimatePresence>
+          {isSubmitSuccessful && (
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="p-4 bg-green-500/10 border border-green-500/20 rounded-xl text-green-500 text-center text-sm font-medium"
+            >
+              Success! I'll review your brief and reach out within 24 hours. ❤️
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </form>
   );
 };
+
+// Small reusable error component for cleaner code
+const ErrorMessage = ({ message }: { message?: string }) => (
+  <AnimatePresence>
+    {message && (
+      <motion.p
+        initial={{ opacity: 0, height: 0 }}
+        animate={{ opacity: 1, height: "auto" }}
+        exit={{ opacity: 0, height: 0 }}
+        className="text-red-500 text-xs font-bold mt-2 ml-2"
+      >
+        {message}
+      </motion.p>
+    )}
+  </AnimatePresence>
+);
 
 export default Contact;

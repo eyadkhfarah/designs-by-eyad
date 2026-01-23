@@ -1,22 +1,16 @@
 import type { Metadata } from 'next'
+import React from 'react'
 
 const meta = {
     title: "Privacy Policy",
-    description:
-        "Learn how I collect, use, and protect your personal information when you visit my website. Your privacy is important to me.",
+    description: "Learn how I collect, use, and protect your personal information. Your privacy is a priority at Designs By Eyad.",
     url: "/privacy-policy",
 };
-
-const siteUrl =
-    process.env.NEXT_PUBLIC_DOMAIN_URL ||
-    "https://designs-by-eyad.vercel.app";
 
 export const metadata: Metadata = {
     title: meta.title,
     description: meta.description,
-    alternates: {
-        canonical: meta.url,
-    },
+    alternates: { canonical: meta.url },
     openGraph: {
         title: meta.title,
         description: meta.description,
@@ -25,125 +19,109 @@ export const metadata: Metadata = {
     robots: {
         index: false,
         follow: false,
-        nocache: false,
-        googleBot: {
-            index: false,
-            follow: false,
-            noimageindex: false,
-            'max-video-preview': -1,
-            'max-image-preview': 'large',
-            'max-snippet': -1,
-        },
     },
 }
 
+const sections = [
+    { id: "intro", title: "Introduction" },
+    { id: "collect", title: "Information I Collect" },
+    { id: "use", title: "How I Use It" },
+    { id: "security", title: "Security" },
+    { id: "contact", title: "Contact" },
+];
+
 const PrivacyPolicy: React.FC = () => {
     return (
-        <>
-            <article className='mx-auto lg:max-w-6xl md:max-w-2xl max-w-xs py-8 grid gap-8 prose prose-strong:font-bold prose-a:text-primary prose-a:no-underline lg:prose-lg prose-invert'>
-                <header className="mb-8">
-                    <h1 className="font-bold text-center mb-4">Privacy Policy</h1>
-                    <p className="text-center text-primary">Effective Date: 28/2/2025</p>
-                </header>
+        <main className="min-h-screen pt-32 pb-20">
+            <section className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+                
+                {/* --- Left Side: Sticky Navigation --- */}
+                <aside className="hidden lg:block lg:col-span-3 lg:sticky lg:top-40">
+                    <div className="flex flex-col gap-4 border-l border-white/10 pl-6">
+                        <span className="text-[10px] font-black uppercase tracking-[0.3em] text-neutral-500 mb-2">
+                            On this page
+                        </span>
+                        {sections.map((sec) => (
+                            <a 
+                                key={sec.id}
+                                href={`#${sec.id}`}
+                                className="text-sm font-bold text-neutral-400 hover:text-primary transition-colors uppercase tracking-tight"
+                            >
+                                {sec.title}
+                            </a>
+                        ))}
+                    </div>
+                </aside>
 
-                <div className="mb-8">
-                    <h2 className="text-2xl">Introduction</h2>
-                    <p>
-                        I value your privacy and are committed to protecting your personal information.
-                        This Privacy Policy explains how I collect, use, disclose, and safeguard your data when
-                        you visit my website.
-                    </p>
-                </div>
+                {/* --- Right Side: Content --- */}
+                <article className="lg:col-span-9 prose prose-invert prose-neutral max-w-none 
+                    prose-h1:text-5xl prose-h1:md:text-7xl prose-h1:font-black prose-h1:tracking-tighter prose-h1:uppercase
+                    prose-h2:text-2xl prose-h2:uppercase prose-h2:tracking-tight prose-h2:text-white
+                    prose-p:text-neutral-400 prose-p:leading-relaxed
+                    prose-strong:text-white prose-strong:font-bold
+                    prose-a:text-primary prose-a:no-underline hover:prose-a:underline">
+                    
+                    <header className="mb-16 border-b border-white/5 pb-10">
+                        <span className="text-primary font-mono tracking-[0.3em] uppercase text-sm mb-4 block">Legal</span>
+                        <h1>Privacy<span className="text-primary">.</span></h1>
+                        <p className="text-xl">Effective Date: <span className="text-white">February 28, 2025</span></p>
+                    </header>
 
-                <div className="mb-8">
-                    <h2 className="text-2xl">Information I Collect</h2>
-                    <ul className="list-disc ml-6 space-y-2">
-                        <li>
-                            <strong>Personal Information:</strong> I may collect personally identifiable information
-                            (such as your name, email address, and phone number) when you voluntarily provide it.
-                        </li>
-                        <li>
-                            <strong>Usage Data:</strong> I collect data on how you interact with my website, including
-                            pages visited and time spent on pages.
-                        </li>
-                        <li>
-                            <strong>Cookies and Tracking Technologies:</strong> My site may use cookies and similar
-                            technologies to enhance your user experience.
-                        </li>
-                    </ul>
-                </div>
+                    <section id="intro" className="scroll-mt-40">
+                        <h2>Introduction</h2>
+                        <p>
+                            I value your privacy and am committed to protecting your personal information.
+                            This Privacy Policy explains how I collect, use, disclose, and safeguard your data when
+                            you visit my website.
+                        </p>
+                    </section>
 
-                <div className="mb-8">
-                    <h2 className="text-2xl">How I Use Your Information</h2>
-                    <ul className="list-disc ml-6 space-y-2">
-                        <li>To provide, operate, and maintain my website.</li>
-                        <li>To improve, personalize, and expand my website.</li>
-                        <li>To understand and analyze how you use my website.</li>
-                        <li>
-                            To communicate with you for customer service, updates, or marketing purposes (where
-                            permitted by law).
-                        </li>
-                    </ul>
-                </div>
+                    <section id="collect" className="scroll-mt-40">
+                        <h2>Information I Collect</h2>
+                        <ul>
+                            <li>
+                                <strong>Personal Information:</strong> I may collect personally identifiable information
+                                (name, email address, phone number) when you voluntarily provide it through contact forms.
+                            </li>
+                            <li>
+                                <strong>Usage Data:</strong> Analytical data on how you interact with my website to improve user experience.
+                            </li>
+                            <li>
+                                <strong>Cookies:</strong> My site uses cookies to remember your preferences and enhance site performance.
+                            </li>
+                        </ul>
+                    </section>
 
-                <div className="mb-8">
-                    <h2 className="text-2xl">Disclosure of Your Information</h2>
-                    <p>
-                        I do not sell or rent your personal data. I may share your information with trusted third-party
-                        service providers who assist us in operating my website, conducting my business, or serving you,
-                        provided they agree to keep your information confidential. I may also disclose your data when
-                        required by law.
-                    </p>
-                </div>
+                    <section id="use" className="scroll-mt-40">
+                        <h2>How I Use Your Information</h2>
+                        <p>Your data is used specifically to:</p>
+                        <ul>
+                            <li>Operate and maintain the creative portfolio.</li>
+                            <li>Personalize your experience.</li>
+                            <li>Communicate regarding projects or inquiries.</li>
+                        </ul>
+                    </section>
 
-                <div className="mb-8">
-                    <h2 className="text-2xl">Security of Your Information</h2>
-                    <p>
-                        We implement administrative, technical, and physical measures to help protect your personal
-                        information. However, no method of transmission over the Internet or electronic storage is
-                        completely secure.
-                    </p>
-                </div>
+                    <section id="security" className="scroll-mt-40">
+                        <h2>Security of Your Information</h2>
+                        <p>
+                            I implement technical and physical measures to protect your data. However, 
+                            no method of transmission over the Internet is 100% secure.
+                        </p>
+                    </section>
 
-                <div className="mb-8">
-                    <h2 className="text-2xl">Links to Other Websites</h2>
-                    <p>
-                        My website may contain links to external sites that are not operated by me. I am not
-                        responsible for the privacy practices or content of these third-party sites.
-                    </p>
-                </div>
-
-                <div className="mb-8">
-                    <h2 className="text-2xl">Children’s Privacy</h2>
-                    <p>
-                        My website is not intended for use by individuals under the age of 13. I do not knowingly
-                        collect personal data from children. If you believe that I have inadvertently collected such
-                        data, please contact me immediately.
-                    </p>
-                </div>
-
-                <div className="mb-8">
-                    <h2 className="text-2xl">Changes to This Privacy Policy</h2>
-                    <p>
-                        I may update my Privacy Policy from time to time. Any changes will be posted on this page
-                        along with the updated effective date.
-                    </p>
-                </div>
-
-                <div>
-                    <h2 className="text-2xl">Contact Me</h2>
-                    <p>
-                        If you have any questions regarding this Privacy Policy, please contact me at:
-                    </p>
-                    <address className="not-italic mt-2">
-                        <a href="mail:eyadkhfarah@gmail.com">eyadkhfarah@gmail.com</a> <br />
-                        <a href="tel:+201555715783">+20 155 571 5783</a> <br />
-                    </address>
-                </div>
-            </article>
-
-        </>
-    );
-};
+                    <section id="contact" className="scroll-mt-40 border-t border-white/5 pt-10 mt-20">
+                        <h2>Contact Me</h2>
+                        <p>If you have questions regarding this policy, please reach out directly:</p>
+                        <div className="flex flex-col gap-2 not-italic bg-neutral-900 p-8 rounded-3xl border border-white/5">
+                            <a href="mailto:eyadkhfarah@gmail.com" className="text-2xl font-bold">eyadkhfarah@gmail.com</a>
+                            <a href="tel:+201555715783" className="text-neutral-500 font-mono tracking-tighter">+20 155 571 5783</a>
+                        </div>
+                    </section>
+                </article>
+            </section>
+        </main>
+    )
+}
 
 export default PrivacyPolicy;

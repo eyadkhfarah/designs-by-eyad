@@ -15,65 +15,78 @@ import ReactStars from "react-stars";
 import { useTranslations } from 'next-intl';
 
 export const TestimonialSlider = () => {
-    // Use the "TestimonialSlider" namespace (ensure you have a corresponding JSON file)
-    // const t = useTranslations('TestimonialSlider');
-
     return (
-        <Carousel 
-            plugins={[
-                Autoplay({
-                    delay: 5000,
-                }),
-            ]} 
-            opts={{
-                loop: true,
-                startIndex: testimonials.length - 1,
-            }} 
-            className=""
-        >
-            <CarouselContent className="h-full">
-                {testimonials.map((testimonial, index) => (
-                    <CarouselItem key={index} className="h-full basis-1/1">
-                        <div className="h-full">
-                            <Card className="border-0 h-full p-6 bg-dark rounded-3xl">
-                                <CardContent className="flex w-full h-full items-center justify-center">
-                                    <div className="lg:flex justify-center gap-8">
-                                        <Image
-                                            src={
-                                                testimonial.image === ""
-                                                    ? "https://avatar.iran.liara.run/public/42"
-                                                    : testimonial.image
-                                            }
-                                            // alt={t(testimonial.altKey)} // Translate the alt text
-                                            alt={testimonial.name}
-                                            width={800}
-                                            height={800}
-                                            className="w-32 h-32 md:m-0 mb-8 rounded-full"
-                                        />
-                                        <div className="grid h-fit w-full gap-14">
-                                            <p className="md:max-w-3xl md:text-2xl text-lg">
-                                                {testimonial.quote}
-                                            </p>
-                                            <div className="grid gap-3">
-                                                <h3 className="md:text-2xl text-lg font-bold leading-0 text-primary">
-                                                    {testimonial.name}
-                                                </h3>
-                                                <p className="md:text-lg font-semibold text-neutral-500">
-                                                    {testimonial.role}
+        <div className="relative max-w-5xl mx-auto px-4">
+            <Carousel 
+                plugins={[
+                    Autoplay({
+                        delay: 6000,
+                    }),
+                ]} 
+                opts={{
+                    loop: true,
+                    startIndex: testimonials.length - 1,
+                }} 
+                className="w-full"
+            >
+                <CarouselContent>
+                    {testimonials.map((testimonial, index) => (
+                        <CarouselItem key={index}>
+                            <Card className="border border-white/10 bg-neutral-900 rounded-[3rem] overflow-hidden">
+                                <CardContent className="p-8 md:p-16">
+                                    <div className="flex flex-col lg:flex-row items-center gap-10">
+                                        
+                                        {/* Profile Section */}
+                                        <div className="relative">
+                                            <div className="absolute inset-0 bg-primary/20 blur-2xl rounded-full" />
+                                            <Image
+                                                src={
+                                                    testimonial.image === ""
+                                                        ? "https://avatar.iran.liara.run/public/42"
+                                                        : testimonial.image
+                                                }
+                                                alt={testimonial.name}
+                                                width={200}
+                                                height={200}
+                                                className="relative z-10 w-32 h-32 md:w-44 md:h-44 object-cover rounded-full border-2 border-primary/50"
+                                            />
+                                        </div>
+
+                                        {/* Quote Section */}
+                                        <div className="flex-1 flex flex-col relative">
+                                            {/* Decorative Quote Mark */}
+                                            <span className="absolute -top-8 -left-4 text-primary/10 text-[10rem] font-serif leading-none select-none">
+                                                “
+                                            </span>
+                                            
+                                            <div className="relative z-10">
+                                                <p className="text-xl md:text-2xl lg:text-3xl text-white font-medium italic leading-relaxed mb-8">
+                                                    {testimonial.quote}
                                                 </p>
+                                                
+                                                <div className="space-y-1">
+                                                    <h3 className="text-xl md:text-2xl font-bold text-primary">
+                                                        {testimonial.name}
+                                                    </h3>
+                                                    <p className="text-sm md:text-base font-mono uppercase tracking-widest text-neutral-500">
+                                                        {testimonial.role}
+                                                    </p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </CardContent>
                             </Card>
-                        </div>
-                    </CarouselItem>
-                ))}
-            </CarouselContent>
-            <div className="mt-5">
-                <CarouselPrevious className="md:p-10 cursor-pointer border-0 bg-dark shadow-xl" />
-                <CarouselNext className="md:p-10 cursor-pointer border-0 bg-dark shadow-xl" />
-            </div>
-        </Carousel>
+                        </CarouselItem>
+                    ))}
+                </CarouselContent>
+
+                {/* Navigation - Positioned elegantly below or on sides */}
+                <div className="flex justify-center gap-4 mt-12">
+                    <CarouselPrevious className="static translate-y-0 h-14 w-14 rounded-full border-white/10 bg-neutral-900 hover:bg-primary hover:text-dark transition-all duration-300" />
+                    <CarouselNext className="static translate-y-0 h-14 w-14 rounded-full border-white/10 bg-neutral-900 hover:bg-primary hover:text-dark transition-all duration-300" />
+                </div>
+            </Carousel>
+        </div>
     );
 };

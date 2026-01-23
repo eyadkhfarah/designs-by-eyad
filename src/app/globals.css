@@ -1,192 +1,136 @@
 @import "tailwindcss";
 @tailwind utilities;
 
-body {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "regular";
-  scroll-behavior: smooth;
-}
-
-html[lang="ar"] body {
-  font-family: "ArabicRegular"; /* or "ArabicBold" if needed */
-}
-
-html[lang="ar"] h1 {
-  font-family: "ArabicBold"; /* Ensure this matches your @font-face declaration */
-}
-
-html[lang="ar"] h2 {
-  font-family: "ArabicBold"; /* Ensure this matches your @font-face declaration */
-}
-
-html[lang="ar"] h3 {
-  font-family: "ArabicBold"; /* Ensure this matches your @font-face declaration */
-}
-
 @plugin "@tailwindcss/forms";
 @plugin "@tailwindcss/typography";
-@plugin"tailwindcss-animate";
+@plugin "tailwindcss-animate";
 
+/* --- Design System & Variables --- */
 @theme {
   --font-bold: "bold";
   --font-regular: "regular";
   --font-arabicBold: "ArabicBold";
   --font-arabicRegular: "ArabicRegular";
-  --color-dark: #1a1a1a;
-  --color-primary: #E5FE00;
-  --color-border: "hsl(var(--border))",
-    --color-input: "hsl(var(--input))",
-    --color-ring: "hsl(var(--ring))",
-    --color-background: "hsl(var(--background))",
-    --color-foreground: "hsl(var(--foreground))",
+
+  /* Brand Colors */
+  --color-dark: #0a0a0a; /* Deepened for better contrast */
+  --color-primary: #e5fe00;
+  --color-neutral-900: #141414; /* For cards/surfaces */
+  --color-neutral-800: #1f1f1f;
+
+  /* Shadcn-like variables for compatibility */
+  --color-border: rgba(255, 255, 255, 0.1);
+  --color-background: #050505;
+  --color-foreground: #ffffff;
 }
 
+/* --- Font Declarations --- */
 @font-face {
   font-family: "bold";
   src: url("../../public/Fonts/Bold.woff2") format("woff2");
-  font-weight: 600;
+  font-weight: 700;
   font-display: swap;
-  font-style: normal;
 }
 @font-face {
   font-family: "ArabicBold";
   src: url("../../public/Fonts/AVENIRARABIC-BLACK.woff2") format("woff2");
-  font-weight: 600;
+  font-weight: 900;
   font-display: swap;
-  font-style: normal;
 }
-
 @font-face {
   font-family: "regular";
   src: url("../../public/Fonts/Regular.woff2") format("woff2");
-  font-weight: 600;
+  font-weight: 400;
   font-display: swap;
-  font-style: normal;
 }
-
 @font-face {
   font-family: "ArabicRegular";
   src: url("../../public/Fonts/AVENIRARABIC-BOOK.woff2") format("woff2");
-  font-weight: 600;
+  font-weight: 400;
   font-display: swap;
-  font-style: normal;
 }
 
+/* --- Base Styles --- */
+@layer base {
+  body {
+    @apply bg-[#050505] text-white selection:bg-primary selection:text-black;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-regular);
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* RTL Support */
+  html[lang="ar"] body {
+    font-family: var(--font-arabicRegular);
+  }
+  html[lang="ar"] h1,
+  html[lang="ar"] h2,
+  html[lang="ar"] h3 {
+    font-family: var(--font-arabicBold);
+  }
+
+  /* Typography Defaults */
+  h1 {
+    @apply font-bold uppercase tracking-tighter leading-[0.9] text-5xl md:text-8xl;
+  }
+  h2 {
+    @apply font-bold uppercase tracking-tight text-3xl md:text-5xl;
+  }
+  h3 {
+    @apply font-bold uppercase tracking-tight text-2xl md:text-3xl;
+  }
+
+  /* Scrollbar Customization */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-neutral-800 rounded-full transition-colors hover:bg-primary;
+  }
+}
+
+/* --- Reusable Components (Utilities) --- */
 @layer utilities {
-
-  .prose ul {
-    @apply list-disc;
-    /* or list-decimal */
+  /* Layout Containers */
+  .section-container {
+    @apply mx-auto w-full max-w-7xl px-6 py-16 md:py-24;
   }
 
-  .prose ul li::marker {
-    color: #E5FE00;
-    /* Customize bullet color */
+  /* Glassmorphism Cards */
+  .glass-card {
+    @apply bg-neutral-900/50 border border-white/10 backdrop-blur-md rounded-[2.5rem] transition-all duration-500;
+  }
+
+  /* Modern Inputs */
+  .input-field {
+    @apply w-full p-4 rounded-2xl bg-neutral-900 border border-white/5 text-white outline-none 
+           focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-300;
+  }
+
+  /* Interactive Elements */
+  .hover-lift {
+    @apply hover:-translate-y-2 transition-transform duration-300 ease-out;
   }
 }
+
+/* --- Component Specific Styling --- */
 @layer base {
 
-  /* width */
-  ::-webkit-scrollbar {
-    width: 10px;
-  }
-
-  /* Track */
-  ::-webkit-scrollbar-track {
-    background: var(--color-dark);
-  }
-
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: var(--color-primary);
-    border-radius: 10px;
-  }
-
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background: var(--color-primary);
-  }
-
-  .notion-text-bold {
-    @apply font-bold
-  }
-
-  body {
-    @apply bg-neutral-950 text-white
-  }
-
-  nav {
-    @apply flex mx-auto z-40 bg-dark lg:max-w-6xl md:max-w-2xl max-w-xs font-semibold mt-8 rounded-3xl p-6 justify-between items-center py-6
-  }
-
   footer {
-    @apply mx-auto lg:max-w-6xl rounded-3xl md:max-w-2xl bg-dark max-w-xs text-center md:flex gap-8 md:flex-row flex-col justify-between items-center mt-28 p-8
-  }
-
-  h1 {
-    @apply font-bold uppercase md:leading-24 leading-12 lg:text-[7rem] md:text-[3rem] text-[3.5rem]
-  }
-
-  h2 {
-    @apply font-bold uppercase text-4xl
-  }
-
-  h3 {
-    @apply font-bold uppercase text-3xl
-  }
-
-  section {
-    @apply mx-auto lg:max-w-6xl md:max-w-2xl max-w-xs py-8 grid gap-8
-  }
-
-  article {
-    @apply mx-auto lg:max-w-6xl md:max-w-2xl max-w-xs md:mt-8 my-8 grid gap-8
-  }
-
-  .logos {
-    @apply overflow-hidden p-16 whitespace-nowrap
+    @apply mt-20 border-t border-white/5 py-12 px-6;
   }
 
   .tabs {
-    @apply py-6 px-8 font-bold cursor-pointer uppercase rounded-full w-full flex justify-center items-center gap-6 transition ease-in-out duration-300
+    @apply px-8 py-3 font-bold cursor-pointer uppercase rounded-full transition-all duration-300 flex items-center gap-4;
   }
 
-  .skills {
-    @apply p-6 w-full bg-dark uppercase text-base whitespace-nowrap font-bold rounded-full flex lg:justify-center mb-4 items-center gap-8
-  }
-
-  .input {
-    @apply w-full p-5 rounded-2xl bg-dark focus:ring-primary border-none mt-4 invalid:not-focus:ring-red-600
-  }
-
-  label {
-    @apply font-bold
-  }
-
-  .services-card {
-    @apply grid gap-5 bg-dark p-5 rounded-3xl transition-all ease-in-out duration-300
-  }
-
-  .blog-card {
-    @apply grid gap-5 break-inside-avoid bg-dark p-5 rounded-3xl transition-all ease-in-out duration-300 hover:scale-105
-  }
-
-  .shareLink {
-    @apply text-4xl text-white hover:text-primary transition-all ease-in-out duration-300
-  }
-
-  .pro-card {
-    @apply bg-dark rounded-2xl lg:flex grid items-center gap-10 h-fit w-full p-5 hover:scale-105 cursor-pointer transition-all ease-in-out duration-300 h-full
+  .skills-chip {
+    @apply px-6 py-4 bg-neutral-900 border border-white/5 rounded-full flex items-center gap-4 hover:border-primary/40 transition-all;
   }
 }
-
-
-/* 
-
-  .logo-slider {
-    @apply inline-block animate-carosale
-  }
-
-} */

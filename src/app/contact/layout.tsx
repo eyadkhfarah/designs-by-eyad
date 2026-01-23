@@ -3,14 +3,11 @@ import React from "react";
 import ContactList from "./ContactList";
 import Link from "next/link";
 
-const desc =
-  "Contact me and let's start orbiting around your creative vision and also contact me through social networks and my emails and phone numbers";
-
-  const meta = {
-    title: "Contact",
-    description: "Get in touch to discuss your brand identity and social media design needs. Reach out via phone or social media for personalized graphic design services in Aswan, Egypt.",
-    url: "/contact",
-  }
+const meta = {
+  title: "Contact",
+  description: "Get in touch to discuss your brand identity and social media design needs. Reach out via phone or social media for personalized graphic design services in Aswan, Egypt.",
+  url: "/contact",
+}
 
 export const metadata: Metadata = {
   title: {
@@ -31,28 +28,43 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+// ... (imports and metadata)
 
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <>
-      <section>
-        <h1 className="lg:text-[8rem] md:text-[5rem] leading-none text-[2.7rem] w-fit">
-          Contact
-        </h1>
-        <p className="lg:w-1/2 mb-8">
-          Contact me and let&apos;s start orbiting around your creative vision
-          and also contact me through social networks and my emails and phone
-          numbers if you have any questions or inquiries check <Link href={"/fqa"} rel="noreferrer" className="text-primary" >FQA Page</Link>.
-        </p>
-        <div className="grid w-full lg:grid-cols-4 gap-8">
-          <ContactList />
-          <div className="lg:col-span-3">{children}</div>
+    <main className="min-h-screen pt-32 pb-20 relative"> {/* Added relative and enough padding-top */}
+      <section className="max-w-7xl mx-auto px-6">
+        
+        {/* Header Section */}
+        <header className="flex flex-col gap-6 mb-16 lg:mb-24 relative z-10">
+          <span className="text-primary font-mono tracking-[0.3em] uppercase text-sm">
+            Get in Touch
+          </span>
+          <h1 className="text-6xl md:text-8xl lg:text-[10rem] font-black leading-none tracking-tighter uppercase">
+            Contact<span className="text-primary">.</span>
+          </h1>
+          {/* ... paragraph ... */}
+        </header>
+
+        {/* --- Main Content Grid --- */}
+        {/* Added items-start to prevent the sidebar from stretching or sticking incorrectly */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start relative z-10">
+          
+          {/* Sidebar: Remove 'sticky' if you want it to stay at the top of the grid */}
+          <aside className="lg:col-span-4 order-2 lg:order-1">
+             {/* If you want it sticky, use 'sticky top-40'. If not, just remove these classes */}
+            <div className="lg:sticky lg:top-40"> 
+              <ContactList />
+            </div>
+          </aside>
+
+          {/* Main: Contact Form */}
+          <div className="lg:col-span-8 order-1 lg:order-2">
+             {children}
+          </div>
+          
         </div>
       </section>
-    </>
+    </main>
   );
 }

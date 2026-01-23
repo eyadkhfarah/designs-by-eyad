@@ -2,8 +2,8 @@ import Image from "next/image";
 import { Metadata } from "next";
 import { fetchArtworks } from "@/lib/notion";
 import {
-  QueryDatabaseResponse,
-  PageObjectResponse,
+    QueryDatabaseResponse,
+    PageObjectResponse,
 } from "@notionhq/client/build/src/api-endpoints";
 import { ArtworkProperties } from "@/types/notionType";
 import Script from "next/script";
@@ -11,126 +11,113 @@ import H1 from "@/Components/TranslationTags/H1";
 import ArtworkPrice from "@/Components/Pricing/ArtworkPrice";
 import { plans } from "@/lib/Prices";
 
-// Combine Notion's PageObjectResponse with our custom properties
 type ArtworkPage = PageObjectResponse & { properties: ArtworkProperties };
 
-// Define the expected shape of the artworks response
 interface ArtworksResponse extends QueryDatabaseResponse {
-  results: ArtworkPage[];
+    results: ArtworkPage[];
 }
 
 const meta = {
-  title: "Artworks",
-  description:
-    "Explore a captivating collection of unique artwork collages blending creativity and storytelling. Discover handmade designs crafted with intricate details, vibrant colors, and inspiring themes that elevate your space. Perfect for art lovers and collectors alike!",
-  url: "/artworks",
+    title: "Artworks | Exclusive Collage Collection",
+    description: "Explore a captivating collection of unique artwork collages blending creativity and storytelling. Discover handmade designs crafted with intricate details by Eyad Farah.",
+    url: "/artworks",
 };
 
-const siteUrl =
-  process.env.NEXT_PUBLIC_DOMAIN_URL || "https://designs-by-eyad.vercel.app";
+const siteUrl = process.env.NEXT_PUBLIC_DOMAIN_URL || "https://designs-by-eyad.vercel.app";
 
 export const metadata: Metadata = {
-  title: meta.title,
-  description: meta.description,
-  alternates: {
-    canonical: meta.url,
-  },
-  openGraph: {
     title: meta.title,
     description: meta.description,
-    url: meta.url,
-  },
+    alternates: { canonical: meta.url },
+    openGraph: {
+        title: meta.title,
+        description: meta.description,
+        url: meta.url,
+        type: "website",
+    },
 };
 
-// Revalidate this page every 1 second
 export const revalidate = 1;
 
 export default async function Artwork() {
-  const artworks = (await fetchArtworks()) as ArtworksResponse;
+    const artworks = (await fetchArtworks()) as ArtworksResponse;
 
-  return (
-    <>
-      <section className="relative">
-        <H1>ArtworksPage.title</H1>
+    return (
+        <main className="min-h-screen">
+            {/* --- Hero Section with Masonry Preview --- */}
+            <section className="relative pt-24 pb-12 overflow-hidden">
+                <div className="max-w-7xl mx-auto px-6 mb-16">
+                    <H1>ArtworksPage.title</H1>
+                </div>
 
-        <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 relative">
-          {artworks.results.slice(0, 6).map((artwork: ArtworkPage) => {
-            const name =
-              artwork.properties.Name.title[0]?.plain_text || "Untitled";
-            const imageUrl = artwork.properties.Image.files[0].external?.url;
-            if (!imageUrl) return null;
+                <div className="max-w-7xl mx-auto px-6">
+                    <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 relative z-10">
+                        {artworks.results.slice(0, 6).map((artwork: ArtworkPage) => {
+                            const name = artwork.properties.Name.title[0]?.plain_text || "Untitled";
+                            const imageUrl = artwork.properties.Image.files[0].external?.url || artwork.properties.Image.files[0].file?.url;
+                            
+                            if (!imageUrl) return null;
 
-            return (
-              <div key={artwork.id} className="mb-4 break-inside-avoid">
-                <Image
-                  className="rounded-3xl object-cover"
-                  alt={name}
-                  src={imageUrl}
-                  width={500}
-                  height={250}
-                />
-              </div>
-            );
-          })}
-        </div>
+                            return (
+                                <div 
+                                    key={artwork.id} 
+                                    className="mb-6 break-inside-avoid group cursor-pointer relative overflow-hidden rounded-[2rem] border border-white/5 bg-neutral-900"
+                                >
+                                    <Image
+                                        className="w-full h-auto transition-transform duration-700 ease-out group-hover:scale-110"
+                                        alt={name}
+                                        src={imageUrl}
+                                        width={600}
+                                        height={800}
+                                        priority
+                                    />
+                                    {/* Subtle Overlay on Hover */}
+                                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-8">
+                                        <p className="text-white font-bold text-xl translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                                            {name}
+                                        </p>
+                                    </div>
+                                </div>
+                            );
+                        })}
+                    </div>
+                </div>
 
-        {/* Gradient layer under the artworks */}
-        <div className="absolute bottom-0 left-0 right-0 w-full h-1/2 md:from-30% from-10% bg-gradient-to-t from-neutral-950 to-transparent z-50 pointer-events-none" />
-      </section>
+                {/* The "Fade Out" effect at the bottom of the artwork grid */}
+                <div className="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-t from-background to-transparent z-20 pointer-events-none" />
+            </section>
 
-      <section>
-        <ArtworkPrice />
-      </section>
-      <Script type="application/ld+json">
-        {JSON.stringify(
-          artworks.results
-            .map((artwork: ArtworkPage) => {
-              const name =
-                artwork.properties.Name.title[0]?.plain_text || "Untitled";
-              const imageUrl = artwork.properties.Image.files[0].external?.url;
-              if (!imageUrl) return null;
-              return {
-                "@context": "https://schema.org/",
-                "@type": "ImageObject",
-                contentUrl: imageUrl,
-                license: `${siteUrl}/terms`,
-                acquireLicensePage: `${siteUrl}/how-to-use-my-images`,
-                creditText: name,
-                creator: {
-                  "@type": "Person",
-                  name: "Eyad Farah",
-                },
-                copyrightNotice: "Designs By Eyad",
-              };
-            })
-            .filter(Boolean)
-        )}
-      </Script>
-      {/* <Script
-        type="application/ld+json"
-        id="json-ld-schema"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "OfferCatalog",
-            name: "Artwork Pricing",
-            description:
-              "Bring my designs to life! Order a premium-quality poster or a custom T-shirt in seconds.",
-            mainEntity: {
-              "@type": "ItemList",
-              itemListElement: plans.map(
-                (plan: any, index: number) => ({
-                  "@type": "Offer",
-                  "name": `${t("Basic Plan")}`,
-                  url: `${siteUrl}/blog/${post.properties.Slug.rich_text[0].plain_text}`,
-                  name: post.properties.Name.title[0].plain_text,
-                })
-              ),
-            },
-          }),
-        }}
-      /> */}
-    </>
-  );
+            {/* --- Pricing Section --- */}
+            <section className="py-20 bg-background relative z-30">
+                <div className="max-w-7xl mx-auto px-6">
+                   <ArtworkPrice />
+                </div>
+            </section>
+
+            {/* --- Structured Data (SEO) --- */}
+            <Script id="artwork-schema" type="application/ld+json">
+                {JSON.stringify(
+                    artworks.results.map((artwork: ArtworkPage) => {
+                        const name = artwork.properties.Name.title[0]?.plain_text || "Untitled";
+                        const imageUrl = artwork.properties.Image.files[0].external?.url || artwork.properties.Image.files[0].file?.url;
+                        if (!imageUrl) return null;
+                        return {
+                            "@context": "https://schema.org/",
+                            "@type": "VisualArtwork",
+                            "name": name,
+                            "image": imageUrl,
+                            "creator": {
+                                "@type": "Person",
+                                "name": "Eyad Farah"
+                            },
+                            "publisher": {
+                                "@type": "Organization",
+                                "name": "Designs By Eyad"
+                            }
+                        };
+                    }).filter(Boolean)
+                )}
+            </Script>
+        </main>
+    );
 }

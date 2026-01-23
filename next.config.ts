@@ -3,12 +3,11 @@ import createNextIntlPlugin from "next-intl/plugin";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  optimizeThirdPartyScripts: true,
+  turbo: {
+    resolveExtensions: [".mdx", ".tsx", ".ts", ".jsx", ".js", ".mjs", ".json"],
+  },
   experimental: {
     nextScriptWorkers: true,
-    turbo: {
-      resolveExtensions: [".mdx", ".tsx", ".ts", ".jsx", ".js", ".mjs", ".json"],
-    },
   },
   images: {
     remotePatterns: [

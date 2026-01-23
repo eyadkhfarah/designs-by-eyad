@@ -1,9 +1,10 @@
+"use client"
+
 import * as React from "react"
 import useEmblaCarousel, {
   type UseEmblaCarouselType,
 } from "embla-carousel-react"
 import { RiArrowLeftSLine, RiArrowRightSLine } from "react-icons/ri";
-
 import { cn } from "@/lib/utils"
 import { Button } from "@/Components/ui/button"
 
@@ -32,11 +33,9 @@ const CarouselContext = React.createContext<CarouselContextProps | null>(null)
 
 function useCarousel() {
   const context = React.useContext(CarouselContext)
-
   if (!context) {
     throw new Error("useCarousel must be used within a <Carousel />")
   }
-
   return context
 }
 
@@ -67,10 +66,7 @@ const Carousel = React.forwardRef<
     const [canScrollNext, setCanScrollNext] = React.useState(false)
 
     const onSelect = React.useCallback((api: CarouselApi) => {
-      if (!api) {
-        return
-      }
-
+      if (!api) return
       setCanScrollPrev(api.canScrollPrev())
       setCanScrollNext(api.canScrollNext())
     }, [])
@@ -97,22 +93,15 @@ const Carousel = React.forwardRef<
     )
 
     React.useEffect(() => {
-      if (!api || !setApi) {
-        return
-      }
-
+      if (!api || !setApi) return
       setApi(api)
     }, [api, setApi])
 
     React.useEffect(() => {
-      if (!api) {
-        return
-      }
-
+      if (!api) return
       onSelect(api)
       api.on("reInit", onSelect)
       api.on("select", onSelect)
-
       return () => {
         api?.off("select", onSelect)
       }
@@ -122,10 +111,9 @@ const Carousel = React.forwardRef<
       <CarouselContext.Provider
         value={{
           carouselRef,
-          api: api,
+          api,
           opts,
-          orientation:
-            orientation || (opts?.axis === "y" ? "vertical" : "horizontal"),
+          orientation: orientation || (opts?.axis === "y" ? "vertical" : "horizontal"),
           scrollPrev,
           scrollNext,
           canScrollPrev,
@@ -135,7 +123,7 @@ const Carousel = React.forwardRef<
         <div
           ref={ref}
           onKeyDownCapture={handleKeyDown}
-          className={cn("relative", className)}
+          className={cn("relative group/carousel", className)}
           role="region"
           aria-roledescription="carousel"
           {...props}
@@ -204,9 +192,11 @@ const CarouselPrevious = React.forwardRef<
       variant={variant}
       size={size}
       className={cn(
-        "rounded-full",
+        "absolute rounded-full h-12 w-12 transition-all duration-300",
+        "border-white/10 bg-neutral-900/50 backdrop-blur-sm text-primary",
+        "hover:bg-primary hover:text-dark disabled:opacity-30 disabled:cursor-not-allowed",
         orientation === "horizontal"
-          ? ""
+          ? "-left-6 top-1/2 -translate-y-1/2"
           : "-top-12 left-1/2 -translate-x-1/2 rotate-90",
         className
       )}
@@ -214,8 +204,7 @@ const CarouselPrevious = React.forwardRef<
       onClick={scrollPrev}
       {...props}
     >
-      {/* <ArrowLeft  /> */}
-      <RiArrowLeftSLine size={32} className="text-primary text-3xl" />
+      <RiArrowLeftSLine className="text-2xl" />
       <span className="sr-only">Previous slide</span>
     </Button>
   )
@@ -234,9 +223,11 @@ const CarouselNext = React.forwardRef<
       variant={variant}
       size={size}
       className={cn(
-        "rounded-full",
+        "absolute rounded-full h-12 w-12 transition-all duration-300",
+        "border-white/10 bg-neutral-900/50 backdrop-blur-sm text-primary",
+        "hover:bg-primary hover:text-dark disabled:opacity-30 disabled:cursor-not-allowed",
         orientation === "horizontal"
-          ? "ml-8"
+          ? "-right-6 top-1/2 -translate-y-1/2"
           : "-bottom-12 left-1/2 -translate-x-1/2 rotate-90",
         className
       )}
@@ -244,7 +235,7 @@ const CarouselNext = React.forwardRef<
       onClick={scrollNext}
       {...props}
     >
-      <RiArrowRightSLine size={32} className="text-primary text-3xl" />
+      <RiArrowRightSLine className="text-2xl" />
       <span className="sr-only">Next slide</span>
     </Button>
   )

@@ -3,19 +3,13 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import faqData from '@/lib/faqData';
-import { RiArrowDownLine, RiArrowUpLine } from "react-icons/ri";
+import { RiArrowDownLine } from "react-icons/ri";
 import { marked } from "marked";
 import { cn } from "@/lib/utils";
 
 const faqItemVariants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 10 },
   visible: { opacity: 1, y: 0 },
-  exit: { opacity: 0, y: -20 }
-};
-
-const chevronVariants = {
-  open: { rotate: 180 },
-  closed: { rotate: 0 }
 };
 
 const FAQSection: React.FC = () => {
@@ -26,66 +20,82 @@ const FAQSection: React.FC = () => {
   };
 
   return (
-    <>
-      
-      <div className="space-y-4">
-        {faqData.map((item, index) => (
+    <div className="flex flex-col gap-4 w-full max-w-4xl mx-auto">
+      {faqData.map((item, index) => {
+        const isOpen = openIndex === index;
+
+        return (
           <motion.div
             key={index}
-            layout
             variants={faqItemVariants}
             initial="hidden"
-            animate="visible"
-            exit="exit"
-            transition={{ duration: 0.3, delay: index * 0.1 }}
-            className="rounded-3xl shadow-sm overflow-hidden bg-dark"
+            whileInView="visible"
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: index * 0.05 }}
+            className={cn(
+              "rounded-[2rem] overflow-hidden transition-all duration-500 border",
+              isOpen 
+                ? "bg-neutral-900 border-primary/30 shadow-[0_0_30px_-10px_rgba(229,254,0,0.1)]" 
+                : "bg-neutral-900/40 border-white/5 hover:border-white/10"
+            )}
           >
-            <motion.button
-              layout
+            <button
               onClick={() => toggleAnswer(index)}
-              className={cn("md:w-4xl w-full flex justify-between text-white hover:text-dark rounded-3xl md:max-w-4xl transition-all ease-in-out duration-300 cursor-pointer items-center hover:bg-primary group px-6 py-4 text-left text-lg font-bold focus:outline-none", openIndex === index && "bg-primary text-dark")}
-              aria-expanded={openIndex === index}
+              className="w-full flex justify-between items-center px-8 py-6 text-left group focus:outline-none"
+              aria-expanded={isOpen}
               aria-controls={`answer-${index}`}
-              whileTap={{ scale: 0.98 }}
             >
-              <span className="pr-4">{item.question}</span>
-              <motion.span
-                variants={chevronVariants}
-                animate={openIndex === index ? "open" : "closed"}
-                transition={{ duration: 0.2 }}
-              >
-                <RiArrowDownLine className={cn("w-5 h-5 text-primary group-hover:text-dark transition-all ease-in-out duration-300", openIndex === index && "text-dark")} />
-              </motion.span>
-            </motion.button>
+              <span className={cn(
+                "text-lg md:text-xl font-bold transition-colors duration-300",
+                isOpen ? "text-primary" : "text-white group-hover:text-primary/80"
+              )}>
+                {item.question}
+              </span>
+              
+              <div className={cn(
+                "flex-shrink-0 ml-4 p-2 rounded-full border transition-all duration-500",
+                isOpen 
+                  ? "bg-primary border-primary rotate-180" 
+                  : "bg-white/5 border-white/10"
+              )}>
+                <RiArrowDownLine className={cn(
+                  "w-5 h-5 transition-colors duration-500",
+                  isOpen ? "text-black" : "text-primary"
+                )} />
+              </div>
+            </button>
 
             <AnimatePresence initial={false}>
-              {openIndex === index && (
+              {isOpen && (
                 <motion.div
-                  layout
                   id={`answer-${index}`}
-                  initial={{ opacity: 0, height: 0 }}
-                  animate={{
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ 
+                    height: "auto", 
                     opacity: 1,
-                    height: "auto",
-                    transition: { type: "spring", mass: 0.3, stiffness: 50 }
+                    transition: { height: { duration: 0.4, ease: [0.04, 0.62, 0.23, 0.98] }, opacity: { duration: 0.25, delay: 0.1 } }
                   }}
-                  exit={{
+                  exit={{ 
+                    height: 0, 
                     opacity: 0,
-                    height: 0,
-                    transition: { duration: 0.2 }
+                    transition: { height: { duration: 0.3 }, opacity: { duration: 0.2 } }
                   }}
-                  className="px-6 py-4 text-white bg-dark"
                 >
-                  <p  dangerouslySetInnerHTML={{ __html: marked(item.answer) }} className="leading-relaxed"></p>
+                  <div className="px-8 pb-8">
+                    <div className="h-px w-full bg-white/5 mb-6" />
+                    <div 
+                      className="text-neutral-400 leading-relaxed text-lg prose-p:mb-4 last:prose-p:mb-0"
+                      dangerouslySetInnerHTML={{ __html: marked(item.answer) }} 
+                    />
+                  </div>
                 </motion.div>
               )}
             </AnimatePresence>
           </motion.div>
-        ))}
-      </div>
-    </>
+        );
+      })}
+    </div>
   );
 };
 
 export default FAQSection;
-

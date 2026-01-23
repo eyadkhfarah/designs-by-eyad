@@ -7,78 +7,104 @@ import { motion } from "framer-motion";
 
 export default function ProtImages() {
   return (
-    <>
-      <div className="grid place-items-center w-full md:gap-8 gap-28">
-        <div className="lg:flex gird gap-28 items-center group">
-          <div className="rounded-[3rem] w-fit aspect-square overflow-hidden mb-12">
-            <Image
-              alt="coding"
-              src={"/coding.webp"}
-              width={544}
-              height={544}
-              sizes="(max-width: 600px) 480px, (max-width: 1200px) 1024px, 1920px"
-              className="group-hover:scale-110 transition-all ease-in-out duration-300 aspect-square object-cover"
-            />
+    <div className="flex flex-col w-full gap-32 md:gap-40 py-10">
+      
+      {/* --- Section 1: Web Development (Image Left, Text Right) --- */}
+      <div className="flex flex-col lg:flex-row items-center justify-between gap-12 group">
+        {/* Image Container with Custom Shadow/Glow */}
+        <motion.div 
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="relative rounded-[3rem] overflow-hidden border border-white/10 bg-neutral-900 aspect-square lg:w-1/2 w-full"
+        >
+          <Image
+            alt="coding"
+            src={"/coding.webp"}
+            width={600}
+            height={600}
+            className="group-hover:scale-105 transition-transform duration-700 ease-out aspect-square object-cover"
+          />
+          {/* Overlay Gradient for depth */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+        </motion.div>
+
+        {/* Text Content */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="lg:w-1/2 flex flex-col gap-6 lg:pl-12"
+        >
+          <div className="space-y-4">
+            <span className="text-primary text-sm font-mono tracking-widest uppercase">Digital Experience</span>
+            <h2 className="text-white text-5xl md:text-6xl font-bold leading-tight">
+              Colorful <span className="text-primary">Web</span>
+            </h2>
+            <p className="text-neutral-400 text-lg max-w-md leading-relaxed">
+              Stunning websites that pack a punch with vibrant colors, seamless animations, and modern typography tailored for your brand.
+            </p>
           </div>
 
-          <motion.div
-            initial={{ opacity: 0, translateY: 50 }}
-            whileInView={{ opacity: 1, translateY: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.5 }}
-            className="grid gap-8"
-          >
-            <div className="gird">
-              <h2 className="text-primary text-4xl mb-4">Colorful Web</h2>
-              <p className="md:w-80">
-                Stunning websites that pack a punch with vibrant colors and modern
-                typography.
-              </p>
-            </div>
-
+          <div className="pt-4">
             <PrimaryBtn
               target={false}
               link={"/portfolio/web"}
               text={"Check My Websites"}
             />
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
+      </div>
 
-        <div className="lg:flex flex-row-reverse gird gap-28 items-center group">
-          <div className="rounded-[3rem] w-fit aspect-square overflow-hidden mb-12">
-            <Image
-              alt="Designs"
-              src={"/design.webp"}
-              width={544}
-              height={544}
-              sizes="(max-width: 600px) 480px, (max-width: 1200px) 1024px, 1920px"
-              className="group-hover:scale-110 transition-all ease-in-out duration-300 aspect-square object-cover"
-            />
+      {/* --- Section 2: Branding (Image Right, Text Left) --- */}
+      <div className="flex flex-col lg:flex-row-reverse items-center justify-between gap-12 group">
+        {/* Image Container */}
+        <motion.div 
+          initial={{ opacity: 0, x: 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="relative rounded-[3rem] overflow-hidden border border-white/10 bg-neutral-900 aspect-square lg:w-1/2 w-full"
+        >
+          <Image
+            alt="Designs"
+            src={"/design.webp"}
+            width={600}
+            height={600}
+            className="group-hover:scale-105 transition-transform duration-700 ease-out aspect-square object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+        </motion.div>
+
+        {/* Text Content */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="lg:w-1/2 flex flex-col gap-6 lg:pr-12"
+        >
+          <div className="space-y-4">
+             <span className="text-primary text-sm font-mono tracking-widest uppercase">Visual Identity</span>
+            <h2 className="text-white text-5xl md:text-6xl font-bold leading-tight">
+              Branding <span className="text-primary">Brilliance</span>
+            </h2>
+            <p className="text-neutral-400 text-lg max-w-md leading-relaxed">
+              Minimalist design shines bright in our sublime branding packages, creating a timeless identity that resonates with your audience.
+            </p>
           </div>
 
-          <motion.div
-            initial={{ opacity: 0, translateY: 50 }}
-            whileInView={{ opacity: 1, translateY: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.5 }}
-            className="grid gap-8"
-          >
-            <div className="gird">
-              <h2 className="text-primary text-4xl mb-4 w-7">
-                Branding Brilliance
-              </h2>
-              <p className="md:w-80">
-                Minimalist design shines bright in our sublime branding packages.
-              </p>
-            </div>
+          <div className="pt-4">
             <PrimaryBtn
               target={false}
               link={"/portfolio/designs"}
               text={"Check My Designs"}
             />
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
       </div>
-    </>
+    </div>
   );
 }
