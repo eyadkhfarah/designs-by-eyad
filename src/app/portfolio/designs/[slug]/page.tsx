@@ -47,29 +47,32 @@ const ProtoDetails = async ({ params }: { params: Params }) => {
       <article className="max-w-7xl mx-auto px-6">
         
         {/* --- Unified Bento Header --- */}
-        <div className="group relative overflow-hidden rounded-[3rem] border border-white/10 bg-neutral-900/20">
+        <div className="group relative overflow-hidden rounded-[3rem] border border-white/10 bg-neutral-900/20 mb-4">
           <div className="grid lg:grid-cols-12">
             
-            {/* Left: Sticky Image */}
-            <div className="lg:col-span-5 relative aspect-square lg:aspect-auto min-h-[450px] border-b lg:border-b-0 lg:border-r border-white/10">
-              <Image
-                src={props.thumbnail}
-                fill
-                className="object-cover"
-                alt={props.title}
-                priority
-              />
+            {/* Left: Sticky Image Container - NOW ROUNDED */}
+            <div className="lg:col-span-5 p-4 md:p-6 lg:p-8 border-b lg:border-b-0 lg:border-r border-white/10">
+               {/* We create an inner container for the image to give it distinct rounded corners and padding from the main grid borders */}
+              <div className="relative w-full aspect-square rounded-[2.5rem] overflow-hidden border border-white/10 bg-black/50">
+                <Image
+                  src={props.thumbnail}
+                  fill
+                  className="object-cover"
+                  alt={props.title}
+                  priority
+                />
+              </div>
             </div>
 
-            {/* Right: Content Info */}
-            <div className="lg:col-span-7 p-8 md:p-12 flex flex-col justify-between">
-              <div>
-                <div className="flex flex-wrap items-center gap-3 mb-8">
+            {/* Right: Project Details Info */}
+            <div className="lg:col-span-7 p-8 md:p-12 flex flex-col justify-between gap-12">
+              <div className="space-y-8">
+                <div className="flex flex-wrap items-center gap-3">
                   <span className="px-4 py-1.5 bg-primary text-black text-[10px] font-black uppercase tracking-widest rounded-full">
                     {props.Protype}
                   </span>
                   {props.Unofficial && (
-                    <span className="px-4 py-1.5 border border-primary text-primary text-[10px] font-black uppercase tracking-widest rounded-full">
+                    <span className="px-4 py-1.5 border border-primary/50 text-primary text-[10px] font-black uppercase tracking-widest rounded-full">
                       Unofficial
                     </span>
                   )}
@@ -78,18 +81,21 @@ const ProtoDetails = async ({ params }: { params: Params }) => {
                   </span>
                 </div>
                 
-                <h1 className="text-5xl md:text-7xl font-black uppercase tracking-tighter leading-none mb-8">
+                <h1 className="text-5xl md:text-7xl lg:text-8xl font-black uppercase tracking-tighter leading-[0.85] mb-8">
                   {props.title}<span className="text-primary">.</span>
                 </h1>
                 
-                <p className="text-lg md:text-xl text-neutral-400 leading-relaxed max-w-xl">
-                  {props.description}
-                </p>
+                <div className="space-y-4">
+                  <h2 className="text-[10px] font-black uppercase tracking-[0.3em] text-primary">Overview</h2>
+                  <p className="text-xl text-neutral-400 leading-relaxed max-w-xl">
+                    {props.description}
+                  </p>
+                </div>
               </div>
 
-              <div className="mt-12 pt-8 border-t border-white/10 flex items-center justify-between">
+              <div className="pt-8 border-t border-white/10 flex items-center justify-between">
                 <span className="text-neutral-500 font-mono text-xs uppercase tracking-widest">
-                  Published: {new Date(props.Date).toLocaleDateString('en-US', { month: 'short', day: 'numeric'})}
+                  {new Date(props.Date).toLocaleDateString('en-US', { month: 'long', day: 'numeric'})}
                 </span>
                 <PrimaryBtn target={true} link={`${props.website}`} text={"View on Behance"} />
               </div>
@@ -97,8 +103,8 @@ const ProtoDetails = async ({ params }: { params: Params }) => {
           </div>
         </div>
 
-        {/* --- Case Study Section (Stuck directly below) --- */}
-        <section className="mt-4 overflow-hidden rounded-[3rem] border border-white/10 bg-neutral-900/40">
+        {/* --- Seamless Case Study Container --- */}
+        <section className="overflow-hidden rounded-[3rem] border border-white/10 bg-neutral-900/40">
            <div 
             className="prose prose-invert prose-lg max-w-none 
               prose-headings:uppercase prose-headings:tracking-tighter prose-headings:font-black
