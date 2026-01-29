@@ -14,7 +14,7 @@ export default function Navbar() {
   return (
     <>
       <nav
-        className="fixed top-6 left-1/2 -translate-x-1/2 w-[90%] max-w-6xl z-50 
+        className="fixed top-6 left-1/2 -translate-x-1/2 w-[90%] max-w-7xl z-50 
            bg-black/60 backdrop-blur-xl border border-white/10 rounded-full px-8 py-4 
            flex justify-between items-center"
       >

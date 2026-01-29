@@ -40,7 +40,7 @@ export default function PrimaryBtn({
           bg-primary text-black 
           flex justify-center items-center gap-3 
           w-fit h-fit 
-          font-bold uppercase tracking-widest text-sm
+          font-arabicBold uppercase tracking-widest text-sm
           rounded-2xl 
           shadow-[0_10px_20px_-10px_rgba(229,254,0,0.3)]
           hover:shadow-[0_15px_30px_-10px_rgba(229,254,0,0.5)]

@@ -34,7 +34,7 @@ export default function MissionVision() {
                         <div className="absolute -top-4 -right-4 w-24 h-24 bg-primary/5 rounded-full blur-2xl group-hover:bg-primary/10 transition-colors duration-500" />
 
                         {/* Heading */}
-                        <h3 className="text-primary text-2xl lg:text-3xl font-bold tracking-tight">
+                        <h3 className="text-primary text-2xl lg:text-3xl font-arabicBold tracking-tight">
                             {t(item.Heading)}
                         </h3>
 

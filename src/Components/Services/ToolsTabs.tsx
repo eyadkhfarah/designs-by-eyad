@@ -57,7 +57,7 @@ export default function ToolsTabs() {
             }`}
           >
             <TbVectorBezier className="text-xl" />
-            <span className="font-bold text-sm uppercase tracking-wider">
+            <span className="font-arabicBold text-sm uppercase tracking-wider">
               {t("Span.Design")}
             </span>
             {toggle === 1 && (
@@ -76,7 +76,7 @@ export default function ToolsTabs() {
             }`}
           >
             <RiCodeLine className="text-xl" />
-            <span className="font-bold text-sm uppercase tracking-wider">
+            <span className="font-arabicBold text-sm uppercase tracking-wider">
               {t("Span.Development")}
             </span>
             {toggle === 2 && (

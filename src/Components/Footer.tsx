@@ -38,7 +38,7 @@ export default function Footer() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-6xl font-bold text-white max-w-3xl leading-tight"
+            className="text-4xl md:text-6xl font-arabicBold text-white max-w-3xl leading-tight"
           >
             {t("Footer.Header.title")}
           </motion.h3>

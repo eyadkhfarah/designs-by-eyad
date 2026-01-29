@@ -16,7 +16,7 @@ export default function Home() {
         - Added a subtle radial gradient background for depth.
         - increased padding for breathing room.
       */}
-      <section className="relative max-w-6xl mx-auto px-6 py-16 md:py-24">
+      <section className="relative max-w-7xl mx-auto py-16 md:py-24">
         <div className="absolute top-0 left-0 -z-10 h-full w-full bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-neutral-100/50 via-transparent to-transparent" />
         <BentoGrid />
       </section>
@@ -25,7 +25,7 @@ export default function Home() {
         - Added a border-top to visually separate it from the hero.
         - Used a 'sticky' header effect logic by grouping the title.
       */}
-      <section className="max-w-7xl mx-auto py-24 px-4 md:px-10 lg:px-20">
+      <section className="max-w-7xl mx-auto py-24 px-4 md:px-10 lg:px-0">
         <div className="flex flex-col items-center mb-20">
           <span className="text-primary/60 text-sm font-bold tracking-[0.2em] uppercase mb-4">
             What I Deliver
@@ -59,7 +59,7 @@ export default function Home() {
         - Switched to a Grid layout for larger screens (Title on left, Content on right).
         - This looks more editorial and high-end.
       */}
-      <section className="max-w-7xl mx-auto py-32 px-4 md:px-10 lg:px-20 grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+      <section className="max-w-7xl mx-auto py-32 px-4 md:px-10 lg:px-0 grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
         <div className="lg:col-span-4 sticky top-24">
           <H2 className="text-primary text-5xl md:text-6xl font-bold leading-tight">
             AboutPage.title
@@ -74,7 +74,7 @@ export default function Home() {
       {/* 5. BRANDS 
         - Kept clean, just added vertical spacing.
       */}
-      <section className="max-w-7xl mx-auto pb-24 px-4 md:px-10 lg:px-20">
+      <section className="max-w-7xl mx-auto pb-24 px-4 md:px-10 lg:px-0">
         <div className="mb-12">
             <h2 className="text-sm uppercase tracking-[0.3em] text-primary font-bold mb-4">
               Expertise
@@ -89,7 +89,7 @@ export default function Home() {
       {/* 6. TESTIMONIALS
         - Added top/bottom borders to create a dedicated "zone" for social proof.
       */}
-      <section className="max-w-7xl mx-auto px-4 md:px-10 lg:px-20 rounded-3xl">
+      <section className="max-w-7xl mx-auto px-4 md:px-10 lg:px-0 rounded-3xl">
         <H2 className="text-primary lg:text-5xl text-4xl text-center mb-16 font-bold">
           H2.MyClients
         </H2>
@@ -100,7 +100,7 @@ export default function Home() {
         - Changed from a white card to a dark, modern card.
         - Added hover effects to the logos (scale + glow).
       */}
-      <section className="max-w-7xl mx-auto px-4 md:px-10 lg:px-20 my-28">
+      <section className="max-w-7xl mx-auto px-4 md:px-10 lg:px-0 my-28">
         <div className="bg-[#111] rounded-[3rem] p-10 md:p-16 relative overflow-hidden group">
           {/* Decorative blur in the background of the card */}
           <div className="absolute -top-24 -right-24 w-64 h-64 bg-primary/20 rounded-full blur-[100px] group-hover:bg-primary/30 transition-all duration-700" />

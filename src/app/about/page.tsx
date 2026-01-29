@@ -36,10 +36,10 @@ export default function About() {
            <H1>AboutPage.title</H1>
         </div>
         
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           {/* Left: Image with Geometric Accents */}
           <div className="lg:col-span-5 relative flex justify-center lg:justify-start">
-            <div className="relative z-10 p-2 border border-white/10 rounded-full bg-neutral-900/50 backdrop-blur-sm">
+            <div className="relative z-10 h-fit p-2 border border-white/10 rounded-full bg-neutral-900/50 backdrop-blur-sm">
               <Image
                 alt="Eyad Farah"
                 title="That's me in Alex but I'm in Aswan 🙂"

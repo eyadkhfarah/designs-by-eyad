@@ -12,7 +12,6 @@
     "Design": "Design",
     "Development": "Development"
   },
-
   "fields": {
     "mobileApp": "Mobile App",
     "clinic": "Clinic",
@@ -40,7 +39,6 @@
     "perfumes": "Perfumes",
     "automobile": "Automobile"
   },
-
   "ServicesPage": {
     "title": "Services",
     "subtitle": "Offering graphic design services in Aswan, Egypt, including brand identity and social media design. Let’s work together to transform your brand's visual communication.",
@@ -61,12 +59,10 @@
       "subtitle": "My logo design service creates unique, memorable logos that visually represent your brand essence, fostering recognition and credibility."
     }
   },
-
   "AboutPage": {
     "title": "Who am I?",
     "Paragraph1": "I always thought my dream was to be a artist for a little indie publishing company, chill out in to the club and take a table and draw. I gravitated toward proofreading and quality control positions and even started my own artwork business. But I kind of just felt meh. I yearned to learn more, yearned to learn something different.",
     "Paragraph2": "I started Photoshop since I want to make a social media design for my business profile and I learned the fundamental of design and I was so enthusiastic about it, it was my lovely moment when I export my first Photoshop design and I was so good not wow because this is my first design and the I had improve my design skills until I learned a lot like logo design, vector art, manipulating photos and drawing in Photoshop.",
-
     "MissionAndVision": {
       "Mission": {
         "title": "Mission",
@@ -78,17 +74,26 @@
       }
     }
   },
-
   "ArtworksPage": {
     "title": "Artworks",
     "subtitle": "Explore a captivating collection of unique artwork collages blending creativity and storytelling. Discover handmade designs crafted with intricate details, vibrant colors, and inspiring themes that elevate your space. Perfect for art lovers and collectors alike!"
   },
-
   "BlogPage": {
     "title": "Blog",
     "subtitle": "Read the latest articles on graphic design, branding, and social media design. Stay up-to-date with the latest trends and insights to help your brand succeed in the digital world."
   },
-
+  "ProjectDetails": {
+    "overview": "Overview",
+    "unofficial": "Unofficial",
+    "published": "Published:",
+    "viewBehance": "View on Behance",
+    "viewLive": "View Live",
+    "designStack": "Design Stack"
+  },
+  "MobileNav": {
+    "label": "Navigation",
+    "location": "Cairo, EG"
+  },
   "ArtworkPrice": {
     "title": "Artwork Pricing",
     "subtitle": "Bring my designs to life! Order a premium-quality poster or a custom T-shirt in seconds.",
@@ -116,7 +121,6 @@
       }
     }
   },
-
   "MenuList": {
     "home": "Home",
     "portfolio": "Portfolio",
@@ -127,7 +131,6 @@
     "faq": "FAQ",
     "contact": "Contact Me"
   },
-
   "ContactList": {
     "form": "Form",
     "social": "Social",
