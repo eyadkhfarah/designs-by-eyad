@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "contentlayer": "contentlayer2 build",
+    "build:content": "contentlayer2 build",
     "postinstall": "partytown copylib public/~partytown"
   },
   "dependencies": {
