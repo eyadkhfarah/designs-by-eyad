@@ -2,9 +2,9 @@
 import { cn } from '@/lib/utils';
 import { useTranslations } from 'next-intl';
 
-import React, { ReactNode } from 'react'
+import React from 'react'
 
-export default function H2({ children, className }: { children: ReactNode, className?: string }) {
+export default function H2({ children, className }: { children: string, className?: string }) {
     const t = useTranslations();
 
     return (

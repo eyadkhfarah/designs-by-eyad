@@ -1,9 +1,8 @@
 "use client"
+import React from 'react';
 import { useTranslations } from 'next-intl';
 
-import { ReactNode } from 'react';
-
-export default function H1({ children }: { children: ReactNode }) {
+export default function H1({ children }: { children: string }) {
     const t = useTranslations();
 
     return (

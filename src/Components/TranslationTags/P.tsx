@@ -3,7 +3,7 @@ import { useTranslations } from 'next-intl';
 
 import React from 'react'
 
-export default function P({ children, className }: { children: React.ReactNode; className?: string }) {
+export default function P({ children, className }: { children: string; className?: string }) {
     const t = useTranslations();
 
     return (
