@@ -1,0 +1,26 @@
+{
+  "title": "Nofri Store",
+  "description": "Nofri a name that whispers “Hello” in the ancient Coptic language, inviting you into a world where the mystique of Egypt’s past collides with the bold futurism of vaporwave aesthetics. Nofri Store is more than an e-commerce destination; it’s a cultural time machine, reimagining Pharaoh-era grandeur through neon-lit, cyberpunk-inspired designs.",
+  "thumbnail": "/Imgs/nofri.png",
+  "Protype": "Brand Identity",
+  "Unofficial": false,
+  "Date": "2022-08-29T22:00:00.000Z",
+  "website": "https://www.behance.net/gallery/151567099/Nofri-Store-Brand-Identity",
+  "BGColor": "9CBB58\r",
+  "published": true,
+  "body": {
+    "raw": "<img src=\"https://mir-s3-cdn-cf.behance.net/project_modules/fs/b354af151567099.6318c2310a02a.png\" alt=\"Logo\" width=\"1804\" height=\"1804\" loading=\"lazy\" />\r\n<img src=\"https://mir-s3-cdn-cf.behance.net/project_modules/fs/6736a3151567099.6318c2310bd32.png\" alt=\"Logo Name\" width=\"1804\" height=\"1804\" loading=\"lazy\" />\r\n<img src=\"https://mir-s3-cdn-cf.behance.net/project_modules/fs/c421f9151567099.6318c23108f27.png\" alt=\"Logo in diffrent colors\" width=\"1804\" height=\"1804\" loading=\"lazy\" />\r\n<img src=\"https://mir-s3-cdn-cf.behance.net/project_modules/fs/00a576151567099.6318c23109a15.png\" alt=\"colors\" width=\"1804\" height=\"1804\" loading=\"lazy\" />\r\n<img src=\"https://mir-s3-cdn-cf.behance.net/project_modules/fs/8380e7151567099.6318c231094de.png\" alt=\"Fonts\" width=\"1804\" height=\"1804\" loading=\"lazy\" />\r\n<img src=\"https://mir-s3-cdn-cf.behance.net/project_modules/fs/690f99151567099.6318c2310b7ae.png\" alt=\"Icon Assets\" width=\"1804\" height=\"1804\" loading=\"lazy\" />",
+    "code": "var Component=(()=>{var g=Object.create;var o=Object.defineProperty;var m=Object.getOwnPropertyDescriptor;var f=Object.getOwnPropertyNames;var p=Object.getPrototypeOf,u=Object.prototype.hasOwnProperty;var w=(t,e)=>()=>(e||t((e={exports:{}}).exports,e),e.exports),y=(t,e)=>{for(var i in e)o(t,i,{get:e[i],enumerable:!0})},s=(t,e,i,r)=>{if(e&&typeof e==\"object\"||typeof e==\"function\")for(let a of f(e))!u.call(t,a)&&a!==i&&o(t,a,{get:()=>e[a],enumerable:!(r=m(e,a))||r.enumerable});return t};var b=(t,e,i)=>(i=t!=null?g(p(t)):{},s(e||!t||!t.__esModule?o(i,\"default\",{value:t,enumerable:!0}):i,t)),_=t=>s(o({},\"__esModule\",{value:!0}),t);var h=w((B,c)=>{c.exports=_jsx_runtime});var x={};y(x,{default:()=>d,frontmatter:()=>j});var n=b(h()),j={title:\"Nofri Store\",description:\"Nofri a name that whispers \\u201CHello\\u201D in the ancient Coptic language, inviting you into a world where the mystique of Egypt\\u2019s past collides with the bold futurism of vaporwave aesthetics. Nofri Store is more than an e-commerce destination; it\\u2019s a cultural time machine, reimagining Pharaoh-era grandeur through neon-lit, cyberpunk-inspired designs.\",thumbnail:\"/Imgs/nofri.png\",website:\"https://www.behance.net/gallery/151567099/Nofri-Store-Brand-Identity\",Protype:\"Brand Identity\",Unofficial:!1,Date:\"2022-08-29T22:00:00.000Z\",BGColor:\"9CBB58\"};function l(t){return(0,n.jsxs)(n.Fragment,{children:[(0,n.jsx)(\"img\",{src:\"https://mir-s3-cdn-cf.behance.net/project_modules/fs/b354af151567099.6318c2310a02a.png\",alt:\"Logo\",width:\"1804\",height:\"1804\",loading:\"lazy\"}),`\n`,(0,n.jsx)(\"img\",{src:\"https://mir-s3-cdn-cf.behance.net/project_modules/fs/6736a3151567099.6318c2310bd32.png\",alt:\"Logo Name\",width:\"1804\",height:\"1804\",loading:\"lazy\"}),`\n`,(0,n.jsx)(\"img\",{src:\"https://mir-s3-cdn-cf.behance.net/project_modules/fs/c421f9151567099.6318c23108f27.png\",alt:\"Logo in diffrent colors\",width:\"1804\",height:\"1804\",loading:\"lazy\"}),`\n`,(0,n.jsx)(\"img\",{src:\"https://mir-s3-cdn-cf.behance.net/project_modules/fs/00a576151567099.6318c23109a15.png\",alt:\"colors\",width:\"1804\",height:\"1804\",loading:\"lazy\"}),`\n`,(0,n.jsx)(\"img\",{src:\"https://mir-s3-cdn-cf.behance.net/project_modules/fs/8380e7151567099.6318c231094de.png\",alt:\"Fonts\",width:\"1804\",height:\"1804\",loading:\"lazy\"}),`\n`,(0,n.jsx)(\"img\",{src:\"https://mir-s3-cdn-cf.behance.net/project_modules/fs/690f99151567099.6318c2310b7ae.png\",alt:\"Icon Assets\",width:\"1804\",height:\"1804\",loading:\"lazy\"})]})}function d(t={}){let{wrapper:e}=t.components||{};return e?(0,n.jsx)(e,{...t,children:(0,n.jsx)(l,{...t})}):l(t)}return _(x);})();\n;return Component;"
+  },
+  "_id": "portfolio/designs/nofri.mdx",
+  "_raw": {
+    "sourceFilePath": "portfolio/designs/nofri.mdx",
+    "sourceFileName": "nofri.mdx",
+    "sourceFileDir": "portfolio/designs",
+    "contentType": "mdx",
+    "flattenedPath": "portfolio/designs/nofri"
+  },
+  "type": "ProtoDesign",
+  "slug": "/portfolio/designs/nofri",
+  "slugAsParams": "designs/nofri"
+}

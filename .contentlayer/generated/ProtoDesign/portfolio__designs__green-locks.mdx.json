@@ -1,0 +1,26 @@
+{
+  "title": "Green Locks",
+  "description": "a brand where nature’s purity meets the art of hair care. Inspired by the vitality of lush greenery and the timeless beauty of healthy locks, Green Locks is dedicated to crafting premium, eco-conscious hair care products that nurture both hair and the planet.",
+  "thumbnail": "/Imgs/green-locks.png",
+  "Protype": "Rebranding",
+  "Unofficial": false,
+  "Date": "2024-03-10T22:00:00.000Z",
+  "website": "https://www.behance.net/gallery/191450493/Rebranding-Green-Locks-and-package-designs",
+  "BGColor": "9CBB58\r",
+  "published": true,
+  "body": {
+    "raw": "<img src=\"https://mir-s3-cdn-cf.behance.net/project_modules/fs/f134d0191450493.65d126c37653f.png\" alt=\"logo\" width=\"1804\" height=\"1804\" loading=\"lazy\" />\r\n<img src=\"https://mir-s3-cdn-cf.behance.net/project_modules/fs/218e67191450493.65cbbfa3d2fee.png\" alt=\"package mockup\" width=\"1804\" height=\"1804\" loading=\"lazy\" />\r\n<img src=\"https://mir-s3-cdn-cf.behance.net/project_modules/fs/c703fb191450493.65d126c37b886.png\" alt=\"cosmetics mockup\" width=\"1804\" height=\"1804\" loading=\"lazy\" />",
+    "code": "var Component=(()=>{var g=Object.create;var s=Object.defineProperty;var m=Object.getOwnPropertyDescriptor;var p=Object.getOwnPropertyNames;var f=Object.getPrototypeOf,u=Object.prototype.hasOwnProperty;var b=(e,t)=>()=>(t||e((t={exports:{}}).exports,t),t.exports),y=(e,t)=>{for(var a in t)s(e,a,{get:t[a],enumerable:!0})},o=(e,t,a,c)=>{if(t&&typeof t==\"object\"||typeof t==\"function\")for(let r of p(t))!u.call(e,r)&&r!==a&&s(e,r,{get:()=>t[r],enumerable:!(c=m(t,r))||c.enumerable});return e};var k=(e,t,a)=>(a=e!=null?g(f(e)):{},o(t||!e||!e.__esModule?s(a,\"default\",{value:e,enumerable:!0}):a,e)),w=e=>o(s({},\"__esModule\",{value:!0}),e);var d=b((C,i)=>{i.exports=_jsx_runtime});var _={};y(_,{default:()=>l,frontmatter:()=>x});var n=k(d()),x={title:\"Green Locks\",description:\"a brand where nature\\u2019s purity meets the art of hair care. Inspired by the vitality of lush greenery and the timeless beauty of healthy locks, Green Locks is dedicated to crafting premium, eco-conscious hair care products that nurture both hair and the planet.\",thumbnail:\"/Imgs/green-locks.png\",website:\"https://www.behance.net/gallery/191450493/Rebranding-Green-Locks-and-package-designs\",Protype:\"Rebranding\",Unofficial:!1,Date:\"2024-03-10T22:00:00.000Z\",BGColor:\"9CBB58\"};function h(e){return(0,n.jsxs)(n.Fragment,{children:[(0,n.jsx)(\"img\",{src:\"https://mir-s3-cdn-cf.behance.net/project_modules/fs/f134d0191450493.65d126c37653f.png\",alt:\"logo\",width:\"1804\",height:\"1804\",loading:\"lazy\"}),`\n`,(0,n.jsx)(\"img\",{src:\"https://mir-s3-cdn-cf.behance.net/project_modules/fs/218e67191450493.65cbbfa3d2fee.png\",alt:\"package mockup\",width:\"1804\",height:\"1804\",loading:\"lazy\"}),`\n`,(0,n.jsx)(\"img\",{src:\"https://mir-s3-cdn-cf.behance.net/project_modules/fs/c703fb191450493.65d126c37b886.png\",alt:\"cosmetics mockup\",width:\"1804\",height:\"1804\",loading:\"lazy\"})]})}function l(e={}){let{wrapper:t}=e.components||{};return t?(0,n.jsx)(t,{...e,children:(0,n.jsx)(h,{...e})}):h(e)}return w(_);})();\n;return Component;"
+  },
+  "_id": "portfolio/designs/green-locks.mdx",
+  "_raw": {
+    "sourceFilePath": "portfolio/designs/green-locks.mdx",
+    "sourceFileName": "green-locks.mdx",
+    "sourceFileDir": "portfolio/designs",
+    "contentType": "mdx",
+    "flattenedPath": "portfolio/designs/green-locks"
+  },
+  "type": "ProtoDesign",
+  "slug": "/portfolio/designs/green-locks",
+  "slugAsParams": "designs/green-locks"
+}

@@ -1,0 +1,26 @@
+{
+  "title": "Life Makers",
+  "description": "Life Makers—a name that embodies hope, resilience, and the power of collective action. Rooted in the heart of Egypt, our non-profit organization is dedicated to uplifting marginalized communities by transforming compassion into tangible change.",
+  "thumbnail": "/Imgs/life-makers.jpg",
+  "Protype": "Social Media Design",
+  "Unofficial": false,
+  "Date": "2023-02-01T22:00:00.000Z",
+  "website": "https://www.behance.net/gallery/173067151/Social-Media-Design-for-Life-Maker",
+  "BGColor": "9CBB58\r",
+  "published": true,
+  "body": {
+    "raw": "<img src=\"https://mir-s3-cdn-cf.behance.net/project_modules/fs/c35ff0173067151.64f25dd663d30.png\" alt=\"كتاب ودولاب\" width=\"1804\" height=\"1804\" loading=\"lazy\" />\r\n<img src=\"https://mir-s3-cdn-cf.behance.net/project_modules/fs/8e1363173067151.64f25dd75dded.png\" alt=\"صحتك بالدنيا\" width=\"1804\" height=\"1804\" loading=\"lazy\" />\r\n<img src=\"https://mir-s3-cdn-cf.behance.net/project_modules/fs/e8b28d173067151.64f25dd7ea782.png\" alt=\"9 أسطر\" width=\"1804\" height=\"1804\" loading=\"lazy\" />",
+    "code": "var Component=(()=>{var g=Object.create;var o=Object.defineProperty;var h=Object.getOwnPropertyDescriptor;var m=Object.getOwnPropertyNames;var p=Object.getPrototypeOf,u=Object.prototype.hasOwnProperty;var b=(e,t)=>()=>(t||e((t={exports:{}}).exports,t),t.exports),j=(e,t)=>{for(var i in t)o(e,i,{get:t[i],enumerable:!0})},s=(e,t,i,r)=>{if(t&&typeof t==\"object\"||typeof t==\"function\")for(let a of m(t))!u.call(e,a)&&a!==i&&o(e,a,{get:()=>t[a],enumerable:!(r=h(t,a))||r.enumerable});return e};var w=(e,t,i)=>(i=e!=null?g(p(e)):{},s(t||!e||!e.__esModule?o(i,\"default\",{value:e,enumerable:!0}):i,e)),x=e=>s(o({},\"__esModule\",{value:!0}),e);var d=b((z,c)=>{c.exports=_jsx_runtime});var y={};j(y,{default:()=>f,frontmatter:()=>_});var n=w(d()),_={title:\"Life Makers\",description:\"Life Makers\\u2014a name that embodies hope, resilience, and the power of collective action. Rooted in the heart of Egypt, our non-profit organization is dedicated to uplifting marginalized communities by transforming compassion into tangible change.\",thumbnail:\"/Imgs/life-makers.jpg\",website:\"https://www.behance.net/gallery/173067151/Social-Media-Design-for-Life-Maker\",Protype:\"Social Media Design\",Unofficial:!1,Date:\"2023-02-01T22:00:00.000Z\",BGColor:\"9CBB58\"};function l(e){return(0,n.jsxs)(n.Fragment,{children:[(0,n.jsx)(\"img\",{src:\"https://mir-s3-cdn-cf.behance.net/project_modules/fs/c35ff0173067151.64f25dd663d30.png\",alt:\"\\u0643\\u062A\\u0627\\u0628 \\u0648\\u062F\\u0648\\u0644\\u0627\\u0628\",width:\"1804\",height:\"1804\",loading:\"lazy\"}),`\n`,(0,n.jsx)(\"img\",{src:\"https://mir-s3-cdn-cf.behance.net/project_modules/fs/8e1363173067151.64f25dd75dded.png\",alt:\"\\u0635\\u062D\\u062A\\u0643 \\u0628\\u0627\\u0644\\u062F\\u0646\\u064A\\u0627\",width:\"1804\",height:\"1804\",loading:\"lazy\"}),`\n`,(0,n.jsx)(\"img\",{src:\"https://mir-s3-cdn-cf.behance.net/project_modules/fs/e8b28d173067151.64f25dd7ea782.png\",alt:\"9 \\u0623\\u0633\\u0637\\u0631\",width:\"1804\",height:\"1804\",loading:\"lazy\"})]})}function f(e={}){let{wrapper:t}=e.components||{};return t?(0,n.jsx)(t,{...e,children:(0,n.jsx)(l,{...e})}):l(e)}return x(y);})();\n;return Component;"
+  },
+  "_id": "portfolio/designs/life-makers.mdx",
+  "_raw": {
+    "sourceFilePath": "portfolio/designs/life-makers.mdx",
+    "sourceFileName": "life-makers.mdx",
+    "sourceFileDir": "portfolio/designs",
+    "contentType": "mdx",
+    "flattenedPath": "portfolio/designs/life-makers"
+  },
+  "type": "ProtoDesign",
+  "slug": "/portfolio/designs/life-makers",
+  "slugAsParams": "designs/life-makers"
+}

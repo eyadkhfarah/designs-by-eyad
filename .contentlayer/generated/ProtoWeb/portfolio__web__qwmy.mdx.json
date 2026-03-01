@@ -1,0 +1,27 @@
+{
+  "title": "QWMY",
+  "description": "A news nationalism website that provides information about the Egyptian history and identity",
+  "thumbnail": "/Imgs/qwmy.jpg",
+  "Protype": "Web Design",
+  "Date": "2022-02-01T22:00:00.000Z",
+  "stack": [
+    "website builder\r"
+  ],
+  "website": "https://qwmyeg.wixsite.com/qwmy",
+  "published": true,
+  "body": {
+    "raw": "",
+    "code": "var Component=(()=>{var w=Object.create;var r=Object.defineProperty;var d=Object.getOwnPropertyDescriptor;var x=Object.getOwnPropertyNames;var y=Object.getPrototypeOf,b=Object.prototype.hasOwnProperty;var g=(t,e)=>()=>(e||t((e={exports:{}}).exports,e),e.exports),f=(t,e)=>{for(var n in e)r(t,n,{get:e[n],enumerable:!0})},a=(t,e,n,s)=>{if(e&&typeof e==\"object\"||typeof e==\"function\")for(let o of x(e))!b.call(t,o)&&o!==n&&r(t,o,{get:()=>e[o],enumerable:!(s=d(e,o))||s.enumerable});return t};var h=(t,e,n)=>(n=t!=null?w(y(t)):{},a(e||!t||!t.__esModule?r(n,\"default\",{value:t,enumerable:!0}):n,t)),l=t=>a(r({},\"__esModule\",{value:!0}),t);var c=g((M,m)=>{m.exports=_jsx_runtime});var j={};f(j,{default:()=>p,frontmatter:()=>_});var i=h(c()),_={title:\"QWMY\",description:\"A news nationalism website that provides information about the Egyptian history and identity\",thumbnail:\"/Imgs/qwmy.jpg\",website:\"https://qwmyeg.wixsite.com/qwmy\",Protype:\"Web Design\",Date:\"2022-02-01T22:00:00.000Z\",stack:[\"website builder\"]};function u(t){return(0,i.jsx)(i.Fragment,{})}function p(t={}){let{wrapper:e}=t.components||{};return e?(0,i.jsx)(e,{...t,children:(0,i.jsx)(u,{...t})}):u(t)}return l(j);})();\n;return Component;"
+  },
+  "_id": "portfolio/web/qwmy.mdx",
+  "_raw": {
+    "sourceFilePath": "portfolio/web/qwmy.mdx",
+    "sourceFileName": "qwmy.mdx",
+    "sourceFileDir": "portfolio/web",
+    "contentType": "mdx",
+    "flattenedPath": "portfolio/web/qwmy"
+  },
+  "type": "ProtoWeb",
+  "slug": "/portfolio/web/qwmy",
+  "slugAsParams": "web/qwmy"
+}

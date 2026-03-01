@@ -1,0 +1,27 @@
+{
+  "title": "Qawmya Library",
+  "description": "A wikipedia website that provides information about Egypt and the Egyptian genetic system and provides books and images",
+  "thumbnail": "/Imgs/maktaba.jpg",
+  "Protype": "Web Design",
+  "Date": "2023-08-24T21:00:00.000Z",
+  "stack": [
+    "Nextjs 12\r"
+  ],
+  "website": "https://maktabaqawmya.com/",
+  "published": true,
+  "body": {
+    "raw": "",
+    "code": "var Component=(()=>{var b=Object.create;var o=Object.defineProperty;var g=Object.getOwnPropertyDescriptor;var u=Object.getOwnPropertyNames;var x=Object.getPrototypeOf,y=Object.prototype.hasOwnProperty;var f=(t,e)=>()=>(e||t((e={exports:{}}).exports,e),e.exports),w=(t,e)=>{for(var a in e)o(t,a,{get:e[a],enumerable:!0})},s=(t,e,a,r)=>{if(e&&typeof e==\"object\"||typeof e==\"function\")for(let i of u(e))!y.call(t,i)&&i!==a&&o(t,i,{get:()=>e[i],enumerable:!(r=g(e,i))||r.enumerable});return t};var h=(t,e,a)=>(a=t!=null?b(x(t)):{},s(e||!t||!t.__esModule?o(a,\"default\",{value:t,enumerable:!0}):a,t)),j=t=>s(o({},\"__esModule\",{value:!0}),t);var p=f((D,m)=>{m.exports=_jsx_runtime});var _={};w(_,{default:()=>d,frontmatter:()=>k});var n=h(p()),k={title:\"Qawmya Library\",description:\"A wikipedia website that provides information about Egypt and the Egyptian genetic system and provides books and images\",thumbnail:\"/Imgs/maktaba.jpg\",website:\"https://maktabaqawmya.com/\",Protype:\"Web Design\",Date:\"2023-08-24T21:00:00.000Z\",stack:[\"Nextjs 12\"]};function c(t){return(0,n.jsx)(n.Fragment,{})}function d(t={}){let{wrapper:e}=t.components||{};return e?(0,n.jsx)(e,{...t,children:(0,n.jsx)(c,{...t})}):c(t)}return j(_);})();\n;return Component;"
+  },
+  "_id": "portfolio/web/qawmya-library.mdx",
+  "_raw": {
+    "sourceFilePath": "portfolio/web/qawmya-library.mdx",
+    "sourceFileName": "qawmya-library.mdx",
+    "sourceFileDir": "portfolio/web",
+    "contentType": "mdx",
+    "flattenedPath": "portfolio/web/qawmya-library"
+  },
+  "type": "ProtoWeb",
+  "slug": "/portfolio/web/qawmya-library",
+  "slugAsParams": "web/qawmya-library"
+}

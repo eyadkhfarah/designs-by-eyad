@@ -1,0 +1,193 @@
+[
+  {
+    "title": "Cyber Hunter",
+    "description": "A cutting-edge cybersecurity platform designed for Egyptian security teams, featuring real-time threat detection, vulnerability assessment, and incident response tools built with Next.js 15 and Notion integration.",
+    "thumbnail": "/Imgs/cyber-hunter.webp",
+    "Protype": "Web Development",
+    "Date": "2026-01-28T22:00:00.000Z",
+    "stack": [
+      "Nextjs 15",
+      "Notion\r"
+    ],
+    "website": "https://cyberhuntergp.com/",
+    "published": true,
+    "body": {
+      "raw": "\r\n<img src=\"https://mir-s3-cdn-cf.behance.net/project_modules/fs/47a829245018231.69a49182cf752.png\" alt=\"Header\" width=\"1804\" height=\"1804\" loading=\"lazy\" />\r\n<img src=\"https://mir-s3-cdn-cf.behance.net/project_modules/fs/eec783245018231.69a49b61f1922.png\" alt=\"Logo\" width=\"1804\" height=\"1804\" loading=\"lazy\" />\r\n<img src=\"https://mir-s3-cdn-cf.behance.net/project_modules/fs/abde5a245018231.69a49182cef62.png\" alt=\"Web design\" width=\"1804\" height=\"1804\" loading=\"lazy\" />\r\n<img src=\"https://mir-s3-cdn-cf.behance.net/project_modules/fs/32c55f245018231.69a49b61f11d2.png\" alt=\"Desktop Mockup\" width=\"1804\" height=\"1804\" loading=\"lazy\" />\r\n<img src=\"https://mir-s3-cdn-cf.behance.net/project_modules/fs/547238245018231.69a49182d02d8.png\" alt=\"Mobile Mockup\" width=\"1804\" height=\"1804\" loading=\"lazy\" />\r\n<img src=\"https://mir-s3-cdn-cf.behance.net/project_modules/fs/87c033245018231.69a49182cfcaa.png\" alt=\"Multi Devices Mockup\" width=\"1804\" height=\"1804\" loading=\"lazy\" />\r\n<img src=\"https://mir-s3-cdn-cf.behance.net/project_modules/fs/16468e245018231.69a49182ce2fb.png\" alt=\"Web Design Full\" width=\"1804\" height=\"1804\" loading=\"lazy\" />\r\n<img src=\"https://mir-s3-cdn-cf.behance.net/project_modules/fs/f20c08245018231.69a49182ce8e1.png\" alt=\"Thank You\" width=\"1804\" height=\"1804\" loading=\"lazy\" />",
+      "code": "var Component=(()=>{var g=Object.create;var c=Object.defineProperty;var p=Object.getOwnPropertyDescriptor;var m=Object.getOwnPropertyNames;var f=Object.getPrototypeOf,u=Object.prototype.hasOwnProperty;var b=(e,t)=>()=>(t||e((t={exports:{}}).exports,t),t.exports),y=(e,t)=>{for(var i in t)c(e,i,{get:t[i],enumerable:!0})},r=(e,t,i,a)=>{if(t&&typeof t==\"object\"||typeof t==\"function\")for(let s of m(t))!u.call(e,s)&&s!==i&&c(e,s,{get:()=>t[s],enumerable:!(a=p(t,s))||a.enumerable});return e};var j=(e,t,i)=>(i=e!=null?g(f(e)):{},r(t||!e||!e.__esModule?c(i,\"default\",{value:e,enumerable:!0}):i,e)),_=e=>r(c({},\"__esModule\",{value:!0}),e);var d=b((M,o)=>{o.exports=_jsx_runtime});var x={};y(x,{default:()=>l,frontmatter:()=>w});var n=j(d()),w={title:\"Cyber Hunter\",description:\"A cutting-edge cybersecurity platform designed for Egyptian security teams, featuring real-time threat detection, vulnerability assessment, and incident response tools built with Next.js 15 and Notion integration.\",thumbnail:\"/Imgs/cyber-hunter.webp\",website:\"https://cyberhuntergp.com/\",Protype:\"Web Development\",Date:\"2026-01-28T22:00:00.000Z\",stack:[\"Nextjs 15\",\"Notion\"]};function h(e){return(0,n.jsxs)(n.Fragment,{children:[(0,n.jsx)(\"img\",{src:\"https://mir-s3-cdn-cf.behance.net/project_modules/fs/47a829245018231.69a49182cf752.png\",alt:\"Header\",width:\"1804\",height:\"1804\",loading:\"lazy\"}),`\n`,(0,n.jsx)(\"img\",{src:\"https://mir-s3-cdn-cf.behance.net/project_modules/fs/eec783245018231.69a49b61f1922.png\",alt:\"Logo\",width:\"1804\",height:\"1804\",loading:\"lazy\"}),`\n`,(0,n.jsx)(\"img\",{src:\"https://mir-s3-cdn-cf.behance.net/project_modules/fs/abde5a245018231.69a49182cef62.png\",alt:\"Web design\",width:\"1804\",height:\"1804\",loading:\"lazy\"}),`\n`,(0,n.jsx)(\"img\",{src:\"https://mir-s3-cdn-cf.behance.net/project_modules/fs/32c55f245018231.69a49b61f11d2.png\",alt:\"Desktop Mockup\",width:\"1804\",height:\"1804\",loading:\"lazy\"}),`\n`,(0,n.jsx)(\"img\",{src:\"https://mir-s3-cdn-cf.behance.net/project_modules/fs/547238245018231.69a49182d02d8.png\",alt:\"Mobile Mockup\",width:\"1804\",height:\"1804\",loading:\"lazy\"}),`\n`,(0,n.jsx)(\"img\",{src:\"https://mir-s3-cdn-cf.behance.net/project_modules/fs/87c033245018231.69a49182cfcaa.png\",alt:\"Multi Devices Mockup\",width:\"1804\",height:\"1804\",loading:\"lazy\"}),`\n`,(0,n.jsx)(\"img\",{src:\"https://mir-s3-cdn-cf.behance.net/project_modules/fs/16468e245018231.69a49182ce2fb.png\",alt:\"Web Design Full\",width:\"1804\",height:\"1804\",loading:\"lazy\"}),`\n`,(0,n.jsx)(\"img\",{src:\"https://mir-s3-cdn-cf.behance.net/project_modules/fs/f20c08245018231.69a49182ce8e1.png\",alt:\"Thank You\",width:\"1804\",height:\"1804\",loading:\"lazy\"})]})}function l(e={}){let{wrapper:t}=e.components||{};return t?(0,n.jsx)(t,{...e,children:(0,n.jsx)(h,{...e})}):h(e)}return _(x);})();\n;return Component;"
+    },
+    "_id": "portfolio/web/cyber-hunter-eg.mdx",
+    "_raw": {
+      "sourceFilePath": "portfolio/web/cyber-hunter-eg.mdx",
+      "sourceFileName": "cyber-hunter-eg.mdx",
+      "sourceFileDir": "portfolio/web",
+      "contentType": "mdx",
+      "flattenedPath": "portfolio/web/cyber-hunter-eg"
+    },
+    "type": "ProtoWeb",
+    "slug": "/portfolio/web/cyber-hunter-eg",
+    "slugAsParams": "web/cyber-hunter-eg"
+  },
+  {
+    "title": "Lokoji",
+    "description": "Lokoji a name rooted in the ancient Coptic language, meaning \"Gold.\" Just as gold symbolizes enduring value and prosperity, Lokoji emerges as a dynamic hub for economic insight, bridging Egypt’s vibrant economy with the complexities of global markets.",
+    "thumbnail": "/Imgs/lokoji.jpg",
+    "Protype": "Web Design",
+    "Date": "2020-12-01T22:00:00.000Z",
+    "stack": [
+      "Nextjs 13\r"
+    ],
+    "website": "https://lokoji.vercel.app/",
+    "published": true,
+    "body": {
+      "raw": "",
+      "code": "var Component=(()=>{var p=Object.create;var a=Object.defineProperty;var u=Object.getOwnPropertyDescriptor;var d=Object.getOwnPropertyNames;var j=Object.getPrototypeOf,x=Object.prototype.hasOwnProperty;var b=(t,e)=>()=>(e||t((e={exports:{}}).exports,e),e.exports),h=(t,e)=>{for(var o in e)a(t,o,{get:e[o],enumerable:!0})},s=(t,e,o,r)=>{if(e&&typeof e==\"object\"||typeof e==\"function\")for(let i of d(e))!x.call(t,i)&&i!==o&&a(t,i,{get:()=>e[i],enumerable:!(r=u(e,i))||r.enumerable});return t};var f=(t,e,o)=>(o=t!=null?p(j(t)):{},s(e||!t||!t.__esModule?a(o,\"default\",{value:t,enumerable:!0}):o,t)),k=t=>s(a({},\"__esModule\",{value:!0}),t);var c=b((L,m)=>{m.exports=_jsx_runtime});var _={};h(_,{default:()=>l,frontmatter:()=>y});var n=f(c()),y={title:\"Lokoji\",description:'Lokoji a name rooted in the ancient Coptic language, meaning \"Gold.\" Just as gold symbolizes enduring value and prosperity, Lokoji emerges as a dynamic hub for economic insight, bridging Egypt\\u2019s vibrant economy with the complexities of global markets.',thumbnail:\"/Imgs/lokoji.jpg\",website:\"https://lokoji.vercel.app/\",Protype:\"Web Design\",Date:\"2020-12-01T22:00:00.000Z\",stack:[\"Nextjs 13\"]};function g(t){return(0,n.jsx)(n.Fragment,{})}function l(t={}){let{wrapper:e}=t.components||{};return e?(0,n.jsx)(e,{...t,children:(0,n.jsx)(g,{...t})}):g(t)}return k(_);})();\n;return Component;"
+    },
+    "_id": "portfolio/web/lokoji.mdx",
+    "_raw": {
+      "sourceFilePath": "portfolio/web/lokoji.mdx",
+      "sourceFileName": "lokoji.mdx",
+      "sourceFileDir": "portfolio/web",
+      "contentType": "mdx",
+      "flattenedPath": "portfolio/web/lokoji"
+    },
+    "type": "ProtoWeb",
+    "slug": "/portfolio/web/lokoji",
+    "slugAsParams": "web/lokoji"
+  },
+  {
+    "title": "Qawmya Library",
+    "description": "A wikipedia website that provides information about Egypt and the Egyptian genetic system and provides books and images",
+    "thumbnail": "/Imgs/maktaba.jpg",
+    "Protype": "Web Design",
+    "Date": "2023-08-24T21:00:00.000Z",
+    "stack": [
+      "Nextjs 12\r"
+    ],
+    "website": "https://maktabaqawmya.com/",
+    "published": true,
+    "body": {
+      "raw": "",
+      "code": "var Component=(()=>{var b=Object.create;var o=Object.defineProperty;var g=Object.getOwnPropertyDescriptor;var u=Object.getOwnPropertyNames;var x=Object.getPrototypeOf,y=Object.prototype.hasOwnProperty;var f=(t,e)=>()=>(e||t((e={exports:{}}).exports,e),e.exports),w=(t,e)=>{for(var a in e)o(t,a,{get:e[a],enumerable:!0})},s=(t,e,a,r)=>{if(e&&typeof e==\"object\"||typeof e==\"function\")for(let i of u(e))!y.call(t,i)&&i!==a&&o(t,i,{get:()=>e[i],enumerable:!(r=g(e,i))||r.enumerable});return t};var h=(t,e,a)=>(a=t!=null?b(x(t)):{},s(e||!t||!t.__esModule?o(a,\"default\",{value:t,enumerable:!0}):a,t)),j=t=>s(o({},\"__esModule\",{value:!0}),t);var p=f((D,m)=>{m.exports=_jsx_runtime});var _={};w(_,{default:()=>d,frontmatter:()=>k});var n=h(p()),k={title:\"Qawmya Library\",description:\"A wikipedia website that provides information about Egypt and the Egyptian genetic system and provides books and images\",thumbnail:\"/Imgs/maktaba.jpg\",website:\"https://maktabaqawmya.com/\",Protype:\"Web Design\",Date:\"2023-08-24T21:00:00.000Z\",stack:[\"Nextjs 12\"]};function c(t){return(0,n.jsx)(n.Fragment,{})}function d(t={}){let{wrapper:e}=t.components||{};return e?(0,n.jsx)(e,{...t,children:(0,n.jsx)(c,{...t})}):c(t)}return j(_);})();\n;return Component;"
+    },
+    "_id": "portfolio/web/qawmya-library.mdx",
+    "_raw": {
+      "sourceFilePath": "portfolio/web/qawmya-library.mdx",
+      "sourceFileName": "qawmya-library.mdx",
+      "sourceFileDir": "portfolio/web",
+      "contentType": "mdx",
+      "flattenedPath": "portfolio/web/qawmya-library"
+    },
+    "type": "ProtoWeb",
+    "slug": "/portfolio/web/qawmya-library",
+    "slugAsParams": "web/qawmya-library"
+  },
+  {
+    "title": "QWMY",
+    "description": "A news nationalism website that provides information about the Egyptian history and identity",
+    "thumbnail": "/Imgs/qwmy.jpg",
+    "Protype": "Web Design",
+    "Date": "2022-02-01T22:00:00.000Z",
+    "stack": [
+      "website builder\r"
+    ],
+    "website": "https://qwmyeg.wixsite.com/qwmy",
+    "published": true,
+    "body": {
+      "raw": "",
+      "code": "var Component=(()=>{var w=Object.create;var r=Object.defineProperty;var d=Object.getOwnPropertyDescriptor;var x=Object.getOwnPropertyNames;var y=Object.getPrototypeOf,b=Object.prototype.hasOwnProperty;var g=(t,e)=>()=>(e||t((e={exports:{}}).exports,e),e.exports),f=(t,e)=>{for(var n in e)r(t,n,{get:e[n],enumerable:!0})},a=(t,e,n,s)=>{if(e&&typeof e==\"object\"||typeof e==\"function\")for(let o of x(e))!b.call(t,o)&&o!==n&&r(t,o,{get:()=>e[o],enumerable:!(s=d(e,o))||s.enumerable});return t};var h=(t,e,n)=>(n=t!=null?w(y(t)):{},a(e||!t||!t.__esModule?r(n,\"default\",{value:t,enumerable:!0}):n,t)),l=t=>a(r({},\"__esModule\",{value:!0}),t);var c=g((M,m)=>{m.exports=_jsx_runtime});var j={};f(j,{default:()=>p,frontmatter:()=>_});var i=h(c()),_={title:\"QWMY\",description:\"A news nationalism website that provides information about the Egyptian history and identity\",thumbnail:\"/Imgs/qwmy.jpg\",website:\"https://qwmyeg.wixsite.com/qwmy\",Protype:\"Web Design\",Date:\"2022-02-01T22:00:00.000Z\",stack:[\"website builder\"]};function u(t){return(0,i.jsx)(i.Fragment,{})}function p(t={}){let{wrapper:e}=t.components||{};return e?(0,i.jsx)(e,{...t,children:(0,i.jsx)(u,{...t})}):u(t)}return l(j);})();\n;return Component;"
+    },
+    "_id": "portfolio/web/qwmy.mdx",
+    "_raw": {
+      "sourceFilePath": "portfolio/web/qwmy.mdx",
+      "sourceFileName": "qwmy.mdx",
+      "sourceFileDir": "portfolio/web",
+      "contentType": "mdx",
+      "flattenedPath": "portfolio/web/qwmy"
+    },
+    "type": "ProtoWeb",
+    "slug": "/portfolio/web/qwmy",
+    "slugAsParams": "web/qwmy"
+  },
+  {
+    "title": "Sahwa",
+    "description": "A personal national website For blogging and infographic",
+    "thumbnail": "/Imgs/sahwa.png",
+    "Protype": "Web Development",
+    "Date": "2023-10-03T21:00:00.000Z",
+    "stack": [
+      "Nextjs 13\r"
+    ],
+    "website": "https://sahwa-qwmy.vercel.app/",
+    "published": true,
+    "body": {
+      "raw": "",
+      "code": "var Component=(()=>{var g=Object.create;var o=Object.defineProperty;var u=Object.getOwnPropertyDescriptor;var x=Object.getOwnPropertyNames;var h=Object.getPrototypeOf,w=Object.prototype.hasOwnProperty;var f=(t,e)=>()=>(e||t((e={exports:{}}).exports,e),e.exports),b=(t,e)=>{for(var n in e)o(t,n,{get:e[n],enumerable:!0})},i=(t,e,n,s)=>{if(e&&typeof e==\"object\"||typeof e==\"function\")for(let r of x(e))!w.call(t,r)&&r!==n&&o(t,r,{get:()=>e[r],enumerable:!(s=u(e,r))||s.enumerable});return t};var d=(t,e,n)=>(n=t!=null?g(h(t)):{},i(e||!t||!t.__esModule?o(n,\"default\",{value:t,enumerable:!0}):n,t)),_=t=>i(o({},\"__esModule\",{value:!0}),t);var c=f((F,p)=>{p.exports=_jsx_runtime});var D={};b(D,{default:()=>l,frontmatter:()=>j});var a=d(c()),j={title:\"Sahwa\",description:\"A personal national website For blogging and infographic\",thumbnail:\"/Imgs/sahwa.png\",website:\"https://sahwa-qwmy.vercel.app/\",Protype:\"Web Development\",Date:\"2023-10-03T21:00:00.000Z\",stack:[\"Nextjs 13\"]};function m(t){return(0,a.jsx)(a.Fragment,{})}function l(t={}){let{wrapper:e}=t.components||{};return e?(0,a.jsx)(e,{...t,children:(0,a.jsx)(m,{...t})}):m(t)}return _(D);})();\n;return Component;"
+    },
+    "_id": "portfolio/web/sahwa.mdx",
+    "_raw": {
+      "sourceFilePath": "portfolio/web/sahwa.mdx",
+      "sourceFileName": "sahwa.mdx",
+      "sourceFileDir": "portfolio/web",
+      "contentType": "mdx",
+      "flattenedPath": "portfolio/web/sahwa"
+    },
+    "type": "ProtoWeb",
+    "slug": "/portfolio/web/sahwa",
+    "slugAsParams": "web/sahwa"
+  },
+  {
+    "title": "Wai Masr",
+    "description": "A nationalism platform that provides clear and informative information about the Egyptian history and identity and posting opinions",
+    "thumbnail": "/Imgs/wai-masr.jpg",
+    "Protype": "Web Development",
+    "Date": "2021-08-12T21:00:00.000Z",
+    "stack": [
+      "Sveltekit",
+      "javascript\r"
+    ],
+    "website": "https://wai-masr.vercel.app",
+    "published": true,
+    "body": {
+      "raw": "",
+      "code": "var Component=(()=>{var d=Object.create;var r=Object.defineProperty;var u=Object.getOwnPropertyDescriptor;var f=Object.getOwnPropertyNames;var x=Object.getPrototypeOf,g=Object.prototype.hasOwnProperty;var h=(t,e)=>()=>(e||t((e={exports:{}}).exports,e),e.exports),v=(t,e)=>{for(var n in e)r(t,n,{get:e[n],enumerable:!0})},s=(t,e,n,o)=>{if(e&&typeof e==\"object\"||typeof e==\"function\")for(let i of f(e))!g.call(t,i)&&i!==n&&r(t,i,{get:()=>e[i],enumerable:!(o=u(e,i))||o.enumerable});return t};var j=(t,e,n)=>(n=t!=null?d(x(t)):{},s(e||!t||!t.__esModule?r(n,\"default\",{value:t,enumerable:!0}):n,t)),y=t=>s(r({},\"__esModule\",{value:!0}),t);var p=h((D,m)=>{m.exports=_jsx_runtime});var b={};v(b,{default:()=>l,frontmatter:()=>_});var a=j(p()),_={title:\"Wai Masr\",description:\"A nationalism platform that provides clear and informative information about the Egyptian history and identity and posting opinions\",thumbnail:\"/Imgs/wai-masr.jpg\",website:\"https://wai-masr.vercel.app\",Protype:\"Web Development\",Date:\"2021-08-12T21:00:00.000Z\",stack:[\"Sveltekit\",\"javascript\"]};function c(t){return(0,a.jsx)(a.Fragment,{})}function l(t={}){let{wrapper:e}=t.components||{};return e?(0,a.jsx)(e,{...t,children:(0,a.jsx)(c,{...t})}):c(t)}return y(b);})();\n;return Component;"
+    },
+    "_id": "portfolio/web/wai-masr.mdx",
+    "_raw": {
+      "sourceFilePath": "portfolio/web/wai-masr.mdx",
+      "sourceFileName": "wai-masr.mdx",
+      "sourceFileDir": "portfolio/web",
+      "contentType": "mdx",
+      "flattenedPath": "portfolio/web/wai-masr"
+    },
+    "type": "ProtoWeb",
+    "slug": "/portfolio/web/wai-masr",
+    "slugAsParams": "web/wai-masr"
+  },
+  {
+    "title": "Yalla Florence",
+    "description": "A responsive one-page landing site built with Next.js 14 for Yalla Florence, showcasing curated Arabic-guided travel experiences in Florence.",
+    "thumbnail": "/Imgs/yalla-florence.png",
+    "Protype": "Web Development",
+    "Date": "2025-05-30T21:00:00.000Z",
+    "stack": [
+      "Nextjs 15\r"
+    ],
+    "website": "https://www.yallaflorence.com/",
+    "published": true,
+    "body": {
+      "raw": "<img src=\"https://mir-s3-cdn-cf.behance.net/project_modules/fs/372905227162459.683af3f53b7af.png\" alt=\"Header logo\" width=\"1804\" height=\"1804\" loading=\"lazy\" />\r\n<img src=\"https://mir-s3-cdn-cf.behance.net/project_modules/fs/42d5c6227162459.683afa7f1c167.png\" alt=\"PC Mockup\" width=\"1804\" height=\"1804\" loading=\"lazy\" />\r\n<img src=\"https://mir-s3-cdn-cf.behance.net/project_modules/fs/2b4ecd227162459.683afa7f1ba73.png\" alt=\"Mobile Mockup\" width=\"1804\" height=\"1804\" loading=\"lazy\" />\r\n<img src=\"https://mir-s3-cdn-cf.behance.net/project_modules/fs/0e8066227162459.683afa7f1b237.png\" alt=\"Website Screenshots\" width=\"1804\" height=\"1804\" loading=\"lazy\" />\r\n<img src=\"https://mir-s3-cdn-cf.behance.net/project_modules/fs/b74ed9227162459.683afa7f1c63a.png\" alt=\"Website Screenshots 45 degree\" width=\"1804\" height=\"1804\" loading=\"lazy\" />\r\n<img src=\"https://mir-s3-cdn-cf.behance.net/project_modules/fs/81b9e6227162459.683afa7f1cb15.png\" alt=\"Website Screenshot full\" width=\"1804\" height=\"1804\" loading=\"lazy\" />\r\n<img src=\"https://mir-s3-cdn-cf.behance.net/project_modules/fs/da5783227162459.683afa7f1aca3.png\" alt=\"Thank you\" width=\"1804\" height=\"1804\" loading=\"lazy\" />",
+      "code": "var Component=(()=>{var f=Object.create;var c=Object.defineProperty;var g=Object.getOwnPropertyDescriptor;var p=Object.getOwnPropertyNames;var m=Object.getPrototypeOf,b=Object.prototype.hasOwnProperty;var u=(e,t)=>()=>(t||e((t={exports:{}}).exports,t),t.exports),j=(e,t)=>{for(var a in t)c(e,a,{get:t[a],enumerable:!0})},o=(e,t,a,i)=>{if(t&&typeof t==\"object\"||typeof t==\"function\")for(let s of p(t))!b.call(e,s)&&s!==a&&c(e,s,{get:()=>t[s],enumerable:!(i=g(t,s))||i.enumerable});return e};var w=(e,t,a)=>(a=e!=null?f(m(e)):{},o(t||!e||!e.__esModule?c(a,\"default\",{value:e,enumerable:!0}):a,e)),_=e=>o(c({},\"__esModule\",{value:!0}),e);var l=u((M,r)=>{r.exports=_jsx_runtime});var y={};j(y,{default:()=>d,frontmatter:()=>x});var n=w(l()),x={title:\"Yalla Florence\",description:\"A responsive one-page landing site built with Next.js 14 for Yalla Florence, showcasing curated Arabic-guided travel experiences in Florence.\",thumbnail:\"/Imgs/yalla-florence.png\",website:\"https://www.yallaflorence.com/\",Protype:\"Web Development\",Date:\"2025-05-30T21:00:00.000Z\",stack:[\"Nextjs 15\"]};function h(e){return(0,n.jsxs)(n.Fragment,{children:[(0,n.jsx)(\"img\",{src:\"https://mir-s3-cdn-cf.behance.net/project_modules/fs/372905227162459.683af3f53b7af.png\",alt:\"Header logo\",width:\"1804\",height:\"1804\",loading:\"lazy\"}),`\n`,(0,n.jsx)(\"img\",{src:\"https://mir-s3-cdn-cf.behance.net/project_modules/fs/42d5c6227162459.683afa7f1c167.png\",alt:\"PC Mockup\",width:\"1804\",height:\"1804\",loading:\"lazy\"}),`\n`,(0,n.jsx)(\"img\",{src:\"https://mir-s3-cdn-cf.behance.net/project_modules/fs/2b4ecd227162459.683afa7f1ba73.png\",alt:\"Mobile Mockup\",width:\"1804\",height:\"1804\",loading:\"lazy\"}),`\n`,(0,n.jsx)(\"img\",{src:\"https://mir-s3-cdn-cf.behance.net/project_modules/fs/0e8066227162459.683afa7f1b237.png\",alt:\"Website Screenshots\",width:\"1804\",height:\"1804\",loading:\"lazy\"}),`\n`,(0,n.jsx)(\"img\",{src:\"https://mir-s3-cdn-cf.behance.net/project_modules/fs/b74ed9227162459.683afa7f1c63a.png\",alt:\"Website Screenshots 45 degree\",width:\"1804\",height:\"1804\",loading:\"lazy\"}),`\n`,(0,n.jsx)(\"img\",{src:\"https://mir-s3-cdn-cf.behance.net/project_modules/fs/81b9e6227162459.683afa7f1cb15.png\",alt:\"Website Screenshot full\",width:\"1804\",height:\"1804\",loading:\"lazy\"}),`\n`,(0,n.jsx)(\"img\",{src:\"https://mir-s3-cdn-cf.behance.net/project_modules/fs/da5783227162459.683afa7f1aca3.png\",alt:\"Thank you\",width:\"1804\",height:\"1804\",loading:\"lazy\"})]})}function d(e={}){let{wrapper:t}=e.components||{};return t?(0,n.jsx)(t,{...e,children:(0,n.jsx)(h,{...e})}):h(e)}return _(y);})();\n;return Component;"
+    },
+    "_id": "portfolio/web/yalla-florence.mdx",
+    "_raw": {
+      "sourceFilePath": "portfolio/web/yalla-florence.mdx",
+      "sourceFileName": "yalla-florence.mdx",
+      "sourceFileDir": "portfolio/web",
+      "contentType": "mdx",
+      "flattenedPath": "portfolio/web/yalla-florence"
+    },
+    "type": "ProtoWeb",
+    "slug": "/portfolio/web/yalla-florence",
+    "slugAsParams": "web/yalla-florence"
+  }
+]

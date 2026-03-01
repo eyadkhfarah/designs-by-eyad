@@ -1,0 +1,27 @@
+{
+  "title": "Lokoji",
+  "description": "Lokoji a name rooted in the ancient Coptic language, meaning \"Gold.\" Just as gold symbolizes enduring value and prosperity, Lokoji emerges as a dynamic hub for economic insight, bridging Egypt’s vibrant economy with the complexities of global markets.",
+  "thumbnail": "/Imgs/lokoji.jpg",
+  "Protype": "Web Design",
+  "Date": "2020-12-01T22:00:00.000Z",
+  "stack": [
+    "Nextjs 13\r"
+  ],
+  "website": "https://lokoji.vercel.app/",
+  "published": true,
+  "body": {
+    "raw": "",
+    "code": "var Component=(()=>{var p=Object.create;var a=Object.defineProperty;var u=Object.getOwnPropertyDescriptor;var d=Object.getOwnPropertyNames;var j=Object.getPrototypeOf,x=Object.prototype.hasOwnProperty;var b=(t,e)=>()=>(e||t((e={exports:{}}).exports,e),e.exports),h=(t,e)=>{for(var o in e)a(t,o,{get:e[o],enumerable:!0})},s=(t,e,o,r)=>{if(e&&typeof e==\"object\"||typeof e==\"function\")for(let i of d(e))!x.call(t,i)&&i!==o&&a(t,i,{get:()=>e[i],enumerable:!(r=u(e,i))||r.enumerable});return t};var f=(t,e,o)=>(o=t!=null?p(j(t)):{},s(e||!t||!t.__esModule?a(o,\"default\",{value:t,enumerable:!0}):o,t)),k=t=>s(a({},\"__esModule\",{value:!0}),t);var c=b((L,m)=>{m.exports=_jsx_runtime});var _={};h(_,{default:()=>l,frontmatter:()=>y});var n=f(c()),y={title:\"Lokoji\",description:'Lokoji a name rooted in the ancient Coptic language, meaning \"Gold.\" Just as gold symbolizes enduring value and prosperity, Lokoji emerges as a dynamic hub for economic insight, bridging Egypt\\u2019s vibrant economy with the complexities of global markets.',thumbnail:\"/Imgs/lokoji.jpg\",website:\"https://lokoji.vercel.app/\",Protype:\"Web Design\",Date:\"2020-12-01T22:00:00.000Z\",stack:[\"Nextjs 13\"]};function g(t){return(0,n.jsx)(n.Fragment,{})}function l(t={}){let{wrapper:e}=t.components||{};return e?(0,n.jsx)(e,{...t,children:(0,n.jsx)(g,{...t})}):g(t)}return k(_);})();\n;return Component;"
+  },
+  "_id": "portfolio/web/lokoji.mdx",
+  "_raw": {
+    "sourceFilePath": "portfolio/web/lokoji.mdx",
+    "sourceFileName": "lokoji.mdx",
+    "sourceFileDir": "portfolio/web",
+    "contentType": "mdx",
+    "flattenedPath": "portfolio/web/lokoji"
+  },
+  "type": "ProtoWeb",
+  "slug": "/portfolio/web/lokoji",
+  "slugAsParams": "web/lokoji"
+}

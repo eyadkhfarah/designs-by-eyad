@@ -1,0 +1,28 @@
+{
+  "title": "Cyber Hunter",
+  "description": "A cutting-edge cybersecurity platform designed for Egyptian security teams, featuring real-time threat detection, vulnerability assessment, and incident response tools built with Next.js 15 and Notion integration.",
+  "thumbnail": "/Imgs/cyber-hunter.webp",
+  "Protype": "Web Development",
+  "Date": "2026-01-28T22:00:00.000Z",
+  "stack": [
+    "Nextjs 15",
+    "Notion\r"
+  ],
+  "website": "https://cyberhuntergp.com/",
+  "published": true,
+  "body": {
+    "raw": "\r\n<img src=\"https://mir-s3-cdn-cf.behance.net/project_modules/fs/47a829245018231.69a49182cf752.png\" alt=\"Header\" width=\"1804\" height=\"1804\" loading=\"lazy\" />\r\n<img src=\"https://mir-s3-cdn-cf.behance.net/project_modules/fs/eec783245018231.69a49b61f1922.png\" alt=\"Logo\" width=\"1804\" height=\"1804\" loading=\"lazy\" />\r\n<img src=\"https://mir-s3-cdn-cf.behance.net/project_modules/fs/abde5a245018231.69a49182cef62.png\" alt=\"Web design\" width=\"1804\" height=\"1804\" loading=\"lazy\" />\r\n<img src=\"https://mir-s3-cdn-cf.behance.net/project_modules/fs/32c55f245018231.69a49b61f11d2.png\" alt=\"Desktop Mockup\" width=\"1804\" height=\"1804\" loading=\"lazy\" />\r\n<img src=\"https://mir-s3-cdn-cf.behance.net/project_modules/fs/547238245018231.69a49182d02d8.png\" alt=\"Mobile Mockup\" width=\"1804\" height=\"1804\" loading=\"lazy\" />\r\n<img src=\"https://mir-s3-cdn-cf.behance.net/project_modules/fs/87c033245018231.69a49182cfcaa.png\" alt=\"Multi Devices Mockup\" width=\"1804\" height=\"1804\" loading=\"lazy\" />\r\n<img src=\"https://mir-s3-cdn-cf.behance.net/project_modules/fs/16468e245018231.69a49182ce2fb.png\" alt=\"Web Design Full\" width=\"1804\" height=\"1804\" loading=\"lazy\" />\r\n<img src=\"https://mir-s3-cdn-cf.behance.net/project_modules/fs/f20c08245018231.69a49182ce8e1.png\" alt=\"Thank You\" width=\"1804\" height=\"1804\" loading=\"lazy\" />",
+    "code": "var Component=(()=>{var g=Object.create;var c=Object.defineProperty;var p=Object.getOwnPropertyDescriptor;var m=Object.getOwnPropertyNames;var f=Object.getPrototypeOf,u=Object.prototype.hasOwnProperty;var b=(e,t)=>()=>(t||e((t={exports:{}}).exports,t),t.exports),y=(e,t)=>{for(var i in t)c(e,i,{get:t[i],enumerable:!0})},r=(e,t,i,a)=>{if(t&&typeof t==\"object\"||typeof t==\"function\")for(let s of m(t))!u.call(e,s)&&s!==i&&c(e,s,{get:()=>t[s],enumerable:!(a=p(t,s))||a.enumerable});return e};var j=(e,t,i)=>(i=e!=null?g(f(e)):{},r(t||!e||!e.__esModule?c(i,\"default\",{value:e,enumerable:!0}):i,e)),_=e=>r(c({},\"__esModule\",{value:!0}),e);var d=b((M,o)=>{o.exports=_jsx_runtime});var x={};y(x,{default:()=>l,frontmatter:()=>w});var n=j(d()),w={title:\"Cyber Hunter\",description:\"A cutting-edge cybersecurity platform designed for Egyptian security teams, featuring real-time threat detection, vulnerability assessment, and incident response tools built with Next.js 15 and Notion integration.\",thumbnail:\"/Imgs/cyber-hunter.webp\",website:\"https://cyberhuntergp.com/\",Protype:\"Web Development\",Date:\"2026-01-28T22:00:00.000Z\",stack:[\"Nextjs 15\",\"Notion\"]};function h(e){return(0,n.jsxs)(n.Fragment,{children:[(0,n.jsx)(\"img\",{src:\"https://mir-s3-cdn-cf.behance.net/project_modules/fs/47a829245018231.69a49182cf752.png\",alt:\"Header\",width:\"1804\",height:\"1804\",loading:\"lazy\"}),`\n`,(0,n.jsx)(\"img\",{src:\"https://mir-s3-cdn-cf.behance.net/project_modules/fs/eec783245018231.69a49b61f1922.png\",alt:\"Logo\",width:\"1804\",height:\"1804\",loading:\"lazy\"}),`\n`,(0,n.jsx)(\"img\",{src:\"https://mir-s3-cdn-cf.behance.net/project_modules/fs/abde5a245018231.69a49182cef62.png\",alt:\"Web design\",width:\"1804\",height:\"1804\",loading:\"lazy\"}),`\n`,(0,n.jsx)(\"img\",{src:\"https://mir-s3-cdn-cf.behance.net/project_modules/fs/32c55f245018231.69a49b61f11d2.png\",alt:\"Desktop Mockup\",width:\"1804\",height:\"1804\",loading:\"lazy\"}),`\n`,(0,n.jsx)(\"img\",{src:\"https://mir-s3-cdn-cf.behance.net/project_modules/fs/547238245018231.69a49182d02d8.png\",alt:\"Mobile Mockup\",width:\"1804\",height:\"1804\",loading:\"lazy\"}),`\n`,(0,n.jsx)(\"img\",{src:\"https://mir-s3-cdn-cf.behance.net/project_modules/fs/87c033245018231.69a49182cfcaa.png\",alt:\"Multi Devices Mockup\",width:\"1804\",height:\"1804\",loading:\"lazy\"}),`\n`,(0,n.jsx)(\"img\",{src:\"https://mir-s3-cdn-cf.behance.net/project_modules/fs/16468e245018231.69a49182ce2fb.png\",alt:\"Web Design Full\",width:\"1804\",height:\"1804\",loading:\"lazy\"}),`\n`,(0,n.jsx)(\"img\",{src:\"https://mir-s3-cdn-cf.behance.net/project_modules/fs/f20c08245018231.69a49182ce8e1.png\",alt:\"Thank You\",width:\"1804\",height:\"1804\",loading:\"lazy\"})]})}function l(e={}){let{wrapper:t}=e.components||{};return t?(0,n.jsx)(t,{...e,children:(0,n.jsx)(h,{...e})}):h(e)}return _(x);})();\n;return Component;"
+  },
+  "_id": "portfolio/web/cyber-hunter-eg.mdx",
+  "_raw": {
+    "sourceFilePath": "portfolio/web/cyber-hunter-eg.mdx",
+    "sourceFileName": "cyber-hunter-eg.mdx",
+    "sourceFileDir": "portfolio/web",
+    "contentType": "mdx",
+    "flattenedPath": "portfolio/web/cyber-hunter-eg"
+  },
+  "type": "ProtoWeb",
+  "slug": "/portfolio/web/cyber-hunter-eg",
+  "slugAsParams": "web/cyber-hunter-eg"
+}

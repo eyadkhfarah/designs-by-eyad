@@ -1,0 +1,27 @@
+{
+  "title": "Sahwa",
+  "description": "A personal national website For blogging and infographic",
+  "thumbnail": "/Imgs/sahwa.png",
+  "Protype": "Web Development",
+  "Date": "2023-10-03T21:00:00.000Z",
+  "stack": [
+    "Nextjs 13\r"
+  ],
+  "website": "https://sahwa-qwmy.vercel.app/",
+  "published": true,
+  "body": {
+    "raw": "",
+    "code": "var Component=(()=>{var g=Object.create;var o=Object.defineProperty;var u=Object.getOwnPropertyDescriptor;var x=Object.getOwnPropertyNames;var h=Object.getPrototypeOf,w=Object.prototype.hasOwnProperty;var f=(t,e)=>()=>(e||t((e={exports:{}}).exports,e),e.exports),b=(t,e)=>{for(var n in e)o(t,n,{get:e[n],enumerable:!0})},i=(t,e,n,s)=>{if(e&&typeof e==\"object\"||typeof e==\"function\")for(let r of x(e))!w.call(t,r)&&r!==n&&o(t,r,{get:()=>e[r],enumerable:!(s=u(e,r))||s.enumerable});return t};var d=(t,e,n)=>(n=t!=null?g(h(t)):{},i(e||!t||!t.__esModule?o(n,\"default\",{value:t,enumerable:!0}):n,t)),_=t=>i(o({},\"__esModule\",{value:!0}),t);var c=f((F,p)=>{p.exports=_jsx_runtime});var D={};b(D,{default:()=>l,frontmatter:()=>j});var a=d(c()),j={title:\"Sahwa\",description:\"A personal national website For blogging and infographic\",thumbnail:\"/Imgs/sahwa.png\",website:\"https://sahwa-qwmy.vercel.app/\",Protype:\"Web Development\",Date:\"2023-10-03T21:00:00.000Z\",stack:[\"Nextjs 13\"]};function m(t){return(0,a.jsx)(a.Fragment,{})}function l(t={}){let{wrapper:e}=t.components||{};return e?(0,a.jsx)(e,{...t,children:(0,a.jsx)(m,{...t})}):m(t)}return _(D);})();\n;return Component;"
+  },
+  "_id": "portfolio/web/sahwa.mdx",
+  "_raw": {
+    "sourceFilePath": "portfolio/web/sahwa.mdx",
+    "sourceFileName": "sahwa.mdx",
+    "sourceFileDir": "portfolio/web",
+    "contentType": "mdx",
+    "flattenedPath": "portfolio/web/sahwa"
+  },
+  "type": "ProtoWeb",
+  "slug": "/portfolio/web/sahwa",
+  "slugAsParams": "web/sahwa"
+}

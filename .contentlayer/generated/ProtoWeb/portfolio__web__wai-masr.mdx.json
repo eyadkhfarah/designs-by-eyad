@@ -1,0 +1,28 @@
+{
+  "title": "Wai Masr",
+  "description": "A nationalism platform that provides clear and informative information about the Egyptian history and identity and posting opinions",
+  "thumbnail": "/Imgs/wai-masr.jpg",
+  "Protype": "Web Development",
+  "Date": "2021-08-12T21:00:00.000Z",
+  "stack": [
+    "Sveltekit",
+    "javascript\r"
+  ],
+  "website": "https://wai-masr.vercel.app",
+  "published": true,
+  "body": {
+    "raw": "",
+    "code": "var Component=(()=>{var d=Object.create;var r=Object.defineProperty;var u=Object.getOwnPropertyDescriptor;var f=Object.getOwnPropertyNames;var x=Object.getPrototypeOf,g=Object.prototype.hasOwnProperty;var h=(t,e)=>()=>(e||t((e={exports:{}}).exports,e),e.exports),v=(t,e)=>{for(var n in e)r(t,n,{get:e[n],enumerable:!0})},s=(t,e,n,o)=>{if(e&&typeof e==\"object\"||typeof e==\"function\")for(let i of f(e))!g.call(t,i)&&i!==n&&r(t,i,{get:()=>e[i],enumerable:!(o=u(e,i))||o.enumerable});return t};var j=(t,e,n)=>(n=t!=null?d(x(t)):{},s(e||!t||!t.__esModule?r(n,\"default\",{value:t,enumerable:!0}):n,t)),y=t=>s(r({},\"__esModule\",{value:!0}),t);var p=h((D,m)=>{m.exports=_jsx_runtime});var b={};v(b,{default:()=>l,frontmatter:()=>_});var a=j(p()),_={title:\"Wai Masr\",description:\"A nationalism platform that provides clear and informative information about the Egyptian history and identity and posting opinions\",thumbnail:\"/Imgs/wai-masr.jpg\",website:\"https://wai-masr.vercel.app\",Protype:\"Web Development\",Date:\"2021-08-12T21:00:00.000Z\",stack:[\"Sveltekit\",\"javascript\"]};function c(t){return(0,a.jsx)(a.Fragment,{})}function l(t={}){let{wrapper:e}=t.components||{};return e?(0,a.jsx)(e,{...t,children:(0,a.jsx)(c,{...t})}):c(t)}return y(b);})();\n;return Component;"
+  },
+  "_id": "portfolio/web/wai-masr.mdx",
+  "_raw": {
+    "sourceFilePath": "portfolio/web/wai-masr.mdx",
+    "sourceFileName": "wai-masr.mdx",
+    "sourceFileDir": "portfolio/web",
+    "contentType": "mdx",
+    "flattenedPath": "portfolio/web/wai-masr"
+  },
+  "type": "ProtoWeb",
+  "slug": "/portfolio/web/wai-masr",
+  "slugAsParams": "web/wai-masr"
+}
