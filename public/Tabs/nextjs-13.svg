@@ -4,7 +4,7 @@
 	 viewBox="0 0 2500 508" style="enable-background:new 0 0 2500 508;" xml:space="preserve">
 <style type="text/css">
 	.st0{fill:#FFFFFF;}
-	.st1{fill-rule:evenodd;clip-rule:evenodd;fill:#FFFFFF;}
+	.st1{fillRule:evenodd;clipRule:evenodd;fill:#FFFFFF;}
 </style>
 <path class="st0" d="M1661.9,2.2h435.5v80.4h-172.7v422.8h-86.4V82.6h-176.3V2.2z M945.8,2.2v80.4h-349v129.3h280.7v80.4H596.7V425
 	h349v80.4H510.3V82.6h0V2.2H945.8z M1163.2,2.4h-113L1455,505.6h113.4l-202.5-251.4L1568.1,2.8L1455,3l-145.7,180.9L1163.2,2.4z

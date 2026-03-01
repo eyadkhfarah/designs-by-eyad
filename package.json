@@ -14,8 +14,8 @@
     "@builder.io/partytown": "^0.10.3",
     "@mdx-js/loader": "^3.0.0",
     "@mdx-js/react": "^3.0.0",
-    "@next/mdx": "15.1.6",
-    "@next/third-parties": "15.1.6",
+    "@next/mdx": "16.1.6",
+    "@next/third-parties": "16.1.6",
     "@notion-render/bookmark-plugin": "^0.0.2",
     "@notion-render/client": "^0.0.2",
     "@notion-render/hljs-plugin": "^0.0.2",
@@ -38,10 +38,10 @@
     "lucide-react": "^0.474.0",
     "marked": "^15.0.8",
     "motion": "^11.15.0",
-    "next": "^16.1.6",
+    "next": "16.1.6",
     "next-contentlayer2": "^0.5.8",
-    "next-intl": "^3.26.5",
-    "next-mdx-remote": "^5.0.0",
+    "next-intl": "^4.0.0",
+    "next-mdx-remote": "^6.0.0",
     "next-seo": "^6.0.0",
     "next-share": "^0.27.0",
     "notion-api-worker": "^0.1.0",
@@ -76,7 +76,7 @@
     "@types/rss": "^0.0.32",
     "autoprefixer": "^10.4.16",
     "eslint": "^9.39.2",
-    "eslint-config-next": "15.1.6",
+    "eslint-config-next": "16.1.6",
     "eslint-plugin-react": "^7.37.5",
     "globals": "^16.0.0",
     "postcss": "^8.5.1",
@@ -86,17 +86,5 @@
   },
   "overrides": {
     "@types/react": "19.0.8"
-  },
-  "description": "Welcome to **Desings By Eyad**, an open-source graphic design portfolio application built with **Next.js**, **Tailwind CSS**, and **TypeScript**. This project combines cutting-edge web technologies to provide a seamless and modern design platform.",
-  "main": "contentlayer.config.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/eyadkhfarah/designs-by-eyad.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/eyadkhfarah/designs-by-eyad/issues"
-  },
-  "homepage": "https://github.com/eyadkhfarah/designs-by-eyad#readme"
+  }
 }

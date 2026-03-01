@@ -1,14 +1,11 @@
-const { withContentlayer } = require('next-contentlayer2');
-import createNextIntlPlugin from "next-intl/plugin";
+import { withContentlayer } from "next-contentlayer2";
+import {NextConfig} from 'next';
+import createNextIntlPlugin from 'next-intl/plugin';
 
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  turbo: {
-    resolveExtensions: [".mdx", ".tsx", ".ts", ".jsx", ".js", ".mjs", ".json"],
-  },
-  experimental: {
-    nextScriptWorkers: true,
-  },
+const nextConfig: NextConfig = {
+  /* config options here */
+  productionBrowserSourceMaps: false,
+
   images: {
     remotePatterns: [
       { protocol: "https", hostname: "i.imgur.com" },
@@ -34,7 +31,8 @@ const nextConfig = {
         headers: [
           {
             key: "Content-Security-Policy",
-            value: "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com;",
+            value:
+              "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com;",
           },
           { key: "Access-Control-Allow-Credentials", value: "true" },
           { key: "Access-Control-Allow-Origin", value: "*" }, // Use '*' or specify allowed origins
@@ -44,7 +42,8 @@ const nextConfig = {
           },
           {
             key: "Access-Control-Allow-Headers",
-            value: "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version",
+            value:
+              "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version",
           },
         ],
       },
