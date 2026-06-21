@@ -41,7 +41,7 @@ const FAQSection: React.FC = () => {
               aria-controls={`answer-${index}`}
             >
               <span className={cn(
-                "font-['Bebas_Neue',sans-serif] uppercase leading-[1.1] tracking-[0.02em] transition-colors duration-300 pr-8",
+                "font-bebas uppercase leading-[1.1] tracking-[0.02em] transition-colors duration-300 pr-8",
                 "text-2xl md:text-4xl",
                 isOpen ? "text-primary" : "text-white/80 group-hover:text-white"
               )}>

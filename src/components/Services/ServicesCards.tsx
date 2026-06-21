@@ -84,7 +84,7 @@ export default function ServicesCards({ locale }: Props) {
 
             {/* Bottom Section: Typography */}
             <div className="flex flex-col gap-4">
-              <h3 className="font-['Bebas_Neue',sans-serif] uppercase text-4xl md:text-5xl leading-[0.85] tracking-[-0.01em] text-white group-hover:text-primary transition-colors duration-300">
+              <h3 className="font-bebas uppercase text-4xl md:text-5xl leading-[0.85] tracking-[-0.01em] text-white group-hover:text-primary transition-colors duration-300">
                 {t(category.name)}
               </h3>
               <p className="text-white/40 text-[15px] leading-relaxed max-w-sm">

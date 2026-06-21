@@ -73,7 +73,7 @@ const navItems = NavListLang.filter((nav) => nav.link !== "/contact");
                 <span
                   aria-hidden="true"
                   class:list={[
-                    "font-['Bebas_Neue',sans-serif] text-4xl leading-none tabular-nums w-10 shrink-0",
+                    "font-bebas text-4xl leading-none tabular-nums w-10 shrink-0",
                     "transition-colors duration-200",
                     isActive ? "text-primary" : "text-white/10 group-hover:text-white/20",
                   ]}
@@ -84,7 +84,7 @@ const navItems = NavListLang.filter((nav) => nav.link !== "/contact");
                 <!-- Label -->
                 <span
                   class:list={[
-                    "font-['Bebas_Neue',sans-serif] uppercase tracking-tight leading-none",
+                    "font-bebas uppercase tracking-tight leading-none",
                     "transition-colors duration-200",
                   ]}
                   style="font-size: clamp(36px, 8vw, 52px);"
@@ -119,7 +119,7 @@ const navItems = NavListLang.filter((nav) => nav.link !== "/contact");
                bg-primary px-8 py-7
                hover:bg-white transition-colors duration-300"
       >
-        <span class="font-['Bebas_Neue',sans-serif] uppercase text-4xl leading-none tracking-tight text-black">
+        <span class="font-bebas uppercase text-4xl leading-none tracking-tight text-black">
           {t("MenuList.contact")}
         </span>
           <RiArrowRightSLine className="group-hover:translate-x-1 transition-transform duration-200" />

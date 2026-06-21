@@ -147,7 +147,7 @@ export default function ToolsTabs({ locale }: Props) {
           <span className="font-mono text-[11px] tracking-[0.25em] uppercase text-white/30">
             {t("Span.Design")} / {t("Span.Development")}
           </span>
-          <h2 className="font-['Bebas_Neue',sans-serif] uppercase text-[clamp(48px,8vw,100px)] leading-[0.85] tracking-[-0.01em] text-white">
+          <h2 className="font-bebas uppercase text-[clamp(48px,8vw,100px)] leading-[0.85] tracking-[-0.01em] text-white">
             Tools I <span className="text-primary">Use</span>
           </h2>
         </div>

@@ -21,7 +21,7 @@ export default function ArtworkPrice({ locale }: Props) {
             <span className="font-mono text-[11px] tracking-[0.25em] uppercase text-white/30">
               Pricing Structure
             </span>
-            <h2 className="font-['Bebas_Neue',sans-serif] uppercase text-[clamp(48px,8vw,100px)] leading-[0.85] tracking-[-0.01em] text-white">
+            <h2 className="font-bebas uppercase text-[clamp(48px,8vw,100px)] leading-[0.85] tracking-[-0.01em] text-white">
               {t("ArtworkPrice.title")}
             </h2>
           </div>
@@ -53,7 +53,7 @@ export default function ArtworkPrice({ locale }: Props) {
                 )}
 
                 <div className="mb-12">
-                  <h3 className="font-['Bebas_Neue',sans-serif] uppercase text-3xl text-white mb-2">
+                  <h3 className="font-bebas uppercase text-3xl text-white mb-2">
                     {t(plan.title)}
                   </h3>
                   <p className="text-white/30 text-[13px] leading-relaxed">
