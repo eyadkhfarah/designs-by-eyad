@@ -23,8 +23,10 @@ const renderIcon =
     href={link}
     target={target ? "_blank" : "_self"}
     rel={target ? "noreferrer" : undefined}
-    class={"relative overflow-hidden px-8 py-4 bg-primary text-black  flex justify-center items-center gap-3 w-fit h-fit font-arabicBold uppercase tracking-widest text-sm rounded-2xl shadow-[0_10px_20px_-10px_rgba(229,254,0,0.3)] hover:shadow-[0_15px_30px_-10px_rgba(229,254,0,0.5)] transition-all duration-300" +
-      className}
+    class:list={[
+      "relative overflow-hidden px-8 py-4 bg-primary text-black flex justify-center items-center gap-3 w-fit h-fit font-arabicBold uppercase tracking-widest text-sm rounded-2xl shadow-[0_10px_20px_-10px_rgba(229,254,0,0.3)] hover:shadow-[0_15px_30px_-10px_rgba(229,254,0,0.5)] transition-all duration-300",
+      className,
+    ]}
   >
     {renderIcon}
     <span class="relative z-10">{text}</span>
