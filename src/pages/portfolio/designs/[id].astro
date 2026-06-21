@@ -1,5 +1,5 @@
 ---
-import PrimaryBtn from "@/components/Buttons/PrimaryBtn";
+import PrimaryBtn from "@/components/Buttons/PrimaryBtn.astro";
 import Layout from "@/layouts/Layout.astro";
 import { RiArrowLeftLine } from "@remixicon/react";
 import { Image } from "astro:assets";
@@ -155,7 +155,6 @@ const shortDate = new Date(design.data.Date).toLocaleDateString("en-US", {
             target={true}
             link={`${design.data.website}`}
             text="View on Behance"
-            client:visible
           />
         </div>
       </div>

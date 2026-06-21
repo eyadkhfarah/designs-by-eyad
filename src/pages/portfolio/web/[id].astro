@@ -1,5 +1,5 @@
 ---
-import PrimaryBtn from "@/components/Buttons/PrimaryBtn";
+import PrimaryBtn from "@/components/Buttons/PrimaryBtn.astro";
 import Layout from "@/layouts/Layout.astro";
 import { RiArrowLeftLine } from "@remixicon/react";
 import { Image } from "astro:assets";
@@ -150,7 +150,6 @@ const formattedDate = new Date(dateRaw).toLocaleDateString("en-US", {
             target={true}
             link={web.data.website ?? "#"}
             text="Launch Live Site"
-            client:visible
           />
         </div>
       </div>
