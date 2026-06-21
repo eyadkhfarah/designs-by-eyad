@@ -1,0 +1,42 @@
+---
+import { RiBehanceFill } from "@remixicon/react";
+
+interface Props {
+  link: string;
+  text: string;
+  target?: boolean;
+  className?: string;
+  icon?: any;  
+}
+
+const { link, text, target = false, className = "", icon: CustomIcon } = Astro.props;
+
+// Evaluate the condition here, but render the JSX in the template below
+const isBehance = text.toLowerCase().includes("behance");
+---
+
+<div class="w-fit">
+  <a
+    href={link}
+    target={target ? "_blank" : "_self"}
+    rel={target ? "noreferrer" : undefined}
+    class:list={[
+      "relative overflow-hidden px-8 py-4 bg-primary text-black flex justify-center items-center gap-3 w-fit h-fit font-arabicBold uppercase tracking-widest text-sm rounded-2xl shadow-[0_10px_20px_-10px_rgba(229,254,0,0.3)] hover:shadow-[0_15px_30px_-10px_rgba(229,254,0,0.5)] transition-all duration-300",
+      className
+    ]}
+  >
+    {/* 1. JSX rendering happens down here! */}
+    {CustomIcon ? (
+      <CustomIcon className="text-2xl" />
+    ) : isBehance ? (
+      <RiBehanceFill className="text-2xl" />
+    ) : null}
+
+    <span class="relative z-10">{text}</span>
+
+    <div
+      class="absolute inset-0 w-full h-full bg-linear-to-r from-transparent via-white/20 to-transparent -translate-x-full hover:animate-[shimmer_1.5s_infinite] pointer-events-none"
+    >
+    </div>
+  </a>
+</div>

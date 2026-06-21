@@ -1,0 +1,109 @@
+---
+import { NavContacts } from "@/lib/NavContact";
+import { RiFacebookCircleFill } from "@remixicon/react";
+import {
+  IconForms,
+  IconMessage2,
+  IconPhone,
+  IconUserDollar,
+} from "@tabler/icons-react";
+import { cn } from "@/lib/utils";
+
+const pathname = Astro.url.pathname;
+
+function getIcon(name: string) {
+  const n = name.toLowerCase();
+  if (n.includes("form"))    return IconForms;
+  if (n.includes("social"))  return RiFacebookCircleFill;
+  if (n.includes("email"))   return IconMessage2;
+  if (n.includes("phone"))   return IconPhone;
+  if (n.includes("purchas")) return IconUserDollar;
+  return null;
+}
+---
+
+<nav aria-label="Contact options" class="w-full">
+  <ul class="flex flex-col">
+    {NavContacts.map((item, i) => {
+      const fullLink = `/contact${item.link}`;
+      const isActive = pathname === fullLink;
+      const Icon = getIcon(item.name);
+      const index = String(i + 1).padStart(2, "0");
+
+      return (
+        <li class="relative">
+          <!-- Active bar -->
+          {isActive && (
+            <div class="absolute left-0 top-2 bottom-2 w-0.5 bg-primary rounded-full" />
+          )}
+
+          <a
+            href={fullLink}
+            aria-label={item.name}
+            aria-current={isActive ? "page" : undefined}
+            class={cn(
+              "nav-item group flex items-center gap-5 pl-6 pr-4 py-5",
+              "border-b border-white/5 last:border-b-0",
+              "transition-colors duration-200",
+              isActive ? "text-white" : "text-white/40 hover:text-white",
+            )}
+          >
+            <!-- Index number -->
+            <span
+              class={cn(
+                "font-['Bebas_Neue',sans-serif] text-2xl leading-none tabular-nums shrink-0",
+                "transition-colors duration-200",
+                isActive
+                  ? "text-primary"
+                  : "text-white/15 group-hover:text-primary/60",
+              )}
+              aria-hidden="true"
+            >
+              {index}
+            </span>
+
+            <!-- Divider tick -->
+            <span class="w-px h-6 bg-white/8 shrink-0" aria-hidden="true" />
+
+            <!-- Icon -->
+            {Icon && (
+              <span
+                class={cn(
+                  "shrink-0 transition-colors duration-200",
+                  isActive
+                    ? "text-primary"
+                    : "text-white/25 group-hover:text-white/60",
+                )}
+              >
+                <Icon size={18} />
+              </span>
+            )}
+
+            <!-- Label -->
+            <span class="text-sm font-bold uppercase tracking-[0.15em] flex-1">
+              {item.name}
+            </span>
+
+            <!-- Arrow — only visible on hover / active -->
+            <svg
+              class={cn(
+                "shrink-0 transition-all duration-200",
+                isActive
+                  ? "opacity-100 text-primary translate-x-0"
+                  : "opacity-0 text-white/30 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0",
+              )}
+              width="14" height="14" viewBox="0 0 14 14"
+              fill="none" aria-hidden="true"
+            >
+              <path
+                d="M2 7H12M12 7L7 2M12 7L7 12"
+                stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round"
+              />
+            </svg>
+          </a>
+        </li>
+      ); 
+    })}
+  </ul>
+</nav>
