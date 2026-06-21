@@ -1,19 +1,14 @@
-// @ts-check
+// astro.config.mjs
 import { defineConfig } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
-
 import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 import partytown from '@astrojs/partytown';
-
 import node from "@astrojs/node";
-
 import vercel from "@astrojs/vercel";
 
-const siteUrl =
-  import.meta.env.PUBLIC_DOMAIN_URL || "https://designs-by-eyad.vercel.app";
+const siteUrl = import.meta.env.PUBLIC_DOMAIN_URL || "https://designs-by-eyad.vercel.app";
 
-// https://astro.build/config
 export default defineConfig({
   i18n: {
     locales: ["ar", "en"],
@@ -25,12 +20,6 @@ export default defineConfig({
 
   vite: {
     plugins: [tailwindcss()],
-
-    resolve: {
-      alias: {
-        "@": "/src",
-      },
-    },
   },
 
   site: siteUrl,

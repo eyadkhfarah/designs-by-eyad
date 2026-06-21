@@ -1,5 +1,5 @@
 import { RiCheckLine } from "@remixicon/react";
-import PrimaryBtn from "../Buttons/PrimaryBtn";
+import PrimaryBtn from "@/components/Buttons/PrimaryBtn.astro";
 import { plans } from "../../lib/Prices";
 import { motion } from "framer-motion";
 import { useTranslations } from "@/utils/i18n";
