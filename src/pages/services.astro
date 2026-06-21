@@ -1,0 +1,153 @@
+---
+import ServicesCards from "@/components/Services/ServicesCards";
+import BrandFields from "@/components/Client/BrandFields.astro";
+import ToolsTabs from "@/components/Services/ToolsTabs";
+import Layout from "@/layouts/Layout.astro";
+import { useTranslations } from "@/utils/i18n";
+
+const t = useTranslations(Astro.currentLocale);
+---
+
+<Layout
+  title="Services | Brand Identity & Social Media Design — Designs By Eyad"
+  description="Offering graphic design services in Aswan, Egypt, including brand identity and social media design. Let's work together to transform your brand's visual communication."
+>
+  <main class="relative min-h-screen overflow-x-hidden">
+    <!-- ══════════════════════════════════════════
+         § 1  HERO
+    ══════════════════════════════════════════ -->
+    <section class="max-w-7xl mx-auto px-6 pt-40 pb-28">
+      <!-- Eyebrow -->
+      <p
+        class="font-mono text-[11px] tracking-[0.25em] uppercase text-white/30 mb-10"
+      >
+        What I Deliver
+      </p>
+
+      <!-- Split-stroke headline — the signature element -->
+      <h1
+        class="font-['Bebas_Neue',sans-serif] uppercase leading-[0.88] tracking-[-0.01em] mb-16"
+        style="font-size: clamp(72px, 12vw, 160px);"
+      >
+        <!-- "Crafting" — solid white -->
+        <span class="block text-white">Crafting</span>
+        <!-- Translation key — yellow stroke, no fill -->
+        <span
+          class="block"
+          style="-webkit-text-stroke: 2px #e5fe00; color: transparent;"
+        >
+          {t("ServicesPage.title")}
+        </span>
+      </h1>
+
+      <!-- Sub-line + scroll hint row -->
+      <div
+        class="flex flex-col md:flex-row md:items-end justify-between gap-8 border-t border-white/5 pt-10"
+      >
+        <p class="text-white/40 text-base leading-relaxed max-w-sm">
+          Brand identity, social media, UI/UX, and web — built for businesses
+          that want to be remembered.
+        </p>
+        <div class="flex items-center gap-3 text-white/20 shrink-0">
+          <span class="text-[10px] font-mono uppercase tracking-[0.2em]"
+            >Scroll to explore</span
+          >
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M8 2v12M3 9l5 5 5-5"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"></path>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         § 2  SERVICES CARDS
+    ══════════════════════════════════════════ -->
+    <section class="border-t border-white/5 bg-neutral-900/20">
+      <div class="max-w-7xl mx-auto px-6 py-24">
+        <ServicesCards client:visible />
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         § 3  INDUSTRIES / BRAND FIELDS
+    ══════════════════════════════════════════ -->
+    <section class="border-t border-white/5">
+      <div class="max-w-7xl mx-auto px-6 py-28">
+        <!-- Two-col header -->
+        <div
+          class="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-8 items-end mb-16 pb-8 border-b border-white/5"
+        >
+          <h2
+            class="font-['Bebas_Neue',sans-serif] uppercase leading-[0.88] tracking-[-0.01em]"
+            style="font-size: clamp(40px, 6vw, 80px);"
+          >
+            Industries<br />
+            <span class="text-primary">I Serve</span>
+          </h2>
+          <p
+            class="text-[14px] text-white/35 leading-relaxed max-w-65 md:text-right pb-1"
+          >
+            From tech startups to heritage brands — visual languages built to
+            last.
+          </p>
+        </div>
+      </div>
+      <BrandFields client:visible />
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         § 4  TOOLS & STACK
+    ══════════════════════════════════════════ -->
+    <section
+      class="max-w-7xl mx-auto px-6 py-28 border-t border-white/5 bg-neutral-900/20"
+    >
+      <ToolsTabs client:visible />
+    </section>
+  </main>
+</Layout>
+
+<style>
+  @media (prefers-reduced-motion: no-preference) {
+    [data-reveal] {
+      opacity: 0;
+      transform: translateY(20px);
+      transition:
+        opacity 0.55s ease,
+        transform 0.55s ease;
+    }
+    [data-reveal].is-visible {
+      opacity: 1;
+      transform: none;
+    }
+  }
+</style>
+
+<script>
+  const els = document.querySelectorAll("section");
+  const io = new IntersectionObserver(
+    (entries) =>
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.setAttribute("data-reveal", "");
+          e.target.classList.add("is-visible");
+          io.unobserve(e.target);
+        }
+      }),
+    { threshold: 0.08 },
+  );
+  els.forEach((el) => {
+    el.setAttribute("data-reveal", "");
+    io.observe(el);
+  });
+</script>

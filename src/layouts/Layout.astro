@@ -1,0 +1,310 @@
+---
+import Footer from "@/components/Footer.astro";
+import Header from "@/components/Header.astro";
+import "@/styles/global.css";
+import { NavList } from "@/lib/NavList";
+
+// ─── Types ────────────────────────────────────────────────────────────────────
+
+type PageType = "website" | "article" | "profile";
+
+interface BaseProps {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  image?: string;
+  imageAlt?: string;
+  imageWidth?: number;
+  imageHeight?: number;
+  type?: PageType;
+  noindex?: boolean;
+  nofollow?: boolean;
+  locale?: string;
+  alternateLocale?: string;
+}
+
+interface ArticleProps extends BaseProps {
+  type: "article";
+  article: {
+    publishedTime: string;
+    modifiedTime?: string;
+    author?: string;
+    authorUrl?: string;
+    section?: string;
+    tags?: string[];
+    readingTime?: number;
+  };
+}
+
+interface ProfileProps extends BaseProps {
+  type: "profile";
+  profile: {
+    firstName?: string;
+    lastName?: string;
+    username?: string;
+    gender?: "male" | "female";
+  };
+}
+
+interface WebsiteProps extends BaseProps {
+  type?: "website";
+}
+
+type Props = ArticleProps | ProfileProps | WebsiteProps;
+
+// ─── Props ────────────────────────────────────────────────────────────────────
+
+const url = Astro.url
+
+const {
+  title = "Designs By Eyad — Creative Branding & Web Design Portfolio",
+  description = "Discover Designs By Eyad, a creative studio specializing in brand identity, social media designs, and web development with an Egyptian touch.",
+  canonical = url,
+  image = "/main-og.png",
+  imageAlt = "Designs By Eyad",
+  imageWidth = 1200,
+  imageHeight = 630,
+  type = "website",
+  noindex = false,
+  nofollow = false,
+  locale = "en_US",
+  alternateLocale,
+} = Astro.props as Props;
+
+const siteTitle = "Designs By Eyad";
+const absoluteImage = image.startsWith("http") ? image : canonical + image;
+
+const robotsContent = [
+  noindex ? "noindex" : "index",
+  nofollow ? "nofollow" : "follow",
+  "max-image-preview:large",
+  "max-snippet:-1",
+  "max-video-preview:-1",
+].join(", ");
+
+// ─── Article props (type-narrowed) ───────────────────────────────────────────
+
+const isArticle = type === "article";
+const articleProps = isArticle ? (Astro.props as ArticleProps).article : null;
+
+const isProfile = type === "profile";
+const profileProps = isProfile ? (Astro.props as ProfileProps).profile : null;
+
+// ─── Structured Data ──────────────────────────────────────────────────────────
+
+const navItems = NavList.map((item, index) => ({
+  "@type": "ListItem",
+  position: index + 2,
+  name: item.name,
+  item: canonical + item.link,
+}));
+
+const breadcrumbSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: canonical },
+    ...navItems,
+  ],
+});
+
+const personSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Eyad Farah",
+  jobTitle: "Graphic Designer",
+  worksFor: {
+    "@type": "Organization",
+    name: siteTitle,
+    url: canonical,
+    sameAs: [
+      "https://www.facebook.com/designs.by.eyad",
+      "https://www.instagram.com/designs.by.eyad",
+      "https://www.linkedin.com/company/designsbyeyad",
+      "https://www.youtube.com/@designsbyeyad",
+    ],
+  },
+  telephone: "(+20) 155 571 5783",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Aswan",
+    addressCountry: "EG",
+  },
+  url: canonical,
+  sameAs: [
+    "https://www.facebook.com/designs.by.eyad",
+    "https://www.instagram.com/designs.by.eyad",
+    "https://www.linkedin.com/company/designsbyeyad",
+    "https://www.youtube.com/@designsbyeyad",
+  ],
+});
+
+const articleSchema = isArticle && articleProps ? JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: title,
+  description,
+  image: absoluteImage,
+  datePublished: articleProps.publishedTime,
+  ...(articleProps.modifiedTime && { dateModified: articleProps.modifiedTime }),
+  author: {
+    "@type": "Person",
+    name: articleProps.author || "Eyad Farah",
+    ...(articleProps.authorUrl && { url: articleProps.authorUrl }),
+  },
+  publisher: {
+    "@type": "Organization",
+    name: siteTitle,
+    url: canonical,
+    logo: {
+      "@type": "ImageObject",
+      url: canonical + "/favicon/favicon-96x96.png",
+    },
+  },
+  mainEntityOfPage: { "@type": "WebPage", "@id": canonical },
+  ...(articleProps.tags && { keywords: articleProps.tags?.join(", ") }),
+}) : null;
+---
+
+<!doctype html>
+<html lang={locale.split("_")[0]}>
+  <head>
+    <!-- ① Essentials -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- ② Preloads / Perf -->
+    <link rel="preconnect" type="text/partytown"  href="https://www.googletagmanager.com" />
+    <link rel="dns-prefetch" type="text/partytown"  href="https://www.googletagmanager.com" />
+    <link rel="preload" type="text/partytown"  href="https://www.googletagmanager.com/gtm.js?id=GTM-5MWXJS6P" as="script" />
+    <link rel="preload" type="text/partytown"  href="https://www.googletagmanager.com/gtag/js?id=G-B5QZVD5E94" as="script" />
+
+    <!-- ③ Primary Meta -->
+    <title>{type === "article" ? `${title} — ${siteTitle}` : title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content={robotsContent} />
+    <meta name="author" content={articleProps?.author || "Eyad Farah"} />
+    <link rel="canonical" href={canonical} />
+    <meta name="theme-color" content="#000000" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="apple-mobile-web-app-title" content={siteTitle} />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+
+    <!-- ④ Article-specific Meta -->
+    {isArticle && articleProps && (
+      <>
+        <meta name="article:published_time" content={articleProps.publishedTime} />
+        {articleProps.modifiedTime && (
+          <meta name="article:modified_time" content={articleProps.modifiedTime} />
+        )}
+        {articleProps.section && (
+          <meta name="article:section" content={articleProps.section} />
+        )}
+        {articleProps.tags?.map((tag) => (
+          <meta name="article:tag" content={tag} />
+        ))}
+        {articleProps.readingTime && (
+          <meta name="twitter:label1" content="Reading time" />
+          <meta name="twitter:data1" content={`${articleProps.readingTime} min read`} />
+        )}
+      </>
+    )}
+
+    <!-- ⑤ Verification -->
+    <meta name="p:domain_verify" content="0ce530fb8b315b5b57336f9008379e96" />
+    <meta name="google-site-verification" content="SAdpay-liv1rI5Wv_WMEhQWbAXRtsm96riCif7zyOzs" />
+
+    <!-- ⑥ Open Graph (base) -->
+    <meta property="og:type" content={type} />
+    <meta property="og:site_name" content={siteTitle} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={absoluteImage} />
+    <meta property="og:image:alt" content={imageAlt} />
+    <meta property="og:image:width" content={String(imageWidth)} />
+    <meta property="og:image:height" content={String(imageHeight)} />
+    <meta property="og:locale" content={locale} />
+    {alternateLocale && (
+      <meta property="og:locale:alternate" content={alternateLocale} />
+    )}
+
+    <!-- ⑦ Open Graph (article) -->
+    {isArticle && articleProps && (
+      <>
+        <meta property="article:published_time" content={articleProps.publishedTime} />
+        {articleProps.modifiedTime && (
+          <meta property="article:modified_time" content={articleProps.modifiedTime} />
+        )}
+        <meta property="article:author" content={articleProps.authorUrl || canonical} />
+        {articleProps.section && (
+          <meta property="article:section" content={articleProps.section} />
+        )}
+        {articleProps.tags?.map((tag) => (
+          <meta property="article:tag" content={tag} />
+        ))}
+      </>
+    )}
+
+    <!-- ⑧ Open Graph (profile) -->
+    {isProfile && profileProps && (
+      <>
+        {profileProps.firstName && (
+          <meta property="profile:first_name" content={profileProps.firstName} />
+        )}
+        {profileProps.lastName && (
+          <meta property="profile:last_name" content={profileProps.lastName} />
+        )}
+        {profileProps.username && (
+          <meta property="profile:username" content={profileProps.username} />
+        )}
+        {profileProps.gender && (
+          <meta property="profile:gender" content={profileProps.gender} />
+        )}
+      </>
+    )}
+
+    <!-- ⑨ Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@designsbyeyad" />
+    <meta name="twitter:creator" content="@designsbyeyad" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={absoluteImage} />
+    <meta name="twitter:image:alt" content={imageAlt} />
+
+    <!-- ⑩ Favicons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon/favicon.ico" />
+    <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="/favicon/site.webmanifest" />
+
+    <!-- ⑪ Feeds -->
+    <link rel="alternate" type="application/rss+xml" title={`${siteTitle} RSS Feed`} href={canonical + "/rss.xml"} />
+
+    <!-- ⑫ Structured Data -->
+    <script type="application/ld+json" set:html={breadcrumbSchema} />
+    <script type="application/ld+json" set:html={personSchema} />
+    {articleSchema && (
+      <script type="application/ld+json" set:html={articleSchema} />
+    )}
+  </head>
+  <body class="bg-black">
+    <Header />
+    <slot />
+    <Footer />
+  </body>
+</html>
+
+<style>
+  html,
+  body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+  }
+</style>

@@ -1,0 +1,450 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { fetchPosts, getPostData } from "@/lib/Data/notionBlogData";
+import { renderNotionContent } from "@/lib/Data/renderNotionContent";
+import { getNotionFileUrl } from "@/types/notionType";
+import type { NotionBaseProperties, NotionPage } from "@/types/notionType";
+import type { BlockObjectResponse } from "@notionhq/client";
+import { Image } from "astro:assets";
+
+export async function getStaticPaths() {
+  const posts = await fetchPosts();
+  return posts.map((post: NotionBaseProperties) => ({
+    params: { slug: post.properties.Slug.rich_text[0]?.plain_text },
+    props: { post },
+  }));
+}
+
+// ─── Data ─────────────────────────────────────────────────────────────────────
+
+const siteUrl =
+  import.meta.env.PUBLIC_DOMAIN_URL || "https://designs-by-eyad.vercel.app";
+const { slug } = Astro.params;
+
+const { post, content, currentIndex } = await getPostData(slug!);
+if (!post) return Astro.redirect("/404");
+
+const allPosts = await fetchPosts();
+const sortedPosts = [...allPosts].sort(
+  (a, b) =>
+    new Date(a.created_time as string).getTime() -
+    new Date(b.created_time as string).getTime(),
+);
+
+const prevPost = currentIndex > 0 ? sortedPosts[currentIndex - 1] : null;
+const nextPost =
+  currentIndex < sortedPosts.length - 1 ? sortedPosts[currentIndex + 1] : null;
+
+// ─── Derived values ───────────────────────────────────────────────────────────
+
+const props = (post as unknown as NotionPage).properties;
+const title = props.Name.title[0]?.plain_text ?? "Untitled";
+const subtitle = props.Subtitle?.rich_text[0]?.plain_text ?? "";
+const category = props.Category?.select?.name ?? "";
+const dateRaw = props.Publication?.date?.start ?? "";
+const tags = props.Tags?.multi_select ?? [];
+
+const thumbnailFile = props.Thumbnail?.files?.[0];
+const thumbnail = thumbnailFile
+  ? getNotionFileUrl(thumbnailFile)
+  : "/placeholder.jpg";
+
+const canonicalUrl = `/blog/${slug}`;
+const absoluteUrl = siteUrl + canonicalUrl;
+
+const formattedDate = dateRaw
+  ? new Date(dateRaw).toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    })
+  : "";
+
+const htmlContent = await renderNotionContent(content as BlockObjectResponse[]);
+
+// ─── Structured data ──────────────────────────────────────────────────────────
+
+const articleSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: title,
+  description: subtitle,
+  image: thumbnail,
+  datePublished: dateRaw ? new Date(dateRaw).toISOString() : "",
+  author: { "@type": "Person", name: "Eyad Farah", url: siteUrl },
+  publisher: { "@type": "Organization", name: "Designs By Eyad", url: siteUrl },
+  mainEntityOfPage: { "@type": "WebPage", "@id": absoluteUrl },
+  ...(tags.length && { keywords: tags.map((t) => t.name).join(", ") }),
+});
+---
+
+<Layout
+  type="article"
+  title={`${title} — Designs By Eyad`}
+  description={subtitle}
+  image={thumbnail}
+  article={{
+    publishedTime: dateRaw ? new Date(dateRaw).toISOString() : "",
+    author: "Eyad Farah",
+    section: category,
+    tags: tags.map((t) => t.name),
+  }}
+>
+  <main class="min-h-screen pt-28 pb-32">
+    <div class="max-w-7xl mx-auto px-6 lg:px-0">
+      <!-- ══════════════════════════════════════════
+           HEADER
+      ══════════════════════════════════════════ -->
+      <header class="pt-12 pb-16 border-b border-white/5">
+        <!-- Meta row -->
+        <div class="flex items-center gap-5 mb-10">
+          {
+            category && (
+              <span class="bg-primary text-black font-black text-[9px] uppercase tracking-[0.25em] px-3 py-1.5 rounded-full">
+                {category}
+              </span>
+            )
+          }
+          {
+            formattedDate && (
+              <span class="font-mono text-[10px] uppercase tracking-[0.25em] text-white/25">
+                {formattedDate}
+              </span>
+            )
+          }
+          {
+            tags.length > 0 && (
+              <div class="hidden md:flex items-center gap-2 ml-auto">
+                {tags.slice(0, 3).map((tag) => (
+                  <span class="font-mono text-[9px] uppercase tracking-[0.2em] text-white/20 border border-white/8 px-2.5 py-1 rounded-full">
+                    {tag.name}
+                  </span>
+                ))}
+              </div>
+            )
+          }
+        </div>
+
+        <!-- Title — split stroke treatment -->
+        <h1
+          class="font-['Bebas_Neue',sans-serif] uppercase leading-[0.88] tracking-[-0.02em]"
+          style="font-size: clamp(52px, 9vw, 130px);"
+        >
+          <!-- First half solid, second half stroke -->
+          {
+            (() => {
+              const words = title.split(" ");
+              const mid = Math.ceil(words.length / 2);
+              const line1 = words.slice(0, mid).join(" ");
+              const line2 = words.slice(mid).join(" ");
+              return (
+                <>
+                  <span class="block text-white">{line1}</span>
+                  {line2 && (
+                    <span
+                      class="block"
+                      style="-webkit-text-stroke: 2px rgba(255,255,255,0.2); color: transparent;"
+                    >
+                      {line2}
+                    </span>
+                  )}
+                </>
+              );
+            })()
+          }
+        </h1>
+
+        <!-- Subtitle -->
+        {
+          subtitle && (
+            <p class="mt-8 text-white/40 text-lg leading-relaxed max-w-2xl border-l-2 border-primary pl-6">
+              {subtitle}
+            </p>
+          )
+        }
+      </header>
+
+      <!-- ══════════════════════════════════════════
+           BODY GRID
+      ══════════════════════════════════════════ -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 pt-16">
+        <!-- ── Article ──────────────────────────────────── -->
+        <article class="lg:col-span-8 flex flex-col gap-14">
+          <!-- Thumbnail -->
+          <div class="relative overflow-hidden rounded-4xl aspect-video">
+            <Image
+              src={thumbnail}
+              alt={title}
+              width={1200}
+              height={675}
+              loading="lazy"
+              decoding="async"
+              class="w-full h-full object-cover grayscale hover:grayscale-0 transition-[filter] duration-700"
+            />
+            <!-- Reading time badge -->
+            <div
+              class="absolute bottom-4 right-4 bg-black/70 backdrop-blur-sm border border-white/10 px-3 py-1.5 rounded-full"
+            >
+              <span
+                class="font-mono text-[9px] uppercase tracking-[0.2em] text-white/50"
+              >
+                {Math.ceil(htmlContent.split(" ").length / 200)} min read
+              </span>
+            </div>
+          </div>
+
+          <!-- Notion content -->
+          <div
+            class="prose prose-invert prose-lg max-w-none
+                   prose-headings:font-['Bebas_Neue',sans-serif]
+                   prose-headings:uppercase
+                   prose-headings:tracking-normal
+                   prose-headings:mt-16 prose-headings:mb-6
+                   prose-p:leading-[1.85] prose-p:text-white/70 prose-p:mb-8
+                   prose-a:text-primary prose-a:no-underline prose-a:hover:underline
+                   prose-img:rounded-2xl prose-img:border prose-img:border-white/10
+                   prose-pre:bg-neutral-900 prose-pre:border prose-pre:border-white/5 prose-pre:rounded-2xl
+                   prose-blockquote:border-l-primary prose-blockquote:text-white/50
+                   prose-code:text-primary prose-code:bg-neutral-900 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded"
+            set:html={htmlContent}
+          />
+
+          <!-- Share strip -->
+          <div
+            class="border-t border-white/5 pt-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6"
+          >
+            <span
+              class="font-mono text-[10px] uppercase tracking-[0.3em] text-white/25"
+            >
+              Share this post
+            </span>
+            <div class="flex gap-2">
+              {
+                [
+                  {
+                    label: "X / Twitter",
+                    url: `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(absoluteUrl)}`,
+                  },
+                  {
+                    label: "LinkedIn",
+                    url: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(absoluteUrl)}`,
+                  },
+                ].map((link) => (
+                  <a
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="px-5 py-2.5 rounded-full border border-white/8 bg-neutral-900
+                         font-mono text-[10px] uppercase tracking-[0.15em] text-white/40
+                         hover:border-primary/40 hover:text-primary transition-all duration-200"
+                  >
+                    {link.label}
+                  </a>
+                ))
+              }
+              <button
+                id="copy-link-btn"
+                data-url={absoluteUrl}
+                class="px-5 py-2.5 rounded-full border border-white/8 bg-neutral-900
+                       font-mono text-[10px] uppercase tracking-[0.15em] text-white/40
+                       hover:border-primary/40 hover:text-primary transition-all duration-200"
+              >
+                Copy Link
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- ── Sidebar ─────────────────────────────────── -->
+        <aside class="lg:col-span-4">
+          <div class="sticky top-32 flex flex-col gap-8">
+            <!-- Tags -->
+            {
+              tags.length > 0 && (
+                <div class="bg-neutral-900/50 border border-white/5 rounded-3xl p-7">
+                  <h3 class="font-mono text-[9px] uppercase tracking-[0.3em] text-white/25 mb-6">
+                    Tagged
+                  </h3>
+                  <div class="flex flex-wrap gap-2">
+                    {tags.map((tag) => (
+                      <span
+                        class="font-mono text-[10px] uppercase tracking-[0.15em] text-white/50
+                                 border border-white/8 px-3 py-1.5 rounded-full
+                                 hover:border-primary/40 hover:text-primary transition-colors duration-200"
+                      >
+                        #{tag.name}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )
+            }
+
+            <!-- CTA -->
+            <div class="relative overflow-hidden rounded-3xl bg-primary p-8">
+              <!-- Ghost text -->
+              <p
+                aria-hidden="true"
+                class="absolute -bottom-4 -right-2 font-['Bebas_Neue',sans-serif] uppercase
+                       leading-none text-black/10 pointer-events-none select-none"
+                style="font-size: 7rem;"
+              >
+                Go
+              </p>
+              <div class="relative z-10 flex flex-col gap-6">
+                <h3
+                  class="font-['Bebas_Neue',sans-serif] uppercase leading-[0.9] text-black"
+                  style="font-size: clamp(32px, 3vw, 44px);"
+                >
+                  Ready to ignite your brand?
+                </h3>
+                <a
+                  href="/contact"
+                  class="self-start inline-flex items-center gap-2 px-6 py-3 rounded-full
+                         bg-black text-primary font-black text-[10px] uppercase tracking-[0.2em]
+                         hover:bg-neutral-900 transition-colors duration-200"
+                >
+                  Let's talk
+                  <svg
+                    width="12"
+                    height="12"
+                    viewBox="0 0 14 14"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M2 7H12M12 7L7 2M12 7L7 12"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            <!-- Minimal post info -->
+            <div
+              class="border border-white/5 rounded-3xl p-7 flex flex-col gap-4"
+            >
+              <h3
+                class="font-mono text-[9px] uppercase tracking-[0.3em] text-white/25 mb-2"
+              >
+                Post Info
+              </h3>
+              {
+                category && (
+                  <div class="flex items-center justify-between">
+                    <span class="text-[11px] text-white/25 font-mono uppercase tracking-wider">
+                      Category
+                    </span>
+                    <span class="text-[11px] text-white/60 font-bold uppercase">
+                      {category}
+                    </span>
+                  </div>
+                )
+              }
+              {
+                formattedDate && (
+                  <div class="flex items-center justify-between">
+                    <span class="text-[11px] text-white/25 font-mono uppercase tracking-wider">
+                      Published
+                    </span>
+                    <span class="text-[11px] text-white/60 font-bold">
+                      {formattedDate}
+                    </span>
+                  </div>
+                )
+              }
+              <div class="flex items-center justify-between">
+                <span
+                  class="text-[11px] text-white/25 font-mono uppercase tracking-wider"
+                  >Read time</span
+                >
+                <span class="text-[11px] text-white/60 font-bold">
+                  {Math.ceil(htmlContent.split(" ").length / 200)} min
+                </span>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <!-- ══════════════════════════════════════════
+           POST NAVIGATION
+      ══════════════════════════════════════════ -->
+      <nav
+        aria-label="Post navigation"
+        class="grid grid-cols-1 md:grid-cols-2 mt-28 border-t border-white/5"
+      >
+        {
+          prevPost ? (
+            <a
+              href={`/blog/${prevPost.properties.Slug.rich_text[0]?.plain_text}`}
+              class="group flex flex-col gap-3 p-10 border-r border-white/5
+                   hover:bg-neutral-900/30 transition-colors duration-200"
+            >
+              <span
+                class="font-mono text-[9px] uppercase tracking-[0.3em] text-white/20
+                         group-hover:text-primary transition-colors duration-200"
+              >
+                ← Previous
+              </span>
+              <span
+                class="font-['Bebas_Neue',sans-serif] uppercase leading-[0.9] text-white/60
+                     group-hover:text-white transition-colors duration-200 line-clamp-2"
+                style="font-size: clamp(22px, 2.5vw, 32px);"
+              >
+                {prevPost.properties.Name.title[0]?.plain_text}
+              </span>
+            </a>
+          ) : (
+            <div class="border-r border-white/5" />
+          )
+        }
+
+        {
+          nextPost ? (
+            <a
+              href={`/blog/${nextPost.properties.Slug.rich_text[0]?.plain_text}`}
+              class="group flex flex-col gap-3 p-10 text-right items-end
+                   hover:bg-neutral-900/30 transition-colors duration-200"
+            >
+              <span
+                class="font-mono text-[9px] uppercase tracking-[0.3em] text-white/20
+                         group-hover:text-primary transition-colors duration-200"
+              >
+                Next →
+              </span>
+              <span
+                class="font-['Bebas_Neue',sans-serif] uppercase leading-[0.9] text-white/60
+                     group-hover:text-white transition-colors duration-200 line-clamp-2"
+                style="font-size: clamp(22px, 2.5vw, 32px);"
+              >
+                {nextPost.properties.Name.title[0]?.plain_text}
+              </span>
+            </a>
+          ) : (
+            <div />
+          )
+        }
+      </nav>
+    </div>
+  </main>
+
+  <!-- Structured data -->
+  <script type="application/ld+json" set:html={articleSchema} />
+</Layout>
+
+<script>
+  const btn = document.getElementById("copy-link-btn");
+  btn?.addEventListener("click", async () => {
+    const url = btn.getAttribute("data-url") ?? window.location.href;
+    await navigator.clipboard.writeText(url);
+    const prev = btn.textContent;
+    btn.textContent = "Copied!";
+    setTimeout(() => {
+      btn.textContent = prev;
+    }, 2000);
+  });
+</script>

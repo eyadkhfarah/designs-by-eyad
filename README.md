@@ -1,64 +1,46 @@
-# Open-Source Graphic Design Portfolio Application  
+# Astro Starter Kit: Basics
 
-Welcome to **Desings By Eyad**, an open-source graphic design portfolio application built with **Next.js**, **Tailwind CSS**, and **TypeScript**. This project combines cutting-edge web technologies to provide a seamless and modern design platform.  
-
-## 🚀 Features  
-
-- **Real-time Design Editor**: Powered by dynamic rendering with Next.js.  
-- **Customizable Themes**: Styled with Tailwind CSS for flexibility.  
-- **TypeScript Integration**: Ensures code reliability and scalability.  
-- **Fast and Lightweight**: Optimized for speed and performance.  
-- **Cross-Browser Support**: Works flawlessly across major browsers.  
-
-## 📦 Installation  
-
-Clone the repository and start building:  
-
-```bash  
-git clone [repo-url]  
-cd [project-name]  
-npm install  
-npm run dev
+```sh
+pnpm create astro@latest -- --template basics
 ```
 
-## 📝 Add Protfolio Content
+> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
 
-- Add the projects you create in the `content` folder:
+## 🚀 Project Structure
 
-```plaintext
-content/
-├── portfolio/
-│   ├── designs/
-│   ├── web/
-```
-- Add an `.mdx` file and follow these instructions
+Inside of your Astro project, you'll see the following folders and files:
 
-```markdown
----
-title: Green Locks
-description: Brand for mainfactoring and selling hair care products
-thumbnail: /Imgs/green-locks.png
-website: https://www.behance.net/gallery/191450493/Rebranding-Green-Locks-and-package-designs
-Protype: Logo Design
----
-![logo](https://mir-s3-cdn-cf.behance.net/project_modules/1400/f134d0191450493.65d126c37653f.png)
-![package mockup](https://mir-s3-cdn-cf.behance.net/project_modules/max_3840/218e67191450493.65cbbfa3d2fee.png)
-![cosmetics mockup](https://mir-s3-cdn-cf.behance.net/project_modules/max_3840/c703fb191450493.65d126c37b886.png)
+```text
+/
+├── public/
+│   └── favicon.svg
+├── src
+│   ├── assets
+│   │   └── astro.svg
+│   ├── components
+│   │   └── Welcome.astro
+│   ├── layouts
+│   │   └── Layout.astro
+│   └── pages
+│       └── index.astro
+└── package.json
 ```
 
-Once you save the file, it will automatically add or update the content.
+To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
 
-> If you want to add a new content type, such as a blog, refer to the [Contentlayer Documentation](https://contentlayer.dev/docs/getting-started-cddd76b7) for detailed instructions.
+## 🧞 Commands
 
-  
-## 🖊️ Customization:
+All commands are run from the root of the project, from a terminal:
 
-- Edit or add pages in the `src` and `app` directories.
-- Add or edit components in the `Components` folder.
-- To add links, edit the following files:
-  - `NavList.tsx` for menu links
-  - `ServicesList.tsx` for the services list
-  - `NavContact.tsx` for contact links
-- To customize contact form types, modify the `inputs.ts` file in the `types` folder.
+| Command                   | Action                                           |
+| :------------------------ | :----------------------------------------------- |
+| `pnpm install`             | Installs dependencies                            |
+| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
+| `pnpm build`           | Build your production site to `./dist/`          |
+| `pnpm preview`         | Preview your build locally, before deploying     |
+| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
+| `pnpm astro -- --help` | Get help using the Astro CLI                     |
 
-Have fun, and good luck with your business! 💕
+## 👀 Want to learn more?
+
+Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).

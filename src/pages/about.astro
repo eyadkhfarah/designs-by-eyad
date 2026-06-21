@@ -1,0 +1,244 @@
+---
+import PrimaryBtn from "@/components/Buttons/PrimaryBtn";
+import MissionVision from "@/components/Client/MissionVision.astro";
+import TestimonialSlider from "@/components/Services/TestimonialSlider.astro";
+import ToolsTabs from "@/components/Services/ToolsTabs";
+import Layout from "@/layouts/Layout.astro";
+import { useTranslations } from "@/utils/i18n";
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
+
+const t = useTranslations(Astro.currentLocale);
+
+const designs = await getCollection("design");
+const webs = await getCollection("web")
+
+const stats = [
+  { value: "5+", label: "Years of craft" },
+  { value: designs.length + webs.length + "+", label: "Brands built" },
+  { value: "3", label: "Countries served" },
+  { value: "∞", label: "Revisions tolerated" },
+];
+---
+
+<Layout
+  title="About | Eyad Farah — Designs By Eyad"
+  description="Discover my Aswan-based graphic design studio, specializing in brand identity and social media design. Serving businesses across Egypt with creative solutions."
+  canonical="/about"
+>
+  <main class="min-h-screen pb-32 overflow-x-hidden">
+    <!-- ══════════════════════════════════════════
+         HERO INTRO
+    ══════════════════════════════════════════ -->
+    <section class="relative max-w-7xl mx-auto px-6 pt-36 pb-24">
+      <!-- Giant background name — the signature element -->
+      <p
+        aria-hidden="true"
+        class="absolute top-24 left-4 text-[clamp(5rem,16vw,14rem)] font-black uppercase tracking-tighter leading-none text-white/3 pointer-events-none whitespace-nowrap select-none"
+      >
+        Eyad Farah
+      </p>
+
+      <div
+        class="relative grid grid-cols-1 lg:grid-cols-12 gap-0 lg:gap-8 items-end"
+      >
+        <!-- Photo column -->
+        <div
+          class="lg:col-span-4 relative flex justify-center lg:justify-start mb-12 lg:mb-0"
+        >
+          <!-- Yellow accent bar behind photo -->
+          <div
+            class="absolute left-0 bottom-0 w-1 h-3/4 bg-primary hidden lg:block"
+          >
+          </div>
+
+          <div class="relative ml-0 lg:ml-6">
+            <!-- Glow -->
+            <div
+              class="absolute inset-0 bg-primary/15 blur-3xl rounded-full scale-75 translate-y-8"
+            >
+            </div>
+
+            <Image
+              alt="Eyad Farah"
+              title="That's me in Alex but I'm in Aswan 🙂"
+              src="/me.png"
+              width={420}
+              height={520}
+              loading="eager"
+              class="relative z-10 w-70 md:w-85 lg:w-95 object-cover
+                     [clip-path:polygon(0_0,100%_0,100%_88%,88%_100%,0_100%)]
+                     grayscale hover:grayscale-0 transition-[filter] duration-700"
+            />
+
+            <!-- Location badge -->
+            <div
+              class="absolute -bottom-4 -right-4 z-20 flex items-center gap-2 bg-primary text-black px-4 py-2 rounded-full"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="12"
+                height="12"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
+                ></path>
+              </svg>
+              <span class="text-[10px] font-black uppercase tracking-wider"
+                >Aswan, EG</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Bio column -->
+        <div class="lg:col-span-8 flex flex-col gap-10 lg:pb-6">
+          <div class="flex flex-col gap-3">
+            <span
+              class="text-primary font-mono tracking-[0.3em] text-xs uppercase"
+            >
+              Creative Director & Brand Designer
+            </span>
+
+            <h1
+              class="text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter leading-[0.95] text-white"
+            >
+              {t("AboutPage.title")}
+            </h1>
+          </div>
+
+          <div
+            class="space-y-5 text-neutral-400 text-lg leading-relaxed max-w-prose border-l border-white/10 pl-6"
+          >
+            <p>{t("AboutPage.Paragraph1")}</p>
+            <p>{t("AboutPage.Paragraph2")}</p>
+          </div>
+
+          <div class="flex items-center gap-6">
+            <PrimaryBtn link="/contact" text="Let's Work Together" />
+            <a
+              href="/portfolio"
+              class="text-sm font-black uppercase tracking-[0.2em] text-white/40 hover:text-primary transition-colors duration-300"
+            >
+              View Work →
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         STATS STRIP
+    ══════════════════════════════════════════ -->
+    <div class="border-y border-white/5 bg-neutral-900/30">
+      <div class="max-w-7xl mx-auto px-6">
+        <dl class="grid grid-cols-2 md:grid-cols-4">
+          {
+            stats.map((s, i) => (
+              <div
+                class:list={[
+                  "flex flex-col gap-1 py-10 px-6",
+                  i !== stats.length - 1 && "border-r border-white/5",
+                ]}
+              >
+                <dt class="text-[10px] font-bold uppercase tracking-[0.25em] text-white/30">
+                  {s.label}
+                </dt>
+                <dd class="text-4xl md:text-5xl font-black text-primary leading-none">
+                  {s.value}
+                </dd>
+              </div>
+            ))
+          }
+        </dl>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════
+         PHILOSOPHY — MISSION / VISION
+    ══════════════════════════════════════════ -->
+    <section class="max-w-7xl mx-auto px-6 py-28">
+      <header
+        class="flex items-end justify-between mb-16 pb-6 border-b border-white/5"
+      >
+        <h2 class="text-4xl md:text-5xl font-black uppercase tracking-tighter">
+          How I Work
+        </h2>
+        <span
+          class="text-xs font-black uppercase tracking-[0.3em] text-white/20 hidden md:block"
+        >
+          Philosophy
+        </span>
+      </header>
+      <MissionVision />
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         SKILLS & TOOLS
+    ══════════════════════════════════════════ -->
+    <section
+      class="border-t border-white/5 bg-neutral-900/20 max-w-7xl mx-auto px-6 py-28"
+    >
+      <ToolsTabs client:visible />
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         TESTIMONIALS
+    ══════════════════════════════════════════ -->
+    <section class="max-w-7xl mx-auto px-6 py-28">
+      <header
+        class="flex items-end justify-between mb-16 pb-6 border-b border-white/5"
+      >
+        <h2
+          class="text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tighter"
+        >
+          {t("H2.MyClients")}
+        </h2>
+        <span
+          class="text-xs font-black uppercase tracking-[0.3em] text-white/20 hidden md:block"
+        >
+          Voices
+        </span>
+      </header>
+      <TestimonialSlider />
+    </section>
+  </main>
+</Layout>
+
+<style>
+  /* Smooth clip-path transition on hover */
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(24px);
+      transition:
+        opacity 0.6s ease,
+        transform 0.6s ease;
+    }
+    .reveal-on-scroll.visible {
+      opacity: 1;
+      transform: none;
+    }
+  }
+</style>
+
+<script>
+  // Scroll reveal for sections
+  const targets = document.querySelectorAll("section, .reveal-on-scroll");
+  const io = new IntersectionObserver(
+    (entries) =>
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.classList.add("visible");
+          io.unobserve(e.target);
+        }
+      }),
+    { threshold: 0.1 },
+  );
+  targets.forEach((el) => {
+    el.classList.add("reveal-on-scroll");
+    io.observe(el);
+  });
+</script>

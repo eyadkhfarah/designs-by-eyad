@@ -1,0 +1,20 @@
+---
+import ContactLayout from "@/layouts/ContactLayout.astro";
+import Layout from "@/layouts/Layout.astro";
+import SocialComponent from "@/components/Contact/Social";
+---
+
+<ContactLayout
+  title="Social Media | Contact — Designs By Eyad"
+  description="Connect with Eyad Farah on social media. Follow for design inspiration, project updates, and studio news."
+>
+  <div class="flex flex-col gap-6">
+    <header class="flex flex-col gap-2">
+      <h2 class="text-2xl font-black uppercase tracking-tighter">
+        Connect with me<span class="text-primary">.</span>
+      </h2>
+      <p class="text-neutral-500 text-sm">Follow the orbit on social media.</p>
+    </header>
+    <SocialComponent client:visible />
+  </div>
+</ContactLayout>

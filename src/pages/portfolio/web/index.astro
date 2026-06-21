@@ -1,0 +1,92 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+import Layout from "@/layouts/Layout.astro";
+import ProCard from "@/components/Portfolio/ProCard.astro";
+const siteUrl =
+  import.meta.env.PUBLIC_DOMAIN_URL || "https://designs-by-eyad.vercel.app";
+
+const desc =
+  "Discover my portfolio of brand identity and social media design projects. See how I help Egyptian businesses create compelling online presences.";
+const url = "/portfolio/web";
+
+const web = await getCollection("web");
+
+const webProjectsSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: "Web Development Portfolio - Designs By Eyad",
+  description: desc,
+  url: siteUrl + url,
+  mainEntity: {
+    "@type": "ItemList",
+    itemListElement: web.map((web, index: number) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      url: siteUrl + web.id,
+      name: web.data.title,
+    })),
+  },
+});
+---
+
+<Layout
+  title="Web Development Portfolio — Designs By Eyad"
+  description={desc}
+>
+  <main class="relative min-h-screen pt-20 overflow-x-hidden">
+    {/* --- Page Header --- */}
+    <section
+      class="max-w-7xl mx-auto px-6 md:px-10 lg:px-0 pt-32 pb-16 border-b border-white/6"
+    >
+      <div class="flex flex-col gap-8">
+        {/* Eyebrow */}
+        <div class="flex items-center gap-4">
+          <span class="font-mono text-[11px] tracking-[0.15em] text-primary">
+            01
+          </span>
+          <span class="w-8 h-px bg-white/10"></span>
+          <span
+            class="font-mono text-[11px] tracking-[0.15em] uppercase text-white/40"
+          >
+            Digital Experience
+          </span>
+        </div>
+
+        {/* Headline */}
+        <h1
+          class="font-['Bebas_Neue',sans-serif] uppercase text-[clamp(72px,13vw,180px)] leading-[0.85] tracking-[-0.01em]"
+        >
+          Web<span class="text-primary">.</span>
+        </h1>
+
+        {/* Rule + count */}
+        <div class="flex items-center gap-6">
+          <div class="w-12 h-0.5 bg-primary/40 rounded-full"></div>
+          <span
+            class="font-mono text-[11px] tracking-[0.15em] uppercase text-white/30"
+          >
+            {web.length} project{web.length !== 1 ? "s" : ""}
+          </span>
+        </div>
+      </div>
+    </section>
+
+    {/* --- Portfolio Grid --- */}
+    <section class="max-w-7xl mx-auto py-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {
+          web.map((web, index: number) => (
+            <div class={index === 0 ? "md:col-span-2" : "col-span-1"}>
+              <ProCard
+                projects={web}
+                link={"/portfolio/web/" + web.id}
+              />
+            </div>
+          ))
+        }
+      </div>
+    </section>
+  </main>
+  <!-- Structured Data -->
+  <script type="application/ld+json" set:html={webProjectsSchema} />
+</Layout>

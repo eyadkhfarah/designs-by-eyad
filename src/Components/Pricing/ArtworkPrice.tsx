@@ -1,82 +1,78 @@
-"use client";
-
-import { useTranslations } from "next-intl";
-import { RiCheckLine } from "react-icons/ri";
+import { RiCheckLine } from "@remixicon/react";
 import PrimaryBtn from "../Buttons/PrimaryBtn";
-import P from "../TranslationTags/P";
-import H2 from "../TranslationTags/H2";
 import { plans } from "../../lib/Prices";
 import { motion } from "framer-motion";
+import { useTranslations } from "@/utils/i18n";
 
-export default function ArtworkPrice() {
-  const t = useTranslations();
+interface Props {
+  locale?: string | undefined;
+}
+
+export default function ArtworkPrice({ locale }: Props) {
+  const t = useTranslations(locale);
 
   return (
-    <section className="py-20 relative">
-      {/* Background decoration to draw focus */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-primary/5 blur-[120px] rounded-full pointer-events-none" />
-
-      <div className="relative z-10 container mx-auto px-6">
-        <header className="mb-16 text-center">
-          <H2 className="text-5xl md:text-6xl font-black mb-6 tracking-tighter uppercase">
-            {t("ArtworkPrice.title")}
-          </H2>
-          <P className="text-lg md:text-xl text-neutral-400 max-w-2xl mx-auto leading-relaxed">
+    <section className="py-32 relative border-t border-white/10">
+      
+      <div className="container mx-auto">
+        {/* Header */}
+        <header className="mb-24 flex flex-col md:flex-row justify-between items-end gap-12 border-b border-white/10 pb-12">
+          <div className="flex flex-col gap-4">
+            <span className="font-mono text-[11px] tracking-[0.25em] uppercase text-white/30">
+              Pricing Structure
+            </span>
+            <h2 className="font-['Bebas_Neue',sans-serif] uppercase text-[clamp(48px,8vw,100px)] leading-[0.85] tracking-[-0.01em] text-white">
+              {t("ArtworkPrice.title")}
+            </h2>
+          </div>
+          <p className="text-white/40 text-[15px] max-w-sm leading-relaxed">
             {t("ArtworkPrice.subtitle")}
-          </P>
+          </p>
         </header>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Pricing Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 rounded-3xl overflow-hidden border-l border-t border-white/10">
           {plans.map((plan, index) => {
-            // Logic to highlight the "T-Shirt" or "Middle" plan as the popular one
-            const isHighlighted = index === 1; 
+            const isHighlighted = index === 1;
 
             return (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className={`relative group w-full flex flex-col p-8 rounded-[2.5rem] border transition-all duration-500 ${
-                  isHighlighted 
-                  ? "bg-neutral-900 border-primary shadow-[0_0_40px_-10px_rgba(229,254,0,0.2)] scale-105 z-10" 
-                  : "bg-neutral-900/50 border-white/10 hover:border-white/20"
+                className={`group relative flex flex-col p-10 border-r border-b border-white/10 transition-colors duration-500 ${
+                  isHighlighted ? "bg-white/5" : "bg-neutral-900/30"
                 }`}
               >
                 {isHighlighted && (
-                  <span className="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-black text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full">
-                    Most Popular
-                  </span>
+                  <div className="absolute top-0 right-0 px-4 py-1 bg-primary text-black font-mono text-[10px] uppercase tracking-widest">
+                    Best Value
+                  </div>
                 )}
 
-                <div className="mb-8">
-                  <h3 className={`text-2xl font-bold uppercase mb-2 ${isHighlighted ? "text-primary" : "text-white"}`}>
+                <div className="mb-12">
+                  <h3 className="font-['Bebas_Neue',sans-serif] uppercase text-3xl text-white mb-2">
                     {t(plan.title)}
                   </h3>
-                  <p className="text-neutral-500 text-sm leading-relaxed">
+                  <p className="text-white/30 text-[13px] leading-relaxed">
                     {t(plan.description)}
                   </p>
                 </div>
 
-                <div className="mb-10 flex items-baseline gap-1">
-                  <span className="text-4xl md:text-6xl font-black tracking-tighter">
+                <div className="mb-12">
+                  <span className="text-5xl font-bold text-white tracking-tighter">
                     {plan.price}
                   </span>
-                  {/* If you have a currency or period tag in your JSON, add it here */}
                 </div>
 
-                <div className="flex-grow">
-                  <p className="text-sm font-bold uppercase tracking-wider text-neutral-400 mb-6">
-                    {t("ArtworkPrice.include")}:
-                  </p>
-                  <ul className="space-y-4 mb-10">
+                <div className="grow mb-12">
+                  <ul className="space-y-4">
                     {plan.features.map((feature, i) => (
-                      <li key={i} className="flex items-start gap-3 group/item">
-                        <span className={`text-xl transition-colors ${isHighlighted ? "text-primary" : "text-neutral-600 group-hover/item:text-primary"}`}>
-                          <RiCheckLine />
-                        </span>
-                        <span className="text-neutral-300 text-sm md:text-base">
+                      <li key={i} className="flex items-center gap-4">
+                        <RiCheckLine size={16} className={isHighlighted ? "text-primary" : "text-white/20"} />
+                        <span className="text-white/60 text-[14px] uppercase font-mono tracking-tight">
                           {t(feature)}
                         </span>
                       </li>
@@ -85,7 +81,7 @@ export default function ArtworkPrice() {
                 </div>
 
                 <PrimaryBtn
-                  className="w-full mt-auto py-5 text-lg"
+                  
                   target={false}
                   link="/contact"
                   text={t("ArtworkPrice.CTA")}
@@ -96,9 +92,9 @@ export default function ArtworkPrice() {
         </div>
 
         <footer className="mt-16 text-center">
-          <P className="text-neutral-500 text-sm italic max-w-xl mx-auto">
+          <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-white/30 italic">
             {t("ArtworkPrice.Note")}
-          </P>
+          </p>
         </footer>
       </div>
     </section>

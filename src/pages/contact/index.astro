@@ -1,0 +1,503 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import ContactLayout from "@/layouts/ContactLayout.astro";
+import { cn } from "@/lib/utils";
+
+export const prerender = false;
+
+const baseInput = [
+  "w-full px-5 py-4 rounded-2xl",
+  "bg-neutral-950 border border-white/8",
+  "text-white placeholder:text-white/20",
+  "focus:outline-none focus:border-primary/60 focus:ring-1 focus:ring-primary/40",
+  "transition-all duration-200",
+  "mt-3",
+].join(" ");
+
+const fieldLabel =
+  "text-[10px] font-black uppercase tracking-[0.2em] text-white/30 ml-1";
+---
+
+<ContactLayout>
+  <div
+    id="form-success"
+    class="hidden flex-col items-center justify-center text-center gap-8 py-20 px-8
+             bg-neutral-950 border border-white/5 rounded-[2.5rem] min-h-130"
+  >
+    <div class="relative">
+      <div
+        class="absolute inset-0 bg-primary/20 blur-2xl rounded-full scale-150"
+      >
+      </div>
+      <div
+        class="relative w-20 h-20 rounded-full bg-primary flex items-center justify-center"
+      >
+        <svg
+          width="36"
+          height="36"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="black"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M20 6L9 17l-5-5"></path>
+        </svg>
+      </div>
+    </div>
+    <div class="space-y-3">
+      <h2
+        class="font-['Bebas_Neue',sans-serif] text-5xl tracking-tight uppercase text-white"
+      >
+        Message Sent
+      </h2>
+      <p class="text-white/40 text-base max-w-xs mx-auto leading-relaxed">
+        I'll get back to you within 24 hours. Talk soon.
+      </p>
+    </div>
+    <button
+      id="reset-form"
+      class="text-xs font-black uppercase tracking-[0.2em] text-white/25 hover:text-primary transition-colors duration-200"
+    >
+      Send another message
+    </button>
+  </div>
+
+  <div
+    id="form-error-state"
+    class="hidden flex-col items-center justify-center text-center gap-8 py-20 px-8
+             bg-neutral-950 border border-red-500/20 rounded-[2.5rem] min-h-130"
+  >
+    <div class="relative">
+      <div
+        class="absolute inset-0 bg-red-500/20 blur-2xl rounded-full scale-150"
+      >
+      </div>
+      <div
+        class="relative w-20 h-20 rounded-full bg-red-500/10 border border-red-500/30
+                    flex items-center justify-center"
+      >
+        <svg
+          width="36"
+          height="36"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="#ef4444"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M18 6L6 18M6 6l12 12"></path>
+        </svg>
+      </div>
+    </div>
+    <div class="space-y-3">
+      <h2
+        class="font-['Bebas_Neue',sans-serif] text-5xl tracking-tight uppercase text-white"
+      >
+        Something went wrong
+      </h2>
+      <p
+        id="error-detail"
+        class="text-white/40 text-base max-w-xs mx-auto leading-relaxed"
+      >
+        Couldn't send your message. Please try again.
+      </p>
+    </div>
+    <button
+      id="retry-form"
+      class="text-xs font-black uppercase tracking-[0.2em] text-white/25 hover:text-primary transition-colors duration-200"
+    >
+      Try again
+    </button>
+  </div>
+
+  <form
+    id="contact-form"
+    method="post"
+    novalidate
+    class="grid lg:grid-cols-2 grid-cols-1 gap-5
+             bg-neutral-950 border border-white/5
+             p-8 md:p-12 rounded-[2.5rem]"
+  >
+    <div class="flex flex-col">
+      <label for="fullName" class={fieldLabel}>Full Name *</label>
+      <input
+        type="text"
+        id="fullName"
+        name="fullName"
+        placeholder="Eyad Farah"
+        autocomplete="name"
+        class={baseInput}
+        data-field
+      />
+      <p class="field-error hidden mt-2 ml-1 text-xs text-red-400 font-medium">
+      </p>
+    </div>
+
+    <div class="flex flex-col">
+      <label for="email" class={fieldLabel}>Email Address *</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        placeholder="hello@example.com"
+        autocomplete="email"
+        class={baseInput}
+        data-field
+      />
+      <p class="field-error hidden mt-2 ml-1 text-xs text-red-400 font-medium">
+      </p>
+    </div>
+
+    <div class="flex flex-col">
+      <label for="phone" class={fieldLabel}>Phone Number *</label>
+      <input
+        type="tel"
+        id="phone"
+        name="phone"
+        placeholder="+20 100 000 0000"
+        autocomplete="tel"
+        class={baseInput}
+        data-field
+      />
+      <p class="field-error hidden mt-2 ml-1 text-xs text-red-400 font-medium">
+      </p>
+    </div>
+
+    <div class="flex flex-col">
+      <label for="services" class={fieldLabel}>How can I help? *</label>
+      <div class="relative mt-3">
+        <select
+          name="services"
+          id="services"
+          class={cn(baseInput, "appearance-none cursor-pointer mt-0 pr-10")}
+          data-field
+        >
+          <option value="" disabled selected>Select a service</option>
+          <option value="Logo Design & Branding">Logo Design & Branding</option>
+          <option value="Web Development">Web Development</option>
+          <option value="Social Media Design">Social Media Design</option>
+          <option value="UI/UX Design">UI/UX Design</option>
+        </select>
+        </svg>
+      </div>
+      <p class="field-error hidden mt-2 ml-1 text-xs text-red-400 font-medium">
+      </p>
+    </div>
+
+    <div class="flex flex-col">
+      <label for="companyName" class={fieldLabel}>Company Name *</label>
+      <input
+        type="text"
+        id="companyName"
+        name="companyName"
+        placeholder="Your Agency or Brand"
+        autocomplete="organization"
+        class={baseInput}
+        data-field
+      />
+      <p class="field-error hidden mt-2 ml-1 text-xs text-red-400 font-medium">
+      </p>
+    </div>
+
+    <div class="flex flex-col">
+      <label for="companySize" class={fieldLabel}>Company Size *</label>
+      <div class="relative mt-3">
+        <select
+          name="companySize"
+          id="companySize"
+          class={cn(baseInput, "appearance-none cursor-pointer mt-0 pr-10")}
+          data-field
+        >
+          <option value="" disabled selected>Select size</option>
+          <option value="1-10">1-10 employees</option>
+          <option value="11-50">11-50 employees</option>
+          <option value="51-200">51-200 employees</option>
+          <option value="201+">201+ employees</option>
+        </select>
+      </div>
+      <p class="field-error hidden mt-2 ml-1 text-xs text-red-400 font-medium">
+      </p>
+    </div>
+
+    <div class="lg:col-span-2 flex flex-col">
+      <label for="message" class={fieldLabel}>Project Brief *</label>
+      <textarea
+        name="message"
+        id="message"
+        placeholder="Tell me about your goals, timeline, and budget..."
+        rows={6}
+        class={cn(baseInput, "resize-none")}
+        data-field></textarea>
+      <p class="field-error hidden mt-2 ml-1 text-xs text-red-400 font-medium">
+      </p>
+    </div>
+
+    <div
+      class="lg:col-span-2 flex items-center gap-4 py-2 group cursor-pointer"
+    >
+      <div class="relative shrink-0">
+        <input
+          type="checkbox"
+          id="subscription"
+          name="subscription"
+          class="peer h-5 w-5 cursor-pointer appearance-none rounded-md
+                   border border-white/15 bg-neutral-900
+                   checked:bg-primary checked:border-primary
+                   focus:outline-none focus:ring-2 focus:ring-primary/40
+                   transition-all duration-200"
+        />
+      </div>
+      <label
+        for="subscription"
+        class="text-white/35 text-sm cursor-pointer group-hover:text-white/60 transition-colors leading-snug"
+      >
+        Send me occasional design tips and studio updates.
+      </label>
+    </div>
+
+    <div class="lg:col-span-2">
+      <button
+        id="submit-btn"
+        type="submit"
+        class="relative w-full py-5 rounded-2xl
+                 bg-primary text-black
+                 font-black uppercase tracking-[0.15em] text-sm
+                 hover:scale-[1.015] active:scale-[0.98]
+                 disabled:opacity-50 disabled:scale-100 disabled:cursor-not-allowed
+                 transition-all duration-200"
+      >
+        <span id="btn-idle" class="flex cursor-pointer items-center justify-center gap-3">
+          Send Inquiry
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 14 14"
+            fill="none"
+            aria-hidden
+          >
+            <path
+              d="M2 7H12M12 7L7 2M12 7L7 12"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"></path>
+          </svg>
+        </span>
+        <span id="btn-pending" class="hidden items-center justify-center gap-3">
+          <svg class="animate-spin h-4 w-4" viewBox="0 0 24 24" fill="none">
+            <circle
+              class="opacity-25"
+              cx="12"
+              cy="12"
+              r="10"
+              stroke="currentColor"
+              stroke-width="4"></circle>
+            <path
+              class="opacity-75"
+              fill="currentColor"
+              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+          </svg>
+          Sending...
+        </span>
+      </button>
+    </div>
+  </form>
+</ContactLayout>
+
+<style>
+  /* Invalid field ring — plain CSS, no @apply needed */
+  input[data-field].invalid,
+  select[data-field].invalid,
+  textarea[data-field].invalid {
+    border-color: rgb(239 68 68 / 0.5);
+    box-shadow: 0 0 0 1px rgb(239 68 68 / 0.3);
+  }
+
+  select option {
+    background-color: #0a0a0a;
+    color: white;
+  }
+</style>
+
+<script>
+  const form = document.getElementById("contact-form") as HTMLFormElement;
+  const successEl = document.getElementById("form-success") as HTMLElement;
+  const errorEl = document.getElementById("form-error-state") as HTMLElement;
+  const errorDetail = document.getElementById("error-detail") as HTMLElement;
+  const submitBtn = document.getElementById("submit-btn") as HTMLButtonElement;
+  const btnIdle = document.getElementById("btn-idle") as HTMLElement;
+  const btnPending = document.getElementById("btn-pending") as HTMLElement;
+  const resetBtn = document.getElementById("reset-form") as HTMLButtonElement;
+  const retryBtn = document.getElementById("retry-form") as HTMLButtonElement;
+  const subscriptionEl = document.getElementById(
+    "subscription",
+  ) as HTMLInputElement;
+
+  // ── Validation ─────────────────────────────────────────────────
+
+  type Rule = { test: (v: string) => boolean; message: string };
+
+  const rules: Record<string, Rule[]> = {
+    fullName: [
+      { test: (v) => v.trim().length >= 2, message: "Enter your full name." },
+    ],
+    email: [
+      {
+        test: (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v),
+        message: "Enter a valid email address.",
+      },
+    ],
+    phone: [
+      {
+        test: (v) => v.trim().length >= 6,
+        message: "Enter a valid phone number.",
+      },
+    ],
+    services: [{ test: (v) => v.length > 0, message: "Pick a service." }],
+    companyName: [
+      {
+        test: (v) => v.trim().length >= 1,
+        message: "Enter your company or brand name.",
+      },
+    ],
+    // NEW validation rule for company size
+    companySize: [
+      {
+        test: (v) => v.length > 0,
+        message: "Select a company size.",
+      },
+    ],
+    message: [
+      {
+        test: (v) => v.trim().length >= 10,
+        message: "Add a bit more detail (10+ characters).",
+      },
+    ],
+  };
+
+  function getFieldEl(name: string) {
+    return form.elements.namedItem(name) as
+      | HTMLInputElement
+      | HTMLSelectElement
+      | HTMLTextAreaElement
+      | null;
+  }
+
+  function getErrEl(field: Element) {
+    return field
+      .closest(".flex")
+      ?.querySelector(".field-error") as HTMLElement | null;
+  }
+
+  function validateField(name: string): boolean {
+    const field = getFieldEl(name);
+    const errEl = field ? getErrEl(field) : null;
+    if (!field || !errEl) return true;
+
+    for (const rule of rules[name] ?? []) {
+      if (!rule.test(field.value)) {
+        field.classList.add("invalid");
+        errEl.textContent = rule.message;
+        errEl.classList.remove("hidden");
+        return false;
+      }
+    }
+
+    field.classList.remove("invalid");
+    errEl.classList.add("hidden");
+    return true;
+  }
+
+  function validateAll() {
+    return Object.keys(rules).map(validateField).every(Boolean);
+  }
+
+  // Live validation: validate on blur, then on every input after first touch
+  Object.keys(rules).forEach((name) => {
+    const field = getFieldEl(name);
+    let touched = false;
+    field?.addEventListener("blur", () => {
+      touched = true;
+      validateField(name);
+    });
+    field?.addEventListener("input", () => {
+      if (touched) validateField(name);
+    });
+  });
+
+  // ── State machine ───────────────────────────────────────────────
+
+  function setState(state: "form" | "success" | "error") {
+    form.classList.toggle("hidden", state !== "form");
+
+    successEl.classList.toggle("hidden", state !== "success");
+    successEl.classList.toggle("flex", state === "success");
+
+    errorEl.classList.toggle("hidden", state !== "error");
+    errorEl.classList.toggle("flex", state === "error");
+  }
+
+  function setPending(on: boolean) {
+    submitBtn.disabled = on;
+    btnIdle.classList.toggle("flex", !on);
+    btnIdle.classList.toggle("hidden", on);
+    btnPending.classList.toggle("hidden", !on);
+    btnPending.classList.toggle("flex", on);
+  }
+
+  // ── Submit ──────────────────────────────────────────────────────
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    if (!validateAll()) return;
+
+    setPending(true);
+
+    try {
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData) as Record<string, any>;
+
+      // Force the subscription value to be a strict boolean (true/false)
+      data.subscription = subscriptionEl.checked;
+
+      const res = await fetch("/api/notion", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      if (!res.ok) {
+        const body = await res.json().catch(() => ({}));
+        throw new Error(body?.message ?? `Server responded with ${res.status}`);
+      }
+
+      setState("success");
+    } catch (err) {
+      errorDetail.textContent =
+        err instanceof Error ? err.message : "An unexpected error occurred.";
+      setState("error");
+    } finally {
+      setPending(false);
+    }
+  });
+
+  // ── Reset ───────────────────────────────────────────────────────
+
+  resetBtn?.addEventListener("click", () => {
+    form.reset();
+    // Clear any lingering invalid states
+    form
+      .querySelectorAll("[data-field]")
+      .forEach((f) => f.classList.remove("invalid"));
+    form.querySelectorAll(".field-error").forEach((e) => {
+      e.classList.add("hidden");
+      e.textContent = "";
+    });
+    setState("form");
+  });
+
+  retryBtn?.addEventListener("click", () => setState("form"));
+</script>

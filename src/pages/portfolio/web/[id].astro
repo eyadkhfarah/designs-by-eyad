@@ -1,0 +1,167 @@
+---
+import PrimaryBtn from "@/components/Buttons/PrimaryBtn";
+import Layout from "@/layouts/Layout.astro";
+import { RiArrowLeftLine } from "@remixicon/react";
+import { Image } from "astro:assets";
+import { render, getCollection, getEntry } from "astro:content";
+
+export const prerender = true
+
+export async function getStaticPaths() {
+  const webs = await getCollection("web");
+
+  return webs.map((web) => {
+    return {
+      params: {
+        id: web.id,
+      },
+      props: {
+        web,
+      },
+    };
+  });
+}
+
+let { web } = Astro.props;
+const { id } = Astro.params;
+
+if (!web && id) {
+  const entry = await getEntry("web", id);
+  if (entry) {
+    web = entry;
+  }
+}
+
+if (!web) {
+  return Astro.redirect("/404");
+}
+
+const { Content } = await render(web);
+
+const dateRaw = web.data.Date ?? "";
+
+const formattedDate = new Date(dateRaw).toLocaleDateString("en-US", {
+  month: "long",
+  year: "numeric",
+});
+---
+
+<Layout
+  type="article"
+  article={{
+    publishedTime: dateRaw ? new Date(dateRaw).toISOString() : "",
+    author: "Eyad Farah",
+    section: web.data.Protype,
+    tags: web.data.stack.map((stack) => stack),
+  }}
+  title={web.data.title + " | Web Design"}
+  description={web.data.description}
+>
+  <article class="max-w-7xl mx-auto px-6 md:px-10 lg:px-0 pt-32 pb-20">
+    <a
+      href="/portfolio/web"
+      class="inline-flex items-center gap-2 mb-12 font-mono text-[11px] tracking-[0.14em] uppercase text-white/30 hover:text-primary transition-colors duration-200"
+    >
+      <RiArrowLeftLine />
+      All websites
+    </a>
+
+    {/* ── Page header ──────────────────────────────────────────────── */}
+    <header class="flex flex-col gap-8 mb-16 pb-12 border-b border-white/6">
+      {/* Badges + date */}
+      <div class="flex flex-wrap items-center gap-3">
+        <span
+          class="px-4 py-1.5 rounded-full bg-primary text-black font-mono text-[10px] tracking-[0.15em] uppercase"
+        >
+          {web.data.Protype}
+        </span>
+        <span
+          class="font-mono text-[11px] tracking-[0.14em] uppercase text-white/25"
+        >
+          {formattedDate}
+        </span>
+      </div>
+
+      {/* Title */}
+      <h1
+        class="font-['Bebas_Neue',sans-serif] uppercase text-[clamp(52px,10vw,128px)] leading-[0.85] tracking-[-0.01em]"
+      >
+        {web.data.title}
+        <span class="text-primary">.</span>
+      </h1>
+    </header>
+
+    {/* ── Hero + overview ───────────────────────────────────────────── */}
+    <section class="grid lg:grid-cols-12 gap-10 mb-20">
+      {/* Thumbnail */}
+      <div
+        class="lg:col-span-5 relative aspect-square rounded-[2.5rem] overflow-hidden border border-white/[0.07] bg-neutral-900"
+      >
+        <Image
+          src={web.data.thumbnail}
+          width={1600}
+          height={1600}
+          loading={"eager"}
+          class="object-cover"
+          alt={web.data.title}
+          priority
+        />
+      </div>
+
+      {/* Details */}
+      <div class="lg:col-span-7 flex flex-col justify-center gap-10">
+        {/* Overview */}
+        <div class="flex flex-col gap-5">
+          <div class="flex items-center gap-4">
+            <span
+              class="font-mono text-[10px] tracking-[0.18em] uppercase text-primary"
+            >
+              Overview
+            </span>
+            <span class="flex-1 h-px bg-white/6"></span>
+          </div>
+          <p class="text-[16px] md:text-[18px] text-white/45 leading-[1.8]">
+            {web.data.description}
+          </p>
+        </div>
+
+        {/* Tech stack */}
+        {
+          web.data.stack && web.data.stack.length > 0 && (
+            <div class="flex flex-col gap-5">
+              <div class="flex items-center gap-4">
+                <span class="font-mono text-[10px] tracking-[0.18em] uppercase text-white/30">
+                  Tech Stack
+                </span>
+                <span class="flex-1 h-px bg-white/6" />
+              </div>
+              <ul class="flex flex-wrap gap-2.5 list-none">
+                {web.data.stack.map((skill) => (
+                  <li class="skills-chip text-[12px]">{skill}</li>
+                ))}
+              </ul>
+            </div>
+          )
+        }
+
+        {/* CTA */}
+        <div class="pt-2">
+          <PrimaryBtn
+            target={true}
+            link={web.data.website ?? "#"}
+            text="Launch Live Site"
+            client:only
+          />
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="overflow-hidden rounded-[2.5rem] border border-white/[0.07] bg-neutral-900/30"
+    >
+      <Content
+        class="prose prose-invert prose-lg max-w-none prose-headings:font-['Bebas_Neue',sans-serif] prose-headings:uppercase prose-headings:tracking-[-0.01em] prose-headings:leading-[0.9] prose-p:text-white/45 prose-p:leading-loose prose-strong:text-white prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-img:m-0 prose-img:w-full"
+      />
+    </section>
+  </article>
+</Layout>

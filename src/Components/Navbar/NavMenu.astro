@@ -1,0 +1,51 @@
+---
+import { NavListLang } from "@/lib/NavList";
+import PrimaryBtn from "@/components/Buttons/PrimaryBtn";
+import { useTranslations } from "@/utils/i18n";
+
+const t = useTranslations(Astro.currentLocale);
+const pathname = Astro.url.pathname;
+
+const navItems = NavListLang.filter((nav) => nav.link !== "/contact");
+---
+
+<ul class="lg:flex items-center hidden gap-10" role="list">
+  {navItems.map((nav) => {
+    const isActive = pathname === nav.link.toLowerCase()
+  || (nav.link !== "/" && pathname.startsWith(nav.link.toLowerCase()));
+
+    return (
+      <li class="relative group">
+        <a
+          href={nav.link}
+          aria-current={isActive ? "page" : undefined}
+          class:list={[
+            "text-[11px] uppercase tracking-[0.18em] font-bold",
+            "transition-colors duration-200 pb-1 block",
+            isActive ? "text-primary" : "text-white/60 hover:text-white",
+          ]}
+        >
+          {t(nav.translationKey)}
+        </a>
+
+        <!-- Active underline -->
+        {isActive && (
+          <span class="absolute -bottom-1 left-0 right-0 h-px bg-primary rounded-full" />
+        )}
+
+        <!-- Hover underline (only on inactive) -->
+        {!isActive && (
+          <span
+            class="absolute -bottom-1 left-0 h-px bg-primary/30 rounded-full
+                   w-0 group-hover:w-full transition-[width] duration-300"
+          />
+        )}
+      </li>
+    );
+  })}
+
+  <!-- Contact CTA -->
+  <li class="ml-2">
+    <PrimaryBtn target={false} link="/contact" text="Contact" />
+  </li>
+</ul>

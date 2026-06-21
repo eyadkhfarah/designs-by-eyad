@@ -1,8 +1,6 @@
 "use client";
 
-import Link from "next/link";
-import React from "react";
-import { RiBehanceFill } from "react-icons/ri";
+import { RiBehanceFill } from "@remixicon/react";
 import { motion } from "framer-motion";
 
 type ButtonProps = {
@@ -21,7 +19,6 @@ export default function PrimaryBtn({
   icon 
 }: ButtonProps) {
   
-  // Logic to automatically show Behance icon if the text matches (keeping your original logic but making it cleaner)
   const renderIcon = icon || (text.toLowerCase().includes("behance") ? <RiBehanceFill className="text-2xl" /> : null);
 
   return (
@@ -30,10 +27,10 @@ export default function PrimaryBtn({
       whileTap={{ scale: 0.95 }}
       className="w-fit"
     >
-      <Link
+      <a
         href={link}
         target={target ? "_blank" : "_self"}
-        rel="noreferrer"
+        rel={target ? "noreferrer" : undefined}
         className={`
           relative overflow-hidden
           px-8 py-4 
@@ -51,9 +48,8 @@ export default function PrimaryBtn({
         {renderIcon}
         <span className="relative z-10">{text}</span>
         
-        {/* Subtle Shine Effect on Hover */}
-        <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full hover:animate-[shimmer_1.5s_infinite] pointer-events-none" />
-      </Link>
+        <div className="absolute inset-0 w-full h-full bg-linear-to-r from-transparent via-white/20 to-transparent -translate-x-full hover:animate-[shimmer_1.5s_infinite] pointer-events-none" />
+      </a>
     </motion.div>
   );
 }

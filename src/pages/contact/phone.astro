@@ -1,0 +1,37 @@
+---
+import PhoneComponent from "@/components/Contact/Phone";
+import ContactLayout from "@/layouts/ContactLayout.astro";
+import Layout from "@/layouts/Layout.astro";
+---
+
+<ContactLayout
+  title="Phone | Contact — Designs By Eyad"
+  description="Call or WhatsApp Eyad Farah directly for urgent project inquiries."
+>
+  <div class="flex flex-col gap-6">
+    <header class="flex flex-col gap-2">
+      <div class="flex items-center gap-3">
+        <h2 class="text-2xl font-black uppercase tracking-tighter">
+          Direct Line<span class="text-primary">.</span>
+        </h2>
+        {/* Availability Pulse */}
+        <span class="flex h-3 w-3 relative">
+          <span
+            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"
+          ></span>
+          <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"
+          ></span>
+        </span>
+      </div>
+      <p class="text-neutral-500 text-sm">
+        Available for calls and inquiries from Aswan.
+      </p>
+    </header>
+
+    <PhoneComponent client:visible />
+  </div>
+
+  <p class="text-neutral-600 text-[10px] uppercase tracking-widest text-center">
+    Business Hours: 10:00 AM — 08:00 PM (GMT+2)
+  </p>
+</ContactLayout>

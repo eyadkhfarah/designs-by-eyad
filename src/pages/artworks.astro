@@ -1,0 +1,125 @@
+---
+import type { ArtworkPage, NotionBaseProperties } from "@/types/notionType";
+import { fetchArtworks } from "@/lib/Data/notionArtworksData";
+import ArtworkPrice from "@/components/Pricing/ArtworkPrice";
+import { plans } from "@/lib/Prices";
+
+import Layout from "@/layouts/Layout.astro";
+import { useTranslations } from "@/utils/i18n";
+import { Image } from "astro:assets";
+
+const t = useTranslations(Astro.currentLocale);
+
+const artworks = await fetchArtworks();
+// Ensure we are working with an array of pages
+const artworksList = Array.isArray(artworks) ? artworks : [];
+
+const artworkSchema = JSON.stringify(
+  artworksList
+    .map((artwork: any, i: number) => {
+      const name = artwork.properties.Name.title[0]?.plain_text || "Untitled";
+      const imageUrl =
+        artwork.properties.Image.files[0].external?.url ||
+        artwork.properties.Image.files[0].file?.url;
+      if (!imageUrl) return null;
+      return {
+        "@context": "https://schema.org/",
+        "@type": "VisualArtwork",
+        name: name,
+        image: imageUrl,
+        creator: {
+          "@type": "Person",
+          name: "Eyad Farah",
+        },
+        publisher: {
+          "@type": "Organization",
+          name: "Designs By Eyad",
+        },
+      };
+    })
+    .filter(Boolean),
+);
+---
+
+<Layout
+  title="Artworks | Exclusive Collage Collection — Designs By Eyad"
+  description="Explore a captivating collection of unique artwork collages blending creativity and storytelling. Discover handmade designs crafted with intricate details by Eyad Farah."
+>
+  <main class="relative min-h-screen mt-20 overflow-x-hidden">
+    <section class="max-w-7xl mx-auto lg:px-0 px-6 py-16 md:py-24">
+      {/* Editorial Header */}
+      <div
+        class="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8"
+      >
+        <h1
+          class="font-['Bebas_Neue',sans-serif] uppercase text-[clamp(60px,10vw,140px)] leading-[0.8] tracking-[-0.02em] text-white"
+        >
+          Artworks
+        </h1>
+        <span
+          class="font-mono text-[11px] uppercase tracking-[0.2em] text-white/30 pb-4"
+        >
+          001 — Exclusive Collection
+        </span>
+      </div>
+
+      {/* Brutalist Grid */}
+      <div
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border-l border-t border-white/10"
+      >
+        {
+          artworksList.slice(0, 6).map((artwork: any, i: number) => {
+            const name =
+              artwork.properties?.Name?.title?.[0]?.plain_text || "Untitled";
+            const imageUrl =
+              artwork.properties?.Image?.files?.[0]?.external?.url ||
+              artwork.properties?.Image?.files?.[0]?.file?.url;
+
+            if (!imageUrl) return null;
+
+            return (
+              <div class="group relative border-r border-b border-white/10 p-4 bg-neutral-900/20 hover:bg-white/5 transition-colors duration-500">
+                {/* Image Container */}
+                <div class="relative overflow-hidden aspect-4/5 mb-6">
+                  <Image
+                    class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                    alt={name}
+                    src={imageUrl}
+                    loading={i < 3 ? "eager" : "lazy"}
+                    width={600}
+                    height={800}
+                  />
+                  {/* Sharp Index Label */}
+                  <div class="absolute top-2 left-2 bg-black text-white px-2 py-0.5 font-mono text-[10px]">
+                    {String(i + 1).padStart(2, "0")}
+                  </div>
+                </div>
+
+                {/* Text Info */}
+                <div class="flex justify-between items-start">
+                  <h3 class="font-['Bebas_Neue',sans-serif] text-2xl uppercase text-white group-hover:text-primary transition-colors">
+                    {name}
+                  </h3>
+                  <span class="text-white/20 text-[10px] font-mono mt-1">
+                    /VIEW
+                  </span>
+                </div>
+              </div>
+            );
+          })
+        }
+      </div>
+    </section>
+
+    <section class="py-20 max-w-7xl mx-auto px-6 lg:px-0">
+      <ArtworkPrice client:visible />
+    </section>
+  </main>
+
+  <!-- Structured Data -->
+  <script
+    id="artwork-schema"
+    type="application/ld+json"
+    set:html={artworkSchema}
+  />
+</Layout>

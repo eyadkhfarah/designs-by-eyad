@@ -1,0 +1,236 @@
+---
+import { NavListLang } from "@/lib/NavList";
+import { useTranslations } from "@/utils/i18n";
+import { RiArrowRightSLine, RiCloseLargeLine } from "@remixicon/react";
+
+const t = useTranslations(Astro.currentLocale);
+const pathname = Astro.url.pathname;
+
+const navItems = NavListLang.filter((nav) => nav.link !== "/contact");
+---
+
+<!-- Overlay -->
+<div
+  id="mobile-nav"
+  aria-modal="true"
+  role="dialog"
+  aria-label="Navigation menu"
+  class="fixed inset-0 z-100 lg:hidden pointer-events-none"
+>
+  <!-- Backdrop -->
+  <div
+    id="nav-backdrop"
+    class="absolute inset-0 bg-black/60 backdrop-blur-sm opacity-0 transition-opacity duration-500"
+  />
+
+  <!-- Panel — slides in from right -->
+  <div
+    id="nav-panel"
+    class="absolute right-0 top-0 bottom-0 w-full sm:w-105
+           bg-[#080808] flex flex-col overflow-hidden
+           translate-x-full transition-transform duration-700
+           ease-[cubic-bezier(0.85,0,0.15,1)]"
+  >
+    <!-- Ambient glow -->
+    <div
+      aria-hidden="true"
+      class="absolute top-0 left-0 w-64 h-64 bg-primary/8 blur-[100px] rounded-full pointer-events-none -translate-x-1/2 -translate-y-1/2"
+    />
+
+    <!-- Top bar -->
+    <div class="flex items-center justify-between px-8 pt-8 pb-6 border-b border-white/5 relative z-10">
+      <span class="font-mono text-[9px] uppercase tracking-[0.4em] text-white/20">
+        Menu
+      </span>
+      <button
+        id="nav-close"
+        aria-label="Close menu"
+        class="group w-10 h-10 rounded-full border border-white/10 bg-white/5
+               flex items-center justify-center
+               hover:border-primary/40 hover:bg-primary/10
+               transition-all duration-200 focus-visible:outline-2 focus-visible:outline-primary"
+      >
+        <RiCloseLargeLine />
+      </button>
+    </div>
+
+    <!-- Nav links — editorial index style -->
+    <nav class="flex-1 flex flex-col justify-center px-8 py-10 relative z-10">
+      <ul class="flex flex-col">
+        {navItems.map((nav, i) => {
+          const isActive = pathname === nav.link.toLowerCase();
+          return (
+            <li class="nav-item border-b border-white/5 last:border-b-0">
+              <a
+                href={nav.link}
+                class:list={[
+                  "nav-link group flex items-center gap-6 py-6",
+                  "transition-colors duration-200",
+                  isActive ? "text-primary" : "text-white/60 hover:text-white",
+                ]}
+              >
+                <!-- Index number -->
+                <span
+                  aria-hidden="true"
+                  class:list={[
+                    "font-['Bebas_Neue',sans-serif] text-4xl leading-none tabular-nums w-10 shrink-0",
+                    "transition-colors duration-200",
+                    isActive ? "text-primary" : "text-white/10 group-hover:text-white/20",
+                  ]}
+                >
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+
+                <!-- Label -->
+                <span
+                  class:list={[
+                    "font-['Bebas_Neue',sans-serif] uppercase tracking-tight leading-none",
+                    "transition-colors duration-200",
+                  ]}
+                  style="font-size: clamp(36px, 8vw, 52px);"
+                >
+                  {t(nav.translationKey)}
+                </span>
+
+                <!-- Active dot -->
+                {isActive && (
+                  <span class="ml-auto w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
+                )}
+
+                <!-- Hover arrow (non-active) -->
+                {!isActive && (
+                  <RiArrowRightSLine className="w-4 h-4 ml-auto shrink-0 opacity-0 -translate-x-2
+                           group-hover:opacity-100 group-hover:translate-x-0
+                           transition-all duration-200 text-white/30"/>
+                )}
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+    </nav>
+
+    <!-- Bottom: Contact CTA — anchored yellow bar -->
+    <div class="relative z-10 mt-auto">
+      <a
+        href="/contact"
+        id="nav-contact"
+        class="group flex items-center justify-between
+               bg-primary px-8 py-7
+               hover:bg-white transition-colors duration-300"
+      >
+        <span class="font-['Bebas_Neue',sans-serif] uppercase text-4xl leading-none tracking-tight text-black">
+          {t("MenuList.contact")}
+        </span>
+          <RiArrowRightSLine className="group-hover:translate-x-1 transition-transform duration-200" />
+      </a>
+
+      <!-- Footer strip -->
+      <div class="flex items-center justify-between px-8 py-4 bg-background">
+        <span class="font-mono text-[9px] uppercase tracking-[0.3em] text-white/15">
+          Aswan, EG
+        </span>
+        <span class="font-mono text-[9px] uppercase tracking-[0.3em] text-white/15">
+          © {new Date().getFullYear()}
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Staggered slide-in for nav items */
+  @media (prefers-reduced-motion: no-preference) {
+    .nav-item {
+      opacity: 0;
+      transform: translateX(20px);
+      transition:
+        opacity  0.4s ease,
+        transform 0.4s ease;
+    }
+
+    #mobile-nav.is-open .nav-item {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* Stagger each item */
+    #mobile-nav.is-open .nav-item:nth-child(1) { transition-delay: 0.15s; }
+    #mobile-nav.is-open .nav-item:nth-child(2) { transition-delay: 0.22s; }
+    #mobile-nav.is-open .nav-item:nth-child(3) { transition-delay: 0.29s; }
+    #mobile-nav.is-open .nav-item:nth-child(4) { transition-delay: 0.36s; }
+    #mobile-nav.is-open .nav-item:nth-child(5) { transition-delay: 0.43s; }
+    #mobile-nav.is-open .nav-item:nth-child(6) { transition-delay: 0.50s; }
+
+    #nav-contact {
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.4s ease 0.5s, transform 0.4s ease 0.5s,
+                  background-color 0.3s ease, color 0.3s ease;
+    }
+
+    #mobile-nav.is-open #nav-contact {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+
+<script>
+const nav      = document.getElementById("mobile-nav")!;
+const panel    = document.getElementById("nav-panel")!;
+const backdrop = document.getElementById("nav-backdrop")!;
+const closeBtn = document.getElementById("nav-close")!;
+
+function openNav() {
+  nav.classList.add("is-open");
+  nav.classList.remove("pointer-events-none");
+  panel.classList.remove("translate-x-full");
+  backdrop.classList.remove("opacity-0");
+  backdrop.classList.add("opacity-100");
+  document.body.style.overflow = "hidden";
+  closeBtn.focus();
+}
+
+function closeNav() {
+  nav.classList.remove("is-open");
+  panel.classList.add("translate-x-full");
+  backdrop.classList.remove("opacity-100");
+  backdrop.classList.add("opacity-0");
+
+  setTimeout(() => {
+    nav.classList.add("pointer-events-none");
+    document.body.style.overflow = "";
+  }, 700);
+
+  // ✅ Tell the burger button to reset its aria-expanded
+  document.dispatchEvent(new CustomEvent("close-mobile-nav"));
+}
+
+// Listen for open/close from the burger button
+// Use { once: false } and guard against double-firing
+document.addEventListener("open-mobile-nav",  openNav);
+document.addEventListener("close-mobile-nav", (e) => {
+  // Only run if the event came from outside (burger),
+  // not from closeNav itself — check if panel is still open
+  if (!nav.classList.contains("pointer-events-none")) {
+    closeNav();
+  }
+});
+
+// Internal close triggers
+closeBtn.addEventListener("click", closeNav);
+backdrop.addEventListener("click", closeNav);
+
+// Close on any nav link click
+nav.querySelectorAll("a").forEach((a) =>
+  a.addEventListener("click", closeNav)
+);
+
+// Close on Escape
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && nav.classList.contains("is-open")) {
+    closeNav();
+  }
+});
+</script>

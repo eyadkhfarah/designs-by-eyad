@@ -1,0 +1,30 @@
+---
+import ContactLayout from "@/layouts/ContactLayout.astro";
+import Layout from "@/layouts/Layout.astro";
+import EmailComponent from "@/components/Contact/Email";
+---
+
+<ContactLayout
+  title="Email | Contact — Designs By Eyad"
+  description="Reach out to Eyad Farah via email for inquiries, collaborations, or project discussions. Available for brand identity, social media design, UI/UX, and web development projects."
+>
+  <div class="flex flex-col gap-6">
+    <header class="flex flex-col gap-2">
+      <h2 class="text-2xl font-black uppercase tracking-tighter">
+        Electronic Mail<span class="text-primary">.</span>
+      </h2>
+      <p class="text-neutral-500 text-sm">
+        For formal inquiries and project briefs.
+      </p>
+    </header>
+
+    <EmailComponent client:visible />
+  </div>
+
+  <div class="p-6 bg-primary/5 border border-primary/10 rounded-2xl">
+    <p class="text-xs text-neutral-400 leading-relaxed text-center">
+      <strong>Pro-tip:</strong> When sending a brief, please include your project
+      timeline and budget so I can give you a more accurate quote.
+    </p>
+  </div>
+</ContactLayout>

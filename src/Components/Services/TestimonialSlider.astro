@@ -1,0 +1,183 @@
+---
+import { testimonials } from "@/lib/testimonialList";
+import { Image } from "astro:assets";
+
+const FALLBACK_AVATAR = "https://avatar.iran.liara.run/public/42";
+const total = testimonials.length;
+---
+
+<section class="relative max-w-7xl mx-auto px-4 md:px-0 select-none">
+
+  <!-- Counter bar -->
+  <div class="flex items-center justify-between mb-10">
+    <p class="text-xs font-black uppercase tracking-[0.3em] text-white/20">
+      Client Voices
+    </p>
+    <div class="flex items-center gap-3">
+      <span id="t-current" class="text-4xl font-black text-primary tabular-nums leading-none">01</span>
+      <span class="text-white/20 text-lg font-light">/</span>
+      <span class="text-lg font-black text-white/20 tabular-nums leading-none">
+        {String(total).padStart(2, "0")}
+      </span>
+    </div>
+  </div>
+
+  <!-- Progress bar -->
+  <div class="relative h-px bg-white/10 mb-12 overflow-hidden">
+    <div
+      id="t-progress"
+      class="absolute inset-y-0 left-0 bg-primary transition-[width] duration-700 ease-out"
+      style="width: 0%"
+    />
+  </div>
+
+  <!-- Embla root -->
+  <div class="overflow-hidden" id="testimonial-carousel">
+    <div class="flex">
+      {testimonials.map((testimonial, i) => (
+        <div class="flex-[0_0_100%] min-w-0">
+          <div class="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-12 lg:gap-20 items-start">
+
+            <!-- Quote block -->
+            <div class="flex flex-col gap-10">
+              <!-- The big quote -->
+              <blockquote class="relative">
+                <span
+                  aria-hidden="true"
+                  class="absolute -top-6 -left-2 text-[8rem] leading-none text-primary font-black select-none pointer-events-none opacity-80"
+                  style="font-family: Georgia, serif;"
+                >"</span>
+                <p class="relative z-10 md:text-lg lg:text-xl text-white font-medium leading-[1.4] pt-10 pl-2">
+                  {testimonial.quote}
+                </p>
+              </blockquote>
+
+              <!-- Attribution row -->
+              <div class="flex items-center gap-6 border-t border-white/10 pt-8">
+                <!-- Clipped avatar -->
+                <div class="relative shrink-0">
+                  <div class="absolute inset-0 bg-primary/30 blur-xl rounded-full scale-75" />
+                  <Image
+                    src={testimonial.image === "" ? FALLBACK_AVATAR : testimonial.image}
+                    alt={testimonial.name}
+                    width={72}
+                    height={72}
+                    loading="lazy"
+                    decoding="async"
+                    class="relative z-10 w-16 h-16 md:w-20 md:h-20 object-cover rounded-2xl border border-primary/40"
+                  />
+                </div>
+
+                <div>
+                  <p class="text-lg md:text-xl font-black text-primary uppercase tracking-tight leading-none mb-1">
+                    {testimonial.name}
+                  </p>
+                  <p class="text-xs font-bold uppercase tracking-[0.25em] text-white/40">
+                    {testimonial.role}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide index (decorative, desktop only) -->
+            <div class="hidden lg:flex items-start pt-2">
+              <span class="text-[9rem] font-black leading-none text-white/5 tabular-nums" aria-hidden="true">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+            </div>
+
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <div class="flex items-center gap-4 mt-14">
+    <button
+      id="testimonial-prev"
+      aria-label="Previous testimonial"
+      class="group h-12 w-12 rounded-full border border-white/10 bg-transparent hover:bg-primary hover:border-primary text-white hover:text-black transition-all duration-300 flex items-center justify-center cursor-pointer"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M15 18l-6-6 6-6"/>
+      </svg>
+    </button>
+    <button
+      id="testimonial-next"
+      aria-label="Next testimonial"
+      class="group h-12 w-12 rounded-full border border-white/10 bg-transparent hover:bg-primary hover:border-primary text-white hover:text-black transition-all duration-300 flex items-center justify-center cursor-pointer"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M9 18l6-6-6-6"/>
+      </svg>
+    </button>
+
+    <!-- Dot indicators -->
+    <div id="t-dots" class="flex items-center gap-2 ml-4" role="tablist" aria-label="Testimonial slides">
+      {testimonials.map((_, i) => (
+        <button
+          role="tab"
+          aria-selected={i === 0 ? "true" : "false"}
+          aria-label={`Go to testimonial ${i + 1}`}
+          data-index={i}
+          class="t-dot h-1.5 w-1.5 rounded-full bg-white/20 transition-all duration-300 cursor-pointer hover:bg-white/50"
+        />
+      ))}
+    </div>
+  </div>
+
+</section>
+
+<script>
+  import EmblaCarousel from "embla-carousel";
+  import Autoplay from "embla-carousel-autoplay";
+
+  const root = document.querySelector("#testimonial-carousel") as HTMLElement;
+  const prevBtn = document.querySelector("#testimonial-prev") as HTMLButtonElement;
+  const nextBtn = document.querySelector("#testimonial-next") as HTMLButtonElement;
+  const counter = document.querySelector("#t-current") as HTMLElement;
+  const progress = document.querySelector("#t-progress") as HTMLElement;
+  const dots = document.querySelectorAll<HTMLButtonElement>(".t-dot");
+  const total = dots.length;
+
+  if (!root) throw new Error("Carousel root not found");
+
+  const embla = EmblaCarousel(
+    root,
+    { loop: true, startIndex: 0 },
+    [Autoplay({ delay: 6000, stopOnInteraction: false })]
+  );
+
+  function updateUI(index: number) {
+    // Counter
+    counter.textContent = String(index + 1).padStart(2, "0");
+
+    // Progress bar
+    progress.style.width = `${((index + 1) / total) * 100}%`;
+
+    // Dots
+    dots.forEach((dot, i) => {
+      const active = i === index;
+      dot.classList.toggle("bg-primary", active);
+      dot.classList.toggle("w-5", active);
+      dot.classList.toggle("bg-white/20", !active);
+      dot.classList.toggle("w-1.5", !active);
+      dot.setAttribute("aria-selected", String(active));
+    });
+  }
+
+  embla.on("select", () => updateUI(embla.selectedScrollSnap()));
+
+  prevBtn?.addEventListener("click", () => embla.scrollPrev());
+  nextBtn?.addEventListener("click", () => embla.scrollNext());
+
+  dots.forEach((dot) => {
+    dot.addEventListener("click", () => {
+      embla.scrollTo(Number(dot.dataset.index));
+    });
+  });
+
+  // Init state
+  updateUI(0);
+</script>

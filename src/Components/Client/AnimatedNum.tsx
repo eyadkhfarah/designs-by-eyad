@@ -1,10 +1,8 @@
-"use client";
-
 import {
-    KeyframeOptions,
     animate,
     useInView,
     useIsomorphicLayoutEffect,
+    type KeyframeOptions,
 } from "framer-motion";
 import { useRef } from "react";
 

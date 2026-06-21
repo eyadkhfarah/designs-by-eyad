@@ -1,0 +1,28 @@
+---
+import PurchasingComponent from "@/components/Contact/Purchasing";
+import ContactLayout from "@/layouts/ContactLayout.astro";
+import Layout from "@/layouts/Layout.astro";
+---
+
+<ContactLayout
+  title="Purchasing Methods | Contact — Designs By Eyad"
+  description="Explore secure purchasing methods for Egyptian clients. Learn about payment options and how to safely transact with Designs By Eyad."
+>
+  <div class="flex flex-col gap-6">
+    <header class="flex flex-col gap-2">
+      <h2 class="text-2xl font-black uppercase tracking-tighter">
+        Purchasing Methods<span class="text-primary">.</span>
+      </h2>
+      <p class="text-neutral-500 text-sm">
+        Secure payment options for Egyptian clients.
+      </p>
+    </header>
+
+    <PurchasingComponent client:visible />
+  </div>
+  <p
+    class="text-center text-neutral-600 text-[10px] uppercase tracking-[0.2em] mt-4"
+  >
+    All transactions are secured via official banking channels
+  </p>
+</ContactLayout>
