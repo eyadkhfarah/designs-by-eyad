@@ -4,10 +4,7 @@ import tailwindcss from "@tailwindcss/vite";
 import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 import partytown from '@astrojs/partytown';
-import node from "@astrojs/node";
 import vercel from "@astrojs/vercel";
-
-const siteUrl = import.meta.env.PUBLIC_DOMAIN_URL || "https://designs-by-eyad.vercel.app";
 
 export default defineConfig({
   i18n: {
@@ -28,13 +25,12 @@ export default defineConfig({
     react(),
     partytown(),
     sitemap({
-      sitemap: 'sitemap.xml',
       changefreq: "weekly",
       priority: 0.7,
-      lastmod: new Date("2022-02-24"),
+      lastmod: new Date("2026-06-23"),
     }),
   ],
 
-  output: 'server', 
+  output: 'hybrid', 
   adapter: vercel(),
 });
