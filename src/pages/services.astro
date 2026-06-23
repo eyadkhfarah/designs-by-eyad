@@ -1,9 +1,9 @@
 ---
-import ServicesCards from "@/components/Services/ServicesCards";
+import ServicesCards from "@/components/Services/ServicesCards.astro";
 import BrandFields from "@/components/Client/BrandFields.astro";
-import ToolsTabs from "@/components/Services/ToolsTabs";
 import Layout from "@/layouts/Layout.astro";
 import { useTranslations } from "@/utils/i18n";
+import ToolsTabs from "@/components/Services/ToolsTabs.astro";
 
 const t = useTranslations(Astro.currentLocale);
 ---
@@ -75,7 +75,7 @@ const t = useTranslations(Astro.currentLocale);
     ══════════════════════════════════════════ -->
     <section class="border-t border-white/5 bg-neutral-900/20">
       <div class="max-w-7xl mx-auto px-6 py-24">
-        <ServicesCards client:visible />
+        <ServicesCards />
       </div>
     </section>
 
@@ -103,7 +103,7 @@ const t = useTranslations(Astro.currentLocale);
           </p>
         </div>
       </div>
-      <BrandFields client:visible />
+      <BrandFields />
     </section>
 
     <!-- ══════════════════════════════════════════
@@ -112,7 +112,7 @@ const t = useTranslations(Astro.currentLocale);
     <section
       class="max-w-7xl mx-auto px-6 py-28 border-t border-white/5 bg-neutral-900/20"
     >
-      <ToolsTabs client:visible />
+      <ToolsTabs />
     </section>
   </main>
 </Layout>

@@ -1,25 +1,25 @@
 ---
 import faqData from "@/lib/faqData";
-// import removeMarkdown from "remove-markdown";
-import FAQCard from "@/components/Client/FQACard";
+import removeMarkdown from "remove-markdown";
+import FAQCard from "@/components/Client/FQACard.astro";
 
 import Layout from "@/layouts/Layout.astro";
 import { useTranslations } from "@/utils/i18n";
 
 const t = useTranslations(Astro.currentLocale);
 
-// const fqaSchema = JSON.stringify({
-//   "@context": "https://schema.org",
-//   "@type": "FAQPage",
-//   mainEntity: faqData.map((entry) => ({
-//     "@type": "Question",
-//     name: entry.question,
-//     acceptedAnswer: {
-//       "@type": "Answer",
-//       text: removeMarkdown(entry.answer),
-//     },
-//   })),
-// });
+const faqSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqData.map((entry: { question: string; answer: string }) => ({
+    "@type": "Question",
+    name: entry.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: removeMarkdown(entry.answer),
+    },
+  })),
+});
 ---
 
 <Layout
@@ -78,7 +78,7 @@ const t = useTranslations(Astro.currentLocale);
                  prose-a:text-primary prose-a:no-underline hover:prose-a:underline 
                  prose-strong:text-white prose-strong:font-bold"
         >
-          <FAQCard client:visible />
+          <FAQCard />
         </div>
 
       </div>
@@ -144,7 +144,7 @@ const t = useTranslations(Astro.currentLocale);
   </main>
 
   <!-- Structured Data -->
-  <!-- <script type="application/ld+json" set:html={fqaSchema} /> -->
+  <script type="application/ld+json" set:html={faqSchema} />
 </Layout>
 
 <style>

@@ -2,7 +2,7 @@
 import BentoGrid from "@/components/Client/BentoGrid.astro";
 import ProtImages from "@/components/Portfolio/ProtImages.astro";
 import Layout from "@/layouts/Layout.astro";
-import ServicesCards from "@/components/Services/ServicesCards";
+import ServicesCards from "@/components/Services/ServicesCards.astro";
 import MissionVision from "@/components/Client/MissionVision.astro";
 import { Image } from "astro:assets";
 import { useTranslations } from "@/utils/i18n";
@@ -105,7 +105,7 @@ const ticker = [
           </p>
         </div>
 
-        <ServicesCards client:visible />
+        <ServicesCards />
 
         <div class="mt-14 flex justify-end">
           <a

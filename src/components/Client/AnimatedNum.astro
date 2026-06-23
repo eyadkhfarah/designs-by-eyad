@@ -1,0 +1,81 @@
+---
+import type { KeyframeOptions } from "framer-motion";
+
+interface Props {
+  from: number;
+  to: number;
+  animationOptions?: KeyframeOptions;
+  class?: string;
+}
+
+const { from, to, animationOptions = {}, class: className } = Astro.props;
+---
+
+<span
+  data-animated-counter
+  data-from={from}
+  data-to={to}
+  data-options={JSON.stringify(animationOptions)}
+  class={className}
+>
+  {from}
+</span>
+
+<script>
+  import { animate } from "framer-motion";
+
+  function initAnimatedCounters() {
+    const elements = document.querySelectorAll("[data-animated-counter]");
+
+    elements.forEach((element) => {
+      if (!(element instanceof HTMLElement)) return;
+
+      const from = Number(element.dataset.from) ?? 0;
+      const to = Number(element.dataset.to) ?? 0;
+      
+      let configurationOptions = {};
+      try {
+        configurationOptions = JSON.parse(element.dataset.options || "{}");
+      } catch (error) {
+        console.error("Failed to parse layout animation configurations:", error);
+      }
+
+      // Replicating React's useInView(ref, { once: true }) behavior
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              observer.unobserve(element);
+
+              // Respect native user preference constraints regarding system motion rules
+              if (window.matchMedia("(prefers-reduced-motion)").matches) {
+                element.textContent = String(to);
+                return;
+              }
+
+              // Core programmatic animation execution via Framer Motion
+              animate(from, to, {
+                duration: 1,
+                ease: "easeOut",
+                ...configurationOptions,
+                onUpdate(value: number) {
+                  element.textContent = value.toFixed(0);
+                },
+              });
+            }
+          });
+        },
+        {
+          rootMargin: "0px",
+          threshold: 0.1,
+        }
+      );
+
+      observer.observe(element);
+    });
+  }
+
+  // Safely hook into standard engine environments and modern SPA transition flows
+  initAnimatedCounters();
+  document.addEventListener("astro:after-swap", initAnimatedCounters);
+</script>

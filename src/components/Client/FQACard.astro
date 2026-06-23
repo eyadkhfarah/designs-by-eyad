@@ -1,0 +1,173 @@
+---
+import { marked } from "marked";
+import faqData from "@/lib/faqData";
+
+// Strictly typing the data structure
+interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+const faqs: FAQItem[] = faqData as unknown as FAQItem[];
+---
+
+<div class="flex flex-col w-full border-t border-white/5" id="faq-accordion">
+  {
+    faqs.map((item, index) => (
+      <div class="faq-item border-b border-white/5 group/item">
+        <button
+          class="faq-button w-full cursor-pointer flex justify-between items-center py-8 text-left group focus:outline-none"
+          aria-expanded="false"
+          aria-controls={`answer-${index}`}
+          data-index={index}
+        >
+          <span class="faq-title font-bebas uppercase leading-[1.1] tracking-[0.02em] transition-colors duration-300 pr-8 text-2xl md:text-4xl text-white/80 group-hover:text-white">
+            {item.question}
+          </span>
+
+          <div class="faq-icon-wrapper shrink-0 flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full border transition-all duration-500 bg-transparent border-white/10 group-hover:border-primary/50">
+            {/* RiArrowDownLine SVG */}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              class="faq-icon w-5 h-5 md:w-6 md:h-6 transition-colors duration-500 text-white/40 group-hover:text-primary"
+            >
+              <path d="M13 16.1716L18.364 10.8076L19.7782 12.2218L12 20L4.22183 12.2218L5.63604 10.8076L11 16.1716V4H13V16.1716Z" />
+            </svg>
+          </div>
+        </button>
+
+        {/* The grid-template-rows wrapper for smooth height animation */}
+        <div
+          id={`answer-${index}`}
+          class="faq-content grid transition-all duration-400 ease-[cubic-bezier(0.04,0.62,0.23,0.98)]"
+          style="grid-template-rows: 0fr; opacity: 0;"
+        >
+          {/* Inner wrapper is required for the grid trick to work */}
+          <div class="overflow-hidden">
+            <div class="pb-8 pr-12 md:pr-24 pt-2">
+              <div
+                class="text-white/45 leading-relaxed text-base md:text-lg font-sans prose-p:mb-4 last:prose-p:mb-0 prose-a:text-primary hover:prose-a:underline"
+                set:html={marked(item.answer)}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    ))
+  }
+</div>
+
+<script>
+  // Vanilla JS strictly scoped to handle the accordion logic
+  function setupAccordion() {
+    const accordion = document.getElementById("faq-accordion");
+    if (!accordion) return;
+
+    const items = accordion.querySelectorAll<HTMLElement>(".faq-item");
+    let currentlyOpenIndex: string | null = null;
+
+    items.forEach((item) => {
+      const button = item.querySelector<HTMLButtonElement>(".faq-button");
+      const content = item.querySelector<HTMLElement>(".faq-content");
+      const title = item.querySelector<HTMLElement>(".faq-title");
+      const iconWrapper = item.querySelector<HTMLElement>(".faq-icon-wrapper");
+      const icon = item.querySelector<HTMLElement>(".faq-icon");
+
+      if (!button || !content || !title || !iconWrapper || !icon) return;
+
+      const index = button.getAttribute("data-index");
+
+      button.addEventListener("click", () => {
+        const isOpen = button.getAttribute("aria-expanded") === "true";
+
+        // Close currently open item if it's not the clicked one
+        if (currentlyOpenIndex !== null && currentlyOpenIndex !== index) {
+          const oldItem = document
+            .querySelector<HTMLElement>(
+              `.faq-button[data-index="${currentlyOpenIndex}"]`,
+            )
+            // THE FIX: Explicitly type the closest element search
+            ?.closest<HTMLElement>(".faq-item");
+
+          if (oldItem) closeItem(oldItem);
+        }
+
+        // Toggle clicked item
+        if (isOpen) {
+          closeItem(item);
+          currentlyOpenIndex = null;
+        } else {
+          openItem(item);
+          currentlyOpenIndex = index;
+        }
+      });
+    });
+
+    // Helper functions for class & style toggling
+    function openItem(item: HTMLElement) {
+      const button = item.querySelector<HTMLButtonElement>(".faq-button");
+      const content = item.querySelector<HTMLElement>(".faq-content");
+      const title = item.querySelector<HTMLElement>(".faq-title");
+      const iconWrapper = item.querySelector<HTMLElement>(".faq-icon-wrapper");
+      const icon = item.querySelector<HTMLElement>(".faq-icon");
+
+      if (!button || !content || !title || !iconWrapper || !icon) return;
+
+      button.setAttribute("aria-expanded", "true");
+      content.style.gridTemplateRows = "1fr";
+      content.style.opacity = "1";
+
+      // Apply open state styling
+      title.classList.add("text-primary");
+      title.classList.remove("text-white/80", "group-hover:text-white");
+
+      iconWrapper.classList.add("bg-primary", "border-primary", "rotate-180");
+      iconWrapper.classList.remove(
+        "bg-transparent",
+        "border-white/10",
+        "group-hover:border-primary/50",
+      );
+
+      icon.classList.add("text-black");
+      icon.classList.remove("text-white/40", "group-hover:text-primary");
+    }
+
+    function closeItem(item: HTMLElement) {
+      const button = item.querySelector<HTMLButtonElement>(".faq-button");
+      const content = item.querySelector<HTMLElement>(".faq-content");
+      const title = item.querySelector<HTMLElement>(".faq-title");
+      const iconWrapper = item.querySelector<HTMLElement>(".faq-icon-wrapper");
+      const icon = item.querySelector<HTMLElement>(".faq-icon");
+
+      if (!button || !content || !title || !iconWrapper || !icon) return;
+
+      button.setAttribute("aria-expanded", "false");
+      content.style.gridTemplateRows = "0fr";
+      content.style.opacity = "0";
+
+      // Revert to closed state styling
+      title.classList.remove("text-primary");
+      title.classList.add("text-white/80", "group-hover:text-white");
+
+      iconWrapper.classList.remove(
+        "bg-primary",
+        "border-primary",
+        "rotate-180",
+      );
+      iconWrapper.classList.add(
+        "bg-transparent",
+        "border-white/10",
+        "group-hover:border-primary/50",
+      );
+
+      icon.classList.remove("text-black");
+      icon.classList.add("text-white/40", "group-hover:text-primary");
+    }
+  }
+
+  // Initialize on load and re-initialize after Astro view transitions
+  setupAccordion();
+  document.addEventListener("astro:after-swap", setupAccordion);
+</script>

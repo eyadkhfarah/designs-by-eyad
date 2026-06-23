@@ -1,0 +1,161 @@
+---
+import { useTranslations } from "@/utils/i18n";
+import {
+  IconPalette,
+  IconCode,
+  IconBrandFigma,
+  IconBrandFramer,
+  IconBrandAdobePhotoshop,
+  IconBrandAdobe,
+  IconBrandNextjs,
+  IconBrandReact,
+  IconBrandSvelte,
+  IconBrandFlutter,
+} from "@tabler/icons-react";
+
+interface Props {
+  locale?: string;
+}
+
+const { locale } = Astro.props;
+const currentLocale = locale || Astro.currentLocale;
+const t = useTranslations(currentLocale);
+
+// Fully strict type definition ensuring zero usage of implicit/explicit 'any' types
+type TablerIconComponent = typeof IconCode;
+
+interface ToolItem {
+  Icon: TablerIconComponent;
+  label: string;
+}
+
+const designTools: ToolItem[] = [
+  { Icon: IconBrandFigma, label: "Figma" },
+  { Icon: IconBrandFramer, label: "Framer" },
+  { Icon: IconBrandAdobePhotoshop, label: "Photoshop" },
+  { Icon: IconBrandAdobe, label: "Illustrator" },
+];
+
+const devTools: ToolItem[] = [
+  { Icon: IconBrandNextjs, label: "Next.js" },
+  { Icon: IconBrandReact, label: "React.js" },
+  { Icon: IconBrandSvelte, label: "SvelteKit" },
+  { Icon: IconBrandReact, label: "React Native" },
+  { Icon: IconBrandFlutter, label: "Flutter" },
+];
+---
+
+<section class="flex flex-col gap-12 py-16 w-full" id="tools-tabs-section">
+  
+  {/* ── Header & Tabs System ────────────────────────────────────── */}
+  <div class="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-8 border-b border-white/10 pb-8">
+    
+    {/* Editorial Title */}
+    <div class="flex flex-col gap-4">
+      <span class="font-mono text-[11px] tracking-[0.25em] uppercase text-white/30">
+        {t("Span.Design")} / {t("Span.Development")}
+      </span>
+      <h2 class="font-bebas uppercase text-[clamp(48px,8vw,100px)] leading-[0.85] tracking-[-0.01em] text-white">
+        Tools I <span class="text-primary">Use</span>
+      </h2>
+    </div>
+
+    {/* Sharp Segmented Tabs */}
+    <div class="flex w-full overflow-hidden rounded-4xl lg:w-auto border border-white/10 bg-neutral-950">
+      <button
+        data-tab-trigger="design"
+        class="tab-btn flex-1 lg:flex-none flex items-center justify-center gap-3 px-8 py-4 font-mono text-[12px] tracking-[0.15em] uppercase transition-all duration-300 border-r border-white/10 bg-primary text-black"
+      >
+        <IconPalette className="w-5 h-5 transition-colors" stroke={1.5} />
+        {t("Span.Design")}
+      </button>
+      
+      <button
+        data-tab-trigger="development"
+        class="tab-btn flex-1 lg:flex-none flex items-center justify-center gap-3 px-8 py-4 font-mono text-[12px] tracking-[0.15em] uppercase transition-all duration-300 text-white/40 hover:bg-white/5 hover:text-white"
+      >
+        <IconCode className="w-5 h-5 transition-colors" stroke={1.5} />
+        {t("Span.Development")}
+      </button>
+    </div>
+  </div>
+
+  {/* ── Tools Wireframe Grids ────────────────────────────────────── */}
+  <div class="w-full relative min-h-87.5 md:min-h-60">
+    
+    {/* Design Panel */}
+    <div
+      data-tab-panel="design"
+      class="tab-panel absolute inset-0 grid grid-cols-2 rounded-3xl md:grid-cols-3 lg:grid-cols-5 w-full opacity-100 scale-100 blur-0 pointer-events-auto transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]"
+    >
+      {designTools.map((tool) => (
+        <div class="group flex flex-col items-center justify-center gap-6 p-10 first:rounded-l-2xl last:rounded-r-2xl border border-white/10 bg-neutral-900/30 hover:bg-primary transition-colors duration-300 cursor-default">
+          <div class="text-white/30 group-hover:text-black transition-colors duration-300">
+            <tool.Icon className="w-7 h-7 md:w-8 md:h-8" stroke={1.2} />
+          </div>
+          <span class="font-mono text-[12px] tracking-[0.15em] uppercase text-white group-hover:text-black transition-colors duration-300">
+            {tool.label}
+          </span>
+        </div>
+      ))}
+    </div>
+
+    {/* Development Panel */}
+    <div
+      data-tab-panel="development"
+      class="tab-panel absolute inset-0 grid grid-cols-2 rounded-3xl md:grid-cols-3 lg:grid-cols-5 border-l border-t border-white/10 w-full opacity-0 scale-[0.98] blur-xs pointer-events-none transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]"
+    >
+      {devTools.map((tool) => (
+        <div class="group flex flex-col items-center justify-center gap-6 p-10 first:rounded-l-2xl last:rounded-r-2xl border border-white/10 bg-neutral-900/30 hover:bg-primary transition-colors duration-300 cursor-default">
+          <div class="text-white/30 group-hover:text-black transition-colors duration-300">
+            <tool.Icon className="w-7 h-7 md:w-8 md:h-8" stroke={1.2} />
+          </div>
+          <span class="font-mono text-[12px] tracking-[0.15em] uppercase text-white group-hover:text-black transition-colors duration-300">
+            {tool.label}
+          </span>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<script>
+  function initTabsSystem() {
+    const container = document.getElementById("tools-tabs-section");
+    if (!container) return;
+
+    const triggers = container.querySelectorAll("[data-tab-trigger]");
+    const panels = container.querySelectorAll("[data-tab-panel]");
+
+    triggers.forEach((trigger) => {
+      trigger.addEventListener("click", () => {
+        const targetTab = trigger.getAttribute("data-tab-trigger");
+
+        triggers.forEach((btn) => {
+          if (btn === trigger) {
+            btn.classList.add("bg-primary", "text-black");
+            btn.classList.remove("bg-transparent", "text-white/40", "hover:bg-white/5", "hover:text-white");
+          } else {
+            btn.classList.remove("bg-primary", "text-black");
+            btn.classList.add("bg-transparent", "text-white/40", "hover:bg-white/5", "hover:text-white");
+          }
+        });
+
+        panels.forEach((panel) => {
+          if (panel.getAttribute("data-tab-panel") === targetTab) {
+            panel.classList.remove("opacity-0", "scale-[0.98]", "blur-xs", "pointer-events-none");
+            panel.classList.add("opacity-100", "scale-100", "blur-0", "pointer-events-auto");
+          } else {
+            panel.classList.remove("opacity-100", "scale-100", "blur-0", "pointer-events-auto");
+            panel.classList.add("opacity-0", "scale-[0.98]", "blur-xs", "pointer-events-none");
+          }
+        });
+      });
+    });
+  }
+
+  // Handle initialization on basic load as well as view transition swap events
+  initTabsSystem();
+  document.addEventListener("astro:after-swap", initTabsSystem);
+</script>

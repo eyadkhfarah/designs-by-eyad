@@ -1,8 +1,6 @@
 ---
-import type { ArtworkPage, NotionBaseProperties } from "@/types/notionType";
 import { fetchArtworks } from "@/lib/Data/notionArtworksData";
-import ArtworkPrice from "@/components/Pricing/ArtworkPrice";
-import { plans } from "@/lib/Prices";
+import ArtworkPrice from "@/components/Pricing/ArtworkPrice.astro";
 
 import Layout from "@/layouts/Layout.astro";
 import { useTranslations } from "@/utils/i18n";
@@ -46,26 +44,40 @@ const artworkSchema = JSON.stringify(
   description="Explore a captivating collection of unique artwork collages blending creativity and storytelling. Discover handmade designs crafted with intricate details by Eyad Farah."
 >
   <main class="relative min-h-screen mt-20 overflow-x-hidden">
+    {/* Ambient Top Glow */}
+    <div
+      class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-100 bg-primary/5 rounded-full blur-[120px] pointer-events-none -z-10"
+    >
+    </div>
+
     <section class="max-w-7xl mx-auto lg:px-0 px-6 py-16 md:py-24">
       {/* Editorial Header */}
       <div
-        class="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8"
+        class="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8 border-b border-white/10 pb-12"
       >
-        <h1
-          class="font-bebas uppercase text-[clamp(60px,10vw,140px)] leading-[0.8] tracking-[-0.02em] text-white"
+        <div class="flex flex-col gap-4">
+          <span
+            class="font-mono text-[11px] tracking-[0.25em] uppercase text-white/30 font-semibold"
+          >
+            001 — Exclusive Collection
+          </span>
+          <h1
+            class="font-bebas uppercase text-[clamp(60px,10vw,120px)] leading-[0.85] tracking-[-0.01em] text-white drop-shadow-sm"
+          >
+            Artworks
+          </h1>
+        </div>
+        <p
+          class="text-white/40 text-[15px] max-w-sm leading-relaxed mb-2 md:text-right"
         >
-          Artworks
-        </h1>
-        <span
-          class="font-mono text-[11px] uppercase tracking-[0.2em] text-white/30 pb-4"
-        >
-          001 — Exclusive Collection
-        </span>
+          A curated selection of intricate collages blending creativity,
+          emotion, and visual storytelling.
+        </p>
       </div>
 
-      {/* Brutalist Grid */}
+      {/* Modern Gallery Grid */}
       <div
-        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border-l border-t border-white/10"
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10"
       >
         {
           artworksList.slice(0, 6).map((artwork: any, i: number) => {
@@ -78,31 +90,51 @@ const artworkSchema = JSON.stringify(
             if (!imageUrl) return null;
 
             return (
-              <div class="group relative border-r border-b border-white/10 p-4 bg-neutral-900/20 hover:bg-white/5 transition-colors duration-500">
-                {/* Image Container */}
-                <div class="relative overflow-hidden aspect-4/5 mb-6">
+              <div class="group relative flex flex-col rounded-[2.5rem] border border-white/5 bg-neutral-900/30 overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)] hover:border-white/15">
+                {/* Image Container with Zoom & Color Reveal */}
+                <div class="relative w-full aspect-4/5 overflow-hidden bg-neutral-950">
                   <Image
-                    class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                    class="w-full h-full object-cover grayscale opacity-80 transition-all duration-700 ease-out group-hover:scale-105 group-hover:grayscale-0 group-hover:opacity-100"
                     alt={name}
                     src={imageUrl}
                     loading={i < 3 ? "eager" : "lazy"}
                     width={600}
                     height={800}
                   />
-                  {/* Sharp Index Label */}
-                  <div class="absolute top-2 left-2 bg-black text-white px-2 py-0.5 font-mono text-[10px]">
-                    {String(i + 1).padStart(2, "0")}
+
+                  {/* Subtle vignette gradient to make text readable */}
+                  <div class="absolute inset-0 bg-linear-to-t from-black/80 via-black/10 to-transparent opacity-80" />
+
+                  {/* Floating Index Badge */}
+                  <div class="absolute top-6 left-6 px-4 py-1.5 bg-black/40 backdrop-blur-md rounded-full border border-white/10 text-white font-mono text-[10px] tracking-widest">
+                    NO. {String(i + 1).padStart(2, "0")}
                   </div>
                 </div>
 
-                {/* Text Info */}
-                <div class="flex justify-between items-start">
-                  <h3 class="font-bebas text-2xl uppercase text-white group-hover:text-primary transition-colors">
-                    {name}
-                  </h3>
-                  <span class="text-white/20 text-[10px] font-mono mt-1">
-                    /VIEW
-                  </span>
+                {/* Content Overlayed at bottom of image */}
+                <div class="absolute bottom-0 left-0 w-full p-8 flex justify-between items-end gap-4">
+                  <div>
+                    <h3 class="font-bebas text-3xl md:text-4xl uppercase text-white tracking-wide group-hover:text-primary transition-colors duration-300 drop-shadow-md">
+                      {name}
+                    </h3>
+                  </div>
+
+                  {/* Circular Action Button */}
+                  <div class="w-10 h-10 shrink-0 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 group-hover:bg-primary group-hover:text-black group-hover:border-primary transition-all duration-300">
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M5 12h14" />
+                      <path d="m12 5 7 7-7 7" />
+                    </svg>
+                  </div>
                 </div>
               </div>
             );
@@ -111,9 +143,8 @@ const artworkSchema = JSON.stringify(
       </div>
     </section>
 
-    <section class="py-20 max-w-7xl mx-auto px-6 lg:px-0">
-      <ArtworkPrice client:visible />
-    </section>
+    {/* The Redesigned Pricing Component fits perfectly here */}
+    <ArtworkPrice />
   </main>
 
   <!-- Structured Data -->

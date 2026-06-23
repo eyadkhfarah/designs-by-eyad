@@ -2,7 +2,7 @@
 import PrimaryBtn from "@/components/Buttons/PrimaryBtn.astro";
 import MissionVision from "@/components/Client/MissionVision.astro";
 import TestimonialSlider from "@/components/Services/TestimonialSlider.astro";
-import ToolsTabs from "@/components/Services/ToolsTabs";
+import ToolsTabs from "@/components/Services/ToolsTabs.astro";
 import Layout from "@/layouts/Layout.astro";
 import { useTranslations } from "@/utils/i18n";
 import { Image } from "astro:assets";
@@ -181,7 +181,7 @@ const stats = [
     <section
       class="border-t border-white/5 bg-neutral-900/20 max-w-7xl mx-auto px-6 py-28"
     >
-      <ToolsTabs client:visible />
+      <ToolsTabs />
     </section>
 
     <!-- ══════════════════════════════════════════
