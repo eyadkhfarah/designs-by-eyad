@@ -37,7 +37,8 @@ const nextPost =
 
 // ─── Derived values ───────────────────────────────────────────────────────────
 
-const props = (post as unknown as NotionPage).properties;
+const typedPost = post as unknown as NotionPage;
+const props = typedPost.properties;
 const title = props.Name.title[0]?.plain_text ?? "Untitled";
 const subtitle = props.Subtitle?.rich_text[0]?.plain_text ?? "";
 const category = props.Category?.select?.name ?? "";
@@ -90,14 +91,21 @@ const articleSchema = JSON.stringify({
     tags: tags.map((t) => t.name),
   }}
 >
+  <!-- Reading Progress Bar -->
+  <div
+    id="reading-progress"
+    class="fixed top-0 left-0 h-1 bg-primary z-50 w-0 transition-all duration-100"
+  >
+  </div>
+
   <main class="min-h-screen pt-28 pb-32">
     <div class="max-w-7xl mx-auto px-6 lg:px-0">
       <!-- ══════════════════════════════════════════
-           HEADER
+            HEADER
       ══════════════════════════════════════════ -->
       <header class="pt-12 pb-16 border-b border-white/5">
         <!-- Meta row -->
-        <div class="flex items-center gap-5 mb-10">
+        <div class="flex items-center gap-5 mb-10 flex-wrap">
           {
             category && (
               <span class="bg-primary text-black font-black text-[9px] uppercase tracking-[0.25em] px-3 py-1.5 rounded-full">
@@ -116,7 +124,7 @@ const articleSchema = JSON.stringify({
             tags.length > 0 && (
               <div class="hidden md:flex items-center gap-2 ml-auto">
                 {tags.slice(0, 3).map((tag) => (
-                  <span class="font-mono text-[9px] uppercase tracking-[0.2em] text-white/20 border border-white/8 px-2.5 py-1 rounded-full">
+                  <span class="font-mono text-[9px] uppercase tracking-[0.2em] text-white/20 border border-white/5 px-2.5 py-1 rounded-full">
                     {tag.name}
                   </span>
                 ))}
@@ -130,7 +138,6 @@ const articleSchema = JSON.stringify({
           class="font-bebas uppercase leading-[0.88] tracking-[-0.02em]"
           style="font-size: clamp(52px, 9vw, 130px);"
         >
-          <!-- First half solid, second half stroke -->
           {
             (() => {
               const words = title.split(" ");
@@ -142,7 +149,7 @@ const articleSchema = JSON.stringify({
                   <span class="block text-white">{line1}</span>
                   {line2 && (
                     <span
-                      class="block"
+                      class="block mt-2 md:mt-0"
                       style="-webkit-text-stroke: 2px rgba(255,255,255,0.2); color: transparent;"
                     >
                       {line2}
@@ -165,7 +172,7 @@ const articleSchema = JSON.stringify({
       </header>
 
       <!-- ══════════════════════════════════════════
-           BODY GRID
+            BODY GRID
       ══════════════════════════════════════════ -->
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 pt-16">
         <!-- ── Article ──────────────────────────────────── -->
@@ -195,6 +202,7 @@ const articleSchema = JSON.stringify({
 
           <!-- Notion content -->
           <div
+            id="article-content"
             class="prose prose-invert prose-lg max-w-none
                    prose-headings:font-bebas
                    prose-headings:uppercase
@@ -218,7 +226,7 @@ const articleSchema = JSON.stringify({
             >
               Share this post
             </span>
-            <div class="flex gap-2">
+            <div class="flex flex-wrap gap-2">
               {
                 [
                   {
@@ -235,8 +243,8 @@ const articleSchema = JSON.stringify({
                     target="_blank"
                     rel="noopener noreferrer"
                     class="px-5 py-2.5 rounded-full border border-white/8 bg-neutral-900
-                         font-mono text-[10px] uppercase tracking-[0.15em] text-white/40
-                         hover:border-primary/40 hover:text-primary transition-all duration-200"
+                           font-mono text-[10px] uppercase tracking-[0.15em] text-white/40
+                           hover:border-primary/40 hover:text-primary transition-all duration-200"
                   >
                     {link.label}
                   </a>
@@ -257,31 +265,78 @@ const articleSchema = JSON.stringify({
 
         <!-- ── Sidebar ─────────────────────────────────── -->
         <aside class="lg:col-span-4">
-          <div class="sticky top-32 flex flex-col gap-8">
-            <!-- Tags -->
-            {
-              tags.length > 0 && (
-                <div class="bg-neutral-900/50 border border-white/5 rounded-3xl p-7">
-                  <h3 class="font-mono text-[9px] uppercase tracking-[0.3em] text-white/25 mb-6">
-                    Tagged
-                  </h3>
-                  <div class="flex flex-wrap gap-2">
-                    {tags.map((tag) => (
-                      <span
-                        class="font-mono text-[10px] uppercase tracking-[0.15em] text-white/50
-                                 border border-white/8 px-3 py-1.5 rounded-full
-                                 hover:border-primary/40 hover:text-primary transition-colors duration-200"
-                      >
-                        #{tag.name}
+          <div class="sticky top-32 flex flex-col gap-6">
+            <!-- Unified Sidebar Container -->
+            <div
+              class="bg-neutral-900/30 border border-white/5 rounded-4xl p-8 flex flex-col gap-8"
+            >
+              <!-- Meta Data -->
+              <div class="flex flex-col gap-4">
+                <h3
+                  class="font-mono text-[9px] uppercase tracking-[0.3em] text-white/25 mb-2"
+                >
+                  Post Details
+                </h3>
+                {
+                  category && (
+                    <div class="flex justify-between border-b border-white/5 pb-3">
+                      <span class="text-[11px] text-white/25 font-mono uppercase tracking-wider">
+                        Category
                       </span>
-                    ))}
-                  </div>
+                      <span class="text-[11px] text-white/60 font-medium uppercase">
+                        {category}
+                      </span>
+                    </div>
+                  )
+                }
+                {
+                  formattedDate && (
+                    <div class="flex justify-between border-b border-white/5 pb-3">
+                      <span class="text-[11px] text-white/25 font-mono uppercase tracking-wider">
+                        Published
+                      </span>
+                      <span class="text-[11px] text-white/60 font-medium">
+                        {formattedDate}
+                      </span>
+                    </div>
+                  )
+                }
+                <div class="flex justify-between pb-1">
+                  <span
+                    class="text-[11px] text-white/25 font-mono uppercase tracking-wider"
+                    >Read time</span
+                  >
+                  <span class="text-[11px] text-white/60 font-medium">
+                    {Math.ceil(htmlContent.split(" ").length / 200)} min
+                  </span>
                 </div>
-              )
-            }
+              </div>
+
+              <!-- Tags -->
+              {
+                tags.length > 0 && (
+                  <div class="pt-4 border-t border-white/5">
+                    <h4 class="font-mono text-[9px] uppercase tracking-[0.3em] text-white/25 mb-4">
+                      Tagged
+                    </h4>
+                    <div class="flex flex-wrap gap-2">
+                      {tags.map((tag) => (
+                        <span
+                          class="font-mono text-[10px] uppercase tracking-[0.15em] text-white/50
+                                 border border-white/5 px-3 py-1.5 rounded-full
+                                 hover:border-primary/40 hover:text-primary transition-colors duration-200"
+                        >
+                          #{tag.name}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )
+              }
+            </div>
 
             <!-- CTA -->
-            <div class="relative overflow-hidden rounded-3xl bg-primary p-8">
+            <div class="relative overflow-hidden rounded-4xl bg-primary p-8">
               <!-- Ghost text -->
               <p
                 aria-hidden="true"
@@ -322,56 +377,12 @@ const articleSchema = JSON.stringify({
                 </a>
               </div>
             </div>
-
-            <!-- Minimal post info -->
-            <div
-              class="border border-white/5 rounded-3xl p-7 flex flex-col gap-4"
-            >
-              <h3
-                class="font-mono text-[9px] uppercase tracking-[0.3em] text-white/25 mb-2"
-              >
-                Post Info
-              </h3>
-              {
-                category && (
-                  <div class="flex items-center justify-between">
-                    <span class="text-[11px] text-white/25 font-mono uppercase tracking-wider">
-                      Category
-                    </span>
-                    <span class="text-[11px] text-white/60 font-bold uppercase">
-                      {category}
-                    </span>
-                  </div>
-                )
-              }
-              {
-                formattedDate && (
-                  <div class="flex items-center justify-between">
-                    <span class="text-[11px] text-white/25 font-mono uppercase tracking-wider">
-                      Published
-                    </span>
-                    <span class="text-[11px] text-white/60 font-bold">
-                      {formattedDate}
-                    </span>
-                  </div>
-                )
-              }
-              <div class="flex items-center justify-between">
-                <span
-                  class="text-[11px] text-white/25 font-mono uppercase tracking-wider"
-                  >Read time</span
-                >
-                <span class="text-[11px] text-white/60 font-bold">
-                  {Math.ceil(htmlContent.split(" ").length / 200)} min
-                </span>
-              </div>
-            </div>
           </div>
         </aside>
       </div>
 
       <!-- ══════════════════════════════════════════
-           POST NAVIGATION
+            POST NAVIGATION
       ══════════════════════════════════════════ -->
       <nav
         aria-label="Post navigation"
@@ -382,24 +393,24 @@ const articleSchema = JSON.stringify({
             <a
               href={`/blog/${prevPost.properties.Slug.rich_text[0]?.plain_text}`}
               class="group flex flex-col gap-3 p-10 border-r border-white/5
-                   hover:bg-neutral-900/30 transition-colors duration-200"
+                     hover:bg-neutral-900/30 transition-colors duration-200"
             >
               <span
                 class="font-mono text-[9px] uppercase tracking-[0.3em] text-white/20
-                         group-hover:text-primary transition-colors duration-200"
+                       group-hover:text-primary transition-colors duration-200"
               >
                 ← Previous
               </span>
               <span
                 class="font-bebas uppercase leading-[0.9] text-white/60
-                     group-hover:text-white transition-colors duration-200 line-clamp-2"
+                       group-hover:text-white transition-colors duration-200 line-clamp-2"
                 style="font-size: clamp(22px, 2.5vw, 32px);"
               >
                 {prevPost.properties.Name.title[0]?.plain_text}
               </span>
             </a>
           ) : (
-            <div class="border-r border-white/5" />
+            <div class="border-r border-white/5 hidden md:block" />
           )
         }
 
@@ -408,17 +419,17 @@ const articleSchema = JSON.stringify({
             <a
               href={`/blog/${nextPost.properties.Slug.rich_text[0]?.plain_text}`}
               class="group flex flex-col gap-3 p-10 text-right items-end
-                   hover:bg-neutral-900/30 transition-colors duration-200"
+                     hover:bg-neutral-900/30 transition-colors duration-200"
             >
               <span
                 class="font-mono text-[9px] uppercase tracking-[0.3em] text-white/20
-                         group-hover:text-primary transition-colors duration-200"
+                       group-hover:text-primary transition-colors duration-200"
               >
                 Next →
               </span>
               <span
                 class="font-bebas uppercase leading-[0.9] text-white/60
-                     group-hover:text-white transition-colors duration-200 line-clamp-2"
+                       group-hover:text-white transition-colors duration-200 line-clamp-2"
                 style="font-size: clamp(22px, 2.5vw, 32px);"
               >
                 {nextPost.properties.Name.title[0]?.plain_text}
@@ -437,6 +448,7 @@ const articleSchema = JSON.stringify({
 </Layout>
 
 <script>
+  // Copy Link functionality
   const btn = document.getElementById("copy-link-btn");
   btn?.addEventListener("click", async () => {
     const url = btn.getAttribute("data-url") ?? window.location.href;
@@ -447,4 +459,26 @@ const articleSchema = JSON.stringify({
       btn.textContent = prev;
     }, 2000);
   });
+
+  // Reading Progress Bar functionality
+  const progressBentoBar = document.getElementById("reading-progress");
+  const articleContent = document.getElementById("article-content");
+
+  if (progressBentoBar && articleContent) {
+    window.addEventListener("scroll", () => {
+      const rect = articleContent.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+
+      // Calculate how far the article has been scrolled
+      const startPoint = -rect.top;
+      const totalDist = rect.height - windowHeight;
+
+      if (totalDist > 0) {
+        const progress = Math.max(0, Math.min(1, startPoint / totalDist));
+        progressBentoBar.style.width = `${progress * 100}%`;
+      } else {
+        progressBentoBar.style.width = "0%";
+      }
+    });
+  }
 </script>

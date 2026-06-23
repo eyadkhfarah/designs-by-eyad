@@ -171,15 +171,31 @@ const articleSchema = isArticle && articleProps ? JSON.stringify({
   <head>
     <!-- ① Essentials -->
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+  </noscript>
     <meta name="generator" content={Astro.generator} />
 
     <!-- ② Preloads / Perf -->
-    <link rel="preconnect" type="text/partytown"  href="https://www.googletagmanager.com" />
-    <link rel="dns-prefetch" type="text/partytown"  href="https://www.googletagmanager.com" />
-    <link rel="preload" type="text/partytown"  href="https://www.googletagmanager.com/gtm.js?id=GTM-5MWXJS6P" as="script" />
-    <link rel="preload" type="text/partytown"  href="https://www.googletagmanager.com/gtag/js?id=G-B5QZVD5E94" as="script" />
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <script type="text/partytown" src="https://www.googletagmanager.com/gtag/js?id=G-B5QZVD5E94"></script>
+    <script type="text/partytown">
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-B5QZVD5E94');
+    </script>
+
+    <script type="text/partytown">
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id=GTM-5MWXJS6P'+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-5MWXJS6P');
+    </script>
 
     <!-- ③ Primary Meta -->
     <title>{type === "article" ? `${title} — ${siteTitle}` : title}</title>
@@ -288,11 +304,9 @@ const articleSchema = isArticle && articleProps ? JSON.stringify({
     <link rel="alternate" type="application/rss+xml" title={`${siteTitle} RSS Feed`} href={canonical + "/rss.xml"} />
 
     <!-- ⑫ Structured Data -->
-    <script type="application/ld+json" set:html={breadcrumbSchema} />
-    <script type="application/ld+json" set:html={personSchema} />
-    {articleSchema && (
-      <script type="application/ld+json" set:html={articleSchema} />
-    )}
+    <script type="application/ld+json" is:inline set:html={breadcrumbSchema} />
+  <script type="application/ld+json" is:inline set:html={personSchema} />
+  {articleSchema && <script type="application/ld+json" is:inline set:html={articleSchema} />}
   </head>
   <body class="bg-black">
     <Header />

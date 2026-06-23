@@ -6,6 +6,10 @@ import partytown from '@astrojs/partytown';
 import vercel from "@astrojs/vercel";
 
 export default defineConfig({
+  image: {
+    remotePatterns: [{ protocol: 'https', hostname: 'prod-files-secure.s3.us-west-2.amazonaws.com' }],
+  },
+  
   i18n: {
     locales: ["ar", "en"],
     defaultLocale: "en",

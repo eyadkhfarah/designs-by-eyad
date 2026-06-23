@@ -1,11 +1,11 @@
 ---
-import { Image } from 'astro:assets';
-import { IconCalendarTime } from '@tabler/icons-react';
-import { getNotionFileUrl, type NotionProps } from '@/types/notionType';
+import { Image } from "astro:assets";
+import { IconCalendarTime } from "@tabler/icons-react";
+import { getNotionFileUrl, type NotionProps } from "@/types/notionType";
 
 interface Props extends NotionProps {
   isFeatured?: boolean;
-  index: number
+  index: number;
 }
 
 const { post, isFeatured = false, index } = Astro.props;
@@ -16,62 +16,93 @@ const subtitle = post.properties.Subtitle.rich_text[0]?.plain_text;
 const category = post.properties.Category.select?.name;
 const date = post.properties.Publication.date?.start;
 
-const thumbnailFile = post.properties.Thumbnail?.files?.[0];
-const imageUrl = thumbnailFile
-  ? getNotionFileUrl(thumbnailFile)
+const imageUrl = post.properties.Thumbnail?.files?.[0]
+  ? getNotionFileUrl(post.properties.Thumbnail.files[0])
   : "/placeholder.jpg";
 
-const formattedDate = date ? new Date(date).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" }) : null;
+const formattedDate = date
+  ? new Date(date).toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+    })
+  : null;
 ---
 
-<a 
+<a
   href={`/blog/${slug}`}
-  class="group flex flex-col h-full bg-neutral-900/30 transition-colors duration-500 hover:bg-white/5"
+  class="group relative flex flex-col h-full rounded-[2rem] overflow-hidden border border-white/[0.05] bg-neutral-900/30 hover:border-primary/30 transition-all duration-500 hover:-translate-y-1 will-change-transform"
 >
-  {/* Thumbnail */}
-  <div class="relative overflow-hidden aspect-16/10 border-b border-white/10">
+  {/* Thumbnail with fixed aspect ratio to prevent CLS */}
+  <div class="relative w-full aspect-[16/10] overflow-hidden bg-neutral-950">
     <Image
-      class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+      class="w-full h-full object-cover grayscale-[0.5] group-hover:grayscale-0 transition-all duration-700 ease-out group-hover:scale-105"
       alt={title}
       src={imageUrl}
-      width={1200}
-      height={800}
-      loading={isFeatured || index == 1 ? "eager" : "lazy"}
+      width={700}
+      height={438}
+      loading={index < 2 ? "eager" : "lazy"}
+      fetchpriority={index < 2 ? "high" : "low"}
+      quality={80}
     />
 
-    {/* Category Label */}
-    {category && (
-      <div class="absolute top-0 left-0 bg-primary text-black px-4 py-1 font-mono text-[10px] uppercase tracking-widest">
-        {category}
-      </div>
-    )}
+    {/* Category Badge - Floating */}
+    {
+      category && (
+        <div class="absolute top-4 left-4 bg-black/50 backdrop-blur-md border border-white/10 text-primary px-3 py-1 font-mono text-[9px] uppercase tracking-widest rounded-full">
+          {category}
+        </div>
+      )
+    }
   </div>
 
   {/* Content */}
-  <div class="flex flex-col p-8 grow gap-6">
-    <div class="flex flex-col gap-2">
-      {formattedDate && (
-        <div class="flex items-center gap-2 text-white/20 text-[10px] font-mono uppercase tracking-[0.2em]">
-          <IconCalendarTime size={14} />
-          {formattedDate}
-        </div>
-      )}
+  <div class="flex flex-col p-8 grow gap-4">
+    <div class="flex flex-col gap-3">
+      {
+        formattedDate && (
+          <div class="flex items-center gap-2 text-white/20 text-[9px] font-mono uppercase tracking-[0.2em]">
+            <IconCalendarTime size={12} />
+            {formattedDate}
+          </div>
+        )
+      }
 
-      <h2 class={`font-bebas uppercase leading-[0.9] text-white group-hover:text-primary transition-colors ${isFeatured ? "text-5xl" : "text-3xl"}`}>
+      <h2
+        class={`font-bebas uppercase leading-[0.9] text-white group-hover:text-primary transition-colors ${isFeatured ? "text-4xl" : "text-2xl"}`}
+      >
         {title}
       </h2>
     </div>
 
-    {subtitle && (
-      <p class="text-white/40 text-[14px] leading-relaxed line-clamp-3 font-mono">
-        {subtitle}
-      </p>
-    )}
+    {
+      subtitle && (
+        <p class="text-white/40 text-[13px] leading-relaxed line-clamp-2 font-sans">
+          {subtitle}
+        </p>
+      )
+    }
 
-    <div class="mt-auto pt-6 border-t border-white/5">
-      <span class="text-[10px] font-mono uppercase tracking-[0.3em] text-white/30 group-hover:text-primary transition-colors">
-        Read Entry //
+    <div
+      class="mt-auto pt-6 flex items-center justify-between border-t border-white/5"
+    >
+      <span
+        class="text-[9px] font-mono uppercase tracking-[0.2em] text-white/30 group-hover:text-primary transition-colors"
+      >
+        Read Entry
       </span>
+      <div
+        class="w-6 h-6 rounded-full border border-white/10 flex items-center justify-center text-white/20 group-hover:border-primary group-hover:text-primary transition-colors"
+      >
+        <svg
+          width="10"
+          height="10"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="3"><path d="M5 12h14M12 5l7 7-7 7"></path></svg
+        >
+      </div>
     </div>
   </div>
 </a>

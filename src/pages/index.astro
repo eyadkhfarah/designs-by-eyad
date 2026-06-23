@@ -4,42 +4,38 @@ import ProtImages from "@/components/Portfolio/ProtImages.astro";
 import Layout from "@/layouts/Layout.astro";
 import ServicesCards from "@/components/Services/ServicesCards.astro";
 import MissionVision from "@/components/Client/MissionVision.astro";
-import { Image } from "astro:assets";
-import { useTranslations } from "@/utils/i18n";
 import BrandFields from "@/components/Client/BrandFields.astro";
 import TestimonialSlider from "@/components/Services/TestimonialSlider.astro";
 
+import { Image } from "astro:assets";
+import { useTranslations } from "@/utils/i18n";
+
+// 1. Statically import assets to enable Astro's build-time optimization.
+// Note: Adjust the import paths if these live inside src/assets instead of public/
+import upworkLogo from "/public/Imgs/freelancer/upwork.svg";
+import freelancerLogo from "/public/Imgs/freelancer/freelancer.svg";
+import khamsatLogo from "/public/Imgs/freelancer/khamsat.svg";
+import mostaqlLogo from "/public/Imgs/freelancer/mostaql.svg";
+import nafezlyLogo from "/public/Imgs/freelancer/nafzly.svg";
+
 const t = useTranslations(Astro.currentLocale);
 
-const platforms = [
-  {
-    href: "https://www.upwork.com/freelancers/~0121088ad77b5fc2ac",
-    src: "/Imgs/freelancer/upwork.svg",
-    alt: "Upwork",
-  },
-  {
-    href: "https://www.freelancer.com/u/eyadartist",
-    src: "/Imgs/freelancer/freelancer.svg",
-    alt: "Freelancer",
-  },
-  {
-    href: "https://khamsat.com/user/eyad_farah",
-    src: "/Imgs/freelancer/khamsat.svg",
-    alt: "Khamsat",
-  },
-  {
-    href: "https://mostaql.com/u/eyadfarah",
-    src: "/Imgs/freelancer/mostaql.svg",
-    alt: "Mostaql",
-  },
-  {
-    href: "https://nafezly.com/u/eyadkhfarah/portfolio",
-    src: "/Imgs/freelancer/nafzly.svg",
-    alt: "Nafezly",
-  },
+// 2. Strict type definition to avoid implicit 'any'
+interface Platform {
+  href: string;
+  src: ImageMetadata;
+  alt: string;
+}
+
+const platforms: Platform[] = [
+  { href: "https://www.upwork.com/freelancers/~0121088ad77b5fc2ac", src: upworkLogo, alt: "Upwork" },
+  { href: "https://www.freelancer.com/u/eyadartist", src: freelancerLogo, alt: "Freelancer" },
+  { href: "https://khamsat.com/user/eyad_farah", src: khamsatLogo, alt: "Khamsat" },
+  { href: "https://mostaql.com/u/eyadfarah", src: mostaqlLogo, alt: "Mostaql" },
+  { href: "https://nafezly.com/u/eyadkhfarah/portfolio", src: nafezlyLogo, alt: "Nafezly" },
 ];
 
-const ticker = [
+const ticker: string[] = [
   "Brand Identity",
   "Logo Design",
   "Social Media",
@@ -89,18 +85,14 @@ const ticker = [
     ══════════════════════════════════════════ -->
     <section class="bg-neutral-900/30 border-b border-white/5">
       <div class="max-w-7xl mx-auto px-6 py-24">
-        <div
-          class="flex items-end justify-between mb-14 pb-6 border-b border-white/5"
-        >
+        <div class="flex items-end justify-between mb-14 pb-6 border-b border-white/5">
           <h2
             class="font-bebas uppercase leading-[0.88] tracking-[-0.01em] text-white"
             style="font-size: clamp(44px, 7vw, 88px);"
           >
             My <span class="text-primary">Services</span>
           </h2>
-          <p
-            class="text-[13px] text-white/30 leading-relaxed max-w-55 text-right hidden md:block"
-          >
+          <p class="text-[13px] text-white/30 leading-relaxed max-w-55 text-right hidden md:block">
             Tailored visual frameworks, crafted from scratch.
           </p>
         </div>
@@ -110,109 +102,73 @@ const ticker = [
         <div class="mt-14 flex justify-end">
           <a
             href="/services"
-            class="group inline-flex items-center gap-3
-          text-[11px] font-black uppercase tracking-[0.2em] text-white/30
-          hover:text-primary transition-colors duration-200"
+            class="group inline-flex items-center gap-3 text-[11px] font-black uppercase tracking-[0.2em] text-white/30 hover:text-primary transition-colors duration-200"
           >
             All services
-            <svg
-              width="14"
-              height="14"
-              viewBox="0 0 14 14"
-              fill="none"
-              aria-hidden=true
-            >
-              <path
-                d="M2 7H12M12 7L7 2M12 7L7 12"
-                stroke="currentColor"
-                stroke-width="1.8"
-                stroke-linecap="round"
-                stroke-linejoin="round"></path>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M2 7H12M12 7L7 2M12 7L7 12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
             </svg>
           </a>
         </div>
       </div>
     </section>
-  </main>
 
-  <!-- ══════════════════════════════════════════
+    <!-- ══════════════════════════════════════════
          § 3  SELECTED WORKS — black, full weight
     ══════════════════════════════════════════ -->
-  <section class="border-b border-white/5">
-    <div class="max-w-7xl mx-auto px-6 py-24">
-      <div
-        class="flex items-baseline justify-between mb-14 pb-6 border-b border-white/5"
-      >
-        <h2
-          class="font-bebas uppercase leading-[0.88] tracking-[-0.01em] text-white"
-          style="font-size: clamp(44px, 7vw, 88px);"
-        >
-          Selected <span class="text-primary">Works</span>
-        </h2>
-        <a
-          href="/portfolio"
-          class="group inline-flex items-center gap-2
-        text-[11px] font-black uppercase tracking-[0.2em] text-white/25
-        hover:text-primary transition-colors duration-200 md:flex"
-        >
-          Full portfolio
-          <svg
-            width="12"
-            height="12"
-            viewBox="0 0 14 14"
-            fill="none"
-            aria-hidden=true
+    <section class="border-b border-white/5">
+      <div class="max-w-7xl mx-auto px-6 py-24">
+        <div class="flex items-baseline justify-between mb-14 pb-6 border-b border-white/5">
+          <h2
+            class="font-bebas uppercase leading-[0.88] tracking-[-0.01em] text-white"
+            style="font-size: clamp(44px, 7vw, 88px);"
           >
-            <path
-              d="M2 7H12M12 7L7 2M12 7L7 12"
-              stroke="currentColor"
-              stroke-width="1.8"
-              stroke-linecap="round"
-              stroke-linejoin="round"></path>
-          </svg>
-        </a>
+            Selected <span class="text-primary">Works</span>
+          </h2>
+          <a
+            href="/portfolio"
+            class="group inline-flex items-center gap-2 text-[11px] font-black uppercase tracking-[0.2em] text-white/25 hover:text-primary transition-colors duration-200 md:flex"
+          >
+            Full portfolio
+            <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M2 7H12M12 7L7 2M12 7L7 12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </a>
+        </div>
+
+        <ProtImages />
       </div>
+    </section>
 
-      <ProtImages />
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════════
+    <!-- ══════════════════════════════════════════
          § 4  PHILOSOPHY — asymmetric, sticky col
     ══════════════════════════════════════════ -->
-  <section class="bg-neutral-900/20 border-b border-white/5">
-    <div
-      class="max-w-7xl mx-auto px-6 py-24 grid grid-cols-1 lg:grid-cols-12 gap-16 items-start"
-    >
-      <!-- Sticky label col -->
-      <div class="lg:col-span-3 lg:sticky lg:top-32 flex flex-col gap-4">
-        <p
-          class="font-mono text-[10px] tracking-[0.3em] uppercase text-white/25"
-        >
-          The Philosophy
-        </p>
-        <h2
-          class="font-bebas uppercase leading-[0.88] tracking-[-0.01em] text-white"
-          style="font-size: clamp(36px, 4vw, 56px);"
-        >
-          {t("AboutPage.title")}
-        </h2>
-        <div class="w-8 h-0.5 bg-primary"></div>
-        <a
-          href="/about"
-          class="mt-4 text-[10px] font-black uppercase
-        tracking-[0.2em] text-white/20 hover:text-primary transition-colors
-        duration-200"
-        >
-          Full story →
-        </a>
-      </div>
+    <section class="bg-neutral-900/20 border-b border-white/5">
+      <div class="max-w-7xl mx-auto px-6 py-24 grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+        <div class="lg:col-span-3 lg:sticky lg:top-32 flex flex-col gap-4">
+          <p class="font-mono text-[10px] tracking-[0.3em] uppercase text-white/25">
+            The Philosophy
+          </p>
+          <h2
+            class="font-bebas uppercase leading-[0.88] tracking-[-0.01em] text-white"
+            style="font-size: clamp(36px, 4vw, 56px);"
+          >
+            {t("AboutPage.title")}
+          </h2>
+          <div class="w-8 h-0.5 bg-primary"></div>
+          <a
+            href="/about"
+            class="mt-4 text-[10px] font-black uppercase tracking-[0.2em] text-white/20 hover:text-primary transition-colors duration-200"
+          >
+            Full story →
+          </a>
+        </div>
 
-      <!-- Content col -->
-      <div class="lg:col-span-9">
-        <MissionVision />
+        <div class="lg:col-span-9">
+          <MissionVision />
+        </div>
       </div>
-    </div>
+    </section>
 
     <!-- ══════════════════════════════════════════
          § 5  INDUSTRIES — full bleed (no max-w)
@@ -226,9 +182,7 @@ const ticker = [
           >
             Industries <span class="text-primary">I Serve</span>
           </h2>
-          <p
-            class="text-[13px] text-white/30 leading-relaxed max-w-50 text-right hidden md:block"
-          >
+          <p class="text-[13px] text-white/30 leading-relaxed max-w-50 text-right hidden md:block">
             Visual languages built for diverse sectors.
           </p>
         </div>
@@ -241,18 +195,14 @@ const ticker = [
     ══════════════════════════════════════════ -->
     <section class="border-b border-white/5 py-24">
       <div class="max-w-7xl mx-auto px-6">
-        <div
-          class="flex items-end justify-between mb-14 pb-6 border-b border-white/5"
-        >
+        <div class="flex items-end justify-between mb-14 pb-6 border-b border-white/5">
           <h2
             class="font-bebas uppercase leading-[0.88] tracking-[-0.01em] text-white"
             style="font-size: clamp(44px, 7vw, 88px);"
           >
             {t("H2.MyClients")}
           </h2>
-          <p
-            class="text-[13px] text-white/30 leading-relaxed max-w-50 text-right hidden md:block"
-          >
+          <p class="text-[13px] text-white/30 leading-relaxed max-w-50 text-right hidden md:block">
             Words from people I've worked with.
           </p>
         </div>
@@ -265,15 +215,11 @@ const ticker = [
     ══════════════════════════════════════════ -->
     <section class="py-20">
       <div class="max-w-7xl mx-auto px-6">
-        <p
-          class="font-mono text-[10px] tracking-[0.3em] uppercase text-white/20 text-center mb-12"
-        >
+        <p class="font-mono text-[10px] tracking-[0.3em] uppercase text-white/20 text-center mb-12">
           {t("H2.FREELANCE")} — Available on trusted platforms
         </p>
 
-        <div
-          class="flex flex-wrap justify-center items-center gap-x-14 gap-y-8"
-        >
+        <div class="flex flex-wrap justify-center items-center gap-x-14 gap-y-8">
           {
             platforms.map((p) => (
               <a
@@ -288,19 +234,17 @@ const ticker = [
                   src={p.src}
                   width={120}
                   height={40}
-                  class="h-6 w-auto object-contain opacity-20 grayscale
-                       group-hover:opacity-80 group-hover:grayscale-0
-                       transition-all duration-300"
-                />
+                  loading="lazy"
+                  decoding="async"
+                  class="h-6 w-auto object-contain opacity-20 grayscale group-hover:opacity-80 group-hover:grayscale-0 transition-all duration-300"
+                  />
               </a>
             ))
           }
         </div>
 
         <!-- CTA strip -->
-        <div
-          class="mt-20 flex flex-col sm:flex-row items-center justify-between gap-6 pt-10 border-t border-white/5"
-        >
+        <div class="mt-20 flex flex-col sm:flex-row items-center justify-between gap-6 pt-10 border-t border-white/5">
           <p
             class="font-bebas uppercase text-white leading-none"
             style="font-size: clamp(28px, 4vw, 48px);"
@@ -309,68 +253,56 @@ const ticker = [
           </p>
           <a
             href="/contact"
-            class="shrink-0 inline-flex items-center gap-3 px-8 py-4 rounded-full
-                   bg-primary text-black font-black text-[11px] uppercase tracking-[0.18em]
-                   hover:scale-[1.03] active:scale-[0.98] transition-all duration-200"
+            class="shrink-0 inline-flex items-center gap-3 px-8 py-4 rounded-full bg-primary text-black font-black text-[11px] uppercase tracking-[0.18em] hover:scale-[1.03] active:scale-[0.98] transition-all duration-200"
           >
             Get in touch
-            <svg
-              width="13"
-              height="13"
-              viewBox="0 0 14 14"
-              fill="none"
-              aria-hidden=true
-            >
-              <path
-                d="M2 7H12M12 7L7 2M12 7L7 12"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"></path>
+            <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M2 7H12M12 7L7 2M12 7L7 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
             </svg>
           </a>
         </div>
       </div>
     </section>
+  </main>
 
-    <style>
-      /* Ticker animation */
+  <style>
+    /* Ticker animation */
+    .ticker-track {
+      animation: ticker 28s linear infinite;
+    }
+
+    @keyframes ticker {
+      from {
+        transform: translateX(0);
+      }
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
       .ticker-track {
-        animation: ticker 28s linear infinite;
+        animation: none;
       }
+    }
 
-      @keyframes ticker {
-        from {
-          transform: translateX(0);
-        }
-        to {
-          transform: translateX(-50%);
-        }
+    /* Scroll reveal */
+    @media (prefers-reduced-motion: no-preference) {
+      [data-reveal] {
+        opacity: 0;
+        transform: translateY(24px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
       }
-
-      @media (prefers-reduced-motion: reduce) {
-        .ticker-track {
-          animation: none;
-        }
+      [data-reveal].is-visible {
+        opacity: 1;
+        transform: none;
       }
+    }
+  </style>
 
-      /* Scroll reveal */
-      @media (prefers-reduced-motion: no-preference) {
-        [data-reveal] {
-          opacity: 0;
-          transform: translateY(24px);
-          transition:
-            opacity 0.6s ease,
-            transform 0.6s ease;
-        }
-        [data-reveal].is-visible {
-          opacity: 1;
-          transform: none;
-        }
-      }
-    </style>
-
-    <script>
+  <script>
+    // 4. Wrapped in astro:page-load for View Transitions compatibility
+    document.addEventListener("astro:page-load", () => {
       const io = new IntersectionObserver(
         (entries) =>
           entries.forEach((e) => {
@@ -380,13 +312,13 @@ const ticker = [
               io.unobserve(e.target);
             }
           }),
-        { threshold: 0.07 },
+        { threshold: 0.07 }
       );
 
       document.querySelectorAll("section").forEach((el) => {
         el.setAttribute("data-reveal", "");
         io.observe(el);
       });
-    </script>
-  </section>
+    });
+  </script>
 </Layout>

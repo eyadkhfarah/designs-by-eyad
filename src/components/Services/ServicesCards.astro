@@ -1,45 +1,29 @@
 ---
 import { Categories } from "@/lib/ServicesList";
 import { useTranslations } from "@/utils/i18n";
-import {
-  IconBrandAdobe,
-  IconDeviceMobileCheck,
-  IconMessage2Heart,
-  IconPencilBolt,
-  IconVectorBezier,
-  IconWorldCode,
-} from "@tabler/icons-react";
+import * as TablerIcons from "@tabler/icons-react";
+import { IconWorldCode } from "@tabler/icons-react";
 
 interface Props {
   locale?: string;
 }
-
 const { locale } = Astro.props;
-const currentLocale = locale || Astro.currentLocale;
-const t = useTranslations(currentLocale);
+const t = useTranslations(locale || Astro.currentLocale);
 
-interface CategoryItem {
-  id: string | number;
-  name: string;
-  desc: string;
-}
-
-const categoriesList = Categories as CategoryItem[];
-
-// Extracting the precise constructor type directly from the package to avoid any implicit or explicit 'any' types
 type TablerIconComponent = typeof IconWorldCode;
 
+// Safe mapping: use keyof typeof to ensure icons exist
 const iconMap: Record<string, TablerIconComponent> = {
-  1: IconPencilBolt,
-  2: IconMessage2Heart,
-  3: IconDeviceMobileCheck,
+  1: TablerIcons.IconPencilBolt,
+  2: TablerIcons.IconMessage2Heart,
+  3: TablerIcons.IconDeviceMobileCheck,
   4: IconWorldCode,
-  "Graphic Design": IconVectorBezier,
-  "Photoshop": IconBrandAdobe,
-  "Logo Design": IconPencilBolt,
+  "Graphic Design": TablerIcons.IconVectorBezier,
+  Photoshop: TablerIcons.IconBrandAdobe,
+  "Logo Design": TablerIcons.IconPencilBolt,
 };
 
-const defaultIcon = IconVectorBezier;
+const defaultIcon = TablerIcons.IconVectorBezier;
 ---
 
 <div
@@ -47,47 +31,32 @@ const defaultIcon = IconVectorBezier;
   id="services-grid"
 >
   {
-    categoriesList.map((category, i) => {
-      // Dynamic component assignment (Must be capitalized in Astro)
+    Categories.map((category, i) => {
+      
       const IconComponent = iconMap[category.id] || defaultIcon;
 
       return (
-        <div
-          class="service-card opacity-0 translate-y-6 group relative flex flex-col p-10 md:p-14 rounded-[2.5rem] border border-white/5 bg-neutral-900/30 backdrop-blur-md overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:bg-neutral-900/60 hover:border-white/15 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)]"
-          style={`transition-delay: ${i * 100}ms;`}
-        >
-          {/* Subtle Ambient Glow on Hover */}
-          <div class="absolute top-0 left-0 w-full h-full bg-linear-to-b from-primary/5 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100 pointer-events-none" />
-
-          {/* Grid Pattern Overlay */}
-          <div
-            aria-hidden="true"
-            class="absolute inset-0 opacity-[0.02] pointer-events-none z-0 transition-opacity duration-500 group-hover:opacity-[0.05]"
-            style="background-image: linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px); background-size: 32px 32px;"
-          />
+        <div class="service-card group relative flex flex-col p-10 md:p-14 rounded-[2.5rem] border border-white/5 bg-neutral-900/30 backdrop-blur-md overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:bg-neutral-900/60 hover:border-white/15 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)]">
+          {/* Ambient Glow */}
+          <div class="absolute inset-0 bg-linear-to-b from-primary/5 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100 pointer-events-none" />
 
           <div class="relative z-10 flex flex-col h-full gap-16 md:gap-24">
-            {/* Top Section: Editorial Index & Dynamic Tabler Component */}
             <div class="flex justify-between items-start">
               <div class="flex items-center justify-center w-12 h-12 rounded-full border border-white/10 bg-white/5 text-white/40 group-hover:bg-primary/10 group-hover:text-primary group-hover:border-primary/30 transition-all duration-500">
                 <IconComponent className="w-6 h-6 md:w-7 md:h-7" stroke={1.2} />
               </div>
-              <span class="font-mono text-[12px] md:text-[14px] tracking-[0.2em] text-white/20 font-semibold transition-colors duration-500 group-hover:text-white/40">
+              <span class="font-mono text-[14px] tracking-[0.2em] text-white/20 font-semibold">
                 NO. {String(i + 1).padStart(2, "0")}
               </span>
             </div>
 
-            {/* Bottom Section: Typography & Content */}
             <div class="flex flex-col gap-5 mt-auto">
-              <h3 class="font-bebas uppercase text-4xl md:text-5xl lg:text-6xl leading-[0.85] tracking-tight text-white group-hover:text-primary transition-colors duration-500 drop-shadow-sm">
+              <h3 class="font-bebas uppercase text-4xl md:text-5xl lg:text-6xl leading-[0.85] text-white group-hover:text-primary transition-colors duration-500">
                 {t(category.name)}
               </h3>
-
-              <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-6">
-                <p class="text-white/40 text-[15px] md:text-[16px] leading-relaxed max-w-sm transition-colors duration-500 group-hover:text-white/60">
-                  {t(category.desc)}
-                </p>
-              </div>
+              <p class="text-white/40 text-[15px] leading-relaxed max-w-sm group-hover:text-white/60 transition-colors duration-500">
+                {t(category.desc)}
+              </p>
             </div>
           </div>
         </div>
@@ -96,32 +65,50 @@ const defaultIcon = IconVectorBezier;
   }
 </div>
 
-<script>
-  function initScrollAnimations() {
-    const grid = document.getElementById("services-grid");
-    if (!grid) return;
-
-    const cards = grid.querySelectorAll(".service-card");
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.remove("opacity-0", "translate-y-6");
-            entry.target.classList.add("opacity-100", "translate-y-0");
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      {
-        rootMargin: "-50px",
-        threshold: 0.05,
-      },
-    );
-
-    cards.forEach((card) => observer.observe(card));
+<style>
+  .service-card {
+    /* Set to 1 initially to see if they appear at all */
+    opacity: 1; 
+    transform: translateY(0);
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  initScrollAnimations();
-  document.addEventListener("astro:after-swap", initScrollAnimations);
+  /* Only hide if JS is confirmed working */
+  :global(.js) .service-card {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  :global(.js) .service-card.is-revealed {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
+</style>
+
+<script>
+  // Add 'js' class to html so the CSS knows to hide the elements
+  document.documentElement.classList.add('js');
+
+  function initObserver() {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add("is-revealed");
+          }, index * 100);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll(".service-card").forEach((card) => observer.observe(card));
+  }
+
+  // Force re-run on page load
+  if (document.readyState === 'complete') {
+    initObserver();
+  } else {
+    window.addEventListener('load', initObserver);
+  }
+  document.addEventListener("astro:page-load", initObserver);
 </script>

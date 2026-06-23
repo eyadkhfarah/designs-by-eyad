@@ -2,147 +2,129 @@
 import { useTranslations } from "@/utils/i18n";
 
 interface Props {
-  locale?: string | undefined;
+  locale?: string;
 }
-
 const { locale } = Astro.props;
 const t = useTranslations(locale);
 const isArabic = locale === "ar";
 
 const fields = [
-  "mobileApp", "clinic", "newsAndPublication", "government", "travel",
-  "marketingAgencies", "tech", "beverages", "restaurants", "coffeeShops",
-  "foodRetailers", "furniture", "realEstate", "education", "universities",
-  "beauty", "fashion", "magazines", "eCommerce", "influencers",
-  "youtubers", "podcast", "cosmetics", "perfumes", "automobile",
+  "mobileApp",
+  "clinic",
+  "newsAndPublication",
+  "government",
+  "travel",
+  "marketingAgencies",
+  "tech",
+  "beverages",
+  "restaurants",
+  "coffeeShops",
+  "foodRetailers",
+  "furniture",
+  "realEstate",
+  "education",
+  "universities",
+  "beauty",
+  "fashion",
+  "magazines",
+  "eCommerce",
+  "influencers",
+  "youtubers",
+  "podcast",
+  "cosmetics",
+  "perfumes",
+  "automobile",
 ];
 
-const repeated = [...fields, ...fields, ...fields, ...fields];
+const rows = [
+  {
+    id: "row-1",
+    bg: "bg-primary",
+    text: "text-black",
+    dot: "bg-black/30",
+    dir: 1,
+  },
+  {
+    id: "row-2",
+    bg: "bg-neutral-900/80 border-y border-white/10",
+    text: "text-white/30",
+    dot: "bg-primary",
+    dir: -1,
+  },
+  { id: "row-3", bg: "", text: "stroke-text", dot: "bg-primary", dir: 1 },
+];
 ---
 
-<section
-  id="brand-fields"
-  class="relative py-24 md:py-32 overflow-hidden"
->
-  <!-- ── Skewed track ─────────────────────────────────────────── -->
+<section id="brand-fields" class="relative py-24 overflow-hidden">
   <div class="-rotate-2 scale-105 flex flex-col gap-4">
-
-    <!-- Row 1 — primary bg, dark text, moves right -->
-    <div class="relative w-[110%] left-[-5%] overflow-hidden bg-primary py-3 md:py-5 flex items-center shadow-[0_0_40px_rgba(0,0,0,0.5)] z-20">
-      <ul id="row-1" class="flex items-center whitespace-nowrap will-change-transform">
-        {repeated.map((field) => (
-          <li class="flex items-center gap-8 mx-6 md:mx-10">
-            <span
-              class="font-bebas uppercase leading-[0.85] tracking-[-0.01em] text-black"
-              style="font-size: clamp(40px, 5vw, 80px);"
-            >
-              {t(`fields.${field}`)}
-            </span>
-            <span class="w-2 h-2 rounded-full bg-black/30 shrink-0" />
-          </li>
-        ))}
-      </ul>
-    </div>
-
-    <!-- Row 2 — dark surface, ghost white text, moves left -->
-    <div class="relative w-[110%] left-[-5%] overflow-hidden bg-neutral-900/80 border-y border-white/10 py-3 md:py-5 flex items-center z-10">
-      <ul id="row-2" class="flex items-center whitespace-nowrap will-change-transform">
-        {repeated.map((field) => (
-          <li class="flex items-center gap-8 mx-6 md:mx-10">
-            <span
-              class="font-bebas uppercase leading-[0.85] tracking-[-0.01em] text-white/30"
-              style="font-size: clamp(40px, 5vw, 80px);"
-            >
-              {t(`fields.${field}`)}
-            </span>
-            <span class="w-2 h-2 rounded-full bg-white/10 shrink-0" />
-          </li>
-        ))}
-      </ul>
-    </div>
-
-    <!-- Row 3 — stroke-only text, moves right at half speed -->
-    <div class="relative w-[110%] left-[-5%] overflow-hidden py-3 md:py-5 flex items-center z-0">
-      <ul id="row-3" class="flex items-center whitespace-nowrap will-change-transform">
-        {repeated.map((field) => (
-          <li class="flex items-center gap-8 mx-6 md:mx-10">
-            <span
-              class="font-bebas uppercase leading-[0.85] tracking-[-0.01em]"
-              style="font-size: clamp(40px, 5vw, 80px); -webkit-text-stroke: 1.5px rgba(255,255,255,0.15); color: transparent;"
-            >
-              {t(`fields.${field}`)}
-            </span>
-            <span class="w-2 h-2 rounded-full bg-primary/30 shrink-0" />
-          </li>
-        ))}
-      </ul>
-    </div>
-
+    {
+      rows.map((row) => (
+        <div
+          class={`relative w-[110%] left-[-5%] overflow-hidden ${row.bg} py-4 flex items-center`}
+        >
+          <ul
+            class={`flex items-center whitespace-nowrap ${row.id === "row-2" ? "animate-right" : "animate-left"}`}
+          >
+            {[...fields, ...fields].map((field) => (
+              <li class="flex items-center gap-8 mx-8">
+                <span
+                  class={`font-bebas uppercase leading-none ${row.text}`}
+                  style="font-size: clamp(40px, 5vw, 80px);"
+                >
+                  {t(`fields.${field}`)}
+                </span>
+                <span class={`w-2 h-2 rounded-full ${row.dot} shrink-0`} />
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
   </div>
-
-  <!-- ── Edge fade masks ───────────────────────────────────────── -->
-  <div
-    aria-hidden="true"
-    class="pointer-events-none absolute inset-0 z-30"
-    style="background: linear-gradient(to right, #0a0a0a 0%, transparent 15%, transparent 85%, #0a0a0a 100%);"
-  />
 </section>
 
-<script define:vars={{ isArabic }}>
-  const section = document.getElementById("brand-fields");
-  const row1    = document.getElementById("row-1");
-  const row2    = document.getElementById("row-2");
-  const row3    = document.getElementById("row-3");
-
-  if (!section || !row1 || !row2 || !row3) throw new Error("BrandFields: elements not found");
-
-  // Speed multipliers (px moved per scroll-progress unit)
-  // Framer used [0,1] → [0, ±3000 / ±2000]
-  const SPEED_1 = isArabic ? -3000 : 3000;
-  const SPEED_2 = isArabic ?  3000 : -3000;
-  const SPEED_3 = isArabic ? -2000 : 2000;
-
-  function getProgress() {
-    const rect   = section.getBoundingClientRect();
-    const total  = rect.height + window.innerHeight;
-    const passed = window.innerHeight - rect.top;
-    return Math.min(1, Math.max(0, passed / total));
+<style>
+  .stroke-text {
+    -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.15);
+    color: transparent;
   }
 
-  let ticking = false;
-
-  function update() {
-    const p = getProgress();
-    row1.style.transform = `translateX(${p * SPEED_1}px)`;
-    row2.style.transform = `translateX(${p * SPEED_2}px)`;
-    row3.style.transform = `translateX(${p * SPEED_3}px)`;
-    ticking = false;
-  }
-
-  // Only run while section is near the viewport
-  const io = new IntersectionObserver(
-    ([entry]) => {
-      if (entry.isIntersecting) {
-        window.addEventListener("scroll", onScroll, { passive: true });
-        update(); // sync immediately on enter
-      } else {
-        window.removeEventListener("scroll", onScroll);
-      }
-    },
-    { rootMargin: "200px 0px" },
-  );
-
-  function onScroll() {
-    if (!ticking) {
-      requestAnimationFrame(update);
-      ticking = true;
+  @keyframes marquee-left {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
     }
   }
 
-  io.observe(section);
-
-  // Respect reduced motion — freeze rows at start position
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    io.disconnect();
+  @keyframes marquee-right {
+    from {
+      transform: translateX(-50%);
+    }
+    to {
+      transform: translateX(0);
+    }
   }
-</script>
+
+  .animate-left,
+  .animate-right {
+    /* Increased 45s makes it slower. Decrease this number to make it faster. */
+    animation-duration: 45s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+
+  .animate-left {
+    animation-name: marquee-left;
+  }
+  .animate-right {
+    animation-name: marquee-right;
+  }
+
+  /* This ensures the animation stops when you hover over the row */
+  .animate-left:hover,
+  .animate-right:hover {
+    animation-play-state: paused;
+  }
+</style>

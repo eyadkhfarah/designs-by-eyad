@@ -1,95 +1,73 @@
 ---
 import PrimaryBtn from "@/components/Buttons/PrimaryBtn.astro";
 import AnimatedNum from "./AnimatedNum.astro";
-import {  RiArrowRightLine } from "@remixicon/react";
+import { RiArrowRightLine } from "@remixicon/react";
 import { getCollection } from "astro:content";
-import { Picture } from "astro:assets";
+import { Image } from "astro:assets";
+import artworkImg from "@/assets/artwork-grid.png"; // Statically import
 
 const designs = await getCollection("design");
-const webs = await getCollection("web")
+const webs = await getCollection("web");
+const totalProjects = designs.length + webs.length;
 ---
 
 <div
-  class="grid md:grid-cols-4 md:grid-rows-2 gap-4 lg:gap-5 mx-auto h-full w-full"
+  class="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-4 lg:gap-5 mx-auto w-full"
 >
-  <!-- ── A: Main Hero Card ───────────────────────────────────────────── -->
   <div
-    class="relative col-span-2 row-span-2 rounded-[2.5rem] bg-neutral-900 border border-white/5
-           overflow-hidden p-8 lg:p-12 flex flex-col justify-between min-h-95"
+    class="relative col-span-2 row-span-2 rounded-[2.5rem] bg-neutral-900 border border-white/5 overflow-hidden p-8 lg:p-12 flex flex-col justify-between min-h-100"
   >
-    <!-- Ghost background type -->
     <p
       aria-hidden="true"
-      class="absolute -bottom-4 -right-3 font-bebas uppercase
-             leading-none text-white/4 pointer-events-none select-none"
-      style="font-size: clamp(80px, 14vw, 160px);"
+      class="absolute -bottom-4 -right-3 font-bebas uppercase leading-none text-white/3 pointer-events-none select-none text-[120px] md:text-[160px]"
     >
       Design
     </p>
 
-    <!-- Top: label -->
     <div class="flex items-center gap-3 relative z-10">
       <span class="relative flex h-2 w-2">
         <span
-          class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-60"
+          class="animate-ping absolute h-full w-full rounded-full bg-primary opacity-60"
         ></span>
-        <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"
-        ></span>
+        <span class="relative rounded-full h-2 w-2 bg-primary"></span>
       </span>
       <span
         class="font-mono text-[10px] uppercase tracking-[0.3em] text-white/30"
+        >Available for work</span
       >
-        Available for work
-      </span>
     </div>
 
-    <!-- Middle: headline -->
     <div class="relative z-10 flex flex-col gap-5 my-auto py-8">
       <h1
-        class="font-bebas uppercase leading-[0.88] tracking-[-0.01em] text-white"
-        style="font-size: clamp(48px, 7vw, 88px);"
+        class="font-bebas uppercase leading-[0.88] tracking-[-0.01em] text-white text-[48px] md:text-[88px]"
       >
         Brand Identity<br />
-        <span style="-webkit-text-stroke: 1.5px #e5fe00; color: transparent;">
-          That Sticks.
-        </span>
+        <span style="-webkit-text-stroke: 1.5px #e5fe00; color: transparent;"
+          >That Sticks.</span
+        >
       </h1>
-
       <p class="text-[14px] text-white/40 leading-relaxed max-w-xs">
         Visual communication for businesses that want to be remembered — from
         Aswan, Egypt to the world.
       </p>
     </div>
 
-    <!-- Bottom: CTA -->
     <div class="relative z-10">
       <PrimaryBtn link="/contact" text="Start a Project" target={false} />
     </div>
   </div>
 
-  <!-- ── B: Artworks Card ───────────────────────────────────────────── -->
   <div
-    class="group relative col-span-2 bg-neutral-900 border border-white/5
-           rounded-[2.5rem] overflow-hidden flex items-end min-h-50
-           hover:border-primary/20 transition-colors duration-500"
+    class="group relative col-span-2 bg-neutral-900 border border-white/5 rounded-[2.5rem] overflow-hidden flex items-end min-h-[250px] transition-colors duration-500 hover:border-primary/20"
   >
-    <!-- BG image -->
     <div class="absolute inset-0">
-      <Picture
-
-        src="/Imgs/artwork-grid.png"
+      <Image
+        src={artworkImg}
         alt="Artworks grid"
-        width={1200}
-        height={800}
-        loading="eager"
-        decoding="async"
-        fetchpriority=high
-        formats={['webp']}
-        class="w-full h-full object-cover object-right opacity-30
-               group-hover:opacity-50 group-hover:scale-105
-               transition-all duration-700 ease-out"
+        width={800}
+        quality={80}
+        class="w-full h-full object-cover object-right opacity-30 group-hover:opacity-50 group-hover:scale-105 transition-all duration-700 ease-out will-change-transform"
       />
-      <!-- Gradient overlay -->
       <div
         class="absolute inset-0 bg-linear-to-r from-neutral-900 via-neutral-900/70 to-transparent"
       >
@@ -98,73 +76,49 @@ const webs = await getCollection("web")
 
     <div class="relative z-10 p-8 flex flex-col gap-4">
       <h2
-        class="font-bebas uppercase leading-[0.9] text-white"
-        style="font-size: clamp(28px, 3.5vw, 42px);"
+        class="font-bebas uppercase leading-[0.9] text-white text-[28px] md:text-[42px]"
       >
-        Step Into<br />
-        <span class="text-primary">Artworks</span>
+        Step Into<br /><span class="text-primary">Artworks</span>
       </h2>
       <a
         href="/artworks"
-        class="group/link inline-flex items-center gap-2 text-[10px] font-black uppercase
-               tracking-[0.2em] text-white/40 hover:text-primary transition-colors duration-200"
+        class="group/link inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-white/40 hover:text-primary transition-colors"
       >
-        Explore gallery
-
-        <RiArrowRightLine />
+        Explore gallery <RiArrowRightLine />
       </a>
     </div>
   </div>
 
-  <!-- ── C + D: Stat Cards ──────────────────────────────────────────── -->
-  <div
-    class="col-span-1 bg-neutral-900 border border-white/5 rounded-[2.5rem]
-              flex flex-col items-center justify-center p-6 relative overflow-hidden
-              group hover:border-primary/20 transition-colors duration-300 min-h-35"
-  >
-    <!-- Subtle glow on hover -->
-    <div
-      class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-    >
-    </div>
-
-    <p
-      class="relative z-10 font-bebas text-white leading-none tracking-tight"
-      style="font-size: clamp(52px, 6vw, 72px);"
-    >
-      +<AnimatedNum from={0} to={designs.length + webs.length} />
-    </p>
-    <p
-      class="relative z-10 font-mono text-[9px] uppercase tracking-[0.3em] text-white/30 mt-2"
-    >
-      Brands Built
-    </p>
-  </div>
-
-  <div
-    class="col-span-1 bg-primary rounded-[2.5rem]
-              flex flex-col items-center justify-center p-6 relative overflow-hidden
-              group min-h-35"
-  >
-    <!-- Ghost zero -->
-    <p
-      aria-hidden="true"
-      class="absolute font-bebas text-black/10 leading-none select-none pointer-events-none"
-      style="font-size: 9rem;"
-    >
-      5
-    </p>
-
-    <p
-      class="relative z-10 font-bebas text-black leading-none tracking-tight"
-      style="font-size: clamp(52px, 6vw, 72px);"
-    >
-      +<AnimatedNum from={0} to={5} />
-    </p>
-    <p
-      class="relative z-10 font-mono text-[9px] uppercase tracking-[0.3em] text-black/50 mt-2"
-    >
-      Years Exp.
-    </p>
-  </div>
+  {
+    [
+      { val: totalProjects, label: "Brands Built" },
+      { val: 5, label: "Years Exp." },
+    ].map((stat, i) => (
+      <div
+        class:list={[
+          "col-span-1 rounded-[2.5rem] flex flex-col items-center justify-center p-6 relative overflow-hidden group min-h-35",
+          i === 0
+            ? "bg-neutral-900 border border-white/5 hover:border-primary/20"
+            : "bg-primary",
+        ]}
+      >
+        <p
+          class:list={[
+            "relative z-10 font-bebas leading-none tracking-tight text-[52px] md:text-[72px]",
+            i === 0 ? "text-white" : "text-black",
+          ]}
+        >
+          +<AnimatedNum from={0} to={stat.val} />
+        </p>
+        <p
+          class:list={[
+            "relative z-10 font-mono text-[9px] uppercase tracking-[0.3em] mt-2",
+            i === 0 ? "text-white/30" : "text-black/50",
+          ]}
+        >
+          {stat.label}
+        </p>
+      </div>
+    ))
+  }
 </div>

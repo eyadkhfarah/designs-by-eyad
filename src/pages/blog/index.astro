@@ -5,42 +5,37 @@ import { fetchPosts } from "@/lib/Data/notionBlogData";
 import type { NotionBaseProperties } from "@/types/notionType";
 import { useTranslations } from "@/utils/i18n";
 
-interface NotionResponse {
-  results: NotionBaseProperties[];
-}
-
 const t = useTranslations(Astro.currentLocale);
 const posts = await fetchPosts();
 
 const postsList: NotionBaseProperties[] = Array.isArray(posts)
   ? posts
-  : ((posts as NotionResponse)?.results ?? []);
+  : ((posts as any)?.results ?? []);
 
-const orderedPosts = [...postsList.reverse()];
+const orderedPosts = [...postsList].reverse();
 ---
 
 <Layout
   title="Blog | Design Insights & Creative Tips"
   description="Expert tips, creative insights, and design trends."
 >
-  <main class="relative min-h-screen overflow-x-hidden">
-    <!-- ══════════════════════════════════════════
-         § 1  HERO
-    ══════════════════════════════════════════ -->
-    <section class="max-w-7xl mx-auto px-6 lg:px-0 pt-40 pb-28">
-      <div class="flex flex-col gap-12">
+  <main class="relative min-h-screen pt-32 pb-20">
+    {/* ── Hero Section ──────────────────────────── */}
+    <section class="max-w-7xl mx-auto px-6 mb-20">
+      <div class="flex flex-col gap-6">
         <span
-          class="font-mono text-[11px] tracking-[0.4em] uppercase text-primary"
+          class="font-mono text-[10px] tracking-[0.4em] uppercase text-primary"
         >
           002 — Editorial Journal
         </span>
         <h1
-          class="font-bebas uppercase text-[clamp(70px,12vw,180px)] leading-[0.85] tracking-[-0.02em] text-white"
+          class="font-bebas uppercase text-[clamp(60px,10vw,140px)] leading-[0.85] tracking-tight text-white"
         >
           {t("BlogPage.title")}
         </h1>
+        <div class="h-px w-24 bg-white/20 my-4"></div>
         <p
-          class="text-white/40 text-[16px] max-w-xl leading-relaxed uppercase tracking-tight"
+          class="text-white/40 text-[16px] max-w-lg leading-relaxed uppercase tracking-wide"
         >
           Thoughts on design, branding, and the creative process in the digital
           age.
@@ -48,16 +43,16 @@ const orderedPosts = [...postsList.reverse()];
       </div>
     </section>
 
-    {/* Structural Blog Grid */}
-    <section class="max-w-7xl mx-auto px-6 lg:px-0 py-20">
-      <div
-        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border-l border-t border-white/10"
-      >
+    {/* ── Bento Blog Grid ──────────────────────────── */}
+    <section class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {
           orderedPosts.map((post: any, index: number) => (
             <div
-              class={`border-r border-b border-white/10 bg-neutral-900/30 hover:bg-white/5 transition-colors duration-500
-              ${index === 0 ? "md:col-span-2 lg:col-span-2" : "col-span-1"}`}
+              class={`
+            ${index === 0 ? "md:col-span-2 lg:col-span-2" : "col-span-1"}
+            rounded-4xl border border-white/5 bg-neutral-900/30 overflow-hidden
+          `}
             >
               <BlogSqr post={post} isFeatured={index === 0} index={index} />
             </div>
