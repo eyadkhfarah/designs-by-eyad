@@ -22,7 +22,7 @@ const fieldLabel =
   <div
     id="form-success"
     class="hidden flex-col items-center justify-center text-center gap-8 py-20 px-8
-             bg-neutral-950 border border-white/5 rounded-[2.5rem] min-h-130"
+           bg-neutral-950 border border-white/5 rounded-[2.5rem] min-h-130"
   >
     <div class="relative">
       <div
@@ -47,9 +47,7 @@ const fieldLabel =
       </div>
     </div>
     <div class="space-y-3">
-      <h2
-        class="font-bebas text-5xl tracking-tight uppercase text-white"
-      >
+      <h2 class="font-bebas text-5xl tracking-tight uppercase text-white">
         Message Sent
       </h2>
       <p class="text-white/40 text-base max-w-xs mx-auto leading-relaxed">
@@ -67,7 +65,7 @@ const fieldLabel =
   <div
     id="form-error-state"
     class="hidden flex-col items-center justify-center text-center gap-8 py-20 px-8
-             bg-neutral-950 border border-red-500/20 rounded-[2.5rem] min-h-130"
+           bg-neutral-950 border border-red-500/20 rounded-[2.5rem] min-h-130"
   >
     <div class="relative">
       <div
@@ -93,9 +91,7 @@ const fieldLabel =
       </div>
     </div>
     <div class="space-y-3">
-      <h2
-        class="font-bebas text-5xl tracking-tight uppercase text-white"
-      >
+      <h2 class="font-bebas text-5xl tracking-tight uppercase text-white">
         Something went wrong
       </h2>
       <p
@@ -118,8 +114,8 @@ const fieldLabel =
     method="post"
     novalidate
     class="grid lg:grid-cols-2 grid-cols-1 gap-5
-             bg-neutral-950 border border-white/5
-             p-8 md:p-12 rounded-[2.5rem]"
+           bg-neutral-950 border border-white/5
+           p-8 md:p-12 rounded-[2.5rem]"
   >
     <div class="flex flex-col">
       <label for="fullName" class={fieldLabel}>Full Name *</label>
@@ -181,7 +177,15 @@ const fieldLabel =
           <option value="Social Media Design">Social Media Design</option>
           <option value="UI/UX Design">UI/UX Design</option>
         </select>
-        </svg>
+        <svg
+          class="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 pointer-events-none text-white/30"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg
+        >
       </div>
       <p class="field-error hidden mt-2 ml-1 text-xs text-red-400 font-medium">
       </p>
@@ -217,6 +221,15 @@ const fieldLabel =
           <option value="51-200">51-200 employees</option>
           <option value="201+">201+ employees</option>
         </select>
+        <svg
+          class="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 pointer-events-none text-white/30"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg
+        >
       </div>
       <p class="field-error hidden mt-2 ml-1 text-xs text-red-400 font-medium">
       </p>
@@ -269,7 +282,10 @@ const fieldLabel =
                  disabled:opacity-50 disabled:scale-100 disabled:cursor-not-allowed
                  transition-all duration-200"
       >
-        <span id="btn-idle" class="flex cursor-pointer items-center justify-center gap-3">
+        <span
+          id="btn-idle"
+          class="flex cursor-pointer items-center justify-center gap-3"
+        >
           Send Inquiry
           <svg
             width="14"
@@ -308,7 +324,6 @@ const fieldLabel =
 </ContactLayout>
 
 <style>
-  /* Invalid field ring — plain CSS, no @apply needed */
   input[data-field].invalid,
   select[data-field].invalid,
   textarea[data-field].invalid {
@@ -363,7 +378,6 @@ const fieldLabel =
         message: "Enter your company or brand name.",
       },
     ],
-    // NEW validation rule for company size
     companySize: [
       {
         test: (v) => v.length > 0,
@@ -415,7 +429,6 @@ const fieldLabel =
     return Object.keys(rules).map(validateField).every(Boolean);
   }
 
-  // Live validation: validate on blur, then on every input after first touch
   Object.keys(rules).forEach((name) => {
     const field = getFieldEl(name);
     let touched = false;
@@ -458,9 +471,9 @@ const fieldLabel =
 
     try {
       const formData = new FormData(form);
-      const data = Object.fromEntries(formData) as Record<string, any>;
+      // Fixed: Strictly used Record<string, unknown> instead of 'any' to ensure absolute type safety
+      const data: Record<string, unknown> = Object.fromEntries(formData);
 
-      // Force the subscription value to be a strict boolean (true/false)
       data.subscription = subscriptionEl.checked;
 
       const res = await fetch("/api/notion", {
@@ -488,7 +501,6 @@ const fieldLabel =
 
   resetBtn?.addEventListener("click", () => {
     form.reset();
-    // Clear any lingering invalid states
     form
       .querySelectorAll("[data-field]")
       .forEach((f) => f.classList.remove("invalid"));
