@@ -8,6 +8,9 @@ import vercel from "@astrojs/vercel";
 export default defineConfig({
   image: {
     remotePatterns: [{ protocol: 'https', hostname: 'prod-files-secure.s3.us-west-2.amazonaws.com' }],
+    service: {
+      entrypoint: 'astro/assets/services/sharp'
+    },
   },
   
   i18n: {
