@@ -22,18 +22,13 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
 
-  site: siteUrl,
+  site: "https://designs-by-eyad.vercel.app",
 
   integrations: [
     react(),
     partytown(),
     sitemap({
-      i18n: {
-        defaultLocale: 'en',
-        locales: {
-          ar: 'ar-EG',
-        },
-      },
+      sitemap: 'sitemap.xml',
       changefreq: "weekly",
       priority: 0.7,
       lastmod: new Date("2022-02-24"),
